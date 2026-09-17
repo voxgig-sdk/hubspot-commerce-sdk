@@ -1,0 +1,5471 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ContractsContractChange | HubSpot Commerce API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">HubSpot Commerce API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/hubspot-commerce-sdk">voxgig-sdk/hubspot-commerce-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">HubSpot Commerce API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/advanced.html">Advanced</a>
+<a href="../api/basic.html">Basic</a>
+<a href="../api/batch.html">Batch</a>
+<a href="../api/contract.html">Contract</a>
+<a href="../api/contracts_contract.html">ContractsContract</a>
+<a aria-current="page" href="../api/contracts_contract_change.html">ContractsContractChange</a><div class="nav-sections"><a class="nav-section" href="#post-commercecontracts2027-03-betachangeschangeidaccept">POST /commerce/contracts/2027-03-beta/changes/{changeId}/accept</a>
+<a class="nav-section" href="#post-commercecontracts2027-03-betachangeschangeidcancel">POST /commerce/contracts/2027-03-beta/changes/{changeId}/cancel</a>
+<a class="nav-section" href="#post-commercecontracts2027-03-betacontractscontractidchanges">POST /commerce/contracts/2027-03-beta/contracts/{contractId}/changes</a>
+<a class="nav-section" href="#post-commercecontracts2027-03-betachanges">POST /commerce/contracts/2027-03-beta/changes</a>
+<a class="nav-section" href="#get-commercecontracts2027-03-betacontractscontractidchanges">GET /commerce/contracts/2027-03-beta/contracts/{contractId}/changes</a>
+<a class="nav-section" href="#get-commercecontracts2027-03-betachangeschangeid">GET /commerce/contracts/2027-03-beta/changes/{changeId}</a>
+<a class="nav-section" href="#patch-commercecontracts2027-03-betachangeschangeid">PATCH /commerce/contracts/2027-03-beta/changes/{changeId}</a></div>
+<a href="../api/contracts_contract_change_preview.html">ContractsContractChangePreview</a>
+<a href="../api/contracts_quote.html">ContractsQuote</a>
+<a href="../api/item.html">Item</a>
+<a href="../api/payment_link.html">PaymentLink</a>
+<a href="../api/payment_methods_commerce_payment_method_settings_public.html">PaymentMethodsCommercePaymentMethodSettingsPublic</a>
+<a href="../api/payments_action_response_with_single_result_simple_public_object.html">PaymentsActionResponseWithSingleResultSimplePublicObject</a>
+<a href="../api/payments_create_manual_payment_public.html">PaymentsCreateManualPaymentPublic</a>
+<a href="../api/payments_settings_get_billing_settings_public.html">PaymentsSettingsGetBillingSettingsPublic</a>
+<a href="../api/payments_settings_get_checkout_fees_public.html">PaymentsSettingsGetCheckoutFeesPublic</a>
+<a href="../api/payments_settings_get_policy_settings_public.html">PaymentsSettingsGetPolicySettingsPublic</a>
+<a href="../api/payments_settings_get_shipping_settings_public.html">PaymentsSettingsGetShippingSettingsPublic</a>
+<a href="../api/paymentsaccounts_payment_account_view.html">PaymentsaccountsPaymentAccountView</a>
+<a href="../api/price_book.html">PriceBook</a>
+<a href="../api/price_books_batch_response_price_book_item.html">PriceBooksBatchResponsePriceBookItem</a>
+<a href="../api/price_books_collection_response_price_book_item_response_forward.html">PriceBooksCollectionResponsePriceBookItemResponseForward</a>
+<a href="../api/price_books_price_book.html">PriceBooksPriceBook</a>
+<a href="../api/price_books_price_book_item.html">PriceBooksPriceBookItem</a>
+<a href="../api/price_books_price_book_validate.html">PriceBooksPriceBookValidate</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="contractscontractchange">ContractsContractChange</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-commercecontracts2027-03-betachangeschangeidaccept"><code>/commerce/contracts/2027-03-beta/changes/{changeId}/accept</code></a></td>
+<td><code>create</code></td>
+<td>successful operation</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-commercecontracts2027-03-betachangeschangeidcancel"><code>/commerce/contracts/2027-03-beta/changes/{changeId}/cancel</code></a></td>
+<td><code>create</code></td>
+<td>successful operation</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-commercecontracts2027-03-betacontractscontractidchanges"><code>/commerce/contracts/2027-03-beta/contracts/{contractId}/changes</code></a></td>
+<td><code>create</code></td>
+<td>successful operation</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-commercecontracts2027-03-betachanges"><code>/commerce/contracts/2027-03-beta/changes</code></a></td>
+<td><code>create</code></td>
+<td>successful operation</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-commercecontracts2027-03-betacontractscontractidchanges"><code>/commerce/contracts/2027-03-beta/contracts/{contractId}/changes</code></a></td>
+<td><code>list</code></td>
+<td>successful operation</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-commercecontracts2027-03-betachangeschangeid"><code>/commerce/contracts/2027-03-beta/changes/{changeId}</code></a></td>
+<td><code>load</code></td>
+<td>successful operation</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-commercecontracts2027-03-betachangeschangeid"><code>/commerce/contracts/2027-03-beta/changes/{changeId}</code></a></td>
+<td><code>update</code></td>
+<td>successful operation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>contractId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier of the contract associated with this change.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time when the contract change was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>An array of line items that represent the difference resulting from the contract change.</td>
+</tr>
+<tr>
+<td><code>effectiveDate</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date when the contract change becomes effective, in YYYY-MM-DD format.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the contract change.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>An array of changes to line items associated with the contract change.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the contract change.</td>
+</tr>
+<tr>
+<td><code>proposedLineItems</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>An array of line items that are proposed as part of the contract change.</td>
+</tr>
+<tr>
+<td><code>prorating</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the contract change involves prorating.</td>
+</tr>
+<tr>
+<td><code>quoteId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier of the quote associated with this contract change.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The current status of the contract change.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The type of contract change.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time when the contract change was last updated, in ISO 8601 format.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-commercecontracts2027-03-betachangeschangeidaccept" class="operation" data-method="post"><code>POST</code> /commerce/contracts/2027-03-beta/changes/{changeId}/accept</h3>
+<p>Operation ID: <code>post-/commerce/contracts/2027-03-beta/changes/{changeId}/accept</code>.</p>
+<p>Authentication: not required.</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>changeId</code> | <code>path</code> | <code>string</code> | Yes | The unique identifier of the contract change to accept. |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="200-successful-operation" class="status" data-status="2xx">200: successful operation</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>contractId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier of the contract associated with this change.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the contract change was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of line items that represent the difference resulting from the contract change.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].acv</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual contract value for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].allowBuyerSelectedQuantity</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the buyer can select the quantity of this line item. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount for this line item, calculated as price multiplied by quantity. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is archived. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this line item was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].arr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual recurring revenue for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingCycleAnchorDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The anchor date for the billing cycle, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingPeriodEndDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date of the billing period, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingPeriodStartDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date of the billing period, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingStartDelayDays</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The delay in days before billing starts. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingStartDelayMonths</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The delay in months before billing starts. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingStartDelayType</code></td>
+<td><code>enum: HS_BILLING_START_DELAY_DAYS, HS_BILLING_START_DELAY_MONTHS, HS_RECURRING_BILLING_START_DATE</code></td>
+<td>No</td>
+<td>The type of delay before billing starts. Valid values include 'HS_BILLING_START_DELAY_DAYS', 'HS_BILLING_START_DELAY_MONTHS', and 'HS_RECURRING_BILLING_START_DATE'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].buyerSelectedQuantityMax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The maximum quantity the buyer can select for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].buyerSelectedQuantityMin</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The minimum quantity the buyer can select for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this line item was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A text description of the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].discount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The discount applied to this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].discountPercentage</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The discount percentage applied to this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].effectiveUnitPrice</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The effective price per unit after discounts. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].externalId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An external identifier for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].images</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A URL or reference to images associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].isEditablePrice</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the price of this line item is editable. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].isOptional</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is optional. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].isParent</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is a parent item. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].lineItemCurrencyCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The currency code for this line item, following ISO 4217 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].mrr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The monthly recurring revenue for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].parentLineItemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the parent line item, if applicable.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].positionOnQuote</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The position of this line item on a quote. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].postTaxAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount after tax is applied. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].preDiscountAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount before any discounts are applied. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].price</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The price of a single unit of the line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].priceBookId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the price book associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of price entries, each specifying a currency code and the corresponding price for the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices[].currencyCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The currency in which the price is denominated, represented as a string.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices[].maxQuantity</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The maximum quantity for which this price is applicable, represented as an integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices[].price</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The cost of the product or service in the specified currency, represented as a number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>Yes</td>
+<td>The pricing model applied to the line item. Valid values include 'FLAT', 'GRADUATED', 'STAIRSTEP', and 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>No</td>
+<td>The pricing model used for this line item. Valid values include 'FLAT', 'GRADUATED', 'STAIRSTEP', and 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].productId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the product associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].productType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of product for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].quantity</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The quantity of the line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].rampKey</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A unique identifier for the ramp associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingDayOfMonth</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The day of the month on which recurring billing occurs. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingEndDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date for recurring billing, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingFrequency</code></td>
+<td><code>enum: ANNUALLY, BIWEEKLY, MONTHLY, PER_FIVE_YEARS, PER_FOUR_YEARS, PER_SIX_MONTHS, ...</code></td>
+<td>No</td>
+<td>The frequency of recurring billing for this line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', 'PER_FIVE_YEARS', 'PER_FOUR_YEARS', 'PER_SIX_MONTHS', 'PER_THREE_YEARS', 'PER_TWO_YEARS', 'QUARTERLY', and 'WEEKLY'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingNumberOfPayments</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The number of payments for recurring billing. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingPeriod</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The period for recurring billing.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingStartDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date for recurring billing, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingTerms</code></td>
+<td><code>enum: AUTOMATICALLY_RENEW, FIXED</code></td>
+<td>No</td>
+<td>The terms for recurring billing. Valid values include 'AUTOMATICALLY_RENEW' and 'FIXED'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].richTextDescription</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A rich text description of the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].sku</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The stock keeping unit (SKU) for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].tax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The tax rate applied to this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].taxAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total tax amount for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].taxCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The tax category for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].taxRateGroupId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the tax rate group associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].tcv</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total contract value for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].termInMonths</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The term length in months for this line item. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].tierAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount for the current pricing tier. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].totalDiscount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total discount amount for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this line item was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].variantId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the product variant associated with this line item.</td>
+</tr>
+<tr>
+<td><code>effectiveDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The date when the contract change becomes effective, in YYYY-MM-DD format.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the contract change.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of changes to line items associated with the contract change.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].action</code></td>
+<td><code>enum: ADD, REMOVE, UPDATE</code></td>
+<td>Yes</td>
+<td>The type of action performed on the line item. Valid values include 'ADD', 'UPDATE', and 'REMOVE'.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemAdd</code></td>
+<td><code>object or object or object</code></td>
+<td>No</td>
+<td>An object representing the added line item details if the action was 'ADD'. This can be one of several types, such as custom, from a product, or a clone.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.allowBuyerSelectedQuantity</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the buyer can select the quantity of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.billingCycleAnchorDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the anchor date for the billing cycle of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.billingStartDelayDays</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the number of days to delay the start of billing for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.billingStartDelayMonths</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the number of months to delay the start of billing for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.buyerSelectedQuantityMax</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the maximum quantity that a buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.buyerSelectedQuantityMin</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the minimum quantity that a buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.description</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the description of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.discount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.discountPercentage</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the percentage discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.externalId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing an external identifier for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.images</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the images associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.isEditablePrice</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the price of the line item is editable.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.isOptional</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the line item is optional.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.lineItemCurrencyCode</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the currency code for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.name</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the name of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.positionOnQuote</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the position of the line item on the quote.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.priceBookId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the price book ID associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.pricing</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the pricing details of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.productType</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the type of product for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.quantity</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the quantity of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingEndDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the end date for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingFrequency</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the frequency of recurring billing for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingPeriod</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the billing period for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingStartDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the start date for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.richTextDescription</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the rich text description of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.sku</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the stock keeping unit (SKU) of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.taxCategory</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the tax category of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.taxRateGroupId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the tax rate group ID for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.variantId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the variant ID of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].rampKey</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the line item change, formatted as a UUID.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the contract change.</td>
+</tr>
+<tr>
+<td><code>proposedLineItems</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of line items that are proposed as part of the contract change.</td>
+</tr>
+<tr>
+<td><code>proposedLineItems[].$ref</code></td>
+<td><code>any</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>prorating</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the contract change involves prorating.</td>
+</tr>
+<tr>
+<td><code>quoteId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier of the quote associated with this contract change.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: ACCEPTED, CANCELED, DRAFT, EXPIRED, FAILED, PROPOSED</code></td>
+<td>Yes</td>
+<td>The current status of the contract change. Valid values include 'DRAFT', 'PROPOSED', 'ACCEPTED', 'CANCELED', 'FAILED', and 'EXPIRED'.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>enum: DIRECT, QUOTE</code></td>
+<td>Yes</td>
+<td>The type of contract change. Valid values include 'DIRECT' and 'QUOTE'.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the contract change was last updated, in ISO 8601 format.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default">default</h5>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>category</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The error category.</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition, provided as an object with additional properties that are arrays of strings.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the request. Include this value with any error reports or support tickets. It is formatted as a UUID.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Further information about the error, represented as an array of ErrorDetail objects.</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status code associated with the error detail, represented as a string.</td>
+</tr>
+<tr>
+<td><code>errors[].context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition, represented as an object where each key is a string and each value is an array of strings. This provides additional information about the error.</td>
+</tr>
+<tr>
+<td><code>errors[].in</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the field or parameter in which the error was found. This is an optional string field.</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate. This is a required field and is of type string.</td>
+</tr>
+<tr>
+<td><code>errors[].subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error, provided as a string.</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A map of link names to associated URIs containing documentation about the error or recommended remediation steps.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate.</td>
+</tr>
+<tr>
+<td><code>subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="post-commercecontracts2027-03-betachangeschangeidcancel" class="operation" data-method="post"><code>POST</code> /commerce/contracts/2027-03-beta/changes/{changeId}/cancel</h3>
+<p>Operation ID: <code>post-/commerce/contracts/2027-03-beta/changes/{changeId}/cancel</code>.</p>
+<p>Authentication: not required.</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>changeId</code> | <code>path</code> | <code>string</code> | Yes | The unique identifier of the contract change to cancel. |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-successful-operation-1" class="status" data-status="2xx">200: successful operation</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>contractId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier of the contract associated with this change.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the contract change was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of line items that represent the difference resulting from the contract change.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].acv</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual contract value for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].allowBuyerSelectedQuantity</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the buyer can select the quantity of this line item. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount for this line item, calculated as price multiplied by quantity. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is archived. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this line item was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].arr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual recurring revenue for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingCycleAnchorDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The anchor date for the billing cycle, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingPeriodEndDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date of the billing period, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingPeriodStartDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date of the billing period, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingStartDelayDays</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The delay in days before billing starts. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingStartDelayMonths</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The delay in months before billing starts. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingStartDelayType</code></td>
+<td><code>enum: HS_BILLING_START_DELAY_DAYS, HS_BILLING_START_DELAY_MONTHS, HS_RECURRING_BILLING_START_DATE</code></td>
+<td>No</td>
+<td>The type of delay before billing starts. Valid values include 'HS_BILLING_START_DELAY_DAYS', 'HS_BILLING_START_DELAY_MONTHS', and 'HS_RECURRING_BILLING_START_DATE'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].buyerSelectedQuantityMax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The maximum quantity the buyer can select for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].buyerSelectedQuantityMin</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The minimum quantity the buyer can select for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this line item was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A text description of the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].discount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The discount applied to this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].discountPercentage</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The discount percentage applied to this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].effectiveUnitPrice</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The effective price per unit after discounts. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].externalId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An external identifier for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].images</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A URL or reference to images associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].isEditablePrice</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the price of this line item is editable. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].isOptional</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is optional. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].isParent</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is a parent item. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].lineItemCurrencyCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The currency code for this line item, following ISO 4217 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].mrr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The monthly recurring revenue for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].parentLineItemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the parent line item, if applicable.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].positionOnQuote</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The position of this line item on a quote. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].postTaxAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount after tax is applied. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].preDiscountAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount before any discounts are applied. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].price</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The price of a single unit of the line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].priceBookId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the price book associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of price entries, each specifying a currency code and the corresponding price for the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices[].currencyCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The currency in which the price is denominated, represented as a string.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices[].maxQuantity</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The maximum quantity for which this price is applicable, represented as an integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices[].price</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The cost of the product or service in the specified currency, represented as a number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>Yes</td>
+<td>The pricing model applied to the line item. Valid values include 'FLAT', 'GRADUATED', 'STAIRSTEP', and 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>No</td>
+<td>The pricing model used for this line item. Valid values include 'FLAT', 'GRADUATED', 'STAIRSTEP', and 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].productId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the product associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].productType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of product for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].quantity</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The quantity of the line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].rampKey</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A unique identifier for the ramp associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingDayOfMonth</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The day of the month on which recurring billing occurs. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingEndDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date for recurring billing, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingFrequency</code></td>
+<td><code>enum: ANNUALLY, BIWEEKLY, MONTHLY, PER_FIVE_YEARS, PER_FOUR_YEARS, PER_SIX_MONTHS, ...</code></td>
+<td>No</td>
+<td>The frequency of recurring billing for this line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', 'PER_FIVE_YEARS', 'PER_FOUR_YEARS', 'PER_SIX_MONTHS', 'PER_THREE_YEARS', 'PER_TWO_YEARS', 'QUARTERLY', and 'WEEKLY'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingNumberOfPayments</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The number of payments for recurring billing. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingPeriod</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The period for recurring billing.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingStartDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date for recurring billing, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingTerms</code></td>
+<td><code>enum: AUTOMATICALLY_RENEW, FIXED</code></td>
+<td>No</td>
+<td>The terms for recurring billing. Valid values include 'AUTOMATICALLY_RENEW' and 'FIXED'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].richTextDescription</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A rich text description of the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].sku</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The stock keeping unit (SKU) for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].tax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The tax rate applied to this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].taxAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total tax amount for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].taxCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The tax category for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].taxRateGroupId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the tax rate group associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].tcv</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total contract value for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].termInMonths</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The term length in months for this line item. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].tierAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount for the current pricing tier. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].totalDiscount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total discount amount for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this line item was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].variantId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the product variant associated with this line item.</td>
+</tr>
+<tr>
+<td><code>effectiveDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The date when the contract change becomes effective, in YYYY-MM-DD format.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the contract change.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of changes to line items associated with the contract change.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].action</code></td>
+<td><code>enum: ADD, REMOVE, UPDATE</code></td>
+<td>Yes</td>
+<td>The type of action performed on the line item. Valid values include 'ADD', 'UPDATE', and 'REMOVE'.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemAdd</code></td>
+<td><code>object or object or object</code></td>
+<td>No</td>
+<td>An object representing the added line item details if the action was 'ADD'. This can be one of several types, such as custom, from a product, or a clone.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.allowBuyerSelectedQuantity</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the buyer can select the quantity of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.billingCycleAnchorDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the anchor date for the billing cycle of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.billingStartDelayDays</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the number of days to delay the start of billing for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.billingStartDelayMonths</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the number of months to delay the start of billing for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.buyerSelectedQuantityMax</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the maximum quantity that a buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.buyerSelectedQuantityMin</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the minimum quantity that a buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.description</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the description of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.discount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.discountPercentage</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the percentage discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.externalId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing an external identifier for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.images</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the images associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.isEditablePrice</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the price of the line item is editable.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.isOptional</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the line item is optional.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.lineItemCurrencyCode</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the currency code for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.name</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the name of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.positionOnQuote</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the position of the line item on the quote.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.priceBookId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the price book ID associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.pricing</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the pricing details of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.productType</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the type of product for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.quantity</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the quantity of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingEndDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the end date for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingFrequency</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the frequency of recurring billing for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingPeriod</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the billing period for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingStartDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the start date for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.richTextDescription</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the rich text description of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.sku</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the stock keeping unit (SKU) of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.taxCategory</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the tax category of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.taxRateGroupId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the tax rate group ID for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.variantId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the variant ID of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].rampKey</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the line item change, formatted as a UUID.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the contract change.</td>
+</tr>
+<tr>
+<td><code>proposedLineItems</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of line items that are proposed as part of the contract change.</td>
+</tr>
+<tr>
+<td><code>proposedLineItems[].$ref</code></td>
+<td><code>any</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>prorating</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the contract change involves prorating.</td>
+</tr>
+<tr>
+<td><code>quoteId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier of the quote associated with this contract change.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: ACCEPTED, CANCELED, DRAFT, EXPIRED, FAILED, PROPOSED</code></td>
+<td>Yes</td>
+<td>The current status of the contract change. Valid values include 'DRAFT', 'PROPOSED', 'ACCEPTED', 'CANCELED', 'FAILED', and 'EXPIRED'.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>enum: DIRECT, QUOTE</code></td>
+<td>Yes</td>
+<td>The type of contract change. Valid values include 'DIRECT' and 'QUOTE'.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the contract change was last updated, in ISO 8601 format.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default-1">default</h5>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>category</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The error category.</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition, provided as an object with additional properties that are arrays of strings.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the request. Include this value with any error reports or support tickets. It is formatted as a UUID.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Further information about the error, represented as an array of ErrorDetail objects.</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status code associated with the error detail, represented as a string.</td>
+</tr>
+<tr>
+<td><code>errors[].context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition, represented as an object where each key is a string and each value is an array of strings. This provides additional information about the error.</td>
+</tr>
+<tr>
+<td><code>errors[].in</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the field or parameter in which the error was found. This is an optional string field.</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate. This is a required field and is of type string.</td>
+</tr>
+<tr>
+<td><code>errors[].subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error, provided as a string.</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A map of link names to associated URIs containing documentation about the error or recommended remediation steps.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate.</td>
+</tr>
+<tr>
+<td><code>subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="post-commercecontracts2027-03-betacontractscontractidchanges" class="operation" data-method="post"><code>POST</code> /commerce/contracts/2027-03-beta/contracts/{contractId}/changes</h3>
+<p>Operation ID: <code>post-/commerce/contracts/2027-03-beta/contracts/{contractId}/changes</code>.</p>
+<p>Authentication: not required.</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>contractId</code> | <code>path</code> | <code>string</code> | Yes | The unique identifier of the contract for which the change is being created. |</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<p>The request body is <code>object or object</code>.</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="201-successful-operation" class="status" data-status="2xx">201: successful operation</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>contractId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier of the contract associated with this change.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the contract change was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of line items that represent the difference resulting from the contract change.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].acv</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual contract value for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].allowBuyerSelectedQuantity</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the buyer can select the quantity of this line item. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount for this line item, calculated as price multiplied by quantity. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is archived. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this line item was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].arr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual recurring revenue for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingCycleAnchorDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The anchor date for the billing cycle, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingPeriodEndDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date of the billing period, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingPeriodStartDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date of the billing period, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingStartDelayDays</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The delay in days before billing starts. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingStartDelayMonths</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The delay in months before billing starts. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingStartDelayType</code></td>
+<td><code>enum: HS_BILLING_START_DELAY_DAYS, HS_BILLING_START_DELAY_MONTHS, HS_RECURRING_BILLING_START_DATE</code></td>
+<td>No</td>
+<td>The type of delay before billing starts. Valid values include 'HS_BILLING_START_DELAY_DAYS', 'HS_BILLING_START_DELAY_MONTHS', and 'HS_RECURRING_BILLING_START_DATE'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].buyerSelectedQuantityMax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The maximum quantity the buyer can select for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].buyerSelectedQuantityMin</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The minimum quantity the buyer can select for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this line item was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A text description of the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].discount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The discount applied to this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].discountPercentage</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The discount percentage applied to this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].effectiveUnitPrice</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The effective price per unit after discounts. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].externalId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An external identifier for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].images</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A URL or reference to images associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].isEditablePrice</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the price of this line item is editable. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].isOptional</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is optional. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].isParent</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is a parent item. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].lineItemCurrencyCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The currency code for this line item, following ISO 4217 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].mrr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The monthly recurring revenue for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].parentLineItemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the parent line item, if applicable.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].positionOnQuote</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The position of this line item on a quote. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].postTaxAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount after tax is applied. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].preDiscountAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount before any discounts are applied. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].price</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The price of a single unit of the line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].priceBookId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the price book associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of price entries, each specifying a currency code and the corresponding price for the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices[].currencyCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The currency in which the price is denominated, represented as a string.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices[].maxQuantity</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The maximum quantity for which this price is applicable, represented as an integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices[].price</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The cost of the product or service in the specified currency, represented as a number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>Yes</td>
+<td>The pricing model applied to the line item. Valid values include 'FLAT', 'GRADUATED', 'STAIRSTEP', and 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>No</td>
+<td>The pricing model used for this line item. Valid values include 'FLAT', 'GRADUATED', 'STAIRSTEP', and 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].productId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the product associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].productType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of product for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].quantity</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The quantity of the line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].rampKey</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A unique identifier for the ramp associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingDayOfMonth</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The day of the month on which recurring billing occurs. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingEndDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date for recurring billing, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingFrequency</code></td>
+<td><code>enum: ANNUALLY, BIWEEKLY, MONTHLY, PER_FIVE_YEARS, PER_FOUR_YEARS, PER_SIX_MONTHS, ...</code></td>
+<td>No</td>
+<td>The frequency of recurring billing for this line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', 'PER_FIVE_YEARS', 'PER_FOUR_YEARS', 'PER_SIX_MONTHS', 'PER_THREE_YEARS', 'PER_TWO_YEARS', 'QUARTERLY', and 'WEEKLY'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingNumberOfPayments</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The number of payments for recurring billing. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingPeriod</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The period for recurring billing.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingStartDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date for recurring billing, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingTerms</code></td>
+<td><code>enum: AUTOMATICALLY_RENEW, FIXED</code></td>
+<td>No</td>
+<td>The terms for recurring billing. Valid values include 'AUTOMATICALLY_RENEW' and 'FIXED'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].richTextDescription</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A rich text description of the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].sku</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The stock keeping unit (SKU) for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].tax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The tax rate applied to this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].taxAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total tax amount for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].taxCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The tax category for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].taxRateGroupId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the tax rate group associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].tcv</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total contract value for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].termInMonths</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The term length in months for this line item. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].tierAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount for the current pricing tier. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].totalDiscount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total discount amount for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this line item was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].variantId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the product variant associated with this line item.</td>
+</tr>
+<tr>
+<td><code>effectiveDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The date when the contract change becomes effective, in YYYY-MM-DD format.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the contract change.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of changes to line items associated with the contract change.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].action</code></td>
+<td><code>enum: ADD, REMOVE, UPDATE</code></td>
+<td>Yes</td>
+<td>The type of action performed on the line item. Valid values include 'ADD', 'UPDATE', and 'REMOVE'.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemAdd</code></td>
+<td><code>object or object or object</code></td>
+<td>No</td>
+<td>An object representing the added line item details if the action was 'ADD'. This can be one of several types, such as custom, from a product, or a clone.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.allowBuyerSelectedQuantity</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the buyer can select the quantity of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.billingCycleAnchorDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the anchor date for the billing cycle of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.billingStartDelayDays</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the number of days to delay the start of billing for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.billingStartDelayMonths</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the number of months to delay the start of billing for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.buyerSelectedQuantityMax</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the maximum quantity that a buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.buyerSelectedQuantityMin</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the minimum quantity that a buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.description</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the description of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.discount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.discountPercentage</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the percentage discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.externalId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing an external identifier for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.images</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the images associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.isEditablePrice</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the price of the line item is editable.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.isOptional</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the line item is optional.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.lineItemCurrencyCode</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the currency code for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.name</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the name of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.positionOnQuote</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the position of the line item on the quote.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.priceBookId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the price book ID associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.pricing</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the pricing details of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.productType</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the type of product for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.quantity</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the quantity of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingEndDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the end date for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingFrequency</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the frequency of recurring billing for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingPeriod</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the billing period for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingStartDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the start date for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.richTextDescription</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the rich text description of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.sku</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the stock keeping unit (SKU) of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.taxCategory</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the tax category of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.taxRateGroupId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the tax rate group ID for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.variantId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the variant ID of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].rampKey</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the line item change, formatted as a UUID.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the contract change.</td>
+</tr>
+<tr>
+<td><code>proposedLineItems</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of line items that are proposed as part of the contract change.</td>
+</tr>
+<tr>
+<td><code>proposedLineItems[].$ref</code></td>
+<td><code>any</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>prorating</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the contract change involves prorating.</td>
+</tr>
+<tr>
+<td><code>quoteId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier of the quote associated with this contract change.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: ACCEPTED, CANCELED, DRAFT, EXPIRED, FAILED, PROPOSED</code></td>
+<td>Yes</td>
+<td>The current status of the contract change. Valid values include 'DRAFT', 'PROPOSED', 'ACCEPTED', 'CANCELED', 'FAILED', and 'EXPIRED'.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>enum: DIRECT, QUOTE</code></td>
+<td>Yes</td>
+<td>The type of contract change. Valid values include 'DIRECT' and 'QUOTE'.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the contract change was last updated, in ISO 8601 format.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default-2">default</h5>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>category</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The error category.</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition, provided as an object with additional properties that are arrays of strings.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the request. Include this value with any error reports or support tickets. It is formatted as a UUID.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Further information about the error, represented as an array of ErrorDetail objects.</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status code associated with the error detail, represented as a string.</td>
+</tr>
+<tr>
+<td><code>errors[].context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition, represented as an object where each key is a string and each value is an array of strings. This provides additional information about the error.</td>
+</tr>
+<tr>
+<td><code>errors[].in</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the field or parameter in which the error was found. This is an optional string field.</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate. This is a required field and is of type string.</td>
+</tr>
+<tr>
+<td><code>errors[].subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error, provided as a string.</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A map of link names to associated URIs containing documentation about the error or recommended remediation steps.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate.</td>
+</tr>
+<tr>
+<td><code>subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="post-commercecontracts2027-03-betachanges" class="operation" data-method="post"><code>POST</code> /commerce/contracts/2027-03-beta/changes</h3>
+<p>Operation ID: <code>post-/commerce/contracts/2027-03-beta/changes_/commerce/contracts/2026-09-beta/changes</code>.</p>
+<p>Authentication: not required.</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<p>The request body is <code>object or object</code>.</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="201-successful-operation-1" class="status" data-status="2xx">201: successful operation</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>contractId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier of the contract associated with this change.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the contract change was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of line items that represent the difference resulting from the contract change.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].acv</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual contract value for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].allowBuyerSelectedQuantity</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the buyer can select the quantity of this line item. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount for this line item, calculated as price multiplied by quantity. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is archived. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this line item was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].arr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual recurring revenue for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingCycleAnchorDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The anchor date for the billing cycle, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingPeriodEndDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date of the billing period, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingPeriodStartDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date of the billing period, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingStartDelayDays</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The delay in days before billing starts. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingStartDelayMonths</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The delay in months before billing starts. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingStartDelayType</code></td>
+<td><code>enum: HS_BILLING_START_DELAY_DAYS, HS_BILLING_START_DELAY_MONTHS, HS_RECURRING_BILLING_START_DATE</code></td>
+<td>No</td>
+<td>The type of delay before billing starts. Valid values include 'HS_BILLING_START_DELAY_DAYS', 'HS_BILLING_START_DELAY_MONTHS', and 'HS_RECURRING_BILLING_START_DATE'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].buyerSelectedQuantityMax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The maximum quantity the buyer can select for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].buyerSelectedQuantityMin</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The minimum quantity the buyer can select for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this line item was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A text description of the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].discount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The discount applied to this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].discountPercentage</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The discount percentage applied to this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].effectiveUnitPrice</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The effective price per unit after discounts. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].externalId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An external identifier for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].images</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A URL or reference to images associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].isEditablePrice</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the price of this line item is editable. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].isOptional</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is optional. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].isParent</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is a parent item. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].lineItemCurrencyCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The currency code for this line item, following ISO 4217 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].mrr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The monthly recurring revenue for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].parentLineItemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the parent line item, if applicable.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].positionOnQuote</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The position of this line item on a quote. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].postTaxAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount after tax is applied. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].preDiscountAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount before any discounts are applied. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].price</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The price of a single unit of the line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].priceBookId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the price book associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of price entries, each specifying a currency code and the corresponding price for the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices[].currencyCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The currency in which the price is denominated, represented as a string.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices[].maxQuantity</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The maximum quantity for which this price is applicable, represented as an integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices[].price</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The cost of the product or service in the specified currency, represented as a number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>Yes</td>
+<td>The pricing model applied to the line item. Valid values include 'FLAT', 'GRADUATED', 'STAIRSTEP', and 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>No</td>
+<td>The pricing model used for this line item. Valid values include 'FLAT', 'GRADUATED', 'STAIRSTEP', and 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].productId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the product associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].productType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of product for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].quantity</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The quantity of the line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].rampKey</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A unique identifier for the ramp associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingDayOfMonth</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The day of the month on which recurring billing occurs. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingEndDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date for recurring billing, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingFrequency</code></td>
+<td><code>enum: ANNUALLY, BIWEEKLY, MONTHLY, PER_FIVE_YEARS, PER_FOUR_YEARS, PER_SIX_MONTHS, ...</code></td>
+<td>No</td>
+<td>The frequency of recurring billing for this line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', 'PER_FIVE_YEARS', 'PER_FOUR_YEARS', 'PER_SIX_MONTHS', 'PER_THREE_YEARS', 'PER_TWO_YEARS', 'QUARTERLY', and 'WEEKLY'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingNumberOfPayments</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The number of payments for recurring billing. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingPeriod</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The period for recurring billing.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingStartDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date for recurring billing, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingTerms</code></td>
+<td><code>enum: AUTOMATICALLY_RENEW, FIXED</code></td>
+<td>No</td>
+<td>The terms for recurring billing. Valid values include 'AUTOMATICALLY_RENEW' and 'FIXED'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].richTextDescription</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A rich text description of the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].sku</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The stock keeping unit (SKU) for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].tax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The tax rate applied to this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].taxAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total tax amount for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].taxCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The tax category for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].taxRateGroupId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the tax rate group associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].tcv</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total contract value for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].termInMonths</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The term length in months for this line item. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].tierAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount for the current pricing tier. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].totalDiscount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total discount amount for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this line item was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].variantId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the product variant associated with this line item.</td>
+</tr>
+<tr>
+<td><code>effectiveDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The date when the contract change becomes effective, in YYYY-MM-DD format.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the contract change.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of changes to line items associated with the contract change.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].action</code></td>
+<td><code>enum: ADD, REMOVE, UPDATE</code></td>
+<td>Yes</td>
+<td>The type of action performed on the line item. Valid values include 'ADD', 'UPDATE', and 'REMOVE'.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemAdd</code></td>
+<td><code>object or object or object</code></td>
+<td>No</td>
+<td>An object representing the added line item details if the action was 'ADD'. This can be one of several types, such as custom, from a product, or a clone.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.allowBuyerSelectedQuantity</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the buyer can select the quantity of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.billingCycleAnchorDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the anchor date for the billing cycle of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.billingStartDelayDays</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the number of days to delay the start of billing for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.billingStartDelayMonths</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the number of months to delay the start of billing for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.buyerSelectedQuantityMax</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the maximum quantity that a buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.buyerSelectedQuantityMin</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the minimum quantity that a buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.description</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the description of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.discount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.discountPercentage</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the percentage discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.externalId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing an external identifier for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.images</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the images associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.isEditablePrice</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the price of the line item is editable.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.isOptional</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the line item is optional.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.lineItemCurrencyCode</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the currency code for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.name</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the name of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.positionOnQuote</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the position of the line item on the quote.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.priceBookId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the price book ID associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.pricing</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the pricing details of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.productType</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the type of product for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.quantity</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the quantity of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingEndDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the end date for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingFrequency</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the frequency of recurring billing for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingPeriod</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the billing period for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingStartDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the start date for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.richTextDescription</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the rich text description of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.sku</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the stock keeping unit (SKU) of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.taxCategory</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the tax category of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.taxRateGroupId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the tax rate group ID for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.variantId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the variant ID of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].rampKey</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the line item change, formatted as a UUID.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the contract change.</td>
+</tr>
+<tr>
+<td><code>proposedLineItems</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of line items that are proposed as part of the contract change.</td>
+</tr>
+<tr>
+<td><code>proposedLineItems[].$ref</code></td>
+<td><code>any</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>prorating</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the contract change involves prorating.</td>
+</tr>
+<tr>
+<td><code>quoteId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier of the quote associated with this contract change.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: ACCEPTED, CANCELED, DRAFT, EXPIRED, FAILED, PROPOSED</code></td>
+<td>Yes</td>
+<td>The current status of the contract change. Valid values include 'DRAFT', 'PROPOSED', 'ACCEPTED', 'CANCELED', 'FAILED', and 'EXPIRED'.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>enum: DIRECT, QUOTE</code></td>
+<td>Yes</td>
+<td>The type of contract change. Valid values include 'DIRECT' and 'QUOTE'.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the contract change was last updated, in ISO 8601 format.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default-3">default</h5>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>category</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The error category.</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition, provided as an object with additional properties that are arrays of strings.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the request. Include this value with any error reports or support tickets. It is formatted as a UUID.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Further information about the error, represented as an array of ErrorDetail objects.</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status code associated with the error detail, represented as a string.</td>
+</tr>
+<tr>
+<td><code>errors[].context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition, represented as an object where each key is a string and each value is an array of strings. This provides additional information about the error.</td>
+</tr>
+<tr>
+<td><code>errors[].in</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the field or parameter in which the error was found. This is an optional string field.</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate. This is a required field and is of type string.</td>
+</tr>
+<tr>
+<td><code>errors[].subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error, provided as a string.</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A map of link names to associated URIs containing documentation about the error or recommended remediation steps.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate.</td>
+</tr>
+<tr>
+<td><code>subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="list">list</h2>
+<h3 id="get-commercecontracts2027-03-betacontractscontractidchanges" class="operation" data-method="get"><code>GET</code> /commerce/contracts/2027-03-beta/contracts/{contractId}/changes</h3>
+<p>Operation ID: <code>get-/commerce/contracts/2027-03-beta/contracts/{contractId}/changes</code>.</p>
+<p>Authentication: not required.</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>contractId</code> | <code>path</code> | <code>string</code> | Yes | The unique identifier of the contract for which changes are being retrieved. |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-successful-operation-2" class="status" data-status="2xx">200: successful operation</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>changes</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of contract change summaries. Each item in the array provides details about a specific change made to the contract, represented by the ContractChangeSummaryResponse schema.</td>
+</tr>
+<tr>
+<td><code>changes[].contractId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier of the contract associated with this change.</td>
+</tr>
+<tr>
+<td><code>changes[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this contract change was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>changes[].effectiveDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The date on which this contract change becomes effective, in the format 'YYYY-MM-DD'.</td>
+</tr>
+<tr>
+<td><code>changes[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for this contract change.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of changes made to line items as part of this contract change.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].action</code></td>
+<td><code>enum: ADD, REMOVE, UPDATE</code></td>
+<td>Yes</td>
+<td>The type of action performed on the line item. Valid values include 'ADD', 'UPDATE', and 'REMOVE'.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemAdd</code></td>
+<td><code>object or object or object</code></td>
+<td>No</td>
+<td>An object representing the added line item details if the action was 'ADD'. This can be one of several types, such as custom, from a product, or a clone.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.allowBuyerSelectedQuantity</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the buyer can select the quantity of the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.billingCycleAnchorDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the anchor date for the billing cycle of the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.billingStartDelayDays</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the number of days to delay the start of billing for the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.billingStartDelayMonths</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the number of months to delay the start of billing for the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.buyerSelectedQuantityMax</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the maximum quantity that a buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.buyerSelectedQuantityMin</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the minimum quantity that a buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.description</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the description of the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.discount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.discountPercentage</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the percentage discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.externalId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing an external identifier for the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.images</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the images associated with the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.isEditablePrice</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the price of the line item is editable.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.isOptional</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the line item is optional.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.lineItemCurrencyCode</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the currency code for the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.name</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the name of the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.positionOnQuote</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the position of the line item on the quote.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.priceBookId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the price book ID associated with the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.pricing</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the pricing details of the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.productType</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the type of product for the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.quantity</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the quantity of the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.recurringBillingEndDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the end date for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.recurringBillingFrequency</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the frequency of recurring billing for the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.recurringBillingPeriod</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the billing period for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.recurringBillingStartDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the start date for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.richTextDescription</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the rich text description of the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.sku</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the stock keeping unit (SKU) of the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.taxCategory</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the tax category of the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.taxRateGroupId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the tax rate group ID for the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].lineItemUpdate.variantId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the variant ID of the line item.</td>
+</tr>
+<tr>
+<td><code>changes[].lineItemChanges[].rampKey</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the line item change, formatted as a UUID.</td>
+</tr>
+<tr>
+<td><code>changes[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name assigned to this contract change.</td>
+</tr>
+<tr>
+<td><code>changes[].prorating</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the contract change involves prorating.</td>
+</tr>
+<tr>
+<td><code>changes[].quoteId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier of the quote associated with this contract change, if applicable.</td>
+</tr>
+<tr>
+<td><code>changes[].status</code></td>
+<td><code>enum: ACCEPTED, CANCELED, DRAFT, EXPIRED, FAILED, PROPOSED</code></td>
+<td>Yes</td>
+<td>The current status of the contract change. Valid values include 'DRAFT', 'PROPOSED', 'ACCEPTED', 'CANCELED', 'FAILED', and 'EXPIRED'.</td>
+</tr>
+<tr>
+<td><code>changes[].type</code></td>
+<td><code>enum: DIRECT, QUOTE</code></td>
+<td>Yes</td>
+<td>The type of contract change, which can be either 'DIRECT' or 'QUOTE'.</td>
+</tr>
+<tr>
+<td><code>changes[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this contract change was last updated, in ISO 8601 format.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default-4">default</h5>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>category</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The error category.</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition, provided as an object with additional properties that are arrays of strings.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the request. Include this value with any error reports or support tickets. It is formatted as a UUID.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Further information about the error, represented as an array of ErrorDetail objects.</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status code associated with the error detail, represented as a string.</td>
+</tr>
+<tr>
+<td><code>errors[].context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition, represented as an object where each key is a string and each value is an array of strings. This provides additional information about the error.</td>
+</tr>
+<tr>
+<td><code>errors[].in</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the field or parameter in which the error was found. This is an optional string field.</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate. This is a required field and is of type string.</td>
+</tr>
+<tr>
+<td><code>errors[].subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error, provided as a string.</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A map of link names to associated URIs containing documentation about the error or recommended remediation steps.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate.</td>
+</tr>
+<tr>
+<td><code>subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="load">load</h2>
+<h3 id="get-commercecontracts2027-03-betachangeschangeid" class="operation" data-method="get"><code>GET</code> /commerce/contracts/2027-03-beta/changes/{changeId}</h3>
+<p>Operation ID: <code>get-/commerce/contracts/2027-03-beta/changes/{changeId}</code>.</p>
+<p>Authentication: not required.</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>changeId</code> | <code>path</code> | <code>string</code> | Yes | The unique identifier of the contract change to retrieve. |</p>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-successful-operation-3" class="status" data-status="2xx">200: successful operation</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>contractId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier of the contract associated with this change.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the contract change was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of line items that represent the difference resulting from the contract change.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].acv</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual contract value for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].allowBuyerSelectedQuantity</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the buyer can select the quantity of this line item. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount for this line item, calculated as price multiplied by quantity. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is archived. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this line item was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].arr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual recurring revenue for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingCycleAnchorDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The anchor date for the billing cycle, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingPeriodEndDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date of the billing period, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingPeriodStartDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date of the billing period, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingStartDelayDays</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The delay in days before billing starts. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingStartDelayMonths</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The delay in months before billing starts. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingStartDelayType</code></td>
+<td><code>enum: HS_BILLING_START_DELAY_DAYS, HS_BILLING_START_DELAY_MONTHS, HS_RECURRING_BILLING_START_DATE</code></td>
+<td>No</td>
+<td>The type of delay before billing starts. Valid values include 'HS_BILLING_START_DELAY_DAYS', 'HS_BILLING_START_DELAY_MONTHS', and 'HS_RECURRING_BILLING_START_DATE'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].buyerSelectedQuantityMax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The maximum quantity the buyer can select for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].buyerSelectedQuantityMin</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The minimum quantity the buyer can select for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this line item was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A text description of the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].discount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The discount applied to this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].discountPercentage</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The discount percentage applied to this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].effectiveUnitPrice</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The effective price per unit after discounts. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].externalId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An external identifier for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].images</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A URL or reference to images associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].isEditablePrice</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the price of this line item is editable. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].isOptional</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is optional. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].isParent</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is a parent item. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].lineItemCurrencyCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The currency code for this line item, following ISO 4217 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].mrr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The monthly recurring revenue for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].parentLineItemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the parent line item, if applicable.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].positionOnQuote</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The position of this line item on a quote. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].postTaxAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount after tax is applied. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].preDiscountAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount before any discounts are applied. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].price</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The price of a single unit of the line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].priceBookId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the price book associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of price entries, each specifying a currency code and the corresponding price for the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices[].currencyCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The currency in which the price is denominated, represented as a string.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices[].maxQuantity</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The maximum quantity for which this price is applicable, represented as an integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices[].price</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The cost of the product or service in the specified currency, represented as a number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>Yes</td>
+<td>The pricing model applied to the line item. Valid values include 'FLAT', 'GRADUATED', 'STAIRSTEP', and 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>No</td>
+<td>The pricing model used for this line item. Valid values include 'FLAT', 'GRADUATED', 'STAIRSTEP', and 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].productId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the product associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].productType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of product for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].quantity</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The quantity of the line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].rampKey</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A unique identifier for the ramp associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingDayOfMonth</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The day of the month on which recurring billing occurs. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingEndDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date for recurring billing, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingFrequency</code></td>
+<td><code>enum: ANNUALLY, BIWEEKLY, MONTHLY, PER_FIVE_YEARS, PER_FOUR_YEARS, PER_SIX_MONTHS, ...</code></td>
+<td>No</td>
+<td>The frequency of recurring billing for this line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', 'PER_FIVE_YEARS', 'PER_FOUR_YEARS', 'PER_SIX_MONTHS', 'PER_THREE_YEARS', 'PER_TWO_YEARS', 'QUARTERLY', and 'WEEKLY'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingNumberOfPayments</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The number of payments for recurring billing. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingPeriod</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The period for recurring billing.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingStartDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date for recurring billing, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingTerms</code></td>
+<td><code>enum: AUTOMATICALLY_RENEW, FIXED</code></td>
+<td>No</td>
+<td>The terms for recurring billing. Valid values include 'AUTOMATICALLY_RENEW' and 'FIXED'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].richTextDescription</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A rich text description of the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].sku</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The stock keeping unit (SKU) for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].tax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The tax rate applied to this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].taxAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total tax amount for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].taxCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The tax category for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].taxRateGroupId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the tax rate group associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].tcv</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total contract value for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].termInMonths</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The term length in months for this line item. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].tierAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount for the current pricing tier. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].totalDiscount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total discount amount for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this line item was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].variantId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the product variant associated with this line item.</td>
+</tr>
+<tr>
+<td><code>effectiveDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The date when the contract change becomes effective, in YYYY-MM-DD format.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the contract change.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of changes to line items associated with the contract change.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].action</code></td>
+<td><code>enum: ADD, REMOVE, UPDATE</code></td>
+<td>Yes</td>
+<td>The type of action performed on the line item. Valid values include 'ADD', 'UPDATE', and 'REMOVE'.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemAdd</code></td>
+<td><code>object or object or object</code></td>
+<td>No</td>
+<td>An object representing the added line item details if the action was 'ADD'. This can be one of several types, such as custom, from a product, or a clone.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.allowBuyerSelectedQuantity</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the buyer can select the quantity of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.billingCycleAnchorDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the anchor date for the billing cycle of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.billingStartDelayDays</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the number of days to delay the start of billing for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.billingStartDelayMonths</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the number of months to delay the start of billing for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.buyerSelectedQuantityMax</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the maximum quantity that a buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.buyerSelectedQuantityMin</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the minimum quantity that a buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.description</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the description of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.discount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.discountPercentage</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the percentage discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.externalId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing an external identifier for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.images</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the images associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.isEditablePrice</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the price of the line item is editable.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.isOptional</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the line item is optional.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.lineItemCurrencyCode</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the currency code for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.name</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the name of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.positionOnQuote</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the position of the line item on the quote.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.priceBookId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the price book ID associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.pricing</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the pricing details of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.productType</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the type of product for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.quantity</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the quantity of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingEndDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the end date for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingFrequency</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the frequency of recurring billing for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingPeriod</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the billing period for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingStartDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the start date for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.richTextDescription</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the rich text description of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.sku</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the stock keeping unit (SKU) of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.taxCategory</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the tax category of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.taxRateGroupId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the tax rate group ID for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.variantId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the variant ID of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].rampKey</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the line item change, formatted as a UUID.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the contract change.</td>
+</tr>
+<tr>
+<td><code>proposedLineItems</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of line items that are proposed as part of the contract change.</td>
+</tr>
+<tr>
+<td><code>proposedLineItems[].$ref</code></td>
+<td><code>any</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>prorating</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the contract change involves prorating.</td>
+</tr>
+<tr>
+<td><code>quoteId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier of the quote associated with this contract change.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: ACCEPTED, CANCELED, DRAFT, EXPIRED, FAILED, PROPOSED</code></td>
+<td>Yes</td>
+<td>The current status of the contract change. Valid values include 'DRAFT', 'PROPOSED', 'ACCEPTED', 'CANCELED', 'FAILED', and 'EXPIRED'.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>enum: DIRECT, QUOTE</code></td>
+<td>Yes</td>
+<td>The type of contract change. Valid values include 'DIRECT' and 'QUOTE'.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the contract change was last updated, in ISO 8601 format.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default-5">default</h5>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>category</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The error category.</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition, provided as an object with additional properties that are arrays of strings.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the request. Include this value with any error reports or support tickets. It is formatted as a UUID.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Further information about the error, represented as an array of ErrorDetail objects.</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status code associated with the error detail, represented as a string.</td>
+</tr>
+<tr>
+<td><code>errors[].context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition, represented as an object where each key is a string and each value is an array of strings. This provides additional information about the error.</td>
+</tr>
+<tr>
+<td><code>errors[].in</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the field or parameter in which the error was found. This is an optional string field.</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate. This is a required field and is of type string.</td>
+</tr>
+<tr>
+<td><code>errors[].subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error, provided as a string.</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A map of link names to associated URIs containing documentation about the error or recommended remediation steps.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate.</td>
+</tr>
+<tr>
+<td><code>subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="update">update</h2>
+<h3 id="patch-commercecontracts2027-03-betachangeschangeid" class="operation" data-method="patch"><code>PATCH</code> /commerce/contracts/2027-03-beta/changes/{changeId}</h3>
+<p>Operation ID: <code>patch-/commerce/contracts/2027-03-beta/changes/{changeId}</code>.</p>
+<p>Authentication: not required.</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>changeId</code> | <code>path</code> | <code>string</code> | Yes | The unique identifier of the contract change to update. |</p>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>effectiveDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The date when the contract change becomes effective, formatted as a date string.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>An array of line item changes to be applied to the contract, each represented by a LineItemChangeRequest object.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].action</code></td>
+<td><code>enum: ADD, REMOVE, UPDATE</code></td>
+<td>Yes</td>
+<td>The action to be performed on the line item. Valid values include 'ADD', 'UPDATE', and 'REMOVE'.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemAdd</code></td>
+<td><code>object or object or object</code></td>
+<td>No</td>
+<td>Details of the line item to be added. This can be a custom line item, a line item from a product, or a cloned line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.allowBuyerSelectedQuantity</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the buyer can select the quantity of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.billingCycleAnchorDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the anchor date for the billing cycle of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.billingStartDelayDays</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the number of days to delay the start of billing for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.billingStartDelayMonths</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the number of months to delay the start of billing for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.buyerSelectedQuantityMax</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the maximum quantity that a buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.buyerSelectedQuantityMin</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the minimum quantity that a buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.description</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the description of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.discount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.discountPercentage</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the percentage discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.externalId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing an external identifier for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.images</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the images associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.isEditablePrice</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the price of the line item is editable.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.isOptional</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the line item is optional.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.lineItemCurrencyCode</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the currency code for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.name</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the name of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.positionOnQuote</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the position of the line item on the quote.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.priceBookId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the price book ID associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.pricing</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the pricing details of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.productType</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the type of product for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.quantity</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the quantity of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingEndDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the end date for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingFrequency</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the frequency of recurring billing for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingPeriod</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the billing period for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingStartDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the start date for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.richTextDescription</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the rich text description of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.sku</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the stock keeping unit (SKU) of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.taxCategory</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the tax category of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.taxRateGroupId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the tax rate group ID for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.variantId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the variant ID of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].rampKey</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>A unique identifier for the ramp, formatted as a UUID.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the name of the contract change.</td>
+</tr>
+<tr>
+<td><code>prorating</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A boolean indicating whether the contract change should be prorated.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-successful-operation-4" class="status" data-status="2xx">200: successful operation</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>contractId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier of the contract associated with this change.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the contract change was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of line items that represent the difference resulting from the contract change.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].acv</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual contract value for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].allowBuyerSelectedQuantity</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the buyer can select the quantity of this line item. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount for this line item, calculated as price multiplied by quantity. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is archived. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this line item was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].arr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual recurring revenue for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingCycleAnchorDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The anchor date for the billing cycle, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingPeriodEndDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date of the billing period, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingPeriodStartDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date of the billing period, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingStartDelayDays</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The delay in days before billing starts. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingStartDelayMonths</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The delay in months before billing starts. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].billingStartDelayType</code></td>
+<td><code>enum: HS_BILLING_START_DELAY_DAYS, HS_BILLING_START_DELAY_MONTHS, HS_RECURRING_BILLING_START_DATE</code></td>
+<td>No</td>
+<td>The type of delay before billing starts. Valid values include 'HS_BILLING_START_DELAY_DAYS', 'HS_BILLING_START_DELAY_MONTHS', and 'HS_RECURRING_BILLING_START_DATE'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].buyerSelectedQuantityMax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The maximum quantity the buyer can select for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].buyerSelectedQuantityMin</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The minimum quantity the buyer can select for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this line item was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A text description of the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].discount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The discount applied to this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].discountPercentage</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The discount percentage applied to this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].effectiveUnitPrice</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The effective price per unit after discounts. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].externalId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An external identifier for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].images</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A URL or reference to images associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].isEditablePrice</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the price of this line item is editable. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].isOptional</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is optional. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].isParent</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is a parent item. A boolean value.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].lineItemCurrencyCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The currency code for this line item, following ISO 4217 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].mrr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The monthly recurring revenue for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].parentLineItemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the parent line item, if applicable.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].positionOnQuote</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The position of this line item on a quote. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].postTaxAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount after tax is applied. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].preDiscountAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount before any discounts are applied. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].price</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The price of a single unit of the line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].priceBookId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the price book associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of price entries, each specifying a currency code and the corresponding price for the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices[].currencyCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The currency in which the price is denominated, represented as a string.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices[].maxQuantity</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The maximum quantity for which this price is applicable, represented as an integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.prices[].price</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The cost of the product or service in the specified currency, represented as a number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricing.pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>Yes</td>
+<td>The pricing model applied to the line item. Valid values include 'FLAT', 'GRADUATED', 'STAIRSTEP', and 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>No</td>
+<td>The pricing model used for this line item. Valid values include 'FLAT', 'GRADUATED', 'STAIRSTEP', and 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].productId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the product associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].productType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of product for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].quantity</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The quantity of the line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].rampKey</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A unique identifier for the ramp associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingDayOfMonth</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The day of the month on which recurring billing occurs. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingEndDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date for recurring billing, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingFrequency</code></td>
+<td><code>enum: ANNUALLY, BIWEEKLY, MONTHLY, PER_FIVE_YEARS, PER_FOUR_YEARS, PER_SIX_MONTHS, ...</code></td>
+<td>No</td>
+<td>The frequency of recurring billing for this line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', 'PER_FIVE_YEARS', 'PER_FOUR_YEARS', 'PER_SIX_MONTHS', 'PER_THREE_YEARS', 'PER_TWO_YEARS', 'QUARTERLY', and 'WEEKLY'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingNumberOfPayments</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The number of payments for recurring billing. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingPeriod</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The period for recurring billing.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingStartDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date for recurring billing, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].recurringBillingTerms</code></td>
+<td><code>enum: AUTOMATICALLY_RENEW, FIXED</code></td>
+<td>No</td>
+<td>The terms for recurring billing. Valid values include 'AUTOMATICALLY_RENEW' and 'FIXED'.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].richTextDescription</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A rich text description of the line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].sku</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The stock keeping unit (SKU) for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].tax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The tax rate applied to this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].taxAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total tax amount for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].taxCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The tax category for this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].taxRateGroupId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the tax rate group associated with this line item.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].tcv</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total contract value for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].termInMonths</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The term length in months for this line item. An integer.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].tierAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount for the current pricing tier. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].totalDiscount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total discount amount for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this line item was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>deltaLineItems[].variantId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the product variant associated with this line item.</td>
+</tr>
+<tr>
+<td><code>effectiveDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The date when the contract change becomes effective, in YYYY-MM-DD format.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the contract change.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of changes to line items associated with the contract change.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].action</code></td>
+<td><code>enum: ADD, REMOVE, UPDATE</code></td>
+<td>Yes</td>
+<td>The type of action performed on the line item. Valid values include 'ADD', 'UPDATE', and 'REMOVE'.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemAdd</code></td>
+<td><code>object or object or object</code></td>
+<td>No</td>
+<td>An object representing the added line item details if the action was 'ADD'. This can be one of several types, such as custom, from a product, or a clone.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.allowBuyerSelectedQuantity</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the buyer can select the quantity of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.billingCycleAnchorDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the anchor date for the billing cycle of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.billingStartDelayDays</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the number of days to delay the start of billing for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.billingStartDelayMonths</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the number of months to delay the start of billing for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.buyerSelectedQuantityMax</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the maximum quantity that a buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.buyerSelectedQuantityMin</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the minimum quantity that a buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.description</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the description of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.discount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.discountPercentage</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the percentage discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.externalId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing an external identifier for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.images</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the images associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.isEditablePrice</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the price of the line item is editable.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.isOptional</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating whether the line item is optional.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.lineItemCurrencyCode</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the currency code for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.name</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the name of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.positionOnQuote</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the position of the line item on the quote.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.priceBookId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the price book ID associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.pricing</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the pricing details of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.productType</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the type of product for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.quantity</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the quantity of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingEndDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the end date for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingFrequency</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the frequency of recurring billing for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingPeriod</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the billing period for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.recurringBillingStartDate</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the start date for recurring billing of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.richTextDescription</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the rich text description of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.sku</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the stock keeping unit (SKU) of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.taxCategory</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the tax category of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.taxRateGroupId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the tax rate group ID for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].lineItemUpdate.variantId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the variant ID of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItemChanges[].rampKey</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the line item change, formatted as a UUID.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the contract change.</td>
+</tr>
+<tr>
+<td><code>proposedLineItems</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of line items that are proposed as part of the contract change.</td>
+</tr>
+<tr>
+<td><code>proposedLineItems[].$ref</code></td>
+<td><code>any</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>prorating</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the contract change involves prorating.</td>
+</tr>
+<tr>
+<td><code>quoteId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier of the quote associated with this contract change.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: ACCEPTED, CANCELED, DRAFT, EXPIRED, FAILED, PROPOSED</code></td>
+<td>Yes</td>
+<td>The current status of the contract change. Valid values include 'DRAFT', 'PROPOSED', 'ACCEPTED', 'CANCELED', 'FAILED', and 'EXPIRED'.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>enum: DIRECT, QUOTE</code></td>
+<td>Yes</td>
+<td>The type of contract change. Valid values include 'DIRECT' and 'QUOTE'.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the contract change was last updated, in ISO 8601 format.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default-6">default</h5>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>category</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The error category.</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition, provided as an object with additional properties that are arrays of strings.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the request. Include this value with any error reports or support tickets. It is formatted as a UUID.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Further information about the error, represented as an array of ErrorDetail objects.</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status code associated with the error detail, represented as a string.</td>
+</tr>
+<tr>
+<td><code>errors[].context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition, represented as an object where each key is a string and each value is an array of strings. This provides additional information about the error.</td>
+</tr>
+<tr>
+<td><code>errors[].in</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the field or parameter in which the error was found. This is an optional string field.</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate. This is a required field and is of type string.</td>
+</tr>
+<tr>
+<td><code>errors[].subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error, provided as a string.</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A map of link names to associated URIs containing documentation about the error or recommended remediation steps.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate.</td>
+</tr>
+<tr>
+<td><code>subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error.</td>
+</tr>
+</tbody>
+</table>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

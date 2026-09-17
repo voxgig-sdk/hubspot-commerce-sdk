@@ -1,0 +1,9 @@
+# BasicItemFlow
+
+main: kit: flow: BasicItemFlow:
+{
+  entity: "item",
+  kind: "basic",
+  name: "BasicItemFlow",
+  "key$": "BasicItemFlow"
+}

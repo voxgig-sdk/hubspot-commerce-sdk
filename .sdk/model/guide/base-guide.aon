@@ -1,0 +1,234 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 24
+  metrics: count: path: 32
+  metrics: count: method: 49
+
+  entity: advanced: {
+    path: "/commerce/payments/2027-03-beta/{paymentCrmObjectId}/actions/retry/async": {
+      rename: param: "paymentCrmObjectId": *"payment_crm_object_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: basic: {
+    path: "/commerce/payment-links/2026-09/payment-links/{paymentLinkId}": {
+      rename: param: "paymentLinkId": *"payment_link_id"
+      op: remove: method: *DELETE
+    }
+    path: "/commerce/payments-settings/2027-03-beta/payments-settings/checkout-fees/{checkoutFeeId}": {
+      rename: param: "checkoutFeeId": *"checkout_fee_id"
+      op: remove: method: *DELETE
+    }
+    path: "/commerce/price-books/2026-09/price-books/{priceBookId}": {
+      rename: param: "priceBookId": *"price_book_id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: batch: {
+    path: "/commerce/price-books/2026-09/price-books/{priceBookId}/items/batch/archive": {
+      action: "archive": {}
+      rename: param: "priceBookId": *"price_book_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: contract: {
+    path: "/commerce/contracts/2027-03-beta/contracts": {
+      op: create: method: *POST
+    }
+    path: "/commerce/contracts/2027-03-beta/contracts/{contractId}": {
+      rename: param: "contractId": *"id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: contracts_contract: {
+    path: "/commerce/contracts/2027-03-beta/contracts/{contractId}/terminate": {
+      rename: param: "contractId": *"contract_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: contracts_contract_change: {
+    path: "/commerce/contracts/2027-03-beta/changes": {
+      op: create: method: *POST
+    }
+    path: "/commerce/contracts/2027-03-beta/changes/{changeId}": {
+      rename: param: "changeId": *"id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+    }
+    path: "/commerce/contracts/2027-03-beta/changes/{changeId}/accept": {
+      rename: param: "changeId": *"change_id"
+      op: create: method: *POST
+    }
+    path: "/commerce/contracts/2027-03-beta/changes/{changeId}/cancel": {
+      rename: param: "changeId": *"change_id"
+      op: create: method: *POST
+    }
+    path: "/commerce/contracts/2027-03-beta/contracts/{contractId}/changes": {
+      rename: param: "contractId": *"contract_id"
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.changes`")|top
+    }
+  }
+
+  entity: contracts_contract_change_preview: {
+    path: "/commerce/contracts/2027-03-beta/changes/preview": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: contracts_quote: {
+    path: "/commerce/contracts/2027-03-beta/contracts/{contractId}/renewal-quotes": {
+      rename: param: "contractId": *"contract_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: item: {
+    path: "/commerce/price-books/2026-09/price-books/{priceBookId}/items/{priceBookItemId}": {
+      rename: param: "priceBookId": *"price_book_id"
+      rename: param: "priceBookItemId": *"id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: payment_link: {
+    path: "/commerce/payment-links/2026-09/payment-links": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/commerce/payment-links/2026-09/payment-links/{paymentLinkId}": {
+      rename: param: "paymentLinkId": *"id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: payment_methods_commerce_payment_method_settings_public: {
+    path: "/commerce/payment-methods/2027-03-beta/settings": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.paymentMethodSettings`")|top
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: payments_action_response_with_single_result_simple_public_object: {
+    path: "/commerce/payments/2027-03-beta/{paymentCrmObjectId}/actions/retry/async/tasks/{taskId}/status": {
+      rename: param: "paymentCrmObjectId": *"payment_crm_object_id"
+      rename: param: "taskId": *"task_id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: payments_create_manual_payment_public: {
+    path: "/commerce/payments/2027-03-beta/manual-payments": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: payments_settings_get_billing_settings_public: {
+    path: "/commerce/payments-settings/2027-03-beta/payments-settings/billing": {
+      op: load: method: *GET
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: payments_settings_get_checkout_fees_public: {
+    path: "/commerce/payments-settings/2027-03-beta/payments-settings/checkout-fees": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.checkoutFees`")|top
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: payments_settings_get_policy_settings_public: {
+    path: "/commerce/payments-settings/2027-03-beta/payments-settings/policy": {
+      op: load: method: *GET
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: payments_settings_get_shipping_settings_public: {
+    path: "/commerce/payments-settings/2027-03-beta/payments-settings/shipping": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.countriesShippedTo`")|top
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: paymentsaccounts_payment_account_view: {
+    path: "/commerce/payment-accounts/2026-09/status": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.eligibleProcessorTypes`")|top
+    }
+  }
+
+  entity: price_book: {
+    path: "/commerce/price-books/2026-09/price-books": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/commerce/price-books/2026-09/price-books/{priceBookId}": {
+      rename: param: "priceBookId": *"id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: price_books_batch_response_price_book_item: {
+    path: "/commerce/price-books/2026-09/price-books/{priceBookId}/items/batch/create": {
+      rename: param: "priceBookId": *"price_book_id"
+      op: create: method: *POST
+    }
+    path: "/commerce/price-books/2026-09/price-books/{priceBookId}/items/batch/update": {
+      rename: param: "priceBookId": *"price_book_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: price_books_collection_response_price_book_item_response_forward: {
+    path: "/commerce/price-books/2026-09/price-books/{priceBookId}/items": {
+      rename: param: "priceBookId": *"price_book_id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: price_books_price_book: {
+    path: "/commerce/price-books/2026-09/price-books/{priceBookId}/activate": {
+      rename: param: "priceBookId": *"price_book_id"
+      op: create: method: *POST
+    }
+    path: "/commerce/price-books/2026-09/price-books/{priceBookId}/deactivate": {
+      rename: param: "priceBookId": *"price_book_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: price_books_price_book_item: {
+    path: "/commerce/price-books/2026-09/price-books/{priceBookId}/items": {
+      rename: param: "priceBookId": *"price_book_id"
+      op: create: method: *POST
+    }
+    path: "/commerce/price-books/2026-09/price-books/{priceBookId}/items/{priceBookItemId}": {
+      rename: param: "priceBookId": *"price_book_id"
+      rename: param: "priceBookItemId": *"id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: price_books_price_book_validate: {
+    path: "/commerce/price-books/2026-09/price-books/{priceBookId}/validate": {
+      rename: param: "priceBookId": *"price_book_id"
+      op: create: method: *POST
+    }
+  }
+
+}

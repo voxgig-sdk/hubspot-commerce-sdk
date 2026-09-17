@@ -1,0 +1,22 @@
+# BasicPriceBooksPriceBookFlow
+
+main: kit: flow: BasicPriceBooksPriceBookFlow:
+{
+  entity: "price_books_price_book",
+  kind: "basic",
+  name: "BasicPriceBooksPriceBookFlow",
+  step: [
+    {
+      input: {
+        ref: "price_books_price_book_ref01"
+      }
+
+      match: {
+        price_book_id: "price_book01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicPriceBooksPriceBookFlow"
+}

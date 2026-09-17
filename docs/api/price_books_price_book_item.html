@@ -1,0 +1,1145 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>PriceBooksPriceBookItem | HubSpot Commerce API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">HubSpot Commerce API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/hubspot-commerce-sdk">voxgig-sdk/hubspot-commerce-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">HubSpot Commerce API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/advanced.html">Advanced</a>
+<a href="../api/basic.html">Basic</a>
+<a href="../api/batch.html">Batch</a>
+<a href="../api/contract.html">Contract</a>
+<a href="../api/contracts_contract.html">ContractsContract</a>
+<a href="../api/contracts_contract_change.html">ContractsContractChange</a>
+<a href="../api/contracts_contract_change_preview.html">ContractsContractChangePreview</a>
+<a href="../api/contracts_quote.html">ContractsQuote</a>
+<a href="../api/item.html">Item</a>
+<a href="../api/payment_link.html">PaymentLink</a>
+<a href="../api/payment_methods_commerce_payment_method_settings_public.html">PaymentMethodsCommercePaymentMethodSettingsPublic</a>
+<a href="../api/payments_action_response_with_single_result_simple_public_object.html">PaymentsActionResponseWithSingleResultSimplePublicObject</a>
+<a href="../api/payments_create_manual_payment_public.html">PaymentsCreateManualPaymentPublic</a>
+<a href="../api/payments_settings_get_billing_settings_public.html">PaymentsSettingsGetBillingSettingsPublic</a>
+<a href="../api/payments_settings_get_checkout_fees_public.html">PaymentsSettingsGetCheckoutFeesPublic</a>
+<a href="../api/payments_settings_get_policy_settings_public.html">PaymentsSettingsGetPolicySettingsPublic</a>
+<a href="../api/payments_settings_get_shipping_settings_public.html">PaymentsSettingsGetShippingSettingsPublic</a>
+<a href="../api/paymentsaccounts_payment_account_view.html">PaymentsaccountsPaymentAccountView</a>
+<a href="../api/price_book.html">PriceBook</a>
+<a href="../api/price_books_batch_response_price_book_item.html">PriceBooksBatchResponsePriceBookItem</a>
+<a href="../api/price_books_collection_response_price_book_item_response_forward.html">PriceBooksCollectionResponsePriceBookItemResponseForward</a>
+<a href="../api/price_books_price_book.html">PriceBooksPriceBook</a>
+<a aria-current="page" href="../api/price_books_price_book_item.html">PriceBooksPriceBookItem</a><div class="nav-sections"><a class="nav-section" href="#post-commerceprice-books2026-09price-bookspricebookiditems">POST /commerce/price-books/2026-09/price-books/{priceBookId}/items</a>
+<a class="nav-section" href="#get-commerceprice-books2026-09price-bookspricebookiditemspricebookitemid">GET /commerce/price-books/2026-09/price-books/{priceBookId}/items/{priceBookItemId}</a>
+<a class="nav-section" href="#patch-commerceprice-books2026-09price-bookspricebookiditemspricebookitemid">PATCH /commerce/price-books/2026-09/price-books/{priceBookId}/items/{priceBookItemId}</a></div>
+<a href="../api/price_books_price_book_validate.html">PriceBooksPriceBookValidate</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="pricebookspricebookitem">PriceBooksPriceBookItem</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-commerceprice-books2026-09price-bookspricebookiditems"><code>/commerce/price-books/2026-09/price-books/{priceBookId}/items</code></a></td>
+<td><code>create</code></td>
+<td>successful operation</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-commerceprice-books2026-09price-bookspricebookiditemspricebookitemid"><code>/commerce/price-books/2026-09/price-books/{priceBookId}/items/{priceBookItemId}</code></a></td>
+<td><code>load</code></td>
+<td>successful operation</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-commerceprice-books2026-09price-bookspricebookiditemspricebookitemid"><code>/commerce/price-books/2026-09/price-books/{priceBookId}/items/{priceBookItemId}</code></a></td>
+<td><code>update</code></td>
+<td>successful operation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A boolean indicating whether the price book item is archived.</td>
+</tr>
+<tr>
+<td><code>archivedAt</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time when the price book item was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>billingFrequency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The frequency at which billing occurs for the price book item.</td>
+</tr>
+<tr>
+<td><code>billingPeriod</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The billing period for the price book item.</td>
+</tr>
+<tr>
+<td><code>costOfGoodsSold</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The cost of goods sold for the price book item.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time when the price book item was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>customProperties</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>A map of custom property names to their values for the price book item.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A description of the price book item.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the price book item.</td>
+</tr>
+<tr>
+<td><code>images</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string representing images associated with the price book item.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the price book item.</td>
+</tr>
+<tr>
+<td><code>priceBookId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the price book containing this item.</td>
+</tr>
+<tr>
+<td><code>pricing</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>productClassification</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The classification of the product.</td>
+</tr>
+<tr>
+<td><code>productId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the product associated with the price book item.</td>
+</tr>
+<tr>
+<td><code>productType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of product.</td>
+</tr>
+<tr>
+<td><code>recurringBillingTerms</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The terms of recurring billing for the price book item.</td>
+</tr>
+<tr>
+<td><code>sku</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The stock keeping unit (SKU) of the price book item.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The current status of the price book item.</td>
+</tr>
+<tr>
+<td><code>taxCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The tax category of the price book item.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time when the price book item was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A URL associated with the price book item.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-commerceprice-books2026-09price-bookspricebookiditems" class="operation" data-method="post"><code>POST</code> /commerce/price-books/2026-09/price-books/{priceBookId}/items</h3>
+<p>Operation ID: <code>post-/commerce/price-books/2026-09/price-books/{priceBookId}/items_/commerce/price-books/2026-09-beta/price-books/{priceBookId}/items</code>.</p>
+<p>Authentication: oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>priceBookId</code> | <code>path</code> | <code>integer (int64)</code> | Yes | The unique identifier of the price book to which items will be added. |</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>productId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier of the product to be added to the price book. It is a string and is required.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="201-successful-operation" class="status" data-status="2xx">201: successful operation</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A boolean indicating whether the price book item is archived.</td>
+</tr>
+<tr>
+<td><code>archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the price book item was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>billingFrequency</code></td>
+<td><code>enum: ANNUALLY, BIWEEKLY, MONTHLY, PER_FIVE_YEARS, PER_FOUR_YEARS, PER_SIX_MONTHS, ...</code></td>
+<td>No</td>
+<td>The frequency at which billing occurs for the price book item. Valid values include 'annually', 'biweekly', 'monthly', 'one_time', 'per_five_years', 'per_four_years', 'per_six_months', 'per_three_years', 'per_two_years', 'quarterly', and 'weekly'.</td>
+</tr>
+<tr>
+<td><code>billingPeriod</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The billing period for the price book item.</td>
+</tr>
+<tr>
+<td><code>costOfGoodsSold</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The cost of goods sold for the price book item.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the price book item was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>customProperties</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>A map of custom property names to their values for the price book item.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A description of the price book item.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the price book item.</td>
+</tr>
+<tr>
+<td><code>images</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string representing images associated with the price book item.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the price book item.</td>
+</tr>
+<tr>
+<td><code>priceBookId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the price book containing this item.</td>
+</tr>
+<tr>
+<td><code>pricing</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pricing.prices</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of price entries, each detailing the amount and currency for a specific pricing tier.</td>
+</tr>
+<tr>
+<td><code>pricing.prices[].currencyCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the currency in which the price is denominated.</td>
+</tr>
+<tr>
+<td><code>pricing.prices[].maxQuantity</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>A string specifying the maximum quantity for which this pricing entry is applicable.</td>
+</tr>
+<tr>
+<td><code>pricing.prices[].price</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>A number indicating the price of the product or service.</td>
+</tr>
+<tr>
+<td><code>pricing.pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>Yes</td>
+<td>The type of pricing model applied, which can be one of the following: 'FLAT', 'GRADUATED', 'STAIRSTEP', or 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>productClassification</code></td>
+<td><code>enum: BUNDLE, STANDALONE, VARIANT</code></td>
+<td>No</td>
+<td>The classification of the product. Valid values include 'BUNDLE', 'STANDALONE', and 'VARIANT'.</td>
+</tr>
+<tr>
+<td><code>productId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the product associated with the price book item.</td>
+</tr>
+<tr>
+<td><code>productType</code></td>
+<td><code>enum: INVENTORY, NON_INVENTORY, SERVICE</code></td>
+<td>No</td>
+<td>The type of product. Valid values include 'INVENTORY', 'NON_INVENTORY', and 'SERVICE'.</td>
+</tr>
+<tr>
+<td><code>recurringBillingTerms</code></td>
+<td><code>enum: AUTOMATICALLY_RENEW, FIXED</code></td>
+<td>No</td>
+<td>The terms of recurring billing for the price book item. Valid values include 'AUTOMATICALLY_RENEW' and 'FIXED'.</td>
+</tr>
+<tr>
+<td><code>sku</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The stock keeping unit (SKU) of the price book item.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: active, inactive</code></td>
+<td>No</td>
+<td>The current status of the price book item. Valid values include 'active' and 'inactive'.</td>
+</tr>
+<tr>
+<td><code>taxCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The tax category of the price book item.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the price book item was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A URL associated with the price book item.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default">default</h5>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>category</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The error category, represented as a string.</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>An object providing context about the error condition. It contains additional properties, each being an array of strings.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the request, represented as a UUID string. Include this value with any error reports or support tickets.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>An array providing further information about the error, with each item being an ErrorDetail object.</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status code associated with the error detail.</td>
+</tr>
+<tr>
+<td><code>errors[].context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition, which may include additional information such as missing scopes or invalid property names.</td>
+</tr>
+<tr>
+<td><code>errors[].in</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the field or parameter in which the error was found.</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate. This is a required property.</td>
+</tr>
+<tr>
+<td><code>errors[].subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error.</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>An object that maps link names to associated URIs containing documentation about the error or recommended remediation steps. Each property is a string.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate. It is a string.</td>
+</tr>
+<tr>
+<td><code>subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error, represented as a string.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="load">load</h2>
+<h3 id="get-commerceprice-books2026-09price-bookspricebookiditemspricebookitemid" class="operation" data-method="get"><code>GET</code> /commerce/price-books/2026-09/price-books/{priceBookId}/items/{priceBookItemId}</h3>
+<p>Operation ID: <code>get-/commerce/price-books/2026-09/price-books/{priceBookId}/items/{priceBookItemId}_/commerce/price-books/2026-09-beta/price-books/{priceBookId}/items/{priceBookItemId}</code>.</p>
+<p>Authentication: oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>priceBookId</code> | <code>path</code> | <code>integer (int64)</code> | Yes | The unique identifier of the price book containing the item. |
+| <code>priceBookItemId</code> | <code>path</code> | <code>integer (int64)</code> | Yes | The unique identifier of the item within the price book. |
+| <code>archived</code> | <code>query</code> | <code>boolean</code> | No | Whether to return only results that have been archived. |
+| <code>properties</code> | <code>query</code> | <code>array of string</code> | No | A list of property names to include in the response. |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-successful-operation" class="status" data-status="2xx">200: successful operation</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A boolean indicating whether the price book item is archived.</td>
+</tr>
+<tr>
+<td><code>archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the price book item was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>billingFrequency</code></td>
+<td><code>enum: ANNUALLY, BIWEEKLY, MONTHLY, PER_FIVE_YEARS, PER_FOUR_YEARS, PER_SIX_MONTHS, ...</code></td>
+<td>No</td>
+<td>The frequency at which billing occurs for the price book item. Valid values include 'annually', 'biweekly', 'monthly', 'one_time', 'per_five_years', 'per_four_years', 'per_six_months', 'per_three_years', 'per_two_years', 'quarterly', and 'weekly'.</td>
+</tr>
+<tr>
+<td><code>billingPeriod</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The billing period for the price book item.</td>
+</tr>
+<tr>
+<td><code>costOfGoodsSold</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The cost of goods sold for the price book item.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the price book item was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>customProperties</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>A map of custom property names to their values for the price book item.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A description of the price book item.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the price book item.</td>
+</tr>
+<tr>
+<td><code>images</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string representing images associated with the price book item.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the price book item.</td>
+</tr>
+<tr>
+<td><code>priceBookId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the price book containing this item.</td>
+</tr>
+<tr>
+<td><code>pricing</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pricing.prices</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of price entries, each detailing the amount and currency for a specific pricing tier.</td>
+</tr>
+<tr>
+<td><code>pricing.prices[].currencyCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the currency in which the price is denominated.</td>
+</tr>
+<tr>
+<td><code>pricing.prices[].maxQuantity</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>A string specifying the maximum quantity for which this pricing entry is applicable.</td>
+</tr>
+<tr>
+<td><code>pricing.prices[].price</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>A number indicating the price of the product or service.</td>
+</tr>
+<tr>
+<td><code>pricing.pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>Yes</td>
+<td>The type of pricing model applied, which can be one of the following: 'FLAT', 'GRADUATED', 'STAIRSTEP', or 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>productClassification</code></td>
+<td><code>enum: BUNDLE, STANDALONE, VARIANT</code></td>
+<td>No</td>
+<td>The classification of the product. Valid values include 'BUNDLE', 'STANDALONE', and 'VARIANT'.</td>
+</tr>
+<tr>
+<td><code>productId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the product associated with the price book item.</td>
+</tr>
+<tr>
+<td><code>productType</code></td>
+<td><code>enum: INVENTORY, NON_INVENTORY, SERVICE</code></td>
+<td>No</td>
+<td>The type of product. Valid values include 'INVENTORY', 'NON_INVENTORY', and 'SERVICE'.</td>
+</tr>
+<tr>
+<td><code>recurringBillingTerms</code></td>
+<td><code>enum: AUTOMATICALLY_RENEW, FIXED</code></td>
+<td>No</td>
+<td>The terms of recurring billing for the price book item. Valid values include 'AUTOMATICALLY_RENEW' and 'FIXED'.</td>
+</tr>
+<tr>
+<td><code>sku</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The stock keeping unit (SKU) of the price book item.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: active, inactive</code></td>
+<td>No</td>
+<td>The current status of the price book item. Valid values include 'active' and 'inactive'.</td>
+</tr>
+<tr>
+<td><code>taxCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The tax category of the price book item.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the price book item was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A URL associated with the price book item.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default-1">default</h5>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>category</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The error category, represented as a string.</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>An object providing context about the error condition. It contains additional properties, each being an array of strings.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the request, represented as a UUID string. Include this value with any error reports or support tickets.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>An array providing further information about the error, with each item being an ErrorDetail object.</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status code associated with the error detail.</td>
+</tr>
+<tr>
+<td><code>errors[].context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition, which may include additional information such as missing scopes or invalid property names.</td>
+</tr>
+<tr>
+<td><code>errors[].in</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the field or parameter in which the error was found.</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate. This is a required property.</td>
+</tr>
+<tr>
+<td><code>errors[].subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error.</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>An object that maps link names to associated URIs containing documentation about the error or recommended remediation steps. Each property is a string.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate. It is a string.</td>
+</tr>
+<tr>
+<td><code>subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error, represented as a string.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="update">update</h2>
+<h3 id="patch-commerceprice-books2026-09price-bookspricebookiditemspricebookitemid" class="operation" data-method="patch"><code>PATCH</code> /commerce/price-books/2026-09/price-books/{priceBookId}/items/{priceBookItemId}</h3>
+<p>Operation ID: <code>patch-/commerce/price-books/2026-09/price-books/{priceBookId}/items/{priceBookItemId}</code>.</p>
+<p>Authentication: oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>priceBookId</code> | <code>path</code> | <code>integer (int64)</code> | Yes | The unique identifier of the price book containing the item to update. |
+| <code>priceBookItemId</code> | <code>path</code> | <code>integer (int64)</code> | Yes | The unique identifier of the item within the price book to update. |
+| <code>archived</code> | <code>query</code> | <code>boolean</code> | No | Whether to return only results that have been archived. |</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A boolean indicating whether the price book item is archived.</td>
+</tr>
+<tr>
+<td><code>billingFrequency</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object specifying the frequency at which billing occurs for the price book item.</td>
+</tr>
+<tr>
+<td><code>billingPeriod</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object specifying the period over which billing occurs for the price book item.</td>
+</tr>
+<tr>
+<td><code>customProperties</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>A map of custom property names to their values, allowing for additional customization of the price book item.</td>
+</tr>
+<tr>
+<td><code>pricing</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pricing.prices</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of PriceUpdateEntry objects, each representing the pricing details for a product, including the currency code and amount.</td>
+</tr>
+<tr>
+<td><code>pricing.prices[].currencyCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The currency code for the price, represented as a string.</td>
+</tr>
+<tr>
+<td><code>pricing.prices[].maxQuantity</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The maximum quantity applicable for this price, represented as a string.</td>
+</tr>
+<tr>
+<td><code>pricing.prices[].price</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the price details for the entry. The specific structure of this object is not detailed in the specification.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object indicating the current status of the price book item.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-successful-operation-1" class="status" data-status="2xx">200: successful operation</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A boolean indicating whether the price book item is archived.</td>
+</tr>
+<tr>
+<td><code>archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the price book item was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>billingFrequency</code></td>
+<td><code>enum: ANNUALLY, BIWEEKLY, MONTHLY, PER_FIVE_YEARS, PER_FOUR_YEARS, PER_SIX_MONTHS, ...</code></td>
+<td>No</td>
+<td>The frequency at which billing occurs for the price book item. Valid values include 'annually', 'biweekly', 'monthly', 'one_time', 'per_five_years', 'per_four_years', 'per_six_months', 'per_three_years', 'per_two_years', 'quarterly', and 'weekly'.</td>
+</tr>
+<tr>
+<td><code>billingPeriod</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The billing period for the price book item.</td>
+</tr>
+<tr>
+<td><code>costOfGoodsSold</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The cost of goods sold for the price book item.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the price book item was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>customProperties</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>A map of custom property names to their values for the price book item.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A description of the price book item.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the price book item.</td>
+</tr>
+<tr>
+<td><code>images</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string representing images associated with the price book item.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the price book item.</td>
+</tr>
+<tr>
+<td><code>priceBookId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the price book containing this item.</td>
+</tr>
+<tr>
+<td><code>pricing</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pricing.prices</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of price entries, each detailing the amount and currency for a specific pricing tier.</td>
+</tr>
+<tr>
+<td><code>pricing.prices[].currencyCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the currency in which the price is denominated.</td>
+</tr>
+<tr>
+<td><code>pricing.prices[].maxQuantity</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>A string specifying the maximum quantity for which this pricing entry is applicable.</td>
+</tr>
+<tr>
+<td><code>pricing.prices[].price</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>A number indicating the price of the product or service.</td>
+</tr>
+<tr>
+<td><code>pricing.pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>Yes</td>
+<td>The type of pricing model applied, which can be one of the following: 'FLAT', 'GRADUATED', 'STAIRSTEP', or 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>productClassification</code></td>
+<td><code>enum: BUNDLE, STANDALONE, VARIANT</code></td>
+<td>No</td>
+<td>The classification of the product. Valid values include 'BUNDLE', 'STANDALONE', and 'VARIANT'.</td>
+</tr>
+<tr>
+<td><code>productId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the product associated with the price book item.</td>
+</tr>
+<tr>
+<td><code>productType</code></td>
+<td><code>enum: INVENTORY, NON_INVENTORY, SERVICE</code></td>
+<td>No</td>
+<td>The type of product. Valid values include 'INVENTORY', 'NON_INVENTORY', and 'SERVICE'.</td>
+</tr>
+<tr>
+<td><code>recurringBillingTerms</code></td>
+<td><code>enum: AUTOMATICALLY_RENEW, FIXED</code></td>
+<td>No</td>
+<td>The terms of recurring billing for the price book item. Valid values include 'AUTOMATICALLY_RENEW' and 'FIXED'.</td>
+</tr>
+<tr>
+<td><code>sku</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The stock keeping unit (SKU) of the price book item.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: active, inactive</code></td>
+<td>No</td>
+<td>The current status of the price book item. Valid values include 'active' and 'inactive'.</td>
+</tr>
+<tr>
+<td><code>taxCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The tax category of the price book item.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the price book item was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A URL associated with the price book item.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default-2">default</h5>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>category</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The error category, represented as a string.</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>An object providing context about the error condition. It contains additional properties, each being an array of strings.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the request, represented as a UUID string. Include this value with any error reports or support tickets.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>An array providing further information about the error, with each item being an ErrorDetail object.</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status code associated with the error detail.</td>
+</tr>
+<tr>
+<td><code>errors[].context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition, which may include additional information such as missing scopes or invalid property names.</td>
+</tr>
+<tr>
+<td><code>errors[].in</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the field or parameter in which the error was found.</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate. This is a required property.</td>
+</tr>
+<tr>
+<td><code>errors[].subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error.</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>An object that maps link names to associated URIs containing documentation about the error or recommended remediation steps. Each property is a string.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate. It is a string.</td>
+</tr>
+<tr>
+<td><code>subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error, represented as a string.</td>
+</tr>
+</tbody>
+</table>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

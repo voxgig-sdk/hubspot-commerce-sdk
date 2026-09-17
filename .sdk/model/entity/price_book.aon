@@ -1,0 +1,347 @@
+# Entity: price_book
+
+main: kit: entity: price_book: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "archived"
+      req: false
+      short: "A boolean indicating whether this price book is archived."
+      type: "`$BOOLEAN`"
+    }
+    {
+      format: "date-time"
+      name: "archivedAt"
+      req: false
+      short: "The date and time when this price book was archived."
+      type: "`$STRING`"
+    }
+    {
+      name: "autoAssignmentEnabled"
+      req: true
+      short: "Indicates whether auto-assignment is enabled for the price book."
+      type: "`$BOOLEAN`"
+    }
+    {
+      format: "int32"
+      name: "countOfIncludedProducts"
+      req: true
+      short: "The number of products included in this price book."
+      type: "`$INTEGER`"
+    }
+    {
+      format: "date-time"
+      name: "createdAt"
+      req: false
+      short: "The date and time when this price book was created."
+      type: "`$STRING`"
+    }
+    {
+      name: "customProperties"
+      req: true
+      short: "A map of custom property names to their values for this price book."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "description"
+      op: {
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      req: false
+      short: "A description of the price book."
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: true
+      short: "The unique identifier for this price book."
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      req: false
+      short: "The name of the price book."
+      type: "`$STRING`"
+    }
+    {
+      name: "status"
+      req: true
+      short: "The current status of the price book."
+      type: "`$STRING`"
+    }
+    {
+      name: "supportedCurrencies"
+      op: {
+        update: {
+          req: false
+          type: "`$ARRAY`"
+        }
+      }
+      req: true
+      short: "An array of currency codes that this price book supports."
+      type: "`$ARRAY`"
+    }
+    {
+      format: "date-time"
+      name: "updatedAt"
+      req: false
+      short: "The date and time when this price book was last updated."
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "price_book"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          contract: {
+            id: "POST /commerce/price-books/2026-09/price-books"
+            json: "{\"operationId\":\"post-/commerce/price-books/2026-09/price-books\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"example\":null,\"schema\":{\"example\":null,\"properties\":{\"customProperties\":{\"additionalProperties\":{\"example\":null,\"type\":\"string\"},\"description\":\"An object containing custom properties for the price book. Each property is a key-value pair where the key is a string and the value is also a string. This is a required property.\",\"example\":null,\"type\":\"object\"},\"description\":{\"description\":\"A description of the price book. This is an optional string property.\",\"example\":null,\"type\":\"string\"},\"name\":{\"description\":\"The name of the price book. It is a required string property.\",\"example\":null,\"type\":\"string\"},\"supportedCurrencies\":{\"description\":\"An array of strings representing the currencies supported by the price book. This is a required property.\",\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"}},\"required\":[\"customProperties\",\"name\",\"supportedCurrencies\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"201\":{\"content\":{\"application/json\":{\"example\":null,\"schema\":{\"example\":null,\"properties\":{\"archived\":{\"description\":\"A boolean indicating whether this price book is archived.\",\"example\":null,\"type\":\"boolean\"},\"archivedAt\":{\"description\":\"The date and time when this price book was archived.\",\"example\":null,\"format\":\"date-time\",\"type\":\"string\"},\"autoAssignmentEnabled\":{\"description\":\"Indicates whether auto-assignment is enabled for the price book. A boolean value.\",\"example\":null,\"type\":\"boolean\"},\"countOfIncludedProducts\":{\"description\":\"The number of products included in this price book.\",\"example\":null,\"format\":\"int32\",\"type\":\"integer\"},\"createdAt\":{\"description\":\"The date and time when this price book was created.\",\"example\":null,\"format\":\"date-time\",\"type\":\"string\"},\"customProperties\":{\"additionalProperties\":{\"example\":null,\"type\":\"string\"},\"description\":\"A map of custom property names to their values for this price book.\",\"example\":null,\"type\":\"object\"},\"description\":{\"description\":\"A description of the price book.\",\"example\":null,\"type\":\"string\"},\"id\":{\"description\":\"The unique identifier for this price book.\",\"example\":null,\"type\":\"string\"},\"name\":{\"description\":\"The name of the price book.\",\"example\":null,\"type\":\"string\"},\"status\":{\"description\":\"The current status of the price book. Valid values include 'ACTIVE' and 'INACTIVE'.\",\"enum\":[\"ACTIVE\",\"INACTIVE\"],\"example\":null,\"type\":\"string\"},\"supportedCurrencies\":{\"description\":\"An array of currency codes that this price book supports.\",\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"updatedAt\":{\"description\":\"The date and time when this price book was last updated.\",\"example\":null,\"format\":\"date-time\",\"type\":\"string\"}},\"required\":[\"autoAssignmentEnabled\",\"countOfIncludedProducts\",\"customProperties\",\"id\",\"status\",\"supportedCurrencies\"],\"type\":\"object\"}}},\"description\":\"successful operation\",\"headers\":{\"Location\":{\"description\":\"URL of the newly created resource\",\"explode\":false,\"schema\":{\"example\":null,\"type\":\"string\"},\"style\":\"simple\"}}},\"default\":{\"content\":{\"*/*\":{\"example\":null,\"schema\":{\"description\":\"Represents an error response returned by the API when an operation fails. This component is used in various endpoints to provide detailed information about the error encountered.\",\"example\":{\"category\":\"VALIDATION_ERROR\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"},\"message\":\"Invalid input (details will vary based on the error)\"},\"properties\":{\"category\":{\"description\":\"The error category, represented as a string.\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"An object providing context about the error condition. It contains additional properties, each being an array of strings.\",\"example\":\"{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"correlationId\":{\"description\":\"A unique identifier for the request, represented as a UUID string. Include this value with any error reports or support tickets.\",\"example\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"format\":\"uuid\",\"type\":\"string\"},\"errors\":{\"description\":\"An array providing further information about the error, with each item being an ErrorDetail object.\",\"example\":null,\"items\":{\"description\":\"Represents detailed information about an error that occurred in the API. This component is used to provide additional context and specifics about errors, typically as part of an error response.\",\"example\":null,\"properties\":{\"code\":{\"description\":\"The status code associated with the error detail.\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition, which may include additional information such as missing scopes or invalid property names.\",\"example\":\"{missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"in\":{\"description\":\"The name of the field or parameter in which the error was found.\",\"example\":null,\"type\":\"string\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate. This is a required property.\",\"example\":null,\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error.\",\"example\":null,\"type\":\"string\"}},\"required\":[\"message\"],\"type\":\"object\"},\"type\":\"array\"},\"links\":{\"additionalProperties\":{\"example\":null,\"type\":\"string\"},\"description\":\"An object that maps link names to associated URIs containing documentation about the error or recommended remediation steps. Each property is a string.\",\"example\":null,\"type\":\"object\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate. It is a string.\",\"example\":\"An error occurred\",\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error, represented as a string.\",\"example\":null,\"type\":\"string\"}},\"required\":[\"category\",\"correlationId\",\"message\"],\"type\":\"object\"}}},\"description\":\"\"}},\"security\":[{\"oauth2\":[\"price-book-write\"]}],\"securitySchemes\":{\"developer_hapikey\":{\"in\":\"query\",\"name\":\"hapikey\",\"type\":\"apiKey\"},\"oauth2\":{\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://app.hubspot.com/oauth/authorize\",\"scopes\":{},\"tokenUrl\":\"https://api.hubapi.com/oauth/v1/token\"}},\"type\":\"oauth2\"},\"private_apps\":{\"in\":\"header\",\"name\":\"private-app\",\"type\":\"apiKey\"},\"private_apps_legacy\":{\"in\":\"header\",\"name\":\"private-app-legacy\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "POST"
+          orig: "/commerce/price-books/2026-09/price-books"
+          segments: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "price-books"
+            }
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: null
+                kind: "query"
+                name: "after"
+                orig: "after"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: null
+                kind: "query"
+                name: "archived"
+                orig: "archived"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+              {
+                example: null
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          contract: {
+            id: "GET /commerce/price-books/2026-09/price-books"
+            json: "{\"operationId\":\"get-/commerce/price-books/2026-09/price-books_/commerce/price-books/2026-09-beta/price-books\",\"parameters\":[{\"description\":\"The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.\",\"explode\":true,\"in\":\"query\",\"name\":\"after\",\"required\":false,\"schema\":{\"example\":null,\"type\":\"string\"},\"style\":\"form\"},{\"description\":\"Whether to return only results that have been archived.\",\"explode\":true,\"in\":\"query\",\"name\":\"archived\",\"required\":false,\"schema\":{\"example\":null,\"type\":\"boolean\"},\"style\":\"form\"},{\"description\":\"The maximum number of results to display per page.\",\"explode\":true,\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"example\":null,\"format\":\"int32\",\"type\":\"integer\"},\"style\":\"form\"}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":null,\"schema\":{\"example\":null,\"properties\":{\"paging\":{\"description\":\"Paging information for forward-only pagination. Contains the next page reference when more results are available; omitted or empty on the last page.\",\"example\":null,\"properties\":{\"next\":{\"description\":\"Specifies the paging information needed to retrieve the next set of results in a paginated API response\",\"example\":null,\"properties\":{\"after\":{\"description\":\"A string token used as a cursor for pagination to retrieve the next set of results.\",\"example\":null,\"type\":\"string\"},\"link\":{\"description\":\"A string URL that provides a direct link to the next page of results.\",\"example\":null,\"type\":\"string\"}},\"required\":[\"after\"],\"type\":\"object\"}},\"type\":\"object\"},\"results\":{\"description\":\"An array of price book objects, each represented by the PriceBookResponse schema.\",\"example\":null,\"items\":{\"example\":null,\"properties\":{\"archived\":{\"description\":\"A boolean indicating whether this price book is archived.\",\"example\":null,\"type\":\"boolean\"},\"archivedAt\":{\"description\":\"The date and time when this price book was archived.\",\"example\":null,\"format\":\"date-time\",\"type\":\"string\"},\"autoAssignmentEnabled\":{\"description\":\"Indicates whether auto-assignment is enabled for the price book. A boolean value.\",\"example\":null,\"type\":\"boolean\"},\"countOfIncludedProducts\":{\"description\":\"The number of products included in this price book.\",\"example\":null,\"format\":\"int32\",\"type\":\"integer\"},\"createdAt\":{\"description\":\"The date and time when this price book was created.\",\"example\":null,\"format\":\"date-time\",\"type\":\"string\"},\"customProperties\":{\"additionalProperties\":{\"example\":null,\"type\":\"string\"},\"description\":\"A map of custom property names to their values for this price book.\",\"example\":null,\"type\":\"object\"},\"description\":{\"description\":\"A description of the price book.\",\"example\":null,\"type\":\"string\"},\"id\":{\"description\":\"The unique identifier for this price book.\",\"example\":null,\"type\":\"string\"},\"name\":{\"description\":\"The name of the price book.\",\"example\":null,\"type\":\"string\"},\"status\":{\"description\":\"The current status of the price book. Valid values include 'ACTIVE' and 'INACTIVE'.\",\"enum\":[\"ACTIVE\",\"INACTIVE\"],\"example\":null,\"type\":\"string\"},\"supportedCurrencies\":{\"description\":\"An array of currency codes that this price book supports.\",\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"updatedAt\":{\"description\":\"The date and time when this price book was last updated.\",\"example\":null,\"format\":\"date-time\",\"type\":\"string\"}},\"required\":[\"autoAssignmentEnabled\",\"countOfIncludedProducts\",\"customProperties\",\"id\",\"status\",\"supportedCurrencies\"],\"type\":\"object\"},\"type\":\"array\"}},\"required\":[\"results\"],\"type\":\"object\"}}},\"description\":\"successful operation\"},\"default\":{\"content\":{\"*/*\":{\"example\":null,\"schema\":{\"description\":\"Represents an error response returned by the API when an operation fails. This component is used in various endpoints to provide detailed information about the error encountered.\",\"example\":{\"category\":\"VALIDATION_ERROR\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"},\"message\":\"Invalid input (details will vary based on the error)\"},\"properties\":{\"category\":{\"description\":\"The error category, represented as a string.\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"An object providing context about the error condition. It contains additional properties, each being an array of strings.\",\"example\":\"{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"correlationId\":{\"description\":\"A unique identifier for the request, represented as a UUID string. Include this value with any error reports or support tickets.\",\"example\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"format\":\"uuid\",\"type\":\"string\"},\"errors\":{\"description\":\"An array providing further information about the error, with each item being an ErrorDetail object.\",\"example\":null,\"items\":{\"description\":\"Represents detailed information about an error that occurred in the API. This component is used to provide additional context and specifics about errors, typically as part of an error response.\",\"example\":null,\"properties\":{\"code\":{\"description\":\"The status code associated with the error detail.\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition, which may include additional information such as missing scopes or invalid property names.\",\"example\":\"{missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"in\":{\"description\":\"The name of the field or parameter in which the error was found.\",\"example\":null,\"type\":\"string\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate. This is a required property.\",\"example\":null,\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error.\",\"example\":null,\"type\":\"string\"}},\"required\":[\"message\"],\"type\":\"object\"},\"type\":\"array\"},\"links\":{\"additionalProperties\":{\"example\":null,\"type\":\"string\"},\"description\":\"An object that maps link names to associated URIs containing documentation about the error or recommended remediation steps. Each property is a string.\",\"example\":null,\"type\":\"object\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate. It is a string.\",\"example\":\"An error occurred\",\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error, represented as a string.\",\"example\":null,\"type\":\"string\"}},\"required\":[\"category\",\"correlationId\",\"message\"],\"type\":\"object\"}}},\"description\":\"\"}},\"security\":[{\"oauth2\":[\"price-book-read\"]}],\"securitySchemes\":{\"developer_hapikey\":{\"in\":\"query\",\"name\":\"hapikey\",\"type\":\"apiKey\"},\"oauth2\":{\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://app.hubspot.com/oauth/authorize\",\"scopes\":{},\"tokenUrl\":\"https://api.hubapi.com/oauth/v1/token\"}},\"type\":\"oauth2\"},\"private_apps\":{\"in\":\"header\",\"name\":\"private-app\",\"type\":\"apiKey\"},\"private_apps_legacy\":{\"in\":\"header\",\"name\":\"private-app-legacy\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "GET"
+          orig: "/commerce/price-books/2026-09/price-books"
+          segments: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "price-books"
+            }
+          ]
+          select: {
+            exist: [
+              "after"
+              "archived"
+              "limit"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: null
+                kind: "param"
+                name: "id"
+                orig: "price_book_id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                example: null
+                kind: "query"
+                name: "archived"
+                orig: "archived"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+            ]
+          }
+          contract: {
+            id: "GET /commerce/price-books/2026-09/price-books/{priceBookId}"
+            json: "{\"operationId\":\"get-/commerce/price-books/2026-09/price-books/{priceBookId}\",\"parameters\":[{\"description\":\"The unique identifier of the price book to retrieve.\",\"explode\":false,\"in\":\"path\",\"name\":\"priceBookId\",\"required\":true,\"schema\":{\"example\":null,\"format\":\"int64\",\"type\":\"integer\"},\"style\":\"simple\"},{\"description\":\"Whether to return only results that have been archived.\",\"explode\":true,\"in\":\"query\",\"name\":\"archived\",\"required\":false,\"schema\":{\"example\":null,\"type\":\"boolean\"},\"style\":\"form\"}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":null,\"schema\":{\"example\":null,\"properties\":{\"archived\":{\"description\":\"A boolean indicating whether this price book is archived.\",\"example\":null,\"type\":\"boolean\"},\"archivedAt\":{\"description\":\"The date and time when this price book was archived.\",\"example\":null,\"format\":\"date-time\",\"type\":\"string\"},\"autoAssignmentEnabled\":{\"description\":\"Indicates whether auto-assignment is enabled for the price book. A boolean value.\",\"example\":null,\"type\":\"boolean\"},\"countOfIncludedProducts\":{\"description\":\"The number of products included in this price book.\",\"example\":null,\"format\":\"int32\",\"type\":\"integer\"},\"createdAt\":{\"description\":\"The date and time when this price book was created.\",\"example\":null,\"format\":\"date-time\",\"type\":\"string\"},\"customProperties\":{\"additionalProperties\":{\"example\":null,\"type\":\"string\"},\"description\":\"A map of custom property names to their values for this price book.\",\"example\":null,\"type\":\"object\"},\"description\":{\"description\":\"A description of the price book.\",\"example\":null,\"type\":\"string\"},\"id\":{\"description\":\"The unique identifier for this price book.\",\"example\":null,\"type\":\"string\"},\"name\":{\"description\":\"The name of the price book.\",\"example\":null,\"type\":\"string\"},\"status\":{\"description\":\"The current status of the price book. Valid values include 'ACTIVE' and 'INACTIVE'.\",\"enum\":[\"ACTIVE\",\"INACTIVE\"],\"example\":null,\"type\":\"string\"},\"supportedCurrencies\":{\"description\":\"An array of currency codes that this price book supports.\",\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"updatedAt\":{\"description\":\"The date and time when this price book was last updated.\",\"example\":null,\"format\":\"date-time\",\"type\":\"string\"}},\"required\":[\"autoAssignmentEnabled\",\"countOfIncludedProducts\",\"customProperties\",\"id\",\"status\",\"supportedCurrencies\"],\"type\":\"object\"}}},\"description\":\"successful operation\"},\"default\":{\"content\":{\"*/*\":{\"example\":null,\"schema\":{\"description\":\"Represents an error response returned by the API when an operation fails. This component is used in various endpoints to provide detailed information about the error encountered.\",\"example\":{\"category\":\"VALIDATION_ERROR\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"},\"message\":\"Invalid input (details will vary based on the error)\"},\"properties\":{\"category\":{\"description\":\"The error category, represented as a string.\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"An object providing context about the error condition. It contains additional properties, each being an array of strings.\",\"example\":\"{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"correlationId\":{\"description\":\"A unique identifier for the request, represented as a UUID string. Include this value with any error reports or support tickets.\",\"example\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"format\":\"uuid\",\"type\":\"string\"},\"errors\":{\"description\":\"An array providing further information about the error, with each item being an ErrorDetail object.\",\"example\":null,\"items\":{\"description\":\"Represents detailed information about an error that occurred in the API. This component is used to provide additional context and specifics about errors, typically as part of an error response.\",\"example\":null,\"properties\":{\"code\":{\"description\":\"The status code associated with the error detail.\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition, which may include additional information such as missing scopes or invalid property names.\",\"example\":\"{missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"in\":{\"description\":\"The name of the field or parameter in which the error was found.\",\"example\":null,\"type\":\"string\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate. This is a required property.\",\"example\":null,\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error.\",\"example\":null,\"type\":\"string\"}},\"required\":[\"message\"],\"type\":\"object\"},\"type\":\"array\"},\"links\":{\"additionalProperties\":{\"example\":null,\"type\":\"string\"},\"description\":\"An object that maps link names to associated URIs containing documentation about the error or recommended remediation steps. Each property is a string.\",\"example\":null,\"type\":\"object\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate. It is a string.\",\"example\":\"An error occurred\",\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error, represented as a string.\",\"example\":null,\"type\":\"string\"}},\"required\":[\"category\",\"correlationId\",\"message\"],\"type\":\"object\"}}},\"description\":\"\"}},\"security\":[{\"oauth2\":[\"price-book-read\"]}],\"securitySchemes\":{\"developer_hapikey\":{\"in\":\"query\",\"name\":\"hapikey\",\"type\":\"apiKey\"},\"oauth2\":{\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://app.hubspot.com/oauth/authorize\",\"scopes\":{},\"tokenUrl\":\"https://api.hubapi.com/oauth/v1/token\"}},\"type\":\"oauth2\"},\"private_apps\":{\"in\":\"header\",\"name\":\"private-app\",\"type\":\"apiKey\"},\"private_apps_legacy\":{\"in\":\"header\",\"name\":\"private-app-legacy\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "GET"
+          orig: "/commerce/price-books/2026-09/price-books/{priceBookId}"
+          rename: {
+            param: {
+              priceBookId: "id"
+            }
+          }
+          segments: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              var: "id"
+            }
+          ]
+          select: {
+            exist: [
+              "archived"
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: null
+                kind: "param"
+                name: "id"
+                orig: "price_book_id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          contract: {
+            id: "PATCH /commerce/price-books/2026-09/price-books/{priceBookId}"
+            json: "{\"operationId\":\"patch-/commerce/price-books/2026-09/price-books/{priceBookId}\",\"parameters\":[{\"description\":\"The unique identifier of the price book to update.\",\"explode\":false,\"in\":\"path\",\"name\":\"priceBookId\",\"required\":true,\"schema\":{\"example\":null,\"format\":\"int64\",\"type\":\"integer\"},\"style\":\"simple\"}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"example\":null,\"schema\":{\"example\":null,\"properties\":{\"customProperties\":{\"additionalProperties\":{\"example\":null,\"type\":\"string\"},\"description\":\"An object containing custom properties for the price book, where each key is a property name and the value is a string.\",\"example\":null,\"type\":\"object\"},\"description\":{\"description\":\"An object representing the description of the price book to be updated.\",\"example\":null,\"properties\":{},\"type\":\"object\"},\"name\":{\"description\":\"An object representing the name of the price book to be updated.\",\"example\":null,\"properties\":{},\"type\":\"object\"},\"supportedCurrencies\":{\"description\":\"An array of strings representing the currencies supported by the price book.\",\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"}},\"required\":[\"customProperties\",\"description\",\"name\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":null,\"schema\":{\"example\":null,\"properties\":{\"archived\":{\"description\":\"A boolean indicating whether this price book is archived.\",\"example\":null,\"type\":\"boolean\"},\"archivedAt\":{\"description\":\"The date and time when this price book was archived.\",\"example\":null,\"format\":\"date-time\",\"type\":\"string\"},\"autoAssignmentEnabled\":{\"description\":\"Indicates whether auto-assignment is enabled for the price book. A boolean value.\",\"example\":null,\"type\":\"boolean\"},\"countOfIncludedProducts\":{\"description\":\"The number of products included in this price book.\",\"example\":null,\"format\":\"int32\",\"type\":\"integer\"},\"createdAt\":{\"description\":\"The date and time when this price book was created.\",\"example\":null,\"format\":\"date-time\",\"type\":\"string\"},\"customProperties\":{\"additionalProperties\":{\"example\":null,\"type\":\"string\"},\"description\":\"A map of custom property names to their values for this price book.\",\"example\":null,\"type\":\"object\"},\"description\":{\"description\":\"A description of the price book.\",\"example\":null,\"type\":\"string\"},\"id\":{\"description\":\"The unique identifier for this price book.\",\"example\":null,\"type\":\"string\"},\"name\":{\"description\":\"The name of the price book.\",\"example\":null,\"type\":\"string\"},\"status\":{\"description\":\"The current status of the price book. Valid values include 'ACTIVE' and 'INACTIVE'.\",\"enum\":[\"ACTIVE\",\"INACTIVE\"],\"example\":null,\"type\":\"string\"},\"supportedCurrencies\":{\"description\":\"An array of currency codes that this price book supports.\",\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"updatedAt\":{\"description\":\"The date and time when this price book was last updated.\",\"example\":null,\"format\":\"date-time\",\"type\":\"string\"}},\"required\":[\"autoAssignmentEnabled\",\"countOfIncludedProducts\",\"customProperties\",\"id\",\"status\",\"supportedCurrencies\"],\"type\":\"object\"}}},\"description\":\"successful operation\"},\"default\":{\"content\":{\"*/*\":{\"example\":null,\"schema\":{\"description\":\"Represents an error response returned by the API when an operation fails. This component is used in various endpoints to provide detailed information about the error encountered.\",\"example\":{\"category\":\"VALIDATION_ERROR\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"},\"message\":\"Invalid input (details will vary based on the error)\"},\"properties\":{\"category\":{\"description\":\"The error category, represented as a string.\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"An object providing context about the error condition. It contains additional properties, each being an array of strings.\",\"example\":\"{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"correlationId\":{\"description\":\"A unique identifier for the request, represented as a UUID string. Include this value with any error reports or support tickets.\",\"example\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"format\":\"uuid\",\"type\":\"string\"},\"errors\":{\"description\":\"An array providing further information about the error, with each item being an ErrorDetail object.\",\"example\":null,\"items\":{\"description\":\"Represents detailed information about an error that occurred in the API. This component is used to provide additional context and specifics about errors, typically as part of an error response.\",\"example\":null,\"properties\":{\"code\":{\"description\":\"The status code associated with the error detail.\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition, which may include additional information such as missing scopes or invalid property names.\",\"example\":\"{missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"in\":{\"description\":\"The name of the field or parameter in which the error was found.\",\"example\":null,\"type\":\"string\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate. This is a required property.\",\"example\":null,\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error.\",\"example\":null,\"type\":\"string\"}},\"required\":[\"message\"],\"type\":\"object\"},\"type\":\"array\"},\"links\":{\"additionalProperties\":{\"example\":null,\"type\":\"string\"},\"description\":\"An object that maps link names to associated URIs containing documentation about the error or recommended remediation steps. Each property is a string.\",\"example\":null,\"type\":\"object\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate. It is a string.\",\"example\":\"An error occurred\",\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error, represented as a string.\",\"example\":null,\"type\":\"string\"}},\"required\":[\"category\",\"correlationId\",\"message\"],\"type\":\"object\"}}},\"description\":\"\"}},\"security\":[{\"oauth2\":[\"price-book-write\"]}],\"securitySchemes\":{\"developer_hapikey\":{\"in\":\"query\",\"name\":\"hapikey\",\"type\":\"apiKey\"},\"oauth2\":{\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://app.hubspot.com/oauth/authorize\",\"scopes\":{},\"tokenUrl\":\"https://api.hubapi.com/oauth/v1/token\"}},\"type\":\"oauth2\"},\"private_apps\":{\"in\":\"header\",\"name\":\"private-app\",\"type\":\"apiKey\"},\"private_apps_legacy\":{\"in\":\"header\",\"name\":\"private-app-legacy\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "PATCH"
+          orig: "/commerce/price-books/2026-09/price-books/{priceBookId}"
+          rename: {
+            param: {
+              priceBookId: "id"
+            }
+          }
+          segments: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              var: "id"
+            }
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

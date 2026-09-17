@@ -1,0 +1,41 @@
+# BasicPaymentsSettingsGetCheckoutFeesPublicFlow
+
+main: kit: flow: BasicPaymentsSettingsGetCheckoutFeesPublicFlow:
+{
+  entity: "payments_settings_get_checkout_fees_public",
+  kind: "basic",
+  name: "BasicPaymentsSettingsGetCheckoutFeesPublicFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "payments_settings_get_checkout_fees_public_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "payments_settings_get_checkout_fees_public_ref01",
+        srcdatavar: "payments_settings_get_checkout_fees_public_ref01_data",
+        suffix: "_up0",
+        textfield: "appliesToPaymentType"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-payments_settings_get_checkout_fees_public_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaymentsSettingsGetCheckoutFeesPublicFlow"
+}

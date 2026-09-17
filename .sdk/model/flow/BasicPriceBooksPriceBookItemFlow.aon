@@ -1,0 +1,68 @@
+# BasicPriceBooksPriceBookItemFlow
+
+main: kit: flow: BasicPriceBooksPriceBookItemFlow:
+{
+  entity: "price_books_price_book_item",
+  kind: "basic",
+  name: "BasicPriceBooksPriceBookItemFlow",
+  step: [
+    {
+      input: {
+        ref: "price_books_price_book_item_ref01"
+      }
+
+      match: {
+        price_book_id: "price_book01"
+      }
+
+      op: "create"
+    }
+
+    {
+      data: {
+        price_book_id: "price_book01"
+      }
+
+      input: {
+        ref: "price_books_price_book_item_ref01",
+        srcdatavar: "price_books_price_book_item_ref01_data",
+        suffix: "_up0",
+        textfield: "archivedAt"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-price_books_price_book_item_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "price_books_price_book_item_ref01",
+        srcdatavar: "price_books_price_book_item_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "price_books_price_book_item01",
+        price_book_id: "price_book01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-price_books_price_book_item_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPriceBooksPriceBookItemFlow"
+}

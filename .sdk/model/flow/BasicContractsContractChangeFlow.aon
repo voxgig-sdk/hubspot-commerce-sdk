@@ -1,0 +1,79 @@
+# BasicContractsContractChangeFlow
+
+main: kit: flow: BasicContractsContractChangeFlow:
+{
+  entity: "contracts_contract_change",
+  kind: "basic",
+  name: "BasicContractsContractChangeFlow",
+  step: [
+    {
+      input: {
+        ref: "contracts_contract_change_ref01"
+      }
+
+      match: {
+        contract_id: "contract01"
+      }
+
+      op: "create"
+    }
+
+    {
+      match: {
+        contract_id: "contract01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "contracts_contract_change_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "contracts_contract_change_ref01",
+        srcdatavar: "contracts_contract_change_ref01_data",
+        suffix: "_up0",
+        textfield: "contractId"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-contracts_contract_change_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "contracts_contract_change_ref01",
+        srcdatavar: "contracts_contract_change_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "contracts_contract_change01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-contracts_contract_change_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicContractsContractChangeFlow"
+}

@@ -1,0 +1,22 @@
+# BasicBatchFlow
+
+main: kit: flow: BasicBatchFlow:
+{
+  entity: "batch",
+  kind: "basic",
+  name: "BasicBatchFlow",
+  step: [
+    {
+      input: {
+        ref: "batch_ref01"
+      }
+
+      match: {
+        price_book_id: "price_book01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicBatchFlow"
+}

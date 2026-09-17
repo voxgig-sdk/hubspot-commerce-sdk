@@ -1,0 +1,22 @@
+# BasicAdvancedFlow
+
+main: kit: flow: BasicAdvancedFlow:
+{
+  entity: "advanced",
+  kind: "basic",
+  name: "BasicAdvancedFlow",
+  step: [
+    {
+      input: {
+        ref: "advanced_ref01"
+      }
+
+      match: {
+        payment_crm_object_id: "payment_crm_object01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicAdvancedFlow"
+}

@@ -1,0 +1,589 @@
+{
+  "existing": {
+    "payments_settings_get_billing_settings_public": {
+      "PAYMENTS_SETTINGS_GET_BILLING_SETTINGS_PUBLIC00": {
+        "accountGoogleAnalyticsEnabled": true,
+        "checkoutPrefillEnabled": false,
+        "collectFullBillingAddress": true,
+        "collectPaymentMethodOnFile": false,
+        "defaultFromEmailAddress": "s4a",
+        "paymentsGoogleAnalyticsEnabled": false,
+        "recaptchaEnabled": true,
+        "id": "PAYMENTS_SETTINGS_GET_BILLING_SETTINGS_PUBLIC00"
+      },
+      "PAYMENTS_SETTINGS_GET_BILLING_SETTINGS_PUBLIC01": {
+        "accountGoogleAnalyticsEnabled": true,
+        "checkoutPrefillEnabled": false,
+        "collectFullBillingAddress": true,
+        "collectPaymentMethodOnFile": false,
+        "defaultFromEmailAddress": "s90",
+        "paymentsGoogleAnalyticsEnabled": false,
+        "recaptchaEnabled": true,
+        "id": "PAYMENTS_SETTINGS_GET_BILLING_SETTINGS_PUBLIC01"
+      },
+      "PAYMENTS_SETTINGS_GET_BILLING_SETTINGS_PUBLIC02": {
+        "accountGoogleAnalyticsEnabled": true,
+        "checkoutPrefillEnabled": false,
+        "collectFullBillingAddress": true,
+        "collectPaymentMethodOnFile": false,
+        "defaultFromEmailAddress": "sd6",
+        "paymentsGoogleAnalyticsEnabled": false,
+        "recaptchaEnabled": true,
+        "id": "PAYMENTS_SETTINGS_GET_BILLING_SETTINGS_PUBLIC02"
+      }
+    }
+  },
+  "new": {
+    "payments_settings_get_billing_settings_public": {
+      "payments_settings_get_billing_settings_public_ref01": {
+        "accountGoogleAnalyticsEnabled": true,
+        "checkoutPrefillEnabled": false,
+        "collectFullBillingAddress": true,
+        "collectPaymentMethodOnFile": false,
+        "defaultFromEmailAddress": "s11c",
+        "paymentsGoogleAnalyticsEnabled": false,
+        "recaptchaEnabled": true
+      }
+    }
+  },
+  "requests": {
+    "GET /commerce/payments-settings/2027-03-beta/payments-settings/billing": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-/commerce/payments-settings/2027-03-beta/payments-settings/billing",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": null,
+                "schema": {
+                  "example": null,
+                  "properties": {
+                    "accountGoogleAnalyticsEnabled": {
+                      "description": "Indicates whether Google Analytics tracking is enabled for the account. A boolean value.",
+                      "example": null,
+                      "type": "boolean"
+                    },
+                    "checkoutPrefillEnabled": {
+                      "description": "Indicates whether checkout fields should be prefilled. A boolean value.",
+                      "example": null,
+                      "type": "boolean"
+                    },
+                    "collectFullBillingAddress": {
+                      "description": "Indicates whether the full billing address should be collected. A boolean value.",
+                      "example": null,
+                      "type": "boolean"
+                    },
+                    "collectPaymentMethodOnFile": {
+                      "description": "Indicates whether a payment method should be kept on file. A boolean value.",
+                      "example": null,
+                      "type": "boolean"
+                    },
+                    "defaultFromEmailAddress": {
+                      "description": "The default email address used for sending communications. A string value.",
+                      "example": "testData@email.com",
+                      "type": "string"
+                    },
+                    "paymentsGoogleAnalyticsEnabled": {
+                      "description": "Indicates whether Google Analytics tracking is enabled for payments. A boolean value.",
+                      "example": null,
+                      "type": "boolean"
+                    },
+                    "recaptchaEnabled": {
+                      "description": "Indicates whether reCAPTCHA is enabled for additional security. A boolean value.",
+                      "example": null,
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "checkoutPrefillEnabled",
+                    "collectFullBillingAddress",
+                    "collectPaymentMethodOnFile",
+                    "defaultFromEmailAddress",
+                    "paymentsGoogleAnalyticsEnabled",
+                    "recaptchaEnabled"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "default": {
+            "content": {
+              "*/*": {
+                "example": null,
+                "schema": {
+                  "description": "Represents an error response returned by the API when an operation fails. This component is used in various endpoints to provide detailed information about the error encountered.",
+                  "example": {
+                    "category": "VALIDATION_ERROR",
+                    "correlationId": "aeb5f871-7f07-4993-9211-075dc63e7cbf",
+                    "links": {
+                      "knowledge-base": "https://www.hubspot.com/products/service/knowledge-base"
+                    },
+                    "message": "Invalid input (details will vary based on the error)"
+                  },
+                  "properties": {
+                    "category": {
+                      "description": "The error category.",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "context": {
+                      "additionalProperties": {
+                        "example": null,
+                        "items": {
+                          "example": null,
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "description": "Context about the error condition, represented as an object with additional properties.",
+                      "example": "{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}",
+                      "type": "object"
+                    },
+                    "correlationId": {
+                      "description": "A unique identifier for the request. Include this value with any error reports or support tickets. Format: UUID.",
+                      "example": "aeb5f871-7f07-4993-9211-075dc63e7cbf",
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "errors": {
+                      "description": "Further information about the error, represented as an array of ErrorDetail objects.",
+                      "example": null,
+                      "items": {
+                        "description": "Represents detailed information about an error that occurred in the API. This component is used to provide additional context and specifics about errors, typically as part of an error response.",
+                        "example": null,
+                        "properties": {
+                          "code": {
+                            "description": "The status code associated with the error detail, represented as a string.",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "context": {
+                            "additionalProperties": {
+                              "example": null,
+                              "items": {
+                                "example": null,
+                                "type": "string"
+                              },
+                              "type": "array"
+                            },
+                            "description": "Context about the error condition, represented as an object. It may include additional properties, each containing an array of strings, to provide more detailed information about the error.",
+                            "example": "{missingScopes=[scope1, scope2]}",
+                            "type": "object"
+                          },
+                          "in": {
+                            "description": "The name of the field or parameter in which the error was found. It is a string that helps identify the source of the error.",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "message": {
+                            "description": "A human readable message describing the error along with remediation steps where appropriate. This is a required field.",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "subCategory": {
+                            "description": "A specific category that contains more specific detail about the error, providing further classification.",
+                            "example": null,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "links": {
+                      "additionalProperties": {
+                        "example": null,
+                        "type": "string"
+                      },
+                      "description": "A map of link names to associated URIs containing documentation about the error or recommended remediation steps.",
+                      "example": null,
+                      "type": "object"
+                    },
+                    "message": {
+                      "description": "A human readable message describing the error along with remediation steps where appropriate.",
+                      "example": "An error occurred",
+                      "type": "string"
+                    },
+                    "subCategory": {
+                      "description": "A specific category that contains more specific detail about the error.",
+                      "example": null,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "category",
+                    "correlationId",
+                    "message"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "contracts-read"
+            ]
+          },
+          {
+            "oauth2": [
+              "crm.objects.invoices.read"
+            ]
+          },
+          {
+            "oauth2": [
+              "crm.schemas.invoices.read"
+            ]
+          },
+          {
+            "oauth2": [
+              "payment-links-read"
+            ]
+          },
+          {
+            "oauth2": [
+              "payments-checkout-settings-read"
+            ]
+          },
+          {
+            "oauth2": [
+              "cpq.quotes.write"
+            ]
+          },
+          {
+            "oauth2": [
+              "crm.objects.quotes.read"
+            ]
+          },
+          {
+            "oauth2": [
+              "crm.schemas.quotes.read"
+            ]
+          },
+          {
+            "oauth2": [
+              "cpq.quotes.read"
+            ]
+          },
+          {
+            "oauth2": [
+              "crm.objects.subscriptions.read"
+            ]
+          },
+          {
+            "oauth2": [
+              "crm.schemas.subscriptions.read"
+            ]
+          }
+        ],
+        "securitySchemes": {
+          "developer_hapikey": {
+            "in": "query",
+            "name": "hapikey",
+            "type": "apiKey"
+          },
+          "oauth2": {
+            "flows": {
+              "authorizationCode": {
+                "authorizationUrl": "https://app.hubspot.com/oauth/authorize",
+                "scopes": {},
+                "tokenUrl": "https://api.hubapi.com/oauth/v1/token"
+              }
+            },
+            "type": "oauth2"
+          },
+          "private_apps": {
+            "in": "header",
+            "name": "private-app",
+            "type": "apiKey"
+          },
+          "private_apps_legacy": {
+            "in": "header",
+            "name": "private-app-legacy",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    },
+    "PATCH /commerce/payments-settings/2027-03-beta/payments-settings/billing": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "patch-/commerce/payments-settings/2027-03-beta/payments-settings/billing",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": null,
+              "schema": {
+                "example": null,
+                "properties": {
+                  "checkoutPrefillEnabled": {
+                    "description": "A boolean indicating whether checkout forms should be pre-filled with known customer information.",
+                    "example": null,
+                    "type": "boolean"
+                  },
+                  "collectFullBillingAddress": {
+                    "description": "A boolean indicating whether the full billing address should be collected during the checkout process.",
+                    "example": null,
+                    "type": "boolean"
+                  },
+                  "collectPaymentMethodOnFile": {
+                    "description": "A boolean indicating whether the payment method should be stored on file for future transactions.",
+                    "example": null,
+                    "type": "boolean"
+                  },
+                  "defaultFromEmailAddress": {
+                    "description": "An object representing the default email address used for sending communications related to billing.",
+                    "example": null,
+                    "properties": {},
+                    "type": "object"
+                  },
+                  "paymentsGoogleAnalyticsEnabled": {
+                    "description": "A boolean indicating whether Google Analytics tracking is enabled for payment transactions.",
+                    "example": null,
+                    "type": "boolean"
+                  },
+                  "recaptchaEnabled": {
+                    "description": "A boolean indicating whether reCAPTCHA is enabled during the checkout process to prevent fraudulent activities.",
+                    "example": null,
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "defaultFromEmailAddress"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": null,
+                "schema": {
+                  "example": null,
+                  "properties": {
+                    "accountGoogleAnalyticsEnabled": {
+                      "description": "Indicates whether Google Analytics tracking is enabled for the account. A boolean value.",
+                      "example": null,
+                      "type": "boolean"
+                    },
+                    "checkoutPrefillEnabled": {
+                      "description": "Indicates whether checkout fields should be prefilled. A boolean value.",
+                      "example": null,
+                      "type": "boolean"
+                    },
+                    "collectFullBillingAddress": {
+                      "description": "Indicates whether the full billing address should be collected. A boolean value.",
+                      "example": null,
+                      "type": "boolean"
+                    },
+                    "collectPaymentMethodOnFile": {
+                      "description": "Indicates whether a payment method should be kept on file. A boolean value.",
+                      "example": null,
+                      "type": "boolean"
+                    },
+                    "defaultFromEmailAddress": {
+                      "description": "The default email address used for sending communications. A string value.",
+                      "example": "testData@email.com",
+                      "type": "string"
+                    },
+                    "paymentsGoogleAnalyticsEnabled": {
+                      "description": "Indicates whether Google Analytics tracking is enabled for payments. A boolean value.",
+                      "example": null,
+                      "type": "boolean"
+                    },
+                    "recaptchaEnabled": {
+                      "description": "Indicates whether reCAPTCHA is enabled for additional security. A boolean value.",
+                      "example": null,
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "checkoutPrefillEnabled",
+                    "collectFullBillingAddress",
+                    "collectPaymentMethodOnFile",
+                    "defaultFromEmailAddress",
+                    "paymentsGoogleAnalyticsEnabled",
+                    "recaptchaEnabled"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "default": {
+            "content": {
+              "*/*": {
+                "example": null,
+                "schema": {
+                  "description": "Represents an error response returned by the API when an operation fails. This component is used in various endpoints to provide detailed information about the error encountered.",
+                  "example": {
+                    "category": "VALIDATION_ERROR",
+                    "correlationId": "aeb5f871-7f07-4993-9211-075dc63e7cbf",
+                    "links": {
+                      "knowledge-base": "https://www.hubspot.com/products/service/knowledge-base"
+                    },
+                    "message": "Invalid input (details will vary based on the error)"
+                  },
+                  "properties": {
+                    "category": {
+                      "description": "The error category.",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "context": {
+                      "additionalProperties": {
+                        "example": null,
+                        "items": {
+                          "example": null,
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "description": "Context about the error condition, represented as an object with additional properties.",
+                      "example": "{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}",
+                      "type": "object"
+                    },
+                    "correlationId": {
+                      "description": "A unique identifier for the request. Include this value with any error reports or support tickets. Format: UUID.",
+                      "example": "aeb5f871-7f07-4993-9211-075dc63e7cbf",
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "errors": {
+                      "description": "Further information about the error, represented as an array of ErrorDetail objects.",
+                      "example": null,
+                      "items": {
+                        "description": "Represents detailed information about an error that occurred in the API. This component is used to provide additional context and specifics about errors, typically as part of an error response.",
+                        "example": null,
+                        "properties": {
+                          "code": {
+                            "description": "The status code associated with the error detail, represented as a string.",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "context": {
+                            "additionalProperties": {
+                              "example": null,
+                              "items": {
+                                "example": null,
+                                "type": "string"
+                              },
+                              "type": "array"
+                            },
+                            "description": "Context about the error condition, represented as an object. It may include additional properties, each containing an array of strings, to provide more detailed information about the error.",
+                            "example": "{missingScopes=[scope1, scope2]}",
+                            "type": "object"
+                          },
+                          "in": {
+                            "description": "The name of the field or parameter in which the error was found. It is a string that helps identify the source of the error.",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "message": {
+                            "description": "A human readable message describing the error along with remediation steps where appropriate. This is a required field.",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "subCategory": {
+                            "description": "A specific category that contains more specific detail about the error, providing further classification.",
+                            "example": null,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "links": {
+                      "additionalProperties": {
+                        "example": null,
+                        "type": "string"
+                      },
+                      "description": "A map of link names to associated URIs containing documentation about the error or recommended remediation steps.",
+                      "example": null,
+                      "type": "object"
+                    },
+                    "message": {
+                      "description": "A human readable message describing the error along with remediation steps where appropriate.",
+                      "example": "An error occurred",
+                      "type": "string"
+                    },
+                    "subCategory": {
+                      "description": "A specific category that contains more specific detail about the error.",
+                      "example": null,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "category",
+                    "correlationId",
+                    "message"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "payments-checkout-settings-write"
+            ]
+          }
+        ],
+        "securitySchemes": {
+          "developer_hapikey": {
+            "in": "query",
+            "name": "hapikey",
+            "type": "apiKey"
+          },
+          "oauth2": {
+            "flows": {
+              "authorizationCode": {
+                "authorizationUrl": "https://app.hubspot.com/oauth/authorize",
+                "scopes": {},
+                "tokenUrl": "https://api.hubapi.com/oauth/v1/token"
+              }
+            },
+            "type": "oauth2"
+          },
+          "private_apps": {
+            "in": "header",
+            "name": "private-app",
+            "type": "apiKey"
+          },
+          "private_apps_legacy": {
+            "in": "header",
+            "name": "private-app-legacy",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    }
+  }
+}

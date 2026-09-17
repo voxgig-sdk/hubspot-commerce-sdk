@@ -1,0 +1,101 @@
+# Entity: payments_create_manual_payment_public
+
+main: kit: entity: payments_create_manual_payment_public: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "associations"
+      req: true
+      short: "An array of associations related to the payment, where each item is an AssociationPublicRequest object."
+      type: "`$ARRAY`"
+    }
+    {
+      name: "billingAddress"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "currencyCode"
+      req: true
+      short: "The currency code for the payment, represented as a string."
+      type: "`$STRING`"
+    }
+    {
+      name: "customerEmail"
+      req: false
+      short: "The email address of the customer making the payment, represented as a string."
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: true
+      short: "The unique identifier for the created manual payment, represented as a string."
+      type: "`$STRING`"
+    }
+    {
+      name: "paymentAmount"
+      req: true
+      short: "The amount of the payment, represented as a number."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "paymentDate"
+      req: true
+      short: "The date of the payment, represented as a string."
+      type: "`$STRING`"
+    }
+    {
+      name: "paymentMethod"
+      req: true
+      short: "The method used for the payment, represented as a string."
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "payments_create_manual_payment_public"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          contract: {
+            id: "POST /commerce/payments/2027-03-beta/manual-payments"
+            json: "{\"operationId\":\"post-/commerce/payments/2027-03-beta/manual-payments_/commerce/payments/2027-03-beta/manual-payments\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"example\":null,\"schema\":{\"example\":null,\"properties\":{\"associations\":{\"description\":\"An array of associations related to the payment, where each item is an AssociationPublicRequest object.\",\"example\":null,\"items\":{\"example\":null,\"properties\":{\"to\":{\"example\":null,\"properties\":{\"id\":{\"description\":\"The unique identifier for the target object. It is a required string property.\",\"example\":null,\"type\":\"string\"},\"objectType\":{\"description\":\"The type of the target object. This is a string property that specifies the kind of object being associated.\",\"example\":null,\"type\":\"string\"}},\"required\":[\"id\"],\"type\":\"object\"},\"types\":{\"description\":\"An array of association types, each defined by the AssociationTypePublicRequest schema. This specifies the nature of the association between the objects.\",\"example\":null,\"items\":{\"example\":null,\"properties\":{\"associationCategory\":{\"description\":\"A string representing the category of the association.\",\"example\":null,\"type\":\"string\"},\"associationTypeId\":{\"description\":\"A string representing the unique identifier for the association type.\",\"example\":null,\"type\":\"string\"}},\"required\":[\"associationCategory\",\"associationTypeId\"],\"type\":\"object\"},\"type\":\"array\"}},\"required\":[\"to\",\"types\"],\"type\":\"object\"},\"type\":\"array\"},\"billingAddress\":{\"example\":null,\"properties\":{\"city\":{\"description\":\"The city of the billing address.\",\"example\":null,\"type\":\"string\"},\"country\":{\"description\":\"The country of the billing address.\",\"example\":null,\"type\":\"string\"},\"line1\":{\"description\":\"The first line of the billing address, typically containing the street address or PO Box number.\",\"example\":null,\"type\":\"string\"},\"line2\":{\"description\":\"The second line of the billing address, often used for apartment, suite, or unit numbers.\",\"example\":null,\"type\":\"string\"},\"postalCode\":{\"description\":\"The postal or ZIP code of the billing address.\",\"example\":null,\"type\":\"string\"},\"state\":{\"description\":\"The state or region of the billing address.\",\"example\":null,\"type\":\"string\"}},\"type\":\"object\"},\"currencyCode\":{\"description\":\"The currency code for the payment, represented as a string.\",\"example\":null,\"type\":\"string\"},\"customerEmail\":{\"description\":\"The email address of the customer making the payment, represented as a string.\",\"example\":null,\"type\":\"string\"},\"paymentAmount\":{\"description\":\"The amount of the payment, represented as a number.\",\"example\":null,\"type\":\"number\"},\"paymentDate\":{\"description\":\"The date of the payment, represented as a string.\",\"example\":null,\"type\":\"string\"},\"paymentMethod\":{\"description\":\"The method used for the payment, represented as a string.\",\"example\":null,\"type\":\"string\"}},\"required\":[\"associations\",\"currencyCode\",\"paymentAmount\",\"paymentDate\",\"paymentMethod\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":null,\"schema\":{\"example\":null,\"properties\":{\"id\":{\"description\":\"The unique identifier for the created manual payment, represented as a string.\",\"example\":null,\"type\":\"string\"}},\"required\":[\"id\"],\"type\":\"object\"}}},\"description\":\"successful operation\"},\"default\":{\"content\":{\"*/*\":{\"example\":null,\"schema\":{\"description\":\"Represents an error response returned by the API when an operation fails. This component is used in various endpoints to provide detailed information about the error encountered.\",\"example\":{\"category\":\"VALIDATION_ERROR\",\"correlationId\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"links\":{\"knowledge-base\":\"https://www.hubspot.com/products/service/knowledge-base\"},\"message\":\"Invalid input (details will vary based on the error)\"},\"properties\":{\"category\":{\"description\":\"The error category. Type: string.\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition. Type: object with additional properties of type array of strings.\",\"example\":\"{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"correlationId\":{\"description\":\"A unique identifier for the request. Include this value with any error reports or support tickets. Type: string, Format: uuid.\",\"example\":\"aeb5f871-7f07-4993-9211-075dc63e7cbf\",\"format\":\"uuid\",\"type\":\"string\"},\"errors\":{\"description\":\"Further information about the error. Type: array of ErrorDetail objects.\",\"example\":null,\"items\":{\"description\":\"Represents detailed information about an error that occurred in the API. This component is used to provide additional context and specifics about errors, typically as part of an error response.\",\"example\":null,\"properties\":{\"code\":{\"description\":\"The status code associated with the error detail.\",\"example\":null,\"type\":\"string\"},\"context\":{\"additionalProperties\":{\"example\":null,\"items\":{\"example\":null,\"type\":\"string\"},\"type\":\"array\"},\"description\":\"Context about the error condition, represented as an object with additional properties that are arrays of strings.\",\"example\":\"{missingScopes=[scope1, scope2]}\",\"type\":\"object\"},\"in\":{\"description\":\"The name of the field or parameter in which the error was found.\",\"example\":null,\"type\":\"string\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate.\",\"example\":null,\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error.\",\"example\":null,\"type\":\"string\"}},\"required\":[\"message\"],\"type\":\"object\"},\"type\":\"array\"},\"links\":{\"additionalProperties\":{\"example\":null,\"type\":\"string\"},\"description\":\"A map of link names to associated URIs containing documentation about the error or recommended remediation steps. Type: object with additional properties of type string.\",\"example\":null,\"type\":\"object\"},\"message\":{\"description\":\"A human readable message describing the error along with remediation steps where appropriate. Type: string.\",\"example\":\"An error occurred\",\"type\":\"string\"},\"subCategory\":{\"description\":\"A specific category that contains more specific detail about the error. Type: string.\",\"example\":null,\"type\":\"string\"}},\"required\":[\"category\",\"correlationId\",\"message\"],\"type\":\"object\"}}},\"description\":\"\"}},\"security\":[{\"oauth2\":[\"crm.objects.commercepayments.write\"]},{\"oauth2\":[\"crm.schemas.commercepayments.write\"]}],\"securitySchemes\":{\"developer_hapikey\":{\"in\":\"query\",\"name\":\"hapikey\",\"type\":\"apiKey\"},\"oauth2\":{\"flows\":{\"authorizationCode\":{\"authorizationUrl\":\"https://app.hubspot.com/oauth/authorize\",\"scopes\":{},\"tokenUrl\":\"https://api.hubapi.com/oauth/v1/token\"}},\"type\":\"oauth2\"},\"private_apps\":{\"in\":\"header\",\"name\":\"private-app\",\"type\":\"apiKey\"},\"private_apps_legacy\":{\"in\":\"header\",\"name\":\"private-app-legacy\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}"
+            source: "openapi3"
+            version: 1
+          }
+          method: "POST"
+          orig: "/commerce/payments/2027-03-beta/manual-payments"
+          segments: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "payments"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "manual-payments"
+            }
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

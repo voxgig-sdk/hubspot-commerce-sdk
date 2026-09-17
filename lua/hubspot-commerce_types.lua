@@ -1,0 +1,935 @@
+-- Typed models for the HubspotCommerce SDK (LuaLS annotations).
+--
+-- GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
+-- params (op.<name>.points[].args.params[]). Field/param types come from the
+-- canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
+-- @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
+-- edit by hand.
+
+---@class Advanced
+
+---@class AdvancedCreateData
+---@field payment_crm_object_id string
+
+---@class Basic
+
+---@class BasicRemoveMatch
+---@field payment_link_id string
+
+---@class Batch
+
+---@class BatchCreateData
+---@field price_book_id number
+
+---@class Contract
+---@field addressTypesToCollect table
+---@field allTransactionsFeeName? string
+---@field allTransactionsFeePercentage? number
+---@field allowedPaymentMethods table
+---@field annualContractValue? number
+---@field automatedTaxesEnabled boolean
+---@field billingAddress? table
+---@field billingCompanyId? string
+---@field billingContactId? string
+---@field billingStartDateOverride? string
+---@field businessUnitId? string
+---@field cardFeeName? string
+---@field cardFeePercentage? number
+---@field collectionProcess? string
+---@field contractEffectiveDate? string
+---@field contractSourceId? string
+---@field createdAt? string
+---@field currencyCode? string
+---@field currentAnnualRecurringRevenue? number
+---@field currentMonthlyRecurringRevenue? number
+---@field customProperties table
+---@field dealId? string
+---@field directDebitFeeName? string
+---@field directDebitFeePercentage? number
+---@field discountCode? string
+---@field endDate? string
+---@field externalPaymentMethodReferenceId? string
+---@field hubspotBillingEnabled boolean
+---@field id string
+---@field language? string
+---@field lineItems table
+---@field locale? string
+---@field name? string
+---@field netPaymentTerms? number
+---@field ownerId table
+---@field paymentEnabled boolean
+---@field paymentMethod? string
+---@field poNumber? string
+---@field preTerminationContractValue? number
+---@field renewalContractId? string
+---@field renewalDate? string
+---@field sellerCompanyAddress? table
+---@field sellerCompanyDomain table
+---@field sellerCompanyName? string
+---@field sellerEmail? string
+---@field sellerFirstName? string
+---@field sellerLastName? string
+---@field sellerPhone table
+---@field sellerPhoneNumber? string
+---@field startDate? string
+---@field status string
+---@field storePaymentMethodAtCheckout boolean
+---@field terminationDate? string
+---@field totalBilledAmount? number
+---@field totalBilledAmountPreTax? number
+---@field totalCollectedFees? number
+---@field totalCollectedTaxes? number
+---@field totalContractValue? number
+---@field totalPaidAmount? number
+---@field updatedAt? string
+
+---@class ContractLoadMatch
+---@field id string
+
+---@class ContractCreateData
+---@field addressTypesToCollect table
+---@field allTransactionsFeeName? string
+---@field allTransactionsFeePercentage? number
+---@field allowedPaymentMethods table
+---@field annualContractValue? number
+---@field automatedTaxesEnabled boolean
+---@field billingAddress? table
+---@field billingCompanyId? string
+---@field billingContactId? string
+---@field billingStartDateOverride? string
+---@field businessUnitId? string
+---@field cardFeeName? string
+---@field cardFeePercentage? number
+---@field collectionProcess? string
+---@field contractEffectiveDate? string
+---@field contractSourceId? string
+---@field createdAt? string
+---@field currencyCode? string
+---@field currentAnnualRecurringRevenue? number
+---@field currentMonthlyRecurringRevenue? number
+---@field customProperties table
+---@field dealId? string
+---@field directDebitFeeName? string
+---@field directDebitFeePercentage? number
+---@field discountCode? string
+---@field endDate? string
+---@field externalPaymentMethodReferenceId? string
+---@field hubspotBillingEnabled boolean
+---@field id string
+---@field language? string
+---@field lineItems table
+---@field locale? string
+---@field name? string
+---@field netPaymentTerms? number
+---@field ownerId table
+---@field paymentEnabled boolean
+---@field paymentMethod? string
+---@field poNumber? string
+---@field preTerminationContractValue? number
+---@field renewalContractId? string
+---@field renewalDate? string
+---@field sellerCompanyAddress? table
+---@field sellerCompanyDomain table
+---@field sellerCompanyName? string
+---@field sellerEmail? string
+---@field sellerFirstName? string
+---@field sellerLastName? string
+---@field sellerPhone table
+---@field sellerPhoneNumber? string
+---@field startDate? string
+---@field status string
+---@field storePaymentMethodAtCheckout boolean
+---@field terminationDate? string
+---@field totalBilledAmount? number
+---@field totalBilledAmountPreTax? number
+---@field totalCollectedFees? number
+---@field totalCollectedTaxes? number
+---@field totalContractValue? number
+---@field totalPaidAmount? number
+---@field updatedAt? string
+
+---@class ContractUpdateData
+---@field id string
+---@field addressTypesToCollect? table
+---@field allTransactionsFeeName? string
+---@field allTransactionsFeePercentage? number
+---@field allowedPaymentMethods? table
+---@field annualContractValue? number
+---@field automatedTaxesEnabled? boolean
+---@field billingAddress? table
+---@field billingCompanyId? string
+---@field billingContactId? string
+---@field billingStartDateOverride? string
+---@field businessUnitId? string
+---@field cardFeeName? string
+---@field cardFeePercentage? number
+---@field collectionProcess? string
+---@field contractEffectiveDate? string
+---@field contractSourceId? string
+---@field createdAt? string
+---@field currencyCode? string
+---@field currentAnnualRecurringRevenue? number
+---@field currentMonthlyRecurringRevenue? number
+---@field customProperties? table
+---@field dealId? string
+---@field directDebitFeeName? string
+---@field directDebitFeePercentage? number
+---@field discountCode? string
+---@field endDate? string
+---@field externalPaymentMethodReferenceId? string
+---@field hubspotBillingEnabled? boolean
+---@field language? string
+---@field lineItems? table
+---@field locale? string
+---@field name? string
+---@field netPaymentTerms? number
+---@field ownerId? table
+---@field paymentEnabled? boolean
+---@field paymentMethod? string
+---@field poNumber? string
+---@field preTerminationContractValue? number
+---@field renewalContractId? string
+---@field renewalDate? string
+---@field sellerCompanyAddress? table
+---@field sellerCompanyDomain? table
+---@field sellerCompanyName? string
+---@field sellerEmail? string
+---@field sellerFirstName? string
+---@field sellerLastName? string
+---@field sellerPhone? table
+---@field sellerPhoneNumber? string
+---@field startDate? string
+---@field status? string
+---@field storePaymentMethodAtCheckout? boolean
+---@field terminationDate? string
+---@field totalBilledAmount? number
+---@field totalBilledAmountPreTax? number
+---@field totalCollectedFees? number
+---@field totalCollectedTaxes? number
+---@field totalContractValue? number
+---@field totalPaidAmount? number
+---@field updatedAt? string
+
+---@class ContractsContract
+---@field addressTypesToCollect table
+---@field allTransactionsFeeName? string
+---@field allTransactionsFeePercentage? number
+---@field allowedPaymentMethods table
+---@field annualContractValue? number
+---@field automatedTaxesEnabled boolean
+---@field billingAddress? table
+---@field billingCompanyId? string
+---@field billingContactId? string
+---@field billingStartDateOverride? string
+---@field businessUnitId? string
+---@field cardFeeName? string
+---@field cardFeePercentage? number
+---@field collectionProcess? string
+---@field contractEffectiveDate? string
+---@field contractSourceId? string
+---@field createdAt? string
+---@field currencyCode? string
+---@field currentAnnualRecurringRevenue? number
+---@field currentMonthlyRecurringRevenue? number
+---@field customProperties table
+---@field dealId? string
+---@field directDebitFeeName? string
+---@field directDebitFeePercentage? number
+---@field discountCode? string
+---@field endDate? string
+---@field externalPaymentMethodReferenceId? string
+---@field hubspotBillingEnabled boolean
+---@field id string
+---@field language? string
+---@field lineItems table
+---@field locale? string
+---@field name? string
+---@field netPaymentTerms? number
+---@field paymentEnabled boolean
+---@field paymentMethod? string
+---@field poNumber? string
+---@field preTerminationContractValue? number
+---@field renewalContractId? string
+---@field renewalDate? string
+---@field sellerCompanyAddress? table
+---@field sellerCompanyName? string
+---@field sellerEmail? string
+---@field sellerFirstName? string
+---@field sellerLastName? string
+---@field sellerPhoneNumber? string
+---@field startDate? string
+---@field status string
+---@field storePaymentMethodAtCheckout boolean
+---@field terminationDate? string
+---@field totalBilledAmount? number
+---@field totalBilledAmountPreTax? number
+---@field totalCollectedFees? number
+---@field totalCollectedTaxes? number
+---@field totalContractValue? number
+---@field totalPaidAmount? number
+---@field updatedAt? string
+
+---@class ContractsContractCreateData
+---@field contract_id string
+---@field addressTypesToCollect table
+---@field allTransactionsFeeName? string
+---@field allTransactionsFeePercentage? number
+---@field allowedPaymentMethods table
+---@field annualContractValue? number
+---@field automatedTaxesEnabled boolean
+---@field billingAddress? table
+---@field billingCompanyId? string
+---@field billingContactId? string
+---@field billingStartDateOverride? string
+---@field businessUnitId? string
+---@field cardFeeName? string
+---@field cardFeePercentage? number
+---@field collectionProcess? string
+---@field contractEffectiveDate? string
+---@field contractSourceId? string
+---@field createdAt? string
+---@field currencyCode? string
+---@field currentAnnualRecurringRevenue? number
+---@field currentMonthlyRecurringRevenue? number
+---@field customProperties table
+---@field dealId? string
+---@field directDebitFeeName? string
+---@field directDebitFeePercentage? number
+---@field discountCode? string
+---@field endDate? string
+---@field externalPaymentMethodReferenceId? string
+---@field hubspotBillingEnabled boolean
+---@field id string
+---@field language? string
+---@field lineItems table
+---@field locale? string
+---@field name? string
+---@field netPaymentTerms? number
+---@field paymentEnabled boolean
+---@field paymentMethod? string
+---@field poNumber? string
+---@field preTerminationContractValue? number
+---@field renewalContractId? string
+---@field renewalDate? string
+---@field sellerCompanyAddress? table
+---@field sellerCompanyName? string
+---@field sellerEmail? string
+---@field sellerFirstName? string
+---@field sellerLastName? string
+---@field sellerPhoneNumber? string
+---@field startDate? string
+---@field status string
+---@field storePaymentMethodAtCheckout boolean
+---@field terminationDate? string
+---@field totalBilledAmount? number
+---@field totalBilledAmountPreTax? number
+---@field totalCollectedFees? number
+---@field totalCollectedTaxes? number
+---@field totalContractValue? number
+---@field totalPaidAmount? number
+---@field updatedAt? string
+
+---@class ContractsContractChange
+---@field contractId string
+---@field createdAt? string
+---@field deltaLineItems table
+---@field effectiveDate? string
+---@field id string
+---@field lineItemChanges table
+---@field name? string
+---@field proposedLineItems table
+---@field prorating boolean
+---@field quoteId? string
+---@field status string
+---@field type string
+---@field updatedAt? string
+
+---@class ContractsContractChangeLoadMatch
+---@field id string
+
+---@class ContractsContractChangeListMatch
+---@field contract_id string
+
+---@class ContractsContractChangeCreateData
+---@field contractId string
+---@field createdAt? string
+---@field deltaLineItems table
+---@field effectiveDate? string
+---@field id string
+---@field lineItemChanges table
+---@field name? string
+---@field proposedLineItems table
+---@field prorating boolean
+---@field quoteId? string
+---@field status string
+---@field type string
+---@field updatedAt? string
+
+---@class ContractsContractChangeUpdateData
+---@field id string
+---@field contractId? string
+---@field createdAt? string
+---@field deltaLineItems? table
+---@field effectiveDate? string
+---@field lineItemChanges? table
+---@field name? string
+---@field proposedLineItems? table
+---@field prorating? boolean
+---@field quoteId? string
+---@field status? string
+---@field type? string
+---@field updatedAt? string
+
+---@class ContractsContractChangePreview
+---@field deltaLineItems table
+---@field proposedLineItems table
+
+---@class ContractsContractChangePreviewCreateData
+---@field deltaLineItems table
+---@field proposedLineItems table
+
+---@class ContractsQuote
+---@field dealId? string
+---@field dealPipeline? string
+---@field dealStage? string
+---@field name? string
+---@field quoteTemplateId string
+
+---@class ContractsQuoteCreateData
+---@field contract_id string
+---@field dealId? string
+---@field dealPipeline? string
+---@field dealStage? string
+---@field name? string
+---@field quoteTemplateId string
+
+---@class Item
+---@field id? string
+
+---@class ItemRemoveMatch
+---@field id number
+---@field price_book_id number
+
+---@class PaymentLink
+---@field acceptedPaymentMethods table
+---@field additionalFormFields table
+---@field archived boolean
+---@field archivedAt? string
+---@field automatedSalesTaxEnabled boolean
+---@field businessUnitId? string
+---@field checkoutFeeIds table
+---@field collectFullBillingAddress boolean
+---@field collectShippingAddress boolean
+---@field completedPurchaseCount number
+---@field createContractOnPurchase boolean
+---@field createdAt? string
+---@field currencyCode string
+---@field dealConfigurations table
+---@field descriptionHtml? string
+---@field discount table
+---@field discountCodeEnabled boolean
+---@field discountObjectId? string
+---@field discounts table
+---@field domainId? string
+---@field enableDefaultCheckoutFees boolean
+---@field expirationSettings? table
+---@field feeObjectIds table
+---@field fees table
+---@field formGuid string
+---@field id string
+---@field includeEmailInSuccessRedirect boolean
+---@field isOneTimeUseEnabled boolean
+---@field lineItemObjectIds table
+---@field lineItems table
+---@field paymentLinkName string
+---@field paymentLinkUrl string
+---@field state string
+---@field storePaymentMethodAtCheckout boolean
+---@field successUrl? string
+---@field taxObjectIds table
+---@field taxes table
+---@field updatedAt? string
+
+---@class PaymentLinkLoadMatch
+---@field id string
+---@field archived? boolean
+
+---@class PaymentLinkListMatch
+---@field after? string
+---@field archived? boolean
+---@field created_after? number
+---@field created_at? number
+---@field created_before? number
+---@field limit? number
+---@field sort? string
+---@field updated_after? number
+---@field updated_at? number
+---@field updated_before? number
+
+---@class PaymentLinkCreateData
+---@field acceptedPaymentMethods table
+---@field additionalFormFields table
+---@field archived boolean
+---@field archivedAt? string
+---@field automatedSalesTaxEnabled boolean
+---@field businessUnitId? string
+---@field checkoutFeeIds table
+---@field collectFullBillingAddress boolean
+---@field collectShippingAddress boolean
+---@field completedPurchaseCount number
+---@field createContractOnPurchase boolean
+---@field createdAt? string
+---@field currencyCode string
+---@field dealConfigurations table
+---@field descriptionHtml? string
+---@field discount table
+---@field discountCodeEnabled boolean
+---@field discountObjectId? string
+---@field discounts table
+---@field domainId? string
+---@field enableDefaultCheckoutFees boolean
+---@field expirationSettings? table
+---@field feeObjectIds table
+---@field fees table
+---@field formGuid string
+---@field id string
+---@field includeEmailInSuccessRedirect boolean
+---@field isOneTimeUseEnabled boolean
+---@field lineItemObjectIds table
+---@field lineItems table
+---@field paymentLinkName string
+---@field paymentLinkUrl string
+---@field state string
+---@field storePaymentMethodAtCheckout boolean
+---@field successUrl? string
+---@field taxObjectIds table
+---@field taxes table
+---@field updatedAt? string
+
+---@class PaymentLinkUpdateData
+---@field id string
+---@field acceptedPaymentMethods? table
+---@field additionalFormFields? table
+---@field archived? boolean
+---@field archivedAt? string
+---@field automatedSalesTaxEnabled? boolean
+---@field businessUnitId? string
+---@field checkoutFeeIds? table
+---@field collectFullBillingAddress? boolean
+---@field collectShippingAddress? boolean
+---@field completedPurchaseCount? number
+---@field createContractOnPurchase? boolean
+---@field createdAt? string
+---@field currencyCode? string
+---@field dealConfigurations? table
+---@field descriptionHtml? string
+---@field discount? table
+---@field discountCodeEnabled? boolean
+---@field discountObjectId? string
+---@field discounts? table
+---@field domainId? string
+---@field enableDefaultCheckoutFees? boolean
+---@field expirationSettings? table
+---@field feeObjectIds? table
+---@field fees? table
+---@field formGuid? string
+---@field includeEmailInSuccessRedirect? boolean
+---@field isOneTimeUseEnabled? boolean
+---@field lineItemObjectIds? table
+---@field lineItems? table
+---@field paymentLinkName? string
+---@field paymentLinkUrl? string
+---@field state? string
+---@field storePaymentMethodAtCheckout? boolean
+---@field successUrl? string
+---@field taxObjectIds? table
+---@field taxes? table
+---@field updatedAt? string
+
+---@class PaymentMethodsCommercePaymentMethodSettingsPublic
+---@field activeCurrencies table
+---@field commercePaymentMethod string
+---@field isDefaultOn boolean
+---@field paymentMethodSettings table
+---@field paymentMethodUpdates table
+---@field supportedCurrencies table
+
+---@class PaymentMethodsCommercePaymentMethodSettingsPublicListMatch
+---@field activeCurrencies? table
+---@field commercePaymentMethod? string
+---@field isDefaultOn? boolean
+---@field paymentMethodSettings? table
+---@field paymentMethodUpdates? table
+---@field supportedCurrencies? table
+
+---@class PaymentMethodsCommercePaymentMethodSettingsPublicUpdateData
+---@field activeCurrencies? table
+---@field commercePaymentMethod? string
+---@field isDefaultOn? boolean
+---@field paymentMethodSettings? table
+---@field paymentMethodUpdates? table
+---@field supportedCurrencies? table
+
+---@class PaymentsActionResponseWithSingleResultSimplePublicObject
+---@field category string
+---@field context table
+---@field errors table
+---@field id? string
+---@field links table
+---@field message string
+---@field status string
+---@field subCategory? table
+
+---@class PaymentsActionResponseWithSingleResultSimplePublicObjectListMatch
+---@field payment_crm_object_id string
+---@field task_id string
+
+---@class PaymentsCreateManualPaymentPublic
+---@field associations table
+---@field billingAddress? table
+---@field currencyCode string
+---@field customerEmail? string
+---@field id string
+---@field paymentAmount number
+---@field paymentDate string
+---@field paymentMethod string
+
+---@class PaymentsCreateManualPaymentPublicCreateData
+---@field associations table
+---@field billingAddress? table
+---@field currencyCode string
+---@field customerEmail? string
+---@field id string
+---@field paymentAmount number
+---@field paymentDate string
+---@field paymentMethod string
+
+---@class PaymentsSettingsGetBillingSettingsPublic
+---@field accountGoogleAnalyticsEnabled? boolean
+---@field checkoutPrefillEnabled boolean
+---@field collectFullBillingAddress boolean
+---@field collectPaymentMethodOnFile boolean
+---@field defaultFromEmailAddress string
+---@field paymentsGoogleAnalyticsEnabled boolean
+---@field recaptchaEnabled boolean
+
+---@class PaymentsSettingsGetBillingSettingsPublicLoadMatch
+---@field accountGoogleAnalyticsEnabled? boolean
+---@field checkoutPrefillEnabled? boolean
+---@field collectFullBillingAddress? boolean
+---@field collectPaymentMethodOnFile? boolean
+---@field defaultFromEmailAddress? string
+---@field paymentsGoogleAnalyticsEnabled? boolean
+---@field recaptchaEnabled? boolean
+
+---@class PaymentsSettingsGetBillingSettingsPublicUpdateData
+---@field accountGoogleAnalyticsEnabled? boolean
+---@field checkoutPrefillEnabled? boolean
+---@field collectFullBillingAddress? boolean
+---@field collectPaymentMethodOnFile? boolean
+---@field defaultFromEmailAddress? string
+---@field paymentsGoogleAnalyticsEnabled? boolean
+---@field recaptchaEnabled? boolean
+
+---@class PaymentsSettingsGetCheckoutFeesPublic
+---@field appliesToPaymentType string
+---@field checkoutFees table
+---@field feeValue number
+---@field feeValueType string
+---@field id string
+---@field name string
+
+---@class PaymentsSettingsGetCheckoutFeesPublicListMatch
+---@field appliesToPaymentType? string
+---@field checkoutFees? table
+---@field feeValue? number
+---@field feeValueType? string
+---@field id? string
+---@field name? string
+
+---@class PaymentsSettingsGetCheckoutFeesPublicUpdateData
+---@field appliesToPaymentType? string
+---@field checkoutFees? table
+---@field feeValue? number
+---@field feeValueType? string
+---@field id? string
+---@field name? string
+
+---@class PaymentsSettingsGetPolicySettingsPublic
+---@field acknowledgementRequired boolean
+---@field cancellationPolicyText? string
+---@field customPolicyEnabled boolean
+---@field refundPolicyText? string
+---@field termsOfServiceUrl? string
+
+---@class PaymentsSettingsGetPolicySettingsPublicLoadMatch
+---@field acknowledgementRequired? boolean
+---@field cancellationPolicyText? string
+---@field customPolicyEnabled? boolean
+---@field refundPolicyText? string
+---@field termsOfServiceUrl? string
+
+---@class PaymentsSettingsGetPolicySettingsPublicUpdateData
+---@field acknowledgementRequired? boolean
+---@field cancellationPolicyText? string
+---@field customPolicyEnabled? boolean
+---@field refundPolicyText? string
+---@field termsOfServiceUrl? string
+
+---@class PaymentsSettingsGetShippingSettingsPublic
+---@field collectShippingAddressByDefault boolean
+---@field countriesShippedTo table
+
+---@class PaymentsSettingsGetShippingSettingsPublicListMatch
+---@field collectShippingAddressByDefault? boolean
+---@field countriesShippedTo? table
+
+---@class PaymentsSettingsGetShippingSettingsPublicUpdateData
+---@field collectShippingAddressByDefault? boolean
+---@field countriesShippedTo? table
+
+---@class PaymentsaccountsPaymentAccountView
+---@field canPayout boolean
+---@field canTransact boolean
+---@field createdAt? string
+---@field eligibleProcessorTypes table
+---@field enrollmentState string
+---@field hasTransacted boolean
+---@field id string
+---@field lastTransactedAt? string
+---@field processorType string
+---@field updatedAt? string
+
+---@class PaymentsaccountsPaymentAccountViewListMatch
+---@field canPayout? boolean
+---@field canTransact? boolean
+---@field createdAt? string
+---@field eligibleProcessorTypes? table
+---@field enrollmentState? string
+---@field hasTransacted? boolean
+---@field id? string
+---@field lastTransactedAt? string
+---@field processorType? string
+---@field updatedAt? string
+
+---@class PriceBook
+---@field archived? boolean
+---@field archivedAt? string
+---@field autoAssignmentEnabled boolean
+---@field countOfIncludedProducts number
+---@field createdAt? string
+---@field customProperties table
+---@field description? string
+---@field id string
+---@field name? string
+---@field status string
+---@field supportedCurrencies table
+---@field updatedAt? string
+
+---@class PriceBookLoadMatch
+---@field id number
+---@field archived? boolean
+
+---@class PriceBookListMatch
+---@field after? string
+---@field archived? boolean
+---@field limit? number
+
+---@class PriceBookCreateData
+---@field archived? boolean
+---@field archivedAt? string
+---@field autoAssignmentEnabled boolean
+---@field countOfIncludedProducts number
+---@field createdAt? string
+---@field customProperties table
+---@field description? string
+---@field id string
+---@field name? string
+---@field status string
+---@field supportedCurrencies table
+---@field updatedAt? string
+
+---@class PriceBookUpdateData
+---@field id number
+---@field archived? boolean
+---@field archivedAt? string
+---@field autoAssignmentEnabled? boolean
+---@field countOfIncludedProducts? number
+---@field createdAt? string
+---@field customProperties? table
+---@field description? string
+---@field name? string
+---@field status? string
+---@field supportedCurrencies? table
+---@field updatedAt? string
+
+---@class PriceBooksBatchResponsePriceBookItem
+---@field completedAt string
+---@field inputs table
+---@field links? table
+---@field requestedAt? string
+---@field results table
+---@field startedAt string
+---@field status string
+
+---@class PriceBooksBatchResponsePriceBookItemCreateData
+---@field price_book_id number
+---@field completedAt string
+---@field inputs table
+---@field links? table
+---@field requestedAt? string
+---@field results table
+---@field startedAt string
+---@field status string
+
+---@class PriceBooksCollectionResponsePriceBookItemResponseForward
+---@field archived? boolean
+---@field archivedAt? string
+---@field billingFrequency? string
+---@field billingPeriod? string
+---@field costOfGoodsSold? string
+---@field createdAt? string
+---@field customProperties table
+---@field description? string
+---@field id string
+---@field images? string
+---@field name? string
+---@field priceBookId? string
+---@field pricing table
+---@field productClassification? string
+---@field productId string
+---@field productType? string
+---@field recurringBillingTerms? string
+---@field sku? string
+---@field status? string
+---@field taxCategory? string
+---@field updatedAt? string
+---@field url? string
+
+---@class PriceBooksCollectionResponsePriceBookItemResponseForwardListMatch
+---@field price_book_id number
+---@field after? string
+---@field limit? number
+---@field property? table
+
+---@class PriceBooksPriceBook
+---@field archived? boolean
+---@field archivedAt? string
+---@field autoAssignmentEnabled boolean
+---@field countOfIncludedProducts number
+---@field createdAt? string
+---@field customProperties table
+---@field description? string
+---@field id string
+---@field name? string
+---@field status string
+---@field supportedCurrencies table
+---@field updatedAt? string
+
+---@class PriceBooksPriceBookCreateData
+---@field price_book_id number
+---@field archived? boolean
+---@field archivedAt? string
+---@field autoAssignmentEnabled boolean
+---@field countOfIncludedProducts number
+---@field createdAt? string
+---@field customProperties table
+---@field description? string
+---@field id string
+---@field name? string
+---@field status string
+---@field supportedCurrencies table
+---@field updatedAt? string
+
+---@class PriceBooksPriceBookItem
+---@field archived? boolean
+---@field archivedAt? string
+---@field billingFrequency? string
+---@field billingPeriod? string
+---@field costOfGoodsSold? string
+---@field createdAt? string
+---@field customProperties table
+---@field description? string
+---@field id string
+---@field images? string
+---@field name? string
+---@field priceBookId? string
+---@field pricing table
+---@field productClassification? string
+---@field productId string
+---@field productType? string
+---@field recurringBillingTerms? string
+---@field sku? string
+---@field status? string
+---@field taxCategory? string
+---@field updatedAt? string
+---@field url? string
+
+---@class PriceBooksPriceBookItemLoadMatch
+---@field id number
+---@field price_book_id number
+---@field archived? boolean
+---@field property? table
+
+---@class PriceBooksPriceBookItemCreateData
+---@field price_book_id number
+---@field archived? boolean
+---@field archivedAt? string
+---@field billingFrequency? string
+---@field billingPeriod? string
+---@field costOfGoodsSold? string
+---@field createdAt? string
+---@field customProperties table
+---@field description? string
+---@field id string
+---@field images? string
+---@field name? string
+---@field priceBookId? string
+---@field pricing table
+---@field productClassification? string
+---@field productId string
+---@field productType? string
+---@field recurringBillingTerms? string
+---@field sku? string
+---@field status? string
+---@field taxCategory? string
+---@field updatedAt? string
+---@field url? string
+
+---@class PriceBooksPriceBookItemUpdateData
+---@field id number
+---@field price_book_id number
+---@field archived? boolean
+---@field archivedAt? string
+---@field billingFrequency? string
+---@field billingPeriod? string
+---@field costOfGoodsSold? string
+---@field createdAt? string
+---@field customProperties? table
+---@field description? string
+---@field images? string
+---@field name? string
+---@field priceBookId? string
+---@field pricing? table
+---@field productClassification? string
+---@field productId? string
+---@field productType? string
+---@field recurringBillingTerms? string
+---@field sku? string
+---@field status? string
+---@field taxCategory? string
+---@field updatedAt? string
+---@field url? string
+
+---@class PriceBooksPriceBookValidate
+---@field errors table
+---@field isValid boolean
+
+---@class PriceBooksPriceBookValidateCreateData
+---@field price_book_id number
+---@field errors table
+---@field isValid boolean
+
+local M = {}
+
+return M

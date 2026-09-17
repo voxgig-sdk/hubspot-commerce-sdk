@@ -1,0 +1,18 @@
+# BasicContractsContractChangePreviewFlow
+
+main: kit: flow: BasicContractsContractChangePreviewFlow:
+{
+  entity: "contracts_contract_change_preview",
+  kind: "basic",
+  name: "BasicContractsContractChangePreviewFlow",
+  step: [
+    {
+      input: {
+        ref: "contracts_contract_change_preview_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicContractsContractChangePreviewFlow"
+}

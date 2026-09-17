@@ -1,0 +1,4604 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>PaymentLink | HubSpot Commerce API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">HubSpot Commerce API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/hubspot-commerce-sdk">voxgig-sdk/hubspot-commerce-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">HubSpot Commerce API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/advanced.html">Advanced</a>
+<a href="../api/basic.html">Basic</a>
+<a href="../api/batch.html">Batch</a>
+<a href="../api/contract.html">Contract</a>
+<a href="../api/contracts_contract.html">ContractsContract</a>
+<a href="../api/contracts_contract_change.html">ContractsContractChange</a>
+<a href="../api/contracts_contract_change_preview.html">ContractsContractChangePreview</a>
+<a href="../api/contracts_quote.html">ContractsQuote</a>
+<a href="../api/item.html">Item</a>
+<a aria-current="page" href="../api/payment_link.html">PaymentLink</a><div class="nav-sections"><a class="nav-section" href="#post-commercepayment-links2026-09payment-links">POST /commerce/payment-links/2026-09/payment-links</a>
+<a class="nav-section" href="#get-commercepayment-links2026-09payment-links">GET /commerce/payment-links/2026-09/payment-links</a>
+<a class="nav-section" href="#get-commercepayment-links2026-09payment-linkspaymentlinkid">GET /commerce/payment-links/2026-09/payment-links/{paymentLinkId}</a>
+<a class="nav-section" href="#patch-commercepayment-links2026-09payment-linkspaymentlinkid">PATCH /commerce/payment-links/2026-09/payment-links/{paymentLinkId}</a></div>
+<a href="../api/payment_methods_commerce_payment_method_settings_public.html">PaymentMethodsCommercePaymentMethodSettingsPublic</a>
+<a href="../api/payments_action_response_with_single_result_simple_public_object.html">PaymentsActionResponseWithSingleResultSimplePublicObject</a>
+<a href="../api/payments_create_manual_payment_public.html">PaymentsCreateManualPaymentPublic</a>
+<a href="../api/payments_settings_get_billing_settings_public.html">PaymentsSettingsGetBillingSettingsPublic</a>
+<a href="../api/payments_settings_get_checkout_fees_public.html">PaymentsSettingsGetCheckoutFeesPublic</a>
+<a href="../api/payments_settings_get_policy_settings_public.html">PaymentsSettingsGetPolicySettingsPublic</a>
+<a href="../api/payments_settings_get_shipping_settings_public.html">PaymentsSettingsGetShippingSettingsPublic</a>
+<a href="../api/paymentsaccounts_payment_account_view.html">PaymentsaccountsPaymentAccountView</a>
+<a href="../api/price_book.html">PriceBook</a>
+<a href="../api/price_books_batch_response_price_book_item.html">PriceBooksBatchResponsePriceBookItem</a>
+<a href="../api/price_books_collection_response_price_book_item_response_forward.html">PriceBooksCollectionResponsePriceBookItemResponseForward</a>
+<a href="../api/price_books_price_book.html">PriceBooksPriceBook</a>
+<a href="../api/price_books_price_book_item.html">PriceBooksPriceBookItem</a>
+<a href="../api/price_books_price_book_validate.html">PriceBooksPriceBookValidate</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="paymentlink">PaymentLink</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-commercepayment-links2026-09payment-links"><code>/commerce/payment-links/2026-09/payment-links</code></a></td>
+<td><code>create</code></td>
+<td>successful operation</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-commercepayment-links2026-09payment-links"><code>/commerce/payment-links/2026-09/payment-links</code></a></td>
+<td><code>list</code></td>
+<td>successful operation</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-commercepayment-links2026-09payment-linkspaymentlinkid"><code>/commerce/payment-links/2026-09/payment-links/{paymentLinkId}</code></a></td>
+<td><code>load</code></td>
+<td>successful operation</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-commercepayment-links2026-09payment-linkspaymentlinkid"><code>/commerce/payment-links/2026-09/payment-links/{paymentLinkId}</code></a></td>
+<td><code>update</code></td>
+<td>successful operation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>acceptedPaymentMethods</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>An array of accepted payment methods for the payment link.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>An array of additional form fields included in the payment link.</td>
+</tr>
+<tr>
+<td><code>archived</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the payment link is archived.</td>
+</tr>
+<tr>
+<td><code>archivedAt</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time when the payment link was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>automatedSalesTaxEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether automated sales tax is enabled for the payment link.</td>
+</tr>
+<tr>
+<td><code>businessUnitId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The business unit ID associated with the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>checkoutFeeIds</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>An array of checkout fee IDs associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>collectFullBillingAddress</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether to collect the full billing address during checkout.</td>
+</tr>
+<tr>
+<td><code>collectShippingAddress</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether to collect the shipping address during checkout.</td>
+</tr>
+<tr>
+<td><code>completedPurchaseCount</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The number of completed purchases made through this payment link.</td>
+</tr>
+<tr>
+<td><code>createContractOnPurchase</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether a contract should be created upon purchase.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time when the payment link was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>currencyCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The currency code for the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>dealConfigurations</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object containing deal configuration settings.</td>
+</tr>
+<tr>
+<td><code>descriptionHtml</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The HTML description of the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>discount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>discountCodeEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether discount codes are enabled for the payment link.</td>
+</tr>
+<tr>
+<td><code>discountObjectId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string representing the object ID of a discount associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>discounts</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>An array of discount objects associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>domainId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The domain ID associated with the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>enableDefaultCheckoutFees</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether default checkout fees are enabled.</td>
+</tr>
+<tr>
+<td><code>expirationSettings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>An object representing the expiration settings for the payment link.</td>
+</tr>
+<tr>
+<td><code>feeObjectIds</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>An array of strings representing the IDs of fee objects associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>fees</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>An array of fee objects associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>formGuid</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The form GUID associated with the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>includeEmailInSuccessRedirect</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether to include the email in the success redirect URL.</td>
+</tr>
+<tr>
+<td><code>isOneTimeUseEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the payment link is enabled for one-time use.</td>
+</tr>
+<tr>
+<td><code>lineItemObjectIds</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>An array of line item object IDs associated with the payment link, each represented as a string.</td>
+</tr>
+<tr>
+<td><code>lineItems</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>An array of line items associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>paymentLinkName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>paymentLinkUrl</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The URL of the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The current state of the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>storePaymentMethodAtCheckout</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether to store the payment method at checkout.</td>
+</tr>
+<tr>
+<td><code>successUrl</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL to redirect to upon successful payment, represented as a string.</td>
+</tr>
+<tr>
+<td><code>taxObjectIds</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>An array of string IDs representing tax objects associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>taxes</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>An array of tax objects associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time when the payment link was last updated, in ISO 8601 format.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-commercepayment-links2026-09payment-links" class="operation" data-method="post"><code>POST</code> /commerce/payment-links/2026-09/payment-links</h3>
+<p>Operation ID: <code>post-/commerce/payment-links/2026-09/payment-links</code>.</p>
+<p>Authentication: oauth2 (<code>oauth2</code>).</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>acceptedPaymentMethods</code></td>
+<td><code>array of enum: CREDIT_OR_DEBIT_CARD, ACH, SEPA, BACS, PADS, AFFIRM, ...</code></td>
+<td>Yes</td>
+<td>An array of accepted payment methods for the payment link. Valid values include 'CREDIT_OR_DEBIT_CARD', 'ACH', 'SEPA', 'BACS', and 'PADS'.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of PaymentLinkFormField objects representing additional form fields to be included in the payment link.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A description of the form field, providing additional context or instructions, represented as a string.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].isRequired</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether this form field is required to be filled out.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The label for the form field, which is displayed to users, represented as a string.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].objectType</code></td>
+<td><code>enum: COMPANY, CONTACT</code></td>
+<td>Yes</td>
+<td>The type of object this form field is associated with, represented as a string. Valid values include 'CONTACT' and 'COMPANY'.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].options</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of options available for this form field, each represented as a FormFieldOption object.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].options[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string providing additional information or context about the form field option.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].options[].label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the display name of the form field option.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].options[].value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the underlying value associated with the form field option.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].propertyName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the property associated with this form field, represented as a string.</td>
+</tr>
+<tr>
+<td><code>automatedSalesTaxEnabled</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A boolean indicating whether automated sales tax is enabled.</td>
+</tr>
+<tr>
+<td><code>businessUnitId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string representing the business unit ID associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>collectFullBillingAddress</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A boolean indicating whether to collect the full billing address during checkout.</td>
+</tr>
+<tr>
+<td><code>collectShippingAddress</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A boolean indicating whether the shipping address should be collected during checkout.</td>
+</tr>
+<tr>
+<td><code>createContractOnPurchase</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A boolean indicating whether to create a contract upon purchase.</td>
+</tr>
+<tr>
+<td><code>currencyCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The currency code for the payment, represented as a string.</td>
+</tr>
+<tr>
+<td><code>dealConfigurations</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>dealConfigurations.createNewDealOnPurchase</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether a new deal should be created in HubSpot upon a purchase. Required field.</td>
+</tr>
+<tr>
+<td><code>dealConfigurations.pipelineStageId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The identifier for the pipeline stage where the new deal will be placed. This is a string value.</td>
+</tr>
+<tr>
+<td><code>descriptionHtml</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string containing the HTML description of the payment link.</td>
+</tr>
+<tr>
+<td><code>discount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>discount.label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive label for the discount. This is a string.</td>
+</tr>
+<tr>
+<td><code>discount.value</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The numerical value of the discount to be applied. This is a number.</td>
+</tr>
+<tr>
+<td><code>discount.valueType</code></td>
+<td><code>enum: FIXED, PERCENT</code></td>
+<td>Yes</td>
+<td>The type of discount value, which can either be 'FIXED' or 'PERCENT'.</td>
+</tr>
+<tr>
+<td><code>discountCodeEnabled</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A boolean indicating whether discount codes are enabled for the payment link.</td>
+</tr>
+<tr>
+<td><code>discountObjectId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string representing the object ID of a discount associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>domainId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The domain ID associated with the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>enableDefaultCheckoutFees</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether default checkout fees are enabled.</td>
+</tr>
+<tr>
+<td><code>expirationSettings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>expirationSettings.expirationDate</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the payment link will expire, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>expirationSettings.maxPurchases</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The maximum number of purchases allowed for this payment link. It is an integer value.</td>
+</tr>
+<tr>
+<td><code>feeObjectIds</code></td>
+<td><code>array of string</code></td>
+<td>Yes</td>
+<td>An array of strings representing the IDs of fee objects associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>fees</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of FeeRequest objects, representing the fees to be applied to the payment link.</td>
+</tr>
+<tr>
+<td><code>fees[].label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive label for the fee, represented as a string.</td>
+</tr>
+<tr>
+<td><code>fees[].value</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The numerical value of the fee. This is a number representing either a fixed amount or a percentage, depending on the valueType.</td>
+</tr>
+<tr>
+<td><code>fees[].valueType</code></td>
+<td><code>enum: FIXED, PERCENT</code></td>
+<td>Yes</td>
+<td>The type of the fee value, indicating whether it is a fixed amount or a percentage. Valid values include 'FIXED' and 'PERCENT'.</td>
+</tr>
+<tr>
+<td><code>includeEmailInSuccessRedirect</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether to include the email in the success redirect URL.</td>
+</tr>
+<tr>
+<td><code>isOneTimeUseEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the payment link is enabled for one-time use.</td>
+</tr>
+<tr>
+<td><code>lineItemObjectIds</code></td>
+<td><code>array of string</code></td>
+<td>Yes</td>
+<td>An array of line item object IDs associated with the payment link, each represented as a string.</td>
+</tr>
+<tr>
+<td><code>lineItems</code></td>
+<td><code>array of object or object or object</code></td>
+<td>Yes</td>
+<td>An array of line items, which can be custom, from a product, or cloned, as defined by their respective schemas.</td>
+</tr>
+<tr>
+<td><code>paymentLinkName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the payment link. It is a string value.</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>enum: OFF, ON</code></td>
+<td>Yes</td>
+<td>The state of the payment link, represented as a string. Valid values are 'ON' and 'OFF'.</td>
+</tr>
+<tr>
+<td><code>storePaymentMethodAtCheckout</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A boolean indicating whether to store the payment method at checkout.</td>
+</tr>
+<tr>
+<td><code>successUrl</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string that defines the URL to redirect to upon successful payment.</td>
+</tr>
+<tr>
+<td><code>taxObjectIds</code></td>
+<td><code>array of string</code></td>
+<td>Yes</td>
+<td>An array of string IDs representing tax objects associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>taxes</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of TaxRequest objects, each representing a tax associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>taxes[].label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string that provides a label or description for the tax, used for identification or display purposes.</td>
+</tr>
+<tr>
+<td><code>taxes[].value</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The numeric value of the tax. It represents the amount or percentage, depending on the valueType.</td>
+</tr>
+<tr>
+<td><code>taxes[].valueType</code></td>
+<td><code>enum: FIXED, PERCENT</code></td>
+<td>Yes</td>
+<td>A string indicating the type of tax value. Valid values are 'FIXED' for a fixed amount and 'PERCENT' for a percentage-based tax.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="201-successful-operation" class="status" data-status="2xx">201: successful operation</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>acceptedPaymentMethods</code></td>
+<td><code>array of enum: CREDIT_OR_DEBIT_CARD, ACH, SEPA, BACS, PADS, AFFIRM, ...</code></td>
+<td>Yes</td>
+<td>An array of accepted payment methods for the payment link. Valid values include 'CREDIT_OR_DEBIT_CARD', 'ACH', 'SEPA', 'BACS', and 'PADS'.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of additional form fields included in the payment link.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A description of the form field, providing additional context or instructions, represented as a string.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].isRequired</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether this form field is required to be filled out.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The label for the form field, which is displayed to users, represented as a string.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].objectType</code></td>
+<td><code>enum: COMPANY, CONTACT</code></td>
+<td>Yes</td>
+<td>The type of object this form field is associated with, represented as a string. Valid values include 'CONTACT' and 'COMPANY'.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].options</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of options available for this form field, each represented as a FormFieldOption object.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].options[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string providing additional information or context about the form field option.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].options[].label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the display name of the form field option.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].options[].value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the underlying value associated with the form field option.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].propertyName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the property associated with this form field, represented as a string.</td>
+</tr>
+<tr>
+<td><code>archived</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the payment link is archived.</td>
+</tr>
+<tr>
+<td><code>archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the payment link was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>automatedSalesTaxEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether automated sales tax is enabled for the payment link.</td>
+</tr>
+<tr>
+<td><code>businessUnitId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The business unit ID associated with the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>checkoutFeeIds</code></td>
+<td><code>array of string</code></td>
+<td>Yes</td>
+<td>An array of checkout fee IDs associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>collectFullBillingAddress</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether to collect the full billing address during checkout.</td>
+</tr>
+<tr>
+<td><code>collectShippingAddress</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether to collect the shipping address during checkout.</td>
+</tr>
+<tr>
+<td><code>completedPurchaseCount</code></td>
+<td><code>integer (int32)</code></td>
+<td>Yes</td>
+<td>The number of completed purchases made through this payment link.</td>
+</tr>
+<tr>
+<td><code>createContractOnPurchase</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether a contract should be created upon purchase.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the payment link was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>currencyCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The currency code for the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>dealConfigurations</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>dealConfigurations.createNewDealOnPurchase</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether a new deal should be created in HubSpot upon a purchase. Required field.</td>
+</tr>
+<tr>
+<td><code>dealConfigurations.pipelineStageId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The identifier for the pipeline stage where the new deal will be placed. This is a string value.</td>
+</tr>
+<tr>
+<td><code>descriptionHtml</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The HTML description of the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>discountCodeEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether discount codes are enabled for the payment link.</td>
+</tr>
+<tr>
+<td><code>discounts</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of discount objects associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>discounts[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this discount has been archived. A boolean value.</td>
+</tr>
+<tr>
+<td><code>discounts[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this discount was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>discounts[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this discount was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>discounts[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for this discount.</td>
+</tr>
+<tr>
+<td><code>discounts[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A descriptive label for the discount.</td>
+</tr>
+<tr>
+<td><code>discounts[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this discount was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>discounts[].value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The numerical value of the discount.</td>
+</tr>
+<tr>
+<td><code>discounts[].valueType</code></td>
+<td><code>enum: FIXED, PERCENT</code></td>
+<td>No</td>
+<td>The type of discount value, which can be either 'FIXED' or 'PERCENT'.</td>
+</tr>
+<tr>
+<td><code>domainId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The domain ID associated with the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>expirationSettings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>expirationSettings.expirationDate</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the payment link will expire, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>expirationSettings.maxPurchases</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The maximum number of purchases allowed for this payment link. It is an integer value.</td>
+</tr>
+<tr>
+<td><code>fees</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of fee objects associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>fees[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this fee has been archived. A boolean value.</td>
+</tr>
+<tr>
+<td><code>fees[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this fee was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>fees[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this fee was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>fees[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for this fee.</td>
+</tr>
+<tr>
+<td><code>fees[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A descriptive label for the fee.</td>
+</tr>
+<tr>
+<td><code>fees[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this fee was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>fees[].value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The monetary value of the fee. A number representing the fee amount.</td>
+</tr>
+<tr>
+<td><code>fees[].valueType</code></td>
+<td><code>enum: FIXED, PERCENT</code></td>
+<td>No</td>
+<td>The type of value for the fee, which can be either 'FIXED' or 'PERCENT'.</td>
+</tr>
+<tr>
+<td><code>formGuid</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The form GUID associated with the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>includeEmailInSuccessRedirect</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether to include the email in the success redirect URL.</td>
+</tr>
+<tr>
+<td><code>isOneTimeUseEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the payment link is enabled for one-time use.</td>
+</tr>
+<tr>
+<td><code>lineItems</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of line items associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>lineItems[].acv</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual contract value for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].allowBuyerSelectedQuantity</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the buyer can select the quantity of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount for the line item, calculated as price multiplied by quantity.</td>
+</tr>
+<tr>
+<td><code>lineItems[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the line item is archived.</td>
+</tr>
+<tr>
+<td><code>lineItems[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the line item was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].arr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual recurring revenue for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingCycleAnchorDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The anchor date for the billing cycle, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingPeriodEndDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date of the billing period, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingPeriodStartDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date of the billing period, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingStartDelayDays</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The number of days to delay the start of billing.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingStartDelayMonths</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The number of months to delay the start of billing.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingStartDelayType</code></td>
+<td><code>enum: HS_BILLING_START_DELAY_DAYS, HS_BILLING_START_DELAY_MONTHS, HS_RECURRING_BILLING_START_DATE</code></td>
+<td>No</td>
+<td>The type of delay for the start of billing. Valid values include 'HS_BILLING_START_DELAY_DAYS', 'HS_BILLING_START_DELAY_MONTHS', and 'HS_RECURRING_BILLING_START_DATE'.</td>
+</tr>
+<tr>
+<td><code>lineItems[].buyerSelectedQuantityMax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The maximum quantity the buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].buyerSelectedQuantityMin</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The minimum quantity the buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the line item was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A text description of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].discount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].discountPercentage</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The percentage discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].effectiveUnitPrice</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The effective price per unit after discounts.</td>
+</tr>
+<tr>
+<td><code>lineItems[].externalId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An external identifier for the line item, used for integration purposes.</td>
+</tr>
+<tr>
+<td><code>lineItems[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].images</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A URL or identifier for images associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].isEditablePrice</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the price of the line item is editable.</td>
+</tr>
+<tr>
+<td><code>lineItems[].isOptional</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the line item is optional.</td>
+</tr>
+<tr>
+<td><code>lineItems[].isParent</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is a parent line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].lineItemCurrencyCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The currency code for the line item, following ISO 4217 format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].mrr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The monthly recurring revenue for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].parentLineItemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the parent line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].positionOnQuote</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The position of the line item on a quote, represented as an integer.</td>
+</tr>
+<tr>
+<td><code>lineItems[].postTaxAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount after taxes are applied.</td>
+</tr>
+<tr>
+<td><code>lineItems[].preDiscountAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount before any discounts are applied.</td>
+</tr>
+<tr>
+<td><code>lineItems[].price</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The price of a single unit of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].priceBookId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The identifier for the price book associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing.prices</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of price entries, each detailing a specific price point within the pricing model.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing.prices[].currencyCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The currency code for the price, represented as a string.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing.prices[].maxQuantity</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The maximum quantity for which this price is applicable, represented as a string.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing.prices[].price</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The price of the item, represented as a number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing.pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>Yes</td>
+<td>The type of pricing model applied. Valid values include 'FLAT', 'GRADUATED', 'STAIRSTEP', and 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>No</td>
+<td>The pricing model used for the line item. Valid values include 'FLAT', 'GRADUATED', 'STAIRSTEP', and 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>lineItems[].productId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The identifier for the product associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].productType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of product for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].quantity</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The quantity of the line item, represented as a number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].rampKey</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A key used to identify the ramp schedule for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingDayOfMonth</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The day of the month when recurring billing occurs.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingEndDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date for recurring billing, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingFrequency</code></td>
+<td><code>enum: ANNUALLY, BIWEEKLY, MONTHLY, PER_FIVE_YEARS, PER_FOUR_YEARS, PER_SIX_MONTHS, ...</code></td>
+<td>No</td>
+<td>The frequency of recurring billing for the line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', 'PER_FIVE_YEARS', 'PER_FOUR_YEARS', 'PER_SIX_MONTHS', 'PER_THREE_YEARS', 'PER_TWO_YEARS', 'QUARTERLY', and 'WEEKLY'.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingNumberOfPayments</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The number of payments for the recurring billing cycle.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingPeriod</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The period for recurring billing.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingStartDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date for recurring billing, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingTerms</code></td>
+<td><code>enum: AUTOMATICALLY_RENEW, FIXED</code></td>
+<td>No</td>
+<td>The terms of recurring billing. Valid values include 'AUTOMATICALLY_RENEW' and 'FIXED'.</td>
+</tr>
+<tr>
+<td><code>lineItems[].richTextDescription</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A rich text formatted description of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].sku</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The stock keeping unit (SKU) identifier for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].tax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The tax amount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].taxAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total tax amount for this line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].taxCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The tax category applicable to this line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].taxRateGroupId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the tax rate group.</td>
+</tr>
+<tr>
+<td><code>lineItems[].tcv</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total contract value for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].termInMonths</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The term length for the line item in months.</td>
+</tr>
+<tr>
+<td><code>lineItems[].tierAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The tiered amount applicable to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].totalDiscount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total discount amount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the line item was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].variantId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The identifier for the product variant associated with the line item.</td>
+</tr>
+<tr>
+<td><code>paymentLinkName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>paymentLinkUrl</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The URL of the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>enum: OFF, ON</code></td>
+<td>Yes</td>
+<td>The current state of the payment link, represented as a string. Valid values include 'ON' and 'OFF'.</td>
+</tr>
+<tr>
+<td><code>storePaymentMethodAtCheckout</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether to store the payment method at checkout.</td>
+</tr>
+<tr>
+<td><code>successUrl</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL to redirect to upon successful payment, represented as a string.</td>
+</tr>
+<tr>
+<td><code>taxes</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of tax objects associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>taxes[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this tax entry is archived. A boolean value.</td>
+</tr>
+<tr>
+<td><code>taxes[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this tax entry was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>taxes[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this tax entry was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>taxes[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for this tax entry.</td>
+</tr>
+<tr>
+<td><code>taxes[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A descriptive label for this tax entry.</td>
+</tr>
+<tr>
+<td><code>taxes[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this tax entry was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>taxes[].value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The numerical value of the tax.</td>
+</tr>
+<tr>
+<td><code>taxes[].valueType</code></td>
+<td><code>enum: FIXED, PERCENT</code></td>
+<td>No</td>
+<td>The type of value for the tax, which can be either 'FIXED' or 'PERCENT'.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the payment link was last updated, in ISO 8601 format.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default">default</h5>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>category</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The error category</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the request. Include this value with any error reports or support tickets</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>further information about the error</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status code associated with the error detail</td>
+</tr>
+<tr>
+<td><code>errors[].context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition</td>
+</tr>
+<tr>
+<td><code>errors[].in</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the field or parameter in which the error was found.</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate</td>
+</tr>
+<tr>
+<td><code>errors[].subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A map of link names to associated URIs containing documentation about the error or recommended remediation steps</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate</td>
+</tr>
+<tr>
+<td><code>subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error</td>
+</tr>
+</tbody>
+</table>
+<h2 id="list">list</h2>
+<h3 id="get-commercepayment-links2026-09payment-links" class="operation" data-method="get"><code>GET</code> /commerce/payment-links/2026-09/payment-links</h3>
+<p>Operation ID: <code>get-/commerce/payment-links/2026-09/payment-links</code>.</p>
+<p>Authentication: oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>after</code> | <code>query</code> | <code>string</code> | No | The paging cursor token of the last successfully read resource will be returned as the <code>paging.next.after</code> JSON property of a paged response containing more results. |
+| <code>archived</code> | <code>query</code> | <code>boolean</code> | No | Whether to return only results that have been archived. |
+| <code>createdAfter</code> | <code>query</code> | <code>integer (int64)</code> | No | Filter results to include only those created after the specified timestamp. |
+| <code>createdAt</code> | <code>query</code> | <code>integer (int64)</code> | No | Filter results by the exact creation timestamp. |
+| <code>createdBefore</code> | <code>query</code> | <code>integer (int64)</code> | No | Filter results to include only those created before the specified timestamp. |
+| <code>limit</code> | <code>query</code> | <code>integer (int32)</code> | No | The maximum number of results to display per page. |
+| <code>sort</code> | <code>query</code> | <code>string</code> | No | Specifies the order in which results are returned. |
+| <code>updatedAfter</code> | <code>query</code> | <code>integer (int64)</code> | No | Filter results to include only those updated after the specified timestamp. |
+| <code>updatedAt</code> | <code>query</code> | <code>integer (int64)</code> | No | Filter results by the exact update timestamp. |
+| <code>updatedBefore</code> | <code>query</code> | <code>integer (int64)</code> | No | Filter results to include only those updated before the specified timestamp. |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-successful-operation" class="status" data-status="2xx">200: successful operation</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>paging</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Paging information for forward-only pagination. Contains the next page reference when more results are available; omitted or empty on the last page.</td>
+</tr>
+<tr>
+<td><code>paging.next</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Specifies the paging information needed to retrieve the next set of results in a paginated API response</td>
+</tr>
+<tr>
+<td><code>paging.next.after</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string token that indicates the position after the last item in the current page, used to fetch the next page of results.</td>
+</tr>
+<tr>
+<td><code>paging.next.link</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string URL that provides a direct link to the next page of results.</td>
+</tr>
+<tr>
+<td><code>results</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of PaymentLinkResponse objects, each representing a payment link with its associated details.</td>
+</tr>
+<tr>
+<td><code>results[].acceptedPaymentMethods</code></td>
+<td><code>array of enum: CREDIT_OR_DEBIT_CARD, ACH, SEPA, BACS, PADS, AFFIRM, ...</code></td>
+<td>Yes</td>
+<td>An array of accepted payment methods for the payment link. Valid values include 'CREDIT_OR_DEBIT_CARD', 'ACH', 'SEPA', 'BACS', and 'PADS'.</td>
+</tr>
+<tr>
+<td><code>results[].additionalFormFields</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of additional form fields included in the payment link.</td>
+</tr>
+<tr>
+<td><code>results[].additionalFormFields[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A description of the form field, providing additional context or instructions, represented as a string.</td>
+</tr>
+<tr>
+<td><code>results[].additionalFormFields[].isRequired</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether this form field is required to be filled out.</td>
+</tr>
+<tr>
+<td><code>results[].additionalFormFields[].label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The label for the form field, which is displayed to users, represented as a string.</td>
+</tr>
+<tr>
+<td><code>results[].additionalFormFields[].objectType</code></td>
+<td><code>enum: COMPANY, CONTACT</code></td>
+<td>Yes</td>
+<td>The type of object this form field is associated with, represented as a string. Valid values include 'CONTACT' and 'COMPANY'.</td>
+</tr>
+<tr>
+<td><code>results[].additionalFormFields[].options</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of options available for this form field, each represented as a FormFieldOption object.</td>
+</tr>
+<tr>
+<td><code>results[].additionalFormFields[].options[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string providing additional information or context about the form field option.</td>
+</tr>
+<tr>
+<td><code>results[].additionalFormFields[].options[].label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the display name of the form field option.</td>
+</tr>
+<tr>
+<td><code>results[].additionalFormFields[].options[].value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the underlying value associated with the form field option.</td>
+</tr>
+<tr>
+<td><code>results[].additionalFormFields[].propertyName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the property associated with this form field, represented as a string.</td>
+</tr>
+<tr>
+<td><code>results[].archived</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the payment link is archived.</td>
+</tr>
+<tr>
+<td><code>results[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the payment link was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>results[].automatedSalesTaxEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether automated sales tax is enabled for the payment link.</td>
+</tr>
+<tr>
+<td><code>results[].businessUnitId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The business unit ID associated with the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>results[].checkoutFeeIds</code></td>
+<td><code>array of string</code></td>
+<td>Yes</td>
+<td>An array of checkout fee IDs associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>results[].collectFullBillingAddress</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether to collect the full billing address during checkout.</td>
+</tr>
+<tr>
+<td><code>results[].collectShippingAddress</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether to collect the shipping address during checkout.</td>
+</tr>
+<tr>
+<td><code>results[].completedPurchaseCount</code></td>
+<td><code>integer (int32)</code></td>
+<td>Yes</td>
+<td>The number of completed purchases made through this payment link.</td>
+</tr>
+<tr>
+<td><code>results[].createContractOnPurchase</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether a contract should be created upon purchase.</td>
+</tr>
+<tr>
+<td><code>results[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the payment link was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>results[].currencyCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The currency code for the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>results[].dealConfigurations</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].dealConfigurations.createNewDealOnPurchase</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether a new deal should be created in HubSpot upon a purchase. Required field.</td>
+</tr>
+<tr>
+<td><code>results[].dealConfigurations.pipelineStageId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The identifier for the pipeline stage where the new deal will be placed. This is a string value.</td>
+</tr>
+<tr>
+<td><code>results[].descriptionHtml</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The HTML description of the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>results[].discountCodeEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether discount codes are enabled for the payment link.</td>
+</tr>
+<tr>
+<td><code>results[].discounts</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of discount objects associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>results[].discounts[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this discount has been archived. A boolean value.</td>
+</tr>
+<tr>
+<td><code>results[].discounts[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this discount was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>results[].discounts[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this discount was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>results[].discounts[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for this discount.</td>
+</tr>
+<tr>
+<td><code>results[].discounts[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A descriptive label for the discount.</td>
+</tr>
+<tr>
+<td><code>results[].discounts[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this discount was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>results[].discounts[].value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The numerical value of the discount.</td>
+</tr>
+<tr>
+<td><code>results[].discounts[].valueType</code></td>
+<td><code>enum: FIXED, PERCENT</code></td>
+<td>No</td>
+<td>The type of discount value, which can be either 'FIXED' or 'PERCENT'.</td>
+</tr>
+<tr>
+<td><code>results[].domainId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The domain ID associated with the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>results[].expirationSettings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].expirationSettings.expirationDate</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the payment link will expire, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>results[].expirationSettings.maxPurchases</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The maximum number of purchases allowed for this payment link. It is an integer value.</td>
+</tr>
+<tr>
+<td><code>results[].fees</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of fee objects associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>results[].fees[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this fee has been archived. A boolean value.</td>
+</tr>
+<tr>
+<td><code>results[].fees[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this fee was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>results[].fees[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this fee was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>results[].fees[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for this fee.</td>
+</tr>
+<tr>
+<td><code>results[].fees[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A descriptive label for the fee.</td>
+</tr>
+<tr>
+<td><code>results[].fees[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this fee was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>results[].fees[].value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The monetary value of the fee. A number representing the fee amount.</td>
+</tr>
+<tr>
+<td><code>results[].fees[].valueType</code></td>
+<td><code>enum: FIXED, PERCENT</code></td>
+<td>No</td>
+<td>The type of value for the fee, which can be either 'FIXED' or 'PERCENT'.</td>
+</tr>
+<tr>
+<td><code>results[].formGuid</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The form GUID associated with the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>results[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>results[].includeEmailInSuccessRedirect</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether to include the email in the success redirect URL.</td>
+</tr>
+<tr>
+<td><code>results[].isOneTimeUseEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the payment link is enabled for one-time use.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of line items associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].acv</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual contract value for the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].allowBuyerSelectedQuantity</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the buyer can select the quantity of the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount for the line item, calculated as price multiplied by quantity.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the line item is archived.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the line item was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].arr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual recurring revenue for the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].billingCycleAnchorDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The anchor date for the billing cycle, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].billingPeriodEndDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date of the billing period, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].billingPeriodStartDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date of the billing period, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].billingStartDelayDays</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The number of days to delay the start of billing.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].billingStartDelayMonths</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The number of months to delay the start of billing.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].billingStartDelayType</code></td>
+<td><code>enum: HS_BILLING_START_DELAY_DAYS, HS_BILLING_START_DELAY_MONTHS, HS_RECURRING_BILLING_START_DATE</code></td>
+<td>No</td>
+<td>The type of delay for the start of billing. Valid values include 'HS_BILLING_START_DELAY_DAYS', 'HS_BILLING_START_DELAY_MONTHS', and 'HS_RECURRING_BILLING_START_DATE'.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].buyerSelectedQuantityMax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The maximum quantity the buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].buyerSelectedQuantityMin</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The minimum quantity the buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the line item was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A text description of the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].discount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].discountPercentage</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The percentage discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].effectiveUnitPrice</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The effective price per unit after discounts.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].externalId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An external identifier for the line item, used for integration purposes.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].images</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A URL or identifier for images associated with the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].isEditablePrice</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the price of the line item is editable.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].isOptional</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the line item is optional.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].isParent</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is a parent line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].lineItemCurrencyCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The currency code for the line item, following ISO 4217 format.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].mrr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The monthly recurring revenue for the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].parentLineItemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the parent line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].positionOnQuote</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The position of the line item on a quote, represented as an integer.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].postTaxAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount after taxes are applied.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].preDiscountAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount before any discounts are applied.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].price</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The price of a single unit of the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].priceBookId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The identifier for the price book associated with the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].pricing</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].pricing.prices</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of price entries, each detailing a specific price point within the pricing model.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].pricing.prices[].currencyCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The currency code for the price, represented as a string.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].pricing.prices[].maxQuantity</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The maximum quantity for which this price is applicable, represented as a string.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].pricing.prices[].price</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The price of the item, represented as a number.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].pricing.pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>Yes</td>
+<td>The type of pricing model applied. Valid values include 'FLAT', 'GRADUATED', 'STAIRSTEP', and 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>No</td>
+<td>The pricing model used for the line item. Valid values include 'FLAT', 'GRADUATED', 'STAIRSTEP', and 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].productId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The identifier for the product associated with the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].productType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of product for the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].quantity</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The quantity of the line item, represented as a number.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].rampKey</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A key used to identify the ramp schedule for the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].recurringBillingDayOfMonth</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The day of the month when recurring billing occurs.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].recurringBillingEndDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date for recurring billing, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].recurringBillingFrequency</code></td>
+<td><code>enum: ANNUALLY, BIWEEKLY, MONTHLY, PER_FIVE_YEARS, PER_FOUR_YEARS, PER_SIX_MONTHS, ...</code></td>
+<td>No</td>
+<td>The frequency of recurring billing for the line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', 'PER_FIVE_YEARS', 'PER_FOUR_YEARS', 'PER_SIX_MONTHS', 'PER_THREE_YEARS', 'PER_TWO_YEARS', 'QUARTERLY', and 'WEEKLY'.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].recurringBillingNumberOfPayments</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The number of payments for the recurring billing cycle.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].recurringBillingPeriod</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The period for recurring billing.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].recurringBillingStartDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date for recurring billing, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].recurringBillingTerms</code></td>
+<td><code>enum: AUTOMATICALLY_RENEW, FIXED</code></td>
+<td>No</td>
+<td>The terms of recurring billing. Valid values include 'AUTOMATICALLY_RENEW' and 'FIXED'.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].richTextDescription</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A rich text formatted description of the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].sku</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The stock keeping unit (SKU) identifier for the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].tax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The tax amount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].taxAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total tax amount for this line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].taxCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The tax category applicable to this line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].taxRateGroupId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the tax rate group.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].tcv</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total contract value for the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].termInMonths</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The term length for the line item in months.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].tierAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The tiered amount applicable to the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].totalDiscount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total discount amount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the line item was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>results[].lineItems[].variantId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The identifier for the product variant associated with the line item.</td>
+</tr>
+<tr>
+<td><code>results[].paymentLinkName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>results[].paymentLinkUrl</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The URL of the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>results[].state</code></td>
+<td><code>enum: OFF, ON</code></td>
+<td>Yes</td>
+<td>The current state of the payment link, represented as a string. Valid values include 'ON' and 'OFF'.</td>
+</tr>
+<tr>
+<td><code>results[].storePaymentMethodAtCheckout</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether to store the payment method at checkout.</td>
+</tr>
+<tr>
+<td><code>results[].successUrl</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL to redirect to upon successful payment, represented as a string.</td>
+</tr>
+<tr>
+<td><code>results[].taxes</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of tax objects associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>results[].taxes[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this tax entry is archived. A boolean value.</td>
+</tr>
+<tr>
+<td><code>results[].taxes[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this tax entry was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>results[].taxes[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this tax entry was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>results[].taxes[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for this tax entry.</td>
+</tr>
+<tr>
+<td><code>results[].taxes[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A descriptive label for this tax entry.</td>
+</tr>
+<tr>
+<td><code>results[].taxes[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this tax entry was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>results[].taxes[].value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The numerical value of the tax.</td>
+</tr>
+<tr>
+<td><code>results[].taxes[].valueType</code></td>
+<td><code>enum: FIXED, PERCENT</code></td>
+<td>No</td>
+<td>The type of value for the tax, which can be either 'FIXED' or 'PERCENT'.</td>
+</tr>
+<tr>
+<td><code>results[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the payment link was last updated, in ISO 8601 format.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default-1">default</h5>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>category</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The error category</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the request. Include this value with any error reports or support tickets</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>further information about the error</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status code associated with the error detail</td>
+</tr>
+<tr>
+<td><code>errors[].context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition</td>
+</tr>
+<tr>
+<td><code>errors[].in</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the field or parameter in which the error was found.</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate</td>
+</tr>
+<tr>
+<td><code>errors[].subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A map of link names to associated URIs containing documentation about the error or recommended remediation steps</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate</td>
+</tr>
+<tr>
+<td><code>subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error</td>
+</tr>
+</tbody>
+</table>
+<h2 id="load">load</h2>
+<h3 id="get-commercepayment-links2026-09payment-linkspaymentlinkid" class="operation" data-method="get"><code>GET</code> /commerce/payment-links/2026-09/payment-links/{paymentLinkId}</h3>
+<p>Operation ID: <code>get-/commerce/payment-links/2026-09/payment-links/{paymentLinkId}</code>.</p>
+<p>Authentication: oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>paymentLinkId</code> | <code>path</code> | <code>string</code> | Yes | The unique identifier of the payment link to retrieve. |
+| <code>archived</code> | <code>query</code> | <code>boolean</code> | No | Whether to return only results that have been archived. |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-successful-operation-1" class="status" data-status="2xx">200: successful operation</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>acceptedPaymentMethods</code></td>
+<td><code>array of enum: CREDIT_OR_DEBIT_CARD, ACH, SEPA, BACS, PADS, AFFIRM, ...</code></td>
+<td>Yes</td>
+<td>An array of accepted payment methods for the payment link. Valid values include 'CREDIT_OR_DEBIT_CARD', 'ACH', 'SEPA', 'BACS', and 'PADS'.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of additional form fields included in the payment link.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A description of the form field, providing additional context or instructions, represented as a string.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].isRequired</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether this form field is required to be filled out.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The label for the form field, which is displayed to users, represented as a string.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].objectType</code></td>
+<td><code>enum: COMPANY, CONTACT</code></td>
+<td>Yes</td>
+<td>The type of object this form field is associated with, represented as a string. Valid values include 'CONTACT' and 'COMPANY'.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].options</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of options available for this form field, each represented as a FormFieldOption object.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].options[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string providing additional information or context about the form field option.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].options[].label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the display name of the form field option.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].options[].value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the underlying value associated with the form field option.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].propertyName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the property associated with this form field, represented as a string.</td>
+</tr>
+<tr>
+<td><code>archived</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the payment link is archived.</td>
+</tr>
+<tr>
+<td><code>archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the payment link was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>automatedSalesTaxEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether automated sales tax is enabled for the payment link.</td>
+</tr>
+<tr>
+<td><code>businessUnitId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The business unit ID associated with the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>checkoutFeeIds</code></td>
+<td><code>array of string</code></td>
+<td>Yes</td>
+<td>An array of checkout fee IDs associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>collectFullBillingAddress</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether to collect the full billing address during checkout.</td>
+</tr>
+<tr>
+<td><code>collectShippingAddress</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether to collect the shipping address during checkout.</td>
+</tr>
+<tr>
+<td><code>completedPurchaseCount</code></td>
+<td><code>integer (int32)</code></td>
+<td>Yes</td>
+<td>The number of completed purchases made through this payment link.</td>
+</tr>
+<tr>
+<td><code>createContractOnPurchase</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether a contract should be created upon purchase.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the payment link was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>currencyCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The currency code for the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>dealConfigurations</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>dealConfigurations.createNewDealOnPurchase</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether a new deal should be created in HubSpot upon a purchase. Required field.</td>
+</tr>
+<tr>
+<td><code>dealConfigurations.pipelineStageId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The identifier for the pipeline stage where the new deal will be placed. This is a string value.</td>
+</tr>
+<tr>
+<td><code>descriptionHtml</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The HTML description of the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>discountCodeEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether discount codes are enabled for the payment link.</td>
+</tr>
+<tr>
+<td><code>discounts</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of discount objects associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>discounts[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this discount has been archived. A boolean value.</td>
+</tr>
+<tr>
+<td><code>discounts[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this discount was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>discounts[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this discount was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>discounts[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for this discount.</td>
+</tr>
+<tr>
+<td><code>discounts[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A descriptive label for the discount.</td>
+</tr>
+<tr>
+<td><code>discounts[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this discount was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>discounts[].value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The numerical value of the discount.</td>
+</tr>
+<tr>
+<td><code>discounts[].valueType</code></td>
+<td><code>enum: FIXED, PERCENT</code></td>
+<td>No</td>
+<td>The type of discount value, which can be either 'FIXED' or 'PERCENT'.</td>
+</tr>
+<tr>
+<td><code>domainId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The domain ID associated with the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>expirationSettings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>expirationSettings.expirationDate</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the payment link will expire, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>expirationSettings.maxPurchases</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The maximum number of purchases allowed for this payment link. It is an integer value.</td>
+</tr>
+<tr>
+<td><code>fees</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of fee objects associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>fees[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this fee has been archived. A boolean value.</td>
+</tr>
+<tr>
+<td><code>fees[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this fee was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>fees[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this fee was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>fees[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for this fee.</td>
+</tr>
+<tr>
+<td><code>fees[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A descriptive label for the fee.</td>
+</tr>
+<tr>
+<td><code>fees[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this fee was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>fees[].value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The monetary value of the fee. A number representing the fee amount.</td>
+</tr>
+<tr>
+<td><code>fees[].valueType</code></td>
+<td><code>enum: FIXED, PERCENT</code></td>
+<td>No</td>
+<td>The type of value for the fee, which can be either 'FIXED' or 'PERCENT'.</td>
+</tr>
+<tr>
+<td><code>formGuid</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The form GUID associated with the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>includeEmailInSuccessRedirect</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether to include the email in the success redirect URL.</td>
+</tr>
+<tr>
+<td><code>isOneTimeUseEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the payment link is enabled for one-time use.</td>
+</tr>
+<tr>
+<td><code>lineItems</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of line items associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>lineItems[].acv</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual contract value for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].allowBuyerSelectedQuantity</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the buyer can select the quantity of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount for the line item, calculated as price multiplied by quantity.</td>
+</tr>
+<tr>
+<td><code>lineItems[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the line item is archived.</td>
+</tr>
+<tr>
+<td><code>lineItems[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the line item was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].arr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual recurring revenue for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingCycleAnchorDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The anchor date for the billing cycle, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingPeriodEndDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date of the billing period, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingPeriodStartDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date of the billing period, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingStartDelayDays</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The number of days to delay the start of billing.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingStartDelayMonths</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The number of months to delay the start of billing.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingStartDelayType</code></td>
+<td><code>enum: HS_BILLING_START_DELAY_DAYS, HS_BILLING_START_DELAY_MONTHS, HS_RECURRING_BILLING_START_DATE</code></td>
+<td>No</td>
+<td>The type of delay for the start of billing. Valid values include 'HS_BILLING_START_DELAY_DAYS', 'HS_BILLING_START_DELAY_MONTHS', and 'HS_RECURRING_BILLING_START_DATE'.</td>
+</tr>
+<tr>
+<td><code>lineItems[].buyerSelectedQuantityMax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The maximum quantity the buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].buyerSelectedQuantityMin</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The minimum quantity the buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the line item was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A text description of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].discount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].discountPercentage</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The percentage discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].effectiveUnitPrice</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The effective price per unit after discounts.</td>
+</tr>
+<tr>
+<td><code>lineItems[].externalId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An external identifier for the line item, used for integration purposes.</td>
+</tr>
+<tr>
+<td><code>lineItems[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].images</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A URL or identifier for images associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].isEditablePrice</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the price of the line item is editable.</td>
+</tr>
+<tr>
+<td><code>lineItems[].isOptional</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the line item is optional.</td>
+</tr>
+<tr>
+<td><code>lineItems[].isParent</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is a parent line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].lineItemCurrencyCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The currency code for the line item, following ISO 4217 format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].mrr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The monthly recurring revenue for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].parentLineItemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the parent line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].positionOnQuote</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The position of the line item on a quote, represented as an integer.</td>
+</tr>
+<tr>
+<td><code>lineItems[].postTaxAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount after taxes are applied.</td>
+</tr>
+<tr>
+<td><code>lineItems[].preDiscountAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount before any discounts are applied.</td>
+</tr>
+<tr>
+<td><code>lineItems[].price</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The price of a single unit of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].priceBookId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The identifier for the price book associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing.prices</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of price entries, each detailing a specific price point within the pricing model.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing.prices[].currencyCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The currency code for the price, represented as a string.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing.prices[].maxQuantity</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The maximum quantity for which this price is applicable, represented as a string.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing.prices[].price</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The price of the item, represented as a number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing.pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>Yes</td>
+<td>The type of pricing model applied. Valid values include 'FLAT', 'GRADUATED', 'STAIRSTEP', and 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>No</td>
+<td>The pricing model used for the line item. Valid values include 'FLAT', 'GRADUATED', 'STAIRSTEP', and 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>lineItems[].productId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The identifier for the product associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].productType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of product for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].quantity</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The quantity of the line item, represented as a number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].rampKey</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A key used to identify the ramp schedule for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingDayOfMonth</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The day of the month when recurring billing occurs.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingEndDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date for recurring billing, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingFrequency</code></td>
+<td><code>enum: ANNUALLY, BIWEEKLY, MONTHLY, PER_FIVE_YEARS, PER_FOUR_YEARS, PER_SIX_MONTHS, ...</code></td>
+<td>No</td>
+<td>The frequency of recurring billing for the line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', 'PER_FIVE_YEARS', 'PER_FOUR_YEARS', 'PER_SIX_MONTHS', 'PER_THREE_YEARS', 'PER_TWO_YEARS', 'QUARTERLY', and 'WEEKLY'.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingNumberOfPayments</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The number of payments for the recurring billing cycle.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingPeriod</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The period for recurring billing.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingStartDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date for recurring billing, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingTerms</code></td>
+<td><code>enum: AUTOMATICALLY_RENEW, FIXED</code></td>
+<td>No</td>
+<td>The terms of recurring billing. Valid values include 'AUTOMATICALLY_RENEW' and 'FIXED'.</td>
+</tr>
+<tr>
+<td><code>lineItems[].richTextDescription</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A rich text formatted description of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].sku</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The stock keeping unit (SKU) identifier for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].tax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The tax amount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].taxAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total tax amount for this line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].taxCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The tax category applicable to this line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].taxRateGroupId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the tax rate group.</td>
+</tr>
+<tr>
+<td><code>lineItems[].tcv</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total contract value for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].termInMonths</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The term length for the line item in months.</td>
+</tr>
+<tr>
+<td><code>lineItems[].tierAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The tiered amount applicable to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].totalDiscount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total discount amount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the line item was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].variantId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The identifier for the product variant associated with the line item.</td>
+</tr>
+<tr>
+<td><code>paymentLinkName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>paymentLinkUrl</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The URL of the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>enum: OFF, ON</code></td>
+<td>Yes</td>
+<td>The current state of the payment link, represented as a string. Valid values include 'ON' and 'OFF'.</td>
+</tr>
+<tr>
+<td><code>storePaymentMethodAtCheckout</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether to store the payment method at checkout.</td>
+</tr>
+<tr>
+<td><code>successUrl</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL to redirect to upon successful payment, represented as a string.</td>
+</tr>
+<tr>
+<td><code>taxes</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of tax objects associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>taxes[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this tax entry is archived. A boolean value.</td>
+</tr>
+<tr>
+<td><code>taxes[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this tax entry was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>taxes[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this tax entry was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>taxes[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for this tax entry.</td>
+</tr>
+<tr>
+<td><code>taxes[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A descriptive label for this tax entry.</td>
+</tr>
+<tr>
+<td><code>taxes[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this tax entry was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>taxes[].value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The numerical value of the tax.</td>
+</tr>
+<tr>
+<td><code>taxes[].valueType</code></td>
+<td><code>enum: FIXED, PERCENT</code></td>
+<td>No</td>
+<td>The type of value for the tax, which can be either 'FIXED' or 'PERCENT'.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the payment link was last updated, in ISO 8601 format.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default-2">default</h5>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>category</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The error category</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the request. Include this value with any error reports or support tickets</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>further information about the error</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status code associated with the error detail</td>
+</tr>
+<tr>
+<td><code>errors[].context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition</td>
+</tr>
+<tr>
+<td><code>errors[].in</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the field or parameter in which the error was found.</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate</td>
+</tr>
+<tr>
+<td><code>errors[].subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A map of link names to associated URIs containing documentation about the error or recommended remediation steps</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate</td>
+</tr>
+<tr>
+<td><code>subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error</td>
+</tr>
+</tbody>
+</table>
+<h2 id="update">update</h2>
+<h3 id="patch-commercepayment-links2026-09payment-linkspaymentlinkid" class="operation" data-method="patch"><code>PATCH</code> /commerce/payment-links/2026-09/payment-links/{paymentLinkId}</h3>
+<p>Operation ID: <code>patch-/commerce/payment-links/2026-09/payment-links/{paymentLinkId}_/commerce/payment-links/2026-09-beta/payment-links/{paymentLinkId}</code>.</p>
+<p>Authentication: oauth2 (<code>oauth2</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>paymentLinkId</code> | <code>path</code> | <code>string</code> | Yes | The unique identifier of the payment link to update. |</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>acceptedPaymentMethods</code></td>
+<td><code>array of enum: CREDIT_OR_DEBIT_CARD, ACH, SEPA, BACS, PADS, AFFIRM, ...</code></td>
+<td>No</td>
+<td>An array of strings indicating the accepted payment methods. Valid values include 'CREDIT_OR_DEBIT_CARD', 'ACH', 'SEPA', 'BACS', and 'PADS'.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>An array of PaymentLinkFormField objects representing additional form fields for the payment link.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A description of the form field, providing additional context or instructions, represented as a string.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].isRequired</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether this form field is required to be filled out.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The label for the form field, which is displayed to users, represented as a string.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].objectType</code></td>
+<td><code>enum: COMPANY, CONTACT</code></td>
+<td>Yes</td>
+<td>The type of object this form field is associated with, represented as a string. Valid values include 'CONTACT' and 'COMPANY'.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].options</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of options available for this form field, each represented as a FormFieldOption object.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].options[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string providing additional information or context about the form field option.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].options[].label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the display name of the form field option.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].options[].value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the underlying value associated with the form field option.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].propertyName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the property associated with this form field, represented as a string.</td>
+</tr>
+<tr>
+<td><code>automatedSalesTaxEnabled</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A boolean indicating whether automated sales tax is enabled.</td>
+</tr>
+<tr>
+<td><code>businessUnitId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the business unit ID associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>collectFullBillingAddress</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A boolean indicating whether to collect the full billing address during checkout.</td>
+</tr>
+<tr>
+<td><code>collectShippingAddress</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A boolean indicating whether to collect the shipping address during checkout.</td>
+</tr>
+<tr>
+<td><code>createContractOnPurchase</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A boolean indicating whether a contract should be created upon purchase.</td>
+</tr>
+<tr>
+<td><code>currencyCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The currency code for the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>dealConfigurations</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object containing deal configuration settings.</td>
+</tr>
+<tr>
+<td><code>descriptionHtml</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object containing the HTML description of the payment link.</td>
+</tr>
+<tr>
+<td><code>discount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>discount.label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive label for the discount. This is a string.</td>
+</tr>
+<tr>
+<td><code>discount.value</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The numerical value of the discount to be applied. This is a number.</td>
+</tr>
+<tr>
+<td><code>discount.valueType</code></td>
+<td><code>enum: FIXED, PERCENT</code></td>
+<td>Yes</td>
+<td>The type of discount value, which can either be 'FIXED' or 'PERCENT'.</td>
+</tr>
+<tr>
+<td><code>discountCodeEnabled</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A boolean indicating whether discount codes are enabled for the payment link.</td>
+</tr>
+<tr>
+<td><code>discountObjectId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the discount object ID associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>domainId</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the domain ID associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>enableDefaultCheckoutFees</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A boolean indicating whether default checkout fees are enabled.</td>
+</tr>
+<tr>
+<td><code>expirationSettings</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the expiration settings for the payment link.</td>
+</tr>
+<tr>
+<td><code>feeObjectIds</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>An array of strings representing the IDs of fee objects associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>fees</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>An array of FeeRequest objects representing the fees associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>fees[].label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive label for the fee, represented as a string.</td>
+</tr>
+<tr>
+<td><code>fees[].value</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The numerical value of the fee. This is a number representing either a fixed amount or a percentage, depending on the valueType.</td>
+</tr>
+<tr>
+<td><code>fees[].valueType</code></td>
+<td><code>enum: FIXED, PERCENT</code></td>
+<td>Yes</td>
+<td>The type of the fee value, indicating whether it is a fixed amount or a percentage. Valid values include 'FIXED' and 'PERCENT'.</td>
+</tr>
+<tr>
+<td><code>includeEmailInSuccessRedirect</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A boolean indicating whether to include the email in the success redirect.</td>
+</tr>
+<tr>
+<td><code>isOneTimeUseEnabled</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A boolean indicating whether the payment link is enabled for one-time use.</td>
+</tr>
+<tr>
+<td><code>lineItemObjectIds</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>An array of strings representing the IDs of line item objects associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>lineItems</code></td>
+<td><code>array of object or object or object</code></td>
+<td>No</td>
+<td>An array of line item objects, which can be of types LineItemCustomCreateRequest, LineItemFromProductCreateRequest, or LineItemCloneCreateRequest.</td>
+</tr>
+<tr>
+<td><code>paymentLinkName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>enum: OFF, ON</code></td>
+<td>No</td>
+<td>The state of the payment link, represented as a string. Valid values are 'ON' and 'OFF'.</td>
+</tr>
+<tr>
+<td><code>storePaymentMethodAtCheckout</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A boolean indicating whether the payment method should be stored at checkout.</td>
+</tr>
+<tr>
+<td><code>successUrl</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>An object representing the success URL where the user is redirected after a successful transaction.</td>
+</tr>
+<tr>
+<td><code>taxObjectIds</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>An array of strings representing the IDs of tax objects associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>taxes</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>An array of TaxRequest objects representing the taxes associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>taxes[].label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string that provides a label or description for the tax, used for identification or display purposes.</td>
+</tr>
+<tr>
+<td><code>taxes[].value</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The numeric value of the tax. It represents the amount or percentage, depending on the valueType.</td>
+</tr>
+<tr>
+<td><code>taxes[].valueType</code></td>
+<td><code>enum: FIXED, PERCENT</code></td>
+<td>Yes</td>
+<td>A string indicating the type of tax value. Valid values are 'FIXED' for a fixed amount and 'PERCENT' for a percentage-based tax.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-successful-operation-2" class="status" data-status="2xx">200: successful operation</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>acceptedPaymentMethods</code></td>
+<td><code>array of enum: CREDIT_OR_DEBIT_CARD, ACH, SEPA, BACS, PADS, AFFIRM, ...</code></td>
+<td>Yes</td>
+<td>An array of accepted payment methods for the payment link. Valid values include 'CREDIT_OR_DEBIT_CARD', 'ACH', 'SEPA', 'BACS', and 'PADS'.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of additional form fields included in the payment link.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A description of the form field, providing additional context or instructions, represented as a string.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].isRequired</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether this form field is required to be filled out.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The label for the form field, which is displayed to users, represented as a string.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].objectType</code></td>
+<td><code>enum: COMPANY, CONTACT</code></td>
+<td>Yes</td>
+<td>The type of object this form field is associated with, represented as a string. Valid values include 'CONTACT' and 'COMPANY'.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].options</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of options available for this form field, each represented as a FormFieldOption object.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].options[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A string providing additional information or context about the form field option.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].options[].label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the display name of the form field option.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].options[].value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A string representing the underlying value associated with the form field option.</td>
+</tr>
+<tr>
+<td><code>additionalFormFields[].propertyName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the property associated with this form field, represented as a string.</td>
+</tr>
+<tr>
+<td><code>archived</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the payment link is archived.</td>
+</tr>
+<tr>
+<td><code>archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the payment link was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>automatedSalesTaxEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether automated sales tax is enabled for the payment link.</td>
+</tr>
+<tr>
+<td><code>businessUnitId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The business unit ID associated with the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>checkoutFeeIds</code></td>
+<td><code>array of string</code></td>
+<td>Yes</td>
+<td>An array of checkout fee IDs associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>collectFullBillingAddress</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether to collect the full billing address during checkout.</td>
+</tr>
+<tr>
+<td><code>collectShippingAddress</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether to collect the shipping address during checkout.</td>
+</tr>
+<tr>
+<td><code>completedPurchaseCount</code></td>
+<td><code>integer (int32)</code></td>
+<td>Yes</td>
+<td>The number of completed purchases made through this payment link.</td>
+</tr>
+<tr>
+<td><code>createContractOnPurchase</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether a contract should be created upon purchase.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the payment link was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>currencyCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The currency code for the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>dealConfigurations</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>dealConfigurations.createNewDealOnPurchase</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether a new deal should be created in HubSpot upon a purchase. Required field.</td>
+</tr>
+<tr>
+<td><code>dealConfigurations.pipelineStageId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The identifier for the pipeline stage where the new deal will be placed. This is a string value.</td>
+</tr>
+<tr>
+<td><code>descriptionHtml</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The HTML description of the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>discountCodeEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether discount codes are enabled for the payment link.</td>
+</tr>
+<tr>
+<td><code>discounts</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of discount objects associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>discounts[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this discount has been archived. A boolean value.</td>
+</tr>
+<tr>
+<td><code>discounts[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this discount was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>discounts[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this discount was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>discounts[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for this discount.</td>
+</tr>
+<tr>
+<td><code>discounts[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A descriptive label for the discount.</td>
+</tr>
+<tr>
+<td><code>discounts[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this discount was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>discounts[].value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The numerical value of the discount.</td>
+</tr>
+<tr>
+<td><code>discounts[].valueType</code></td>
+<td><code>enum: FIXED, PERCENT</code></td>
+<td>No</td>
+<td>The type of discount value, which can be either 'FIXED' or 'PERCENT'.</td>
+</tr>
+<tr>
+<td><code>domainId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The domain ID associated with the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>expirationSettings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>expirationSettings.expirationDate</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the payment link will expire, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>expirationSettings.maxPurchases</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The maximum number of purchases allowed for this payment link. It is an integer value.</td>
+</tr>
+<tr>
+<td><code>fees</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of fee objects associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>fees[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this fee has been archived. A boolean value.</td>
+</tr>
+<tr>
+<td><code>fees[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this fee was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>fees[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this fee was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>fees[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for this fee.</td>
+</tr>
+<tr>
+<td><code>fees[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A descriptive label for the fee.</td>
+</tr>
+<tr>
+<td><code>fees[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this fee was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>fees[].value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The monetary value of the fee. A number representing the fee amount.</td>
+</tr>
+<tr>
+<td><code>fees[].valueType</code></td>
+<td><code>enum: FIXED, PERCENT</code></td>
+<td>No</td>
+<td>The type of value for the fee, which can be either 'FIXED' or 'PERCENT'.</td>
+</tr>
+<tr>
+<td><code>formGuid</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The form GUID associated with the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>includeEmailInSuccessRedirect</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether to include the email in the success redirect URL.</td>
+</tr>
+<tr>
+<td><code>isOneTimeUseEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether the payment link is enabled for one-time use.</td>
+</tr>
+<tr>
+<td><code>lineItems</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of line items associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>lineItems[].acv</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual contract value for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].allowBuyerSelectedQuantity</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the buyer can select the quantity of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount for the line item, calculated as price multiplied by quantity.</td>
+</tr>
+<tr>
+<td><code>lineItems[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the line item is archived.</td>
+</tr>
+<tr>
+<td><code>lineItems[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the line item was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].arr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual recurring revenue for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingCycleAnchorDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The anchor date for the billing cycle, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingPeriodEndDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date of the billing period, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingPeriodStartDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date of the billing period, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingStartDelayDays</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The number of days to delay the start of billing.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingStartDelayMonths</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The number of months to delay the start of billing.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingStartDelayType</code></td>
+<td><code>enum: HS_BILLING_START_DELAY_DAYS, HS_BILLING_START_DELAY_MONTHS, HS_RECURRING_BILLING_START_DATE</code></td>
+<td>No</td>
+<td>The type of delay for the start of billing. Valid values include 'HS_BILLING_START_DELAY_DAYS', 'HS_BILLING_START_DELAY_MONTHS', and 'HS_RECURRING_BILLING_START_DATE'.</td>
+</tr>
+<tr>
+<td><code>lineItems[].buyerSelectedQuantityMax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The maximum quantity the buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].buyerSelectedQuantityMin</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The minimum quantity the buyer can select for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the line item was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A text description of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].discount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].discountPercentage</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The percentage discount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].effectiveUnitPrice</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The effective price per unit after discounts.</td>
+</tr>
+<tr>
+<td><code>lineItems[].externalId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An external identifier for the line item, used for integration purposes.</td>
+</tr>
+<tr>
+<td><code>lineItems[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].images</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A URL or identifier for images associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].isEditablePrice</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the price of the line item is editable.</td>
+</tr>
+<tr>
+<td><code>lineItems[].isOptional</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the line item is optional.</td>
+</tr>
+<tr>
+<td><code>lineItems[].isParent</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is a parent line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].lineItemCurrencyCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The currency code for the line item, following ISO 4217 format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].mrr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The monthly recurring revenue for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].parentLineItemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the parent line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].positionOnQuote</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The position of the line item on a quote, represented as an integer.</td>
+</tr>
+<tr>
+<td><code>lineItems[].postTaxAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount after taxes are applied.</td>
+</tr>
+<tr>
+<td><code>lineItems[].preDiscountAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount before any discounts are applied.</td>
+</tr>
+<tr>
+<td><code>lineItems[].price</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The price of a single unit of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].priceBookId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The identifier for the price book associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing.prices</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of price entries, each detailing a specific price point within the pricing model.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing.prices[].currencyCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The currency code for the price, represented as a string.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing.prices[].maxQuantity</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The maximum quantity for which this price is applicable, represented as a string.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing.prices[].price</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The price of the item, represented as a number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing.pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>Yes</td>
+<td>The type of pricing model applied. Valid values include 'FLAT', 'GRADUATED', 'STAIRSTEP', and 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>No</td>
+<td>The pricing model used for the line item. Valid values include 'FLAT', 'GRADUATED', 'STAIRSTEP', and 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>lineItems[].productId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The identifier for the product associated with the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].productType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of product for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].quantity</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The quantity of the line item, represented as a number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].rampKey</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A key used to identify the ramp schedule for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingDayOfMonth</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The day of the month when recurring billing occurs.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingEndDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date for recurring billing, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingFrequency</code></td>
+<td><code>enum: ANNUALLY, BIWEEKLY, MONTHLY, PER_FIVE_YEARS, PER_FOUR_YEARS, PER_SIX_MONTHS, ...</code></td>
+<td>No</td>
+<td>The frequency of recurring billing for the line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', 'PER_FIVE_YEARS', 'PER_FOUR_YEARS', 'PER_SIX_MONTHS', 'PER_THREE_YEARS', 'PER_TWO_YEARS', 'QUARTERLY', and 'WEEKLY'.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingNumberOfPayments</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The number of payments for the recurring billing cycle.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingPeriod</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The period for recurring billing.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingStartDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date for recurring billing, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingTerms</code></td>
+<td><code>enum: AUTOMATICALLY_RENEW, FIXED</code></td>
+<td>No</td>
+<td>The terms of recurring billing. Valid values include 'AUTOMATICALLY_RENEW' and 'FIXED'.</td>
+</tr>
+<tr>
+<td><code>lineItems[].richTextDescription</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A rich text formatted description of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].sku</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The stock keeping unit (SKU) identifier for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].tax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The tax amount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].taxAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total tax amount for this line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].taxCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The tax category applicable to this line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].taxRateGroupId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the tax rate group.</td>
+</tr>
+<tr>
+<td><code>lineItems[].tcv</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total contract value for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].termInMonths</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The term length for the line item in months.</td>
+</tr>
+<tr>
+<td><code>lineItems[].tierAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The tiered amount applicable to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].totalDiscount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total discount amount applied to the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the line item was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].variantId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The identifier for the product variant associated with the line item.</td>
+</tr>
+<tr>
+<td><code>paymentLinkName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>paymentLinkUrl</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The URL of the payment link, represented as a string.</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>enum: OFF, ON</code></td>
+<td>Yes</td>
+<td>The current state of the payment link, represented as a string. Valid values include 'ON' and 'OFF'.</td>
+</tr>
+<tr>
+<td><code>storePaymentMethodAtCheckout</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>A boolean indicating whether to store the payment method at checkout.</td>
+</tr>
+<tr>
+<td><code>successUrl</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL to redirect to upon successful payment, represented as a string.</td>
+</tr>
+<tr>
+<td><code>taxes</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of tax objects associated with the payment link.</td>
+</tr>
+<tr>
+<td><code>taxes[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this tax entry is archived. A boolean value.</td>
+</tr>
+<tr>
+<td><code>taxes[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this tax entry was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>taxes[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this tax entry was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>taxes[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for this tax entry.</td>
+</tr>
+<tr>
+<td><code>taxes[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A descriptive label for this tax entry.</td>
+</tr>
+<tr>
+<td><code>taxes[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this tax entry was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>taxes[].value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The numerical value of the tax.</td>
+</tr>
+<tr>
+<td><code>taxes[].valueType</code></td>
+<td><code>enum: FIXED, PERCENT</code></td>
+<td>No</td>
+<td>The type of value for the tax, which can be either 'FIXED' or 'PERCENT'.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the payment link was last updated, in ISO 8601 format.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default-3">default</h5>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>category</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The error category</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the request. Include this value with any error reports or support tickets</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>further information about the error</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status code associated with the error detail</td>
+</tr>
+<tr>
+<td><code>errors[].context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition</td>
+</tr>
+<tr>
+<td><code>errors[].in</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the field or parameter in which the error was found.</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate</td>
+</tr>
+<tr>
+<td><code>errors[].subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A map of link names to associated URIs containing documentation about the error or recommended remediation steps</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate</td>
+</tr>
+<tr>
+<td><code>subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error</td>
+</tr>
+</tbody>
+</table>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

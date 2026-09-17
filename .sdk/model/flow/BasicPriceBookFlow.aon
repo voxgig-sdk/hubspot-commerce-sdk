@@ -1,0 +1,71 @@
+# BasicPriceBookFlow
+
+main: kit: flow: BasicPriceBookFlow:
+{
+  entity: "price_book",
+  kind: "basic",
+  name: "BasicPriceBookFlow",
+  step: [
+    {
+      input: {
+        ref: "price_book_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "price_book_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "price_book_ref01",
+        srcdatavar: "price_book_ref01_data",
+        suffix: "_up0",
+        textfield: "archivedAt"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-price_book_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "price_book_ref01",
+        srcdatavar: "price_book_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "price_book01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-price_book_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPriceBookFlow"
+}

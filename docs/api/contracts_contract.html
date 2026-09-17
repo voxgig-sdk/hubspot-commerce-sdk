@@ -1,0 +1,1332 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ContractsContract | HubSpot Commerce API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">HubSpot Commerce API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/hubspot-commerce-sdk">voxgig-sdk/hubspot-commerce-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">HubSpot Commerce API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/advanced.html">Advanced</a>
+<a href="../api/basic.html">Basic</a>
+<a href="../api/batch.html">Batch</a>
+<a href="../api/contract.html">Contract</a>
+<a aria-current="page" href="../api/contracts_contract.html">ContractsContract</a><div class="nav-sections"><a class="nav-section" href="#post-commercecontracts2027-03-betacontractscontractidterminate">POST /commerce/contracts/2027-03-beta/contracts/{contractId}/terminate</a></div>
+<a href="../api/contracts_contract_change.html">ContractsContractChange</a>
+<a href="../api/contracts_contract_change_preview.html">ContractsContractChangePreview</a>
+<a href="../api/contracts_quote.html">ContractsQuote</a>
+<a href="../api/item.html">Item</a>
+<a href="../api/payment_link.html">PaymentLink</a>
+<a href="../api/payment_methods_commerce_payment_method_settings_public.html">PaymentMethodsCommercePaymentMethodSettingsPublic</a>
+<a href="../api/payments_action_response_with_single_result_simple_public_object.html">PaymentsActionResponseWithSingleResultSimplePublicObject</a>
+<a href="../api/payments_create_manual_payment_public.html">PaymentsCreateManualPaymentPublic</a>
+<a href="../api/payments_settings_get_billing_settings_public.html">PaymentsSettingsGetBillingSettingsPublic</a>
+<a href="../api/payments_settings_get_checkout_fees_public.html">PaymentsSettingsGetCheckoutFeesPublic</a>
+<a href="../api/payments_settings_get_policy_settings_public.html">PaymentsSettingsGetPolicySettingsPublic</a>
+<a href="../api/payments_settings_get_shipping_settings_public.html">PaymentsSettingsGetShippingSettingsPublic</a>
+<a href="../api/paymentsaccounts_payment_account_view.html">PaymentsaccountsPaymentAccountView</a>
+<a href="../api/price_book.html">PriceBook</a>
+<a href="../api/price_books_batch_response_price_book_item.html">PriceBooksBatchResponsePriceBookItem</a>
+<a href="../api/price_books_collection_response_price_book_item_response_forward.html">PriceBooksCollectionResponsePriceBookItemResponseForward</a>
+<a href="../api/price_books_price_book.html">PriceBooksPriceBook</a>
+<a href="../api/price_books_price_book_item.html">PriceBooksPriceBookItem</a>
+<a href="../api/price_books_price_book_validate.html">PriceBooksPriceBookValidate</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
+<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
+<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
+<a href="../features/paging.html">Pagination signals for list operations</a>
+<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
+<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
+<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
+<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="contractscontract">ContractsContract</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-commercecontracts2027-03-betacontractscontractidterminate"><code>/commerce/contracts/2027-03-beta/contracts/{contractId}/terminate</code></a></td>
+<td><code>create</code></td>
+<td>successful operation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>addressTypesToCollect</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>An array indicating the types of addresses to collect.</td>
+</tr>
+<tr>
+<td><code>allTransactionsFeeName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the fee applied to all transactions.</td>
+</tr>
+<tr>
+<td><code>allTransactionsFeePercentage</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The percentage of the fee applied to all transactions.</td>
+</tr>
+<tr>
+<td><code>allowedPaymentMethods</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>An array of allowed payment methods.</td>
+</tr>
+<tr>
+<td><code>annualContractValue</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual value of the contract.</td>
+</tr>
+<tr>
+<td><code>automatedTaxesEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Indicates whether automated taxes are enabled for the contract.</td>
+</tr>
+<tr>
+<td><code>billingAddress</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>billingCompanyId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier of the billing company associated with the contract.</td>
+</tr>
+<tr>
+<td><code>billingContactId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier of the billing contact associated with the contract.</td>
+</tr>
+<tr>
+<td><code>billingStartDateOverride</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date to override the billing start date, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>businessUnitId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier of the business unit associated with the contract.</td>
+</tr>
+<tr>
+<td><code>cardFeeName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the fee applied to card transactions.</td>
+</tr>
+<tr>
+<td><code>cardFeePercentage</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The percentage of the fee applied to card transactions.</td>
+</tr>
+<tr>
+<td><code>collectionProcess</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The process for collecting payments.</td>
+</tr>
+<tr>
+<td><code>contractEffectiveDate</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date when the contract becomes effective, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>contractSourceId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier of the source of the contract.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time when the contract was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>currencyCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The currency code associated with the contract, represented as a string.</td>
+</tr>
+<tr>
+<td><code>currentAnnualRecurringRevenue</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The current annual recurring revenue for the contract.</td>
+</tr>
+<tr>
+<td><code>currentMonthlyRecurringRevenue</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The current monthly recurring revenue for the contract.</td>
+</tr>
+<tr>
+<td><code>customProperties</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>A map of custom property names to their values.</td>
+</tr>
+<tr>
+<td><code>dealId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier of the deal associated with the contract.</td>
+</tr>
+<tr>
+<td><code>directDebitFeeName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the fee applied to direct debit transactions.</td>
+</tr>
+<tr>
+<td><code>directDebitFeePercentage</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The percentage of the fee applied to direct debit transactions.</td>
+</tr>
+<tr>
+<td><code>discountCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The discount code applied to the contract.</td>
+</tr>
+<tr>
+<td><code>endDate</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The end date of the contract, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>externalPaymentMethodReferenceId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The external reference ID for the payment method.</td>
+</tr>
+<tr>
+<td><code>hubspotBillingEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Indicates whether HubSpot billing is enabled for the contract.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the contract.</td>
+</tr>
+<tr>
+<td><code>language</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The language associated with the contract.</td>
+</tr>
+<tr>
+<td><code>lineItems</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>An array of line items included in the contract.</td>
+</tr>
+<tr>
+<td><code>locale</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The locale associated with the contract.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the contract.</td>
+</tr>
+<tr>
+<td><code>netPaymentTerms</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The net payment terms for the contract, represented as an integer.</td>
+</tr>
+<tr>
+<td><code>paymentEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Indicates whether payment is enabled for the contract.</td>
+</tr>
+<tr>
+<td><code>paymentMethod</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The payment method used for the contract.</td>
+</tr>
+<tr>
+<td><code>poNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The purchase order number associated with the contract.</td>
+</tr>
+<tr>
+<td><code>preTerminationContractValue</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The value of the contract before termination.</td>
+</tr>
+<tr>
+<td><code>renewalContractId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier of the renewal contract.</td>
+</tr>
+<tr>
+<td><code>renewalDate</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date when the contract is set to renew, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>sellerCompanyAddress</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>sellerCompanyName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the seller's company.</td>
+</tr>
+<tr>
+<td><code>sellerEmail</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The email address of the seller.</td>
+</tr>
+<tr>
+<td><code>sellerFirstName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The first name of the seller.</td>
+</tr>
+<tr>
+<td><code>sellerLastName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The last name of the seller.</td>
+</tr>
+<tr>
+<td><code>sellerPhoneNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The phone number of the seller.</td>
+</tr>
+<tr>
+<td><code>startDate</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The start date of the contract, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The current status of the contract.</td>
+</tr>
+<tr>
+<td><code>storePaymentMethodAtCheckout</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Indicates whether the payment method should be stored at checkout.</td>
+</tr>
+<tr>
+<td><code>terminationDate</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date when the contract is terminated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>totalBilledAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount billed under the contract.</td>
+</tr>
+<tr>
+<td><code>totalBilledAmountPreTax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount billed under the contract before tax.</td>
+</tr>
+<tr>
+<td><code>totalCollectedFees</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount of fees collected under the contract.</td>
+</tr>
+<tr>
+<td><code>totalCollectedTaxes</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount of taxes collected under the contract.</td>
+</tr>
+<tr>
+<td><code>totalContractValue</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total value of the contract.</td>
+</tr>
+<tr>
+<td><code>totalPaidAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount paid under the contract.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time when the contract was last updated, in ISO 8601 format.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-commercecontracts2027-03-betacontractscontractidterminate" class="operation" data-method="post"><code>POST</code> /commerce/contracts/2027-03-beta/contracts/{contractId}/terminate</h3>
+<p>Operation ID: <code>post-/commerce/contracts/2027-03-beta/contracts/{contractId}/terminate</code>.</p>
+<p>Authentication: not required.</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>contractId</code> | <code>path</code> | <code>string</code> | Yes | The unique identifier of the contract to terminate. |</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>terminationDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The date on which the contract termination is to take effect. It is represented as a string in the date format.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-successful-operation" class="status" data-status="2xx">200: successful operation</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>addressTypesToCollect</code></td>
+<td><code>array of enum: BILLING_ADDRESS, SHIPPING_ADDRESS</code></td>
+<td>Yes</td>
+<td>An array indicating the types of addresses to collect. Valid values include 'BILLING_ADDRESS' and 'SHIPPING_ADDRESS'.</td>
+</tr>
+<tr>
+<td><code>allTransactionsFeeName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the fee applied to all transactions.</td>
+</tr>
+<tr>
+<td><code>allTransactionsFeePercentage</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The percentage of the fee applied to all transactions.</td>
+</tr>
+<tr>
+<td><code>allowedPaymentMethods</code></td>
+<td><code>array of enum: CREDIT_OR_DEBIT_CARD, ACH, SEPA, BACS, PADS, AFFIRM, ...</code></td>
+<td>Yes</td>
+<td>An array of allowed payment methods. Valid values include 'CREDIT_OR_DEBIT_CARD', 'ACH', 'SEPA', 'BACS', 'PADS', 'AFFIRM', and 'KLARNA'.</td>
+</tr>
+<tr>
+<td><code>annualContractValue</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual value of the contract.</td>
+</tr>
+<tr>
+<td><code>automatedTaxesEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Indicates whether automated taxes are enabled for the contract.</td>
+</tr>
+<tr>
+<td><code>billingAddress</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>billingAddress.address</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The primary street address. It is a string representing the main location detail.</td>
+</tr>
+<tr>
+<td><code>billingAddress.address2</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An additional street address line. This is a string used for supplementary location details.</td>
+</tr>
+<tr>
+<td><code>billingAddress.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The city where the address is located. It is represented as a string.</td>
+</tr>
+<tr>
+<td><code>billingAddress.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The country of the address. This is a string indicating the nation associated with the address.</td>
+</tr>
+<tr>
+<td><code>billingAddress.countryCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The code representing the country of the address. It is a string, typically following international country code standards.</td>
+</tr>
+<tr>
+<td><code>billingAddress.state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The state or region of the address. This is a string that specifies the subdivision within the country.</td>
+</tr>
+<tr>
+<td><code>billingAddress.zip</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The postal code for the address. It is a string used for mail delivery purposes.</td>
+</tr>
+<tr>
+<td><code>billingCompanyId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier of the billing company associated with the contract.</td>
+</tr>
+<tr>
+<td><code>billingContactId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier of the billing contact associated with the contract.</td>
+</tr>
+<tr>
+<td><code>billingStartDateOverride</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The date to override the billing start date, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>businessUnitId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier of the business unit associated with the contract.</td>
+</tr>
+<tr>
+<td><code>cardFeeName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the fee applied to card transactions.</td>
+</tr>
+<tr>
+<td><code>cardFeePercentage</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The percentage of the fee applied to card transactions.</td>
+</tr>
+<tr>
+<td><code>collectionProcess</code></td>
+<td><code>enum: AUTOMATIC_PAYMENTS, MANUAL_PAYMENTS</code></td>
+<td>No</td>
+<td>The process for collecting payments. Valid values include 'MANUAL_PAYMENTS' and 'AUTOMATIC_PAYMENTS'.</td>
+</tr>
+<tr>
+<td><code>contractEffectiveDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The date when the contract becomes effective, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>contractSourceId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier of the source of the contract.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the contract was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>currencyCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The currency code associated with the contract, represented as a string.</td>
+</tr>
+<tr>
+<td><code>currentAnnualRecurringRevenue</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The current annual recurring revenue for the contract.</td>
+</tr>
+<tr>
+<td><code>currentMonthlyRecurringRevenue</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The current monthly recurring revenue for the contract.</td>
+</tr>
+<tr>
+<td><code>customProperties</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>A map of custom property names to their values.</td>
+</tr>
+<tr>
+<td><code>dealId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier of the deal associated with the contract.</td>
+</tr>
+<tr>
+<td><code>directDebitFeeName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the fee applied to direct debit transactions.</td>
+</tr>
+<tr>
+<td><code>directDebitFeePercentage</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The percentage of the fee applied to direct debit transactions.</td>
+</tr>
+<tr>
+<td><code>discountCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The discount code applied to the contract.</td>
+</tr>
+<tr>
+<td><code>endDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date of the contract, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>externalPaymentMethodReferenceId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The external reference ID for the payment method.</td>
+</tr>
+<tr>
+<td><code>hubspotBillingEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Indicates whether HubSpot billing is enabled for the contract.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the contract.</td>
+</tr>
+<tr>
+<td><code>language</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The language associated with the contract.</td>
+</tr>
+<tr>
+<td><code>lineItems</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of line items included in the contract.</td>
+</tr>
+<tr>
+<td><code>lineItems[].acv</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual contract value for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].allowBuyerSelectedQuantity</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the buyer can select the quantity of this line item. A boolean value.</td>
+</tr>
+<tr>
+<td><code>lineItems[].amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount for this line item, calculated as price multiplied by quantity. A number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].archived</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is archived. A boolean value.</td>
+</tr>
+<tr>
+<td><code>lineItems[].archivedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this line item was archived, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].arr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The annual recurring revenue for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingCycleAnchorDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The anchor date for the billing cycle, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingPeriodEndDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date of the billing period, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingPeriodStartDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date of the billing period, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingStartDelayDays</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The delay in days before billing starts. An integer.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingStartDelayMonths</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The delay in months before billing starts. An integer.</td>
+</tr>
+<tr>
+<td><code>lineItems[].billingStartDelayType</code></td>
+<td><code>enum: HS_BILLING_START_DELAY_DAYS, HS_BILLING_START_DELAY_MONTHS, HS_RECURRING_BILLING_START_DATE</code></td>
+<td>No</td>
+<td>The type of delay before billing starts. Valid values include 'HS_BILLING_START_DELAY_DAYS', 'HS_BILLING_START_DELAY_MONTHS', and 'HS_RECURRING_BILLING_START_DATE'.</td>
+</tr>
+<tr>
+<td><code>lineItems[].buyerSelectedQuantityMax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The maximum quantity the buyer can select for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].buyerSelectedQuantityMin</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The minimum quantity the buyer can select for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this line item was created, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A text description of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].discount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The discount applied to this line item. A number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].discountPercentage</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The discount percentage applied to this line item. A number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].effectiveUnitPrice</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The effective price per unit after discounts. A number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].externalId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An external identifier for this line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for this line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].images</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A URL or reference to images associated with this line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].isEditablePrice</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the price of this line item is editable. A boolean value.</td>
+</tr>
+<tr>
+<td><code>lineItems[].isOptional</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is optional. A boolean value.</td>
+</tr>
+<tr>
+<td><code>lineItems[].isParent</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this line item is a parent item. A boolean value.</td>
+</tr>
+<tr>
+<td><code>lineItems[].lineItemCurrencyCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The currency code for this line item, following ISO 4217 format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].mrr</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The monthly recurring revenue for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].parentLineItemId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the parent line item, if applicable.</td>
+</tr>
+<tr>
+<td><code>lineItems[].positionOnQuote</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The position of this line item on a quote. An integer.</td>
+</tr>
+<tr>
+<td><code>lineItems[].postTaxAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount after tax is applied. A number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].preDiscountAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount before any discounts are applied. A number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].price</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The price of a single unit of the line item. A number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].priceBookId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the price book associated with this line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing.prices</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>An array of price entries, each specifying a currency code and the corresponding price for the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing.prices[].currencyCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The currency in which the price is denominated, represented as a string.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing.prices[].maxQuantity</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The maximum quantity for which this price is applicable, represented as an integer.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing.prices[].price</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The cost of the product or service in the specified currency, represented as a number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricing.pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>Yes</td>
+<td>The pricing model applied to the line item. Valid values include 'FLAT', 'GRADUATED', 'STAIRSTEP', and 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>lineItems[].pricingModel</code></td>
+<td><code>enum: FLAT, GRADUATED, STAIRSTEP, VOLUME</code></td>
+<td>No</td>
+<td>The pricing model used for this line item. Valid values include 'FLAT', 'GRADUATED', 'STAIRSTEP', and 'VOLUME'.</td>
+</tr>
+<tr>
+<td><code>lineItems[].productId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the product associated with this line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].productType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of product for this line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].quantity</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The quantity of the line item. A number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].rampKey</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A unique identifier for the ramp associated with this line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingDayOfMonth</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The day of the month on which recurring billing occurs. An integer.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingEndDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The end date for recurring billing, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingFrequency</code></td>
+<td><code>enum: ANNUALLY, BIWEEKLY, MONTHLY, PER_FIVE_YEARS, PER_FOUR_YEARS, PER_SIX_MONTHS, ...</code></td>
+<td>No</td>
+<td>The frequency of recurring billing for this line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', 'PER_FIVE_YEARS', 'PER_FOUR_YEARS', 'PER_SIX_MONTHS', 'PER_THREE_YEARS', 'PER_TWO_YEARS', 'QUARTERLY', and 'WEEKLY'.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingNumberOfPayments</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The number of payments for recurring billing. An integer.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingPeriod</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The period for recurring billing.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingStartDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date for recurring billing, in ISO 8601 date format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].recurringBillingTerms</code></td>
+<td><code>enum: AUTOMATICALLY_RENEW, FIXED</code></td>
+<td>No</td>
+<td>The terms for recurring billing. Valid values include 'AUTOMATICALLY_RENEW' and 'FIXED'.</td>
+</tr>
+<tr>
+<td><code>lineItems[].richTextDescription</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A rich text description of the line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].sku</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The stock keeping unit (SKU) for this line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].tax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The tax rate applied to this line item. A number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].taxAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total tax amount for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].taxCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The tax category for this line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].taxRateGroupId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the tax rate group associated with this line item.</td>
+</tr>
+<tr>
+<td><code>lineItems[].tcv</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total contract value for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].termInMonths</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The term length in months for this line item. An integer.</td>
+</tr>
+<tr>
+<td><code>lineItems[].tierAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount for the current pricing tier. A number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].totalDiscount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total discount amount for this line item. A number.</td>
+</tr>
+<tr>
+<td><code>lineItems[].updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when this line item was last updated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>lineItems[].variantId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier for the product variant associated with this line item.</td>
+</tr>
+<tr>
+<td><code>locale</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The locale associated with the contract.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the contract.</td>
+</tr>
+<tr>
+<td><code>netPaymentTerms</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The net payment terms for the contract, represented as an integer.</td>
+</tr>
+<tr>
+<td><code>paymentEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Indicates whether payment is enabled for the contract.</td>
+</tr>
+<tr>
+<td><code>paymentMethod</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The payment method used for the contract.</td>
+</tr>
+<tr>
+<td><code>poNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The purchase order number associated with the contract.</td>
+</tr>
+<tr>
+<td><code>preTerminationContractValue</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The value of the contract before termination.</td>
+</tr>
+<tr>
+<td><code>renewalContractId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The unique identifier of the renewal contract.</td>
+</tr>
+<tr>
+<td><code>renewalDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The date when the contract is set to renew, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>sellerCompanyAddress</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>sellerCompanyAddress.$ref</code></td>
+<td><code>any</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>sellerCompanyName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the seller's company.</td>
+</tr>
+<tr>
+<td><code>sellerEmail</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The email address of the seller.</td>
+</tr>
+<tr>
+<td><code>sellerFirstName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The first name of the seller.</td>
+</tr>
+<tr>
+<td><code>sellerLastName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The last name of the seller.</td>
+</tr>
+<tr>
+<td><code>sellerPhoneNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The phone number of the seller.</td>
+</tr>
+<tr>
+<td><code>startDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The start date of the contract, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: ACTIVE, COMPLETED, DRAFT, PAUSED, TERMINATED</code></td>
+<td>Yes</td>
+<td>The current status of the contract. Valid values include 'DRAFT', 'ACTIVE', 'PAUSED', 'COMPLETED', and 'TERMINATED'.</td>
+</tr>
+<tr>
+<td><code>storePaymentMethodAtCheckout</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Indicates whether the payment method should be stored at checkout.</td>
+</tr>
+<tr>
+<td><code>terminationDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>The date when the contract is terminated, in ISO 8601 format.</td>
+</tr>
+<tr>
+<td><code>totalBilledAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount billed under the contract.</td>
+</tr>
+<tr>
+<td><code>totalBilledAmountPreTax</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount billed under the contract before tax.</td>
+</tr>
+<tr>
+<td><code>totalCollectedFees</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount of fees collected under the contract.</td>
+</tr>
+<tr>
+<td><code>totalCollectedTaxes</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount of taxes collected under the contract.</td>
+</tr>
+<tr>
+<td><code>totalContractValue</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total value of the contract.</td>
+</tr>
+<tr>
+<td><code>totalPaidAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total amount paid under the contract.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time when the contract was last updated, in ISO 8601 format.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="default">default</h5>
+<p><code>*/*</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>category</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The error category.</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition, provided as an object with additional properties that are arrays of strings.</td>
+</tr>
+<tr>
+<td><code>correlationId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>A unique identifier for the request. Include this value with any error reports or support tickets. It is formatted as a UUID.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Further information about the error, represented as an array of ErrorDetail objects.</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status code associated with the error detail, represented as a string.</td>
+</tr>
+<tr>
+<td><code>errors[].context</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Context about the error condition, represented as an object where each key is a string and each value is an array of strings. This provides additional information about the error.</td>
+</tr>
+<tr>
+<td><code>errors[].in</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the field or parameter in which the error was found. This is an optional string field.</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate. This is a required field and is of type string.</td>
+</tr>
+<tr>
+<td><code>errors[].subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error, provided as a string.</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A map of link names to associated URIs containing documentation about the error or recommended remediation steps.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A human readable message describing the error along with remediation steps where appropriate.</td>
+</tr>
+<tr>
+<td><code>subCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific category that contains more specific detail about the error.</td>
+</tr>
+</tbody>
+</table>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

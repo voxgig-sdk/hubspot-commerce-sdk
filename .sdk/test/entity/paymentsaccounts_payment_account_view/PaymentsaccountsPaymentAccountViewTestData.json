@@ -1,0 +1,322 @@
+{
+  "existing": {
+    "paymentsaccounts_payment_account_view": {
+      "PAYMENTSACCOUNTS_PAYMENT_ACCOUNT_VIEW00": {
+        "canPayout": true,
+        "canTransact": false,
+        "createdAt": "s66",
+        "eligibleProcessorTypes": [],
+        "enrollmentState": "s68",
+        "hasTransacted": false,
+        "id": "PAYMENTSACCOUNTS_PAYMENT_ACCOUNT_VIEW00",
+        "lastTransactedAt": "s6b",
+        "processorType": "s6c",
+        "updatedAt": "s6d"
+      },
+      "PAYMENTSACCOUNTS_PAYMENT_ACCOUNT_VIEW01": {
+        "canPayout": true,
+        "canTransact": false,
+        "createdAt": "sca",
+        "eligibleProcessorTypes": [],
+        "enrollmentState": "scc",
+        "hasTransacted": false,
+        "id": "PAYMENTSACCOUNTS_PAYMENT_ACCOUNT_VIEW01",
+        "lastTransactedAt": "scf",
+        "processorType": "sd0",
+        "updatedAt": "sd1"
+      },
+      "PAYMENTSACCOUNTS_PAYMENT_ACCOUNT_VIEW02": {
+        "canPayout": true,
+        "canTransact": false,
+        "createdAt": "s12e",
+        "eligibleProcessorTypes": [],
+        "enrollmentState": "s130",
+        "hasTransacted": false,
+        "id": "PAYMENTSACCOUNTS_PAYMENT_ACCOUNT_VIEW02",
+        "lastTransactedAt": "s133",
+        "processorType": "s134",
+        "updatedAt": "s135"
+      }
+    }
+  },
+  "new": {
+    "paymentsaccounts_payment_account_view": {
+      "paymentsaccounts_payment_account_view_ref01": {
+        "canPayout": true,
+        "canTransact": false,
+        "createdAt": "s192",
+        "eligibleProcessorTypes": [],
+        "enrollmentState": "s194",
+        "hasTransacted": false,
+        "lastTransactedAt": "s197",
+        "processorType": "s198",
+        "updatedAt": "s199"
+      }
+    }
+  },
+  "requests": {
+    "GET /commerce/payment-accounts/2026-09/status": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-/commerce/payment-accounts/2026-09/status",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": null,
+                "schema": {
+                  "example": null,
+                  "properties": {
+                    "canPayout": {
+                      "description": "A boolean indicating whether the account is capable of making payouts.",
+                      "example": null,
+                      "type": "boolean"
+                    },
+                    "canTransact": {
+                      "description": "A boolean indicating whether the account is capable of processing transactions.",
+                      "example": null,
+                      "type": "boolean"
+                    },
+                    "createdAt": {
+                      "description": "The date and time when the payment account was created, in ISO 8601 format.",
+                      "example": null,
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "eligibleProcessorTypes": {
+                      "description": "An array of processor types that the account is eligible to use. Valid values include 'HS_PAYMENTS', and 'BYO_STRIPE'.",
+                      "example": null,
+                      "items": {
+                        "enum": [
+                          "NOT_ENROLLED",
+                          "HS_PAYMENTS",
+                          "BYO_STRIPE"
+                        ],
+                        "example": null,
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "enrollmentState": {
+                      "description": "The current enrollment state of the payment account. Valid values include 'NOT_STARTED', 'IN_PROGRESS', 'IN_UNDERWRITING', 'ACTIVE', 'SUSPENDED', 'REJECTED', 'OPTED_OUT', and 'DISCONNECTED'.",
+                      "enum": [
+                        "ACTIVE",
+                        "DISCONNECTED",
+                        "IN_PROGRESS",
+                        "IN_UNDERWRITING",
+                        "NOT_STARTED",
+                        "OPTED_OUT",
+                        "REJECTED",
+                        "SUSPENDED"
+                      ],
+                      "example": null,
+                      "type": "string"
+                    },
+                    "hasTransacted": {
+                      "description": "A boolean indicating whether the account has ever processed a transaction.",
+                      "example": null,
+                      "type": "boolean"
+                    },
+                    "id": {
+                      "description": "The portalId for the payment account.",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "lastTransactedAt": {
+                      "description": "The date and time of the last transaction made with this account, in ISO 8601 format.",
+                      "example": null,
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "processorType": {
+                      "description": "The type of payment processor associated with the account. Valid values include 'NOT_ENROLLED', 'HS_PAYMENTS', and 'BYO_STRIPE'.",
+                      "enum": [
+                        "BYO_STRIPE",
+                        "HS_PAYMENTS",
+                        "NOT_ENROLLED"
+                      ],
+                      "example": null,
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "description": "The date and time when the payment account was last updated, in ISO 8601 format.",
+                      "example": null,
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "canPayout",
+                    "canTransact",
+                    "eligibleProcessorTypes",
+                    "enrollmentState",
+                    "hasTransacted",
+                    "id",
+                    "processorType"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "default": {
+            "content": {
+              "*/*": {
+                "example": null,
+                "schema": {
+                  "description": "Represents an error response returned by the API when an operation fails. This component is used in various endpoints to provide detailed information about the error encountered.",
+                  "example": {
+                    "category": "VALIDATION_ERROR",
+                    "correlationId": "aeb5f871-7f07-4993-9211-075dc63e7cbf",
+                    "links": {
+                      "knowledge-base": "https://www.hubspot.com/products/service/knowledge-base"
+                    },
+                    "message": "Invalid input (details will vary based on the error)"
+                  },
+                  "properties": {
+                    "category": {
+                      "description": "The error category",
+                      "example": null,
+                      "type": "string"
+                    },
+                    "context": {
+                      "additionalProperties": {
+                        "example": null,
+                        "items": {
+                          "example": null,
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "description": "Context about the error condition",
+                      "example": "{invalidPropertyName=[propertyValue], missingScopes=[scope1, scope2]}",
+                      "type": "object"
+                    },
+                    "correlationId": {
+                      "description": "A unique identifier for the request. Include this value with any error reports or support tickets",
+                      "example": "aeb5f871-7f07-4993-9211-075dc63e7cbf",
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "errors": {
+                      "description": "further information about the error",
+                      "example": null,
+                      "items": {
+                        "description": "Represents detailed information about an error that occurred in the API. This component is used to provide additional context and specifics about errors, typically as part of an error response.",
+                        "example": null,
+                        "properties": {
+                          "code": {
+                            "description": "The status code associated with the error detail",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "context": {
+                            "additionalProperties": {
+                              "example": null,
+                              "items": {
+                                "example": null,
+                                "type": "string"
+                              },
+                              "type": "array"
+                            },
+                            "description": "Context about the error condition",
+                            "example": "{missingScopes=[scope1, scope2]}",
+                            "type": "object"
+                          },
+                          "in": {
+                            "description": "The name of the field or parameter in which the error was found.",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "message": {
+                            "description": "A human readable message describing the error along with remediation steps where appropriate",
+                            "example": null,
+                            "type": "string"
+                          },
+                          "subCategory": {
+                            "description": "A specific category that contains more specific detail about the error",
+                            "example": null,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "message"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "links": {
+                      "additionalProperties": {
+                        "example": null,
+                        "type": "string"
+                      },
+                      "description": "A map of link names to associated URIs containing documentation about the error or recommended remediation steps",
+                      "example": null,
+                      "type": "object"
+                    },
+                    "message": {
+                      "description": "A human readable message describing the error along with remediation steps where appropriate",
+                      "example": "An error occurred",
+                      "type": "string"
+                    },
+                    "subCategory": {
+                      "description": "A specific category that contains more specific detail about the error",
+                      "example": null,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "category",
+                    "correlationId",
+                    "message"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "cpq.quotes.write"
+            ]
+          }
+        ],
+        "securitySchemes": {
+          "developer_hapikey": {
+            "in": "query",
+            "name": "hapikey",
+            "type": "apiKey"
+          },
+          "oauth2": {
+            "flows": {
+              "authorizationCode": {
+                "authorizationUrl": "https://app.hubspot.com/oauth/authorize",
+                "scopes": {},
+                "tokenUrl": "https://api.hubapi.com/oauth/v1/token"
+              }
+            },
+            "type": "oauth2"
+          },
+          "private_apps": {
+            "in": "header",
+            "name": "private-app",
+            "type": "apiKey"
+          },
+          "private_apps_legacy": {
+            "in": "header",
+            "name": "private-app-legacy",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    }
+  }
+}

@@ -1,0 +1,449 @@
+"use strict";
+// HubspotCommerce Ts SDK
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SDK = exports.HubspotCommerceSDK = exports.HubspotCommerceEntityBase = exports.BaseFeature = exports.config = exports.stdutil = void 0;
+const AdvancedEntity_1 = require("./entity/AdvancedEntity");
+const BasicEntity_1 = require("./entity/BasicEntity");
+const BatchEntity_1 = require("./entity/BatchEntity");
+const ContractEntity_1 = require("./entity/ContractEntity");
+const ContractsContractEntity_1 = require("./entity/ContractsContractEntity");
+const ContractsContractChangeEntity_1 = require("./entity/ContractsContractChangeEntity");
+const ContractsContractChangePreviewEntity_1 = require("./entity/ContractsContractChangePreviewEntity");
+const ContractsQuoteEntity_1 = require("./entity/ContractsQuoteEntity");
+const ItemEntity_1 = require("./entity/ItemEntity");
+const PaymentLinkEntity_1 = require("./entity/PaymentLinkEntity");
+const PaymentMethodsCommercePaymentMethodSettingsPublicEntity_1 = require("./entity/PaymentMethodsCommercePaymentMethodSettingsPublicEntity");
+const PaymentsActionResponseWithSingleResultSimplePublicObjectEntity_1 = require("./entity/PaymentsActionResponseWithSingleResultSimplePublicObjectEntity");
+const PaymentsCreateManualPaymentPublicEntity_1 = require("./entity/PaymentsCreateManualPaymentPublicEntity");
+const PaymentsSettingsGetBillingSettingsPublicEntity_1 = require("./entity/PaymentsSettingsGetBillingSettingsPublicEntity");
+const PaymentsSettingsGetCheckoutFeesPublicEntity_1 = require("./entity/PaymentsSettingsGetCheckoutFeesPublicEntity");
+const PaymentsSettingsGetPolicySettingsPublicEntity_1 = require("./entity/PaymentsSettingsGetPolicySettingsPublicEntity");
+const PaymentsSettingsGetShippingSettingsPublicEntity_1 = require("./entity/PaymentsSettingsGetShippingSettingsPublicEntity");
+const PaymentsaccountsPaymentAccountViewEntity_1 = require("./entity/PaymentsaccountsPaymentAccountViewEntity");
+const PriceBookEntity_1 = require("./entity/PriceBookEntity");
+const PriceBooksBatchResponsePriceBookItemEntity_1 = require("./entity/PriceBooksBatchResponsePriceBookItemEntity");
+const PriceBooksCollectionResponsePriceBookItemResponseForwardEntity_1 = require("./entity/PriceBooksCollectionResponsePriceBookItemResponseForwardEntity");
+const PriceBooksPriceBookEntity_1 = require("./entity/PriceBooksPriceBookEntity");
+const PriceBooksPriceBookItemEntity_1 = require("./entity/PriceBooksPriceBookItemEntity");
+const PriceBooksPriceBookValidateEntity_1 = require("./entity/PriceBooksPriceBookValidateEntity");
+const node_util_1 = require("node:util");
+const Config_1 = require("./Config");
+Object.defineProperty(exports, "config", { enumerable: true, get: function () { return Config_1.config; } });
+const HubspotCommerceEntityBase_1 = require("./HubspotCommerceEntityBase");
+Object.defineProperty(exports, "HubspotCommerceEntityBase", { enumerable: true, get: function () { return HubspotCommerceEntityBase_1.HubspotCommerceEntityBase; } });
+const Utility_1 = require("./utility/Utility");
+const BaseFeature_1 = require("./feature/base/BaseFeature");
+Object.defineProperty(exports, "BaseFeature", { enumerable: true, get: function () { return BaseFeature_1.BaseFeature; } });
+const stdutil = new Utility_1.Utility();
+exports.stdutil = stdutil;
+class HubspotCommerceSDK {
+    _mode = 'live';
+    _options;
+    _utility = new Utility_1.Utility();
+    _features;
+    _rootctx;
+    constructor(options) {
+        this._rootctx = this._utility.makeContext({
+            client: this,
+            utility: this._utility,
+            config: Config_1.config,
+            options,
+            shared: new WeakMap()
+        });
+        this._options = this._utility.makeOptions(this._rootctx);
+        const struct = this._utility.struct;
+        const getpath = struct.getpath;
+        if (true === getpath(this._options.feature, 'test.active')) {
+            this._mode = 'test';
+        }
+        this._rootctx.options = this._options;
+        this._features = [];
+        const featureAdd = this._utility.featureAdd;
+        const featureInit = this._utility.featureInit;
+        // Add features in the resolved order (makeOptions puts an explicit
+        // array order first, else defaults to test-first). Ordering matters:
+        // the `test` feature installs the base mock transport and the transport
+        // features (retry/cache/netsim/proxy/ratelimit) wrap whatever is current,
+        // so `test` must be added before them to sit at the base of the chain.
+        const extend = this._options.extend || [];
+        const featureorder = getpath(this._options, '__derived__.featureorder') || [];
+        for (const fname of featureorder) {
+            const fopts = this._options.feature[fname] || {};
+            if (fopts.active) {
+                // An active name with no generated class is legal when an
+                // extend-supplied instance carries that name (station's adopt
+                // path): the instance is added below, positioned by its own
+                // __after__ entry, so skip it here rather than fail construction.
+                if (!this._rootctx.config.hasFeature(fname) &&
+                    extend.some((f) => fname === f.name)) {
+                    continue;
+                }
+                featureAdd(this._rootctx, this._rootctx.config.makeFeature(fname));
+            }
+        }
+        for (let f of extend) {
+            featureAdd(this._rootctx, f);
+        }
+        for (let f of this._features) {
+            featureInit(this._rootctx, f);
+        }
+        const featureHook = this._utility.featureHook;
+        featureHook(this._rootctx, 'PostConstruct');
+    }
+    options() {
+        return this._utility.struct.clone(this._options);
+    }
+    utility() {
+        return this._utility.struct.clone(this._utility);
+    }
+    async prepare(fetchargs) {
+        const utility = this._utility;
+        const struct = utility.struct;
+        const clone = struct.clone;
+        const { makeContext, makeFetchDef, prepareHeaders, prepareAuth, } = utility;
+        fetchargs = fetchargs || {};
+        let ctx = makeContext({
+            opname: 'prepare',
+            ctrl: fetchargs.ctrl || {},
+        }, this._rootctx);
+        const options = this._options;
+        // Build spec directly from SDK options + user-provided fetch args.
+        const spec = {
+            base: options.base,
+            prefix: options.prefix,
+            suffix: options.suffix,
+            path: fetchargs.path || '',
+            method: fetchargs.method || 'GET',
+            params: fetchargs.params || {},
+            query: fetchargs.query || {},
+            headers: prepareHeaders(ctx),
+            body: fetchargs.body,
+            step: 'start',
+        };
+        ctx.spec = spec;
+        // Merge user-provided headers over SDK defaults.
+        if (fetchargs.headers) {
+            const uheaders = fetchargs.headers;
+            for (let key in uheaders) {
+                spec.headers[key] = uheaders[key];
+            }
+        }
+        // Apply SDK auth (apikey, auth prefix, etc.)
+        const authResult = prepareAuth(ctx);
+        if (authResult instanceof Error) {
+            return authResult;
+        }
+        return makeFetchDef(ctx);
+    }
+    // Raw endpoint access is operator-controllable, like every entity op.
+    // Blocking it means denying BOTH the 'direct' and 'graphql' tokens, since
+    // either one reaches the same endpoint.
+    async direct(fetchargs) {
+        if (!this._options.allow.op.includes('direct')) {
+            return {
+                ok: false,
+                err: new Error('HubspotCommerceSDK: direct: operation not allowed by' +
+                    ' SDK option allow.op value: "' + this._options.allow.op + '"'),
+            };
+        }
+        return this._rawRequest(fetchargs);
+    }
+    // Ungated request path shared by direct() and graphql(), each of which
+    // checks its own allow.op token first. Private, rather than a flag on
+    // fetchargs: a caller-supplied marker would let anyone opt straight back
+    // out of the gate by passing it.
+    async _rawRequest(fetchargs) {
+        const utility = this._utility;
+        const fetcher = utility.fetcher;
+        const makeContext = utility.makeContext;
+        const fetchdef = await this.prepare(fetchargs);
+        if (fetchdef instanceof Error) {
+            return fetchdef;
+        }
+        let ctx = makeContext({
+            opname: 'direct',
+            ctrl: (fetchargs || {}).ctrl || {},
+        }, this._rootctx);
+        try {
+            const fetched = await fetcher(ctx, fetchdef.url, fetchdef);
+            if (null == fetched) {
+                return { ok: false, err: ctx.error('direct_no_response', 'response: undefined') };
+            }
+            else if (fetched instanceof Error) {
+                return { ok: false, err: fetched };
+            }
+            const status = fetched.status;
+            // No body responses (204 No Content, 304 Not Modified) and explicit
+            // zero content-length must skip JSON parsing — fetched.json() would
+            // throw `Unexpected end of JSON input` on an empty body.
+            const headers = fetched.headers;
+            const contentLength = headers && 'function' === typeof headers.get
+                ? headers.get('content-length')
+                : (headers || {})['content-length'];
+            const noBody = 204 === status || 304 === status || '0' === String(contentLength);
+            let json = undefined;
+            if (!noBody) {
+                try {
+                    json = 'function' === typeof fetched.json ? await fetched.json() : fetched.json;
+                }
+                catch (parseErr) {
+                    // Body wasn't valid JSON — surface the raw response rather than
+                    // throwing. data stays undefined; callers can inspect status/headers.
+                    json = undefined;
+                }
+            }
+            return {
+                ok: status >= 200 && status < 300,
+                status,
+                headers: fetched.headers,
+                data: json,
+            };
+        }
+        catch (err) {
+            return { ok: false, err };
+        }
+    }
+    // Raw GraphQL access: the pressure valve that makes the generated
+    // surface's deliberate omissions (per-call selection sets, typed filter
+    // builders, batching, subscriptions) livable — the whole schema stays
+    // reachable.
+    //
+    // Thin wrapper over the same prepare/fetch path `direct` uses, with the
+    // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
+    // HTTP 200 as a top-level `errors` array, so status alone would report a
+    // failed query as ok.
+    //
+    // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
+    // ratelimit or paging features apply.
+    async graphql(query, variables, ctrl) {
+        const options = this._options;
+        if (!options.allow.op.includes('graphql')) {
+            return {
+                ok: false,
+                err: new Error('HubspotCommerceSDK: graphql: operation not allowed by' +
+                    ' SDK option allow.op value: "' + options.allow.op + '"'),
+            };
+        }
+        const res = await this._rawRequest({
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: { query, variables: variables || {} },
+            ctrl,
+        });
+        if (res instanceof Error) {
+            return res;
+        }
+        // Errors are read BEFORE any status check: a GraphQL parse or validation
+        // failure comes back as HTTP 400 carrying the standard { errors: [...] }
+        // body, and the raw path represents a non-2xx as { ok: false } with no
+        // err — so returning early on status would discard the server's own
+        // diagnostics, which are the only useful part of that response.
+        const errors = null == res.data ? undefined : res.data.errors;
+        if (null != errors && Array.isArray(errors) && 0 < errors.length) {
+            const first = errors[0] || {};
+            const err = new Error('HubspotCommerceSDK: graphql: ' +
+                (first.message || 'graphql error'));
+            err.graphql = errors;
+            return { ok: false, status: res.status, headers: res.headers, err, data: res.data };
+        }
+        return res;
+    }
+    // Entity access: `client.Advanced().list()` / `client.Advanced().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Advanced(entopts) {
+        const self = this;
+        return new AdvancedEntity_1.AdvancedEntity(self, entopts);
+    }
+    // Entity access: `client.Basic().list()` / `client.Basic().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Basic(entopts) {
+        const self = this;
+        return new BasicEntity_1.BasicEntity(self, entopts);
+    }
+    // Entity access: `client.Batch().list()` / `client.Batch().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Batch(entopts) {
+        const self = this;
+        return new BatchEntity_1.BatchEntity(self, entopts);
+    }
+    // Entity access: `client.Contract().list()` / `client.Contract().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Contract(entopts) {
+        const self = this;
+        return new ContractEntity_1.ContractEntity(self, entopts);
+    }
+    // Entity access: `client.ContractsContract().list()` / `client.ContractsContract().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ContractsContract(entopts) {
+        const self = this;
+        return new ContractsContractEntity_1.ContractsContractEntity(self, entopts);
+    }
+    // Entity access: `client.ContractsContractChange().list()` / `client.ContractsContractChange().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ContractsContractChange(entopts) {
+        const self = this;
+        return new ContractsContractChangeEntity_1.ContractsContractChangeEntity(self, entopts);
+    }
+    // Entity access: `client.ContractsContractChangePreview().list()` / `client.ContractsContractChangePreview().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ContractsContractChangePreview(entopts) {
+        const self = this;
+        return new ContractsContractChangePreviewEntity_1.ContractsContractChangePreviewEntity(self, entopts);
+    }
+    // Entity access: `client.ContractsQuote().list()` / `client.ContractsQuote().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ContractsQuote(entopts) {
+        const self = this;
+        return new ContractsQuoteEntity_1.ContractsQuoteEntity(self, entopts);
+    }
+    // Entity access: `client.Item().list()` / `client.Item().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    Item(entopts) {
+        const self = this;
+        return new ItemEntity_1.ItemEntity(self, entopts);
+    }
+    // Entity access: `client.PaymentLink().list()` / `client.PaymentLink().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PaymentLink(entopts) {
+        const self = this;
+        return new PaymentLinkEntity_1.PaymentLinkEntity(self, entopts);
+    }
+    // Entity access: `client.PaymentMethodsCommercePaymentMethodSettingsPublic().list()` / `client.PaymentMethodsCommercePaymentMethodSettingsPublic().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PaymentMethodsCommercePaymentMethodSettingsPublic(entopts) {
+        const self = this;
+        return new PaymentMethodsCommercePaymentMethodSettingsPublicEntity_1.PaymentMethodsCommercePaymentMethodSettingsPublicEntity(self, entopts);
+    }
+    // Entity access: `client.PaymentsActionResponseWithSingleResultSimplePublicObject().list()` / `client.PaymentsActionResponseWithSingleResultSimplePublicObject().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PaymentsActionResponseWithSingleResultSimplePublicObject(entopts) {
+        const self = this;
+        return new PaymentsActionResponseWithSingleResultSimplePublicObjectEntity_1.PaymentsActionResponseWithSingleResultSimplePublicObjectEntity(self, entopts);
+    }
+    // Entity access: `client.PaymentsCreateManualPaymentPublic().list()` / `client.PaymentsCreateManualPaymentPublic().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PaymentsCreateManualPaymentPublic(entopts) {
+        const self = this;
+        return new PaymentsCreateManualPaymentPublicEntity_1.PaymentsCreateManualPaymentPublicEntity(self, entopts);
+    }
+    // Entity access: `client.PaymentsSettingsGetBillingSettingsPublic().list()` / `client.PaymentsSettingsGetBillingSettingsPublic().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PaymentsSettingsGetBillingSettingsPublic(entopts) {
+        const self = this;
+        return new PaymentsSettingsGetBillingSettingsPublicEntity_1.PaymentsSettingsGetBillingSettingsPublicEntity(self, entopts);
+    }
+    // Entity access: `client.PaymentsSettingsGetCheckoutFeesPublic().list()` / `client.PaymentsSettingsGetCheckoutFeesPublic().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PaymentsSettingsGetCheckoutFeesPublic(entopts) {
+        const self = this;
+        return new PaymentsSettingsGetCheckoutFeesPublicEntity_1.PaymentsSettingsGetCheckoutFeesPublicEntity(self, entopts);
+    }
+    // Entity access: `client.PaymentsSettingsGetPolicySettingsPublic().list()` / `client.PaymentsSettingsGetPolicySettingsPublic().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PaymentsSettingsGetPolicySettingsPublic(entopts) {
+        const self = this;
+        return new PaymentsSettingsGetPolicySettingsPublicEntity_1.PaymentsSettingsGetPolicySettingsPublicEntity(self, entopts);
+    }
+    // Entity access: `client.PaymentsSettingsGetShippingSettingsPublic().list()` / `client.PaymentsSettingsGetShippingSettingsPublic().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PaymentsSettingsGetShippingSettingsPublic(entopts) {
+        const self = this;
+        return new PaymentsSettingsGetShippingSettingsPublicEntity_1.PaymentsSettingsGetShippingSettingsPublicEntity(self, entopts);
+    }
+    // Entity access: `client.PaymentsaccountsPaymentAccountView().list()` / `client.PaymentsaccountsPaymentAccountView().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PaymentsaccountsPaymentAccountView(entopts) {
+        const self = this;
+        return new PaymentsaccountsPaymentAccountViewEntity_1.PaymentsaccountsPaymentAccountViewEntity(self, entopts);
+    }
+    // Entity access: `client.PriceBook().list()` / `client.PriceBook().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PriceBook(entopts) {
+        const self = this;
+        return new PriceBookEntity_1.PriceBookEntity(self, entopts);
+    }
+    // Entity access: `client.PriceBooksBatchResponsePriceBookItem().list()` / `client.PriceBooksBatchResponsePriceBookItem().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PriceBooksBatchResponsePriceBookItem(entopts) {
+        const self = this;
+        return new PriceBooksBatchResponsePriceBookItemEntity_1.PriceBooksBatchResponsePriceBookItemEntity(self, entopts);
+    }
+    // Entity access: `client.PriceBooksCollectionResponsePriceBookItemResponseForward().list()` / `client.PriceBooksCollectionResponsePriceBookItemResponseForward().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PriceBooksCollectionResponsePriceBookItemResponseForward(entopts) {
+        const self = this;
+        return new PriceBooksCollectionResponsePriceBookItemResponseForwardEntity_1.PriceBooksCollectionResponsePriceBookItemResponseForwardEntity(self, entopts);
+    }
+    // Entity access: `client.PriceBooksPriceBook().list()` / `client.PriceBooksPriceBook().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PriceBooksPriceBook(entopts) {
+        const self = this;
+        return new PriceBooksPriceBookEntity_1.PriceBooksPriceBookEntity(self, entopts);
+    }
+    // Entity access: `client.PriceBooksPriceBookItem().list()` / `client.PriceBooksPriceBookItem().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PriceBooksPriceBookItem(entopts) {
+        const self = this;
+        return new PriceBooksPriceBookItemEntity_1.PriceBooksPriceBookItemEntity(self, entopts);
+    }
+    // Entity access: `client.PriceBooksPriceBookValidate().list()` / `client.PriceBooksPriceBookValidate().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    PriceBooksPriceBookValidate(entopts) {
+        const self = this;
+        return new PriceBooksPriceBookValidateEntity_1.PriceBooksPriceBookValidateEntity(self, entopts);
+    }
+    static test(testoptsarg, sdkoptsarg) {
+        const struct = stdutil.struct;
+        const setpath = struct.setpath;
+        const getdef = struct.getdef;
+        const clone = struct.clone;
+        const setprop = struct.setprop;
+        const sdkopts = getdef(clone(sdkoptsarg), {});
+        const testopts = getdef(clone(testoptsarg), {});
+        setprop(testopts, 'active', true);
+        setpath(sdkopts, 'feature.test', testopts);
+        const testsdk = new HubspotCommerceSDK(sdkopts);
+        testsdk._mode = 'test';
+        return testsdk;
+    }
+    tester(testopts, sdkopts) {
+        return HubspotCommerceSDK.test(testopts, sdkopts);
+    }
+    toJSON() {
+        return { name: 'HubspotCommerce' };
+    }
+    toString() {
+        return 'HubspotCommerce ' + this._utility.struct.jsonify(this.toJSON());
+    }
+    [node_util_1.inspect.custom]() {
+        return this.toString();
+    }
+}
+exports.HubspotCommerceSDK = HubspotCommerceSDK;
+const SDK = HubspotCommerceSDK;
+exports.SDK = SDK;
+//# sourceMappingURL=HubspotCommerceSDK.js.map
