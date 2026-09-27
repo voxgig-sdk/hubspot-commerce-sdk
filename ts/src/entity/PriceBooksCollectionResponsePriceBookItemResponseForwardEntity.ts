@@ -19,7 +19,6 @@ import type {
   PriceBooksCollectionResponsePriceBookItemResponseForwardListMatch,
 } from '../HubspotCommerceTypes'
 
-// TODO: needs Entity superclass
 class PriceBooksCollectionResponsePriceBookItemResponseForwardEntity extends HubspotCommerceEntityBase<PriceBooksCollectionResponsePriceBookItemResponseForward> {
 
   constructor(client: HubspotCommerceSDK, entopts: any) {

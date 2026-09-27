@@ -70,6 +70,10 @@ Create a new `ContractsContractChangeEntity` instance. Pass `null` for no initia
 
 Create a new `ContractsContractChangePreviewEntity` instance. Pass `null` for no initial data.
 
+#### `ContractsContractChangeSummary($data = null)`
+
+Create a new `ContractsContractChangeSummaryEntity` instance. Pass `null` for no initial data.
+
 #### `ContractsQuote($data = null)`
 
 Create a new `ContractsQuoteEntity` instance. Pass `null` for no initial data.
@@ -672,21 +676,21 @@ $contracts_contract_change = $client->ContractsContractChange();
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update |
-| --- | --- | --- | --- | --- |
-| `contractId` | - | - | - | - |
-| `createdAt` | - | - | - | - |
-| `deltaLineItems` | - | - | - | - |
-| `effectiveDate` | - | - | - | - |
-| `id` | - | - | - | - |
-| `lineItemChanges` | - | - | - | Yes |
-| `name` | - | - | - | Yes |
-| `proposedLineItems` | - | - | - | - |
-| `prorating` | - | - | - | Yes |
-| `quoteId` | - | - | - | - |
-| `status` | - | - | - | - |
-| `type` | - | - | - | - |
-| `updatedAt` | - | - | - | - |
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `contractId` | - | - | - |
+| `createdAt` | - | - | - |
+| `deltaLineItems` | - | - | - |
+| `effectiveDate` | - | - | - |
+| `id` | - | - | - |
+| `lineItemChanges` | - | - | Yes |
+| `name` | - | - | Yes |
+| `proposedLineItems` | - | - | - |
+| `prorating` | - | - | Yes |
+| `quoteId` | - | - | - |
+| `status` | - | - | - |
+| `type` | - | - | - |
+| `updatedAt` | - | - | - |
 
 ### Operations
 
@@ -705,14 +709,6 @@ $result = $client->ContractsContractChange()->create([
   "status" => null, // string
   "type" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
-
-```php
-$results = $client->ContractsContractChange()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -811,6 +807,68 @@ Set the entity match criteria.
 #### `make(): ContractsContractChangePreviewEntity`
 
 Create a new `ContractsContractChangePreviewEntity` instance with the same client and
+options.
+
+#### `get_name(): string`
+
+Return the entity name.
+
+
+---
+
+## ContractsContractChangeSummaryEntity
+
+```php
+$contracts_contract_change_summary = $client->ContractsContractChangeSummary();
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `contractId` | `string` | Yes | The unique identifier of the contract associated with this change. |
+| `createdAt` | `string` | No | The date and time when this contract change was created, in ISO 8601 format. |
+| `effectiveDate` | `string` | No | The date on which this contract change becomes effective, in the format 'YYYY-MM-DD'. |
+| `id` | `string` | Yes | The unique identifier for this contract change. |
+| `lineItemChanges` | `array` | Yes | An array of changes made to line items as part of this contract change. |
+| `name` | `string` | No | The name assigned to this contract change. |
+| `prorating` | `bool` | Yes | A boolean indicating whether the contract change involves prorating. |
+| `quoteId` | `string` | No | The unique identifier of the quote associated with this contract change, if applicable. |
+| `status` | `string` | Yes | The current status of the contract change. |
+| `type` | `string` | Yes | The type of contract change, which can be either 'DIRECT' or 'QUOTE'. |
+| `updatedAt` | `string` | No | The date and time when this contract change was last updated, in ISO 8601 format. |
+
+### Operations
+
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
+
+```php
+$results = $client->ContractsContractChangeSummary()->list();
+```
+
+### Common Methods
+
+#### `data_get(): array`
+
+Get the entity data. Returns a copy of the current data.
+
+#### `data_set($data): void`
+
+Set the entity data.
+
+#### `match_get(): array`
+
+Get the entity match criteria.
+
+#### `match_set($match): void`
+
+Set the entity match criteria.
+
+#### `make(): ContractsContractChangeSummaryEntity`
+
+Create a new `ContractsContractChangeSummaryEntity` instance with the same client and
 options.
 
 #### `get_name(): string`
@@ -2176,14 +2234,14 @@ Return the entity name.
 
 | Feature | Version | Description |
 | --- | --- | --- |
-| `debug` | 0.0.1 | Request/response capture ring buffer for debugging |
-| `idempotency` | 0.0.1 | Idempotency keys for safe retries of mutating operations |
-| `metrics` | 0.0.1 | Statistics capture: per-operation counters and latency |
-| `paging` | 0.0.1 | Pagination signals for list operations |
-| `ratelimit` | 0.0.1 | Client-side rate limiting via a token bucket |
-| `retry` | 0.0.1 | Automatic retry of transient failures with exponential backoff |
-| `test` | 0.0.1 | In-memory mock transport for testing without a live server |
-| `timeout` | 0.0.1 | Per-request timeout with transport abort |
+| `debug` | 0.0.1 | Debug capture |
+| `idempotency` | 0.0.1 | Idempotency |
+| `metrics` | 0.0.1 | Metrics |
+| `paging` | 0.0.1 | Paging |
+| `ratelimit` | 0.0.1 | Rate limiting |
+| `retry` | 0.0.1 | Retry |
+| `test` | 0.0.1 | Test transport |
+| `timeout` | 0.0.1 | Timeout |
 
 
 Features are activated via the `feature` option:
@@ -2229,7 +2287,7 @@ rather than the transport, so their order does not affect what they observe.
 
 #### `debug`
 
-Request/response capture ring buffer for debugging.
+Debug capture.
 
 **Configuration**
 
@@ -2260,7 +2318,7 @@ its default unless you name it.
 
 #### `idempotency`
 
-Idempotency keys for safe retries of mutating operations.
+Idempotency.
 
 **Configuration**
 
@@ -2291,7 +2349,7 @@ its default unless you name it.
 
 #### `metrics`
 
-Statistics capture: per-operation counters and latency.
+Metrics.
 
 **Configuration**
 
@@ -2319,7 +2377,7 @@ its default unless you name it.
 
 #### `paging`
 
-Pagination signals for list operations.
+Paging.
 
 **Configuration**
 
@@ -2354,7 +2412,7 @@ its default unless you name it.
 
 #### `ratelimit`
 
-Client-side rate limiting via a token bucket.
+Rate limiting.
 
 **Configuration**
 
@@ -2385,7 +2443,7 @@ its default unless you name it.
 
 #### `retry`
 
-Automatic retry of transient failures with exponential backoff.
+Retry.
 
 **Configuration**
 
@@ -2419,7 +2477,7 @@ its default unless you name it.
 
 #### `test`
 
-In-memory mock transport for testing without a live server.
+Test transport.
 
 **Configuration**
 
@@ -2450,7 +2508,7 @@ its default unless you name it.
 
 #### `timeout`
 
-Per-request timeout with transport abort.
+Timeout.
 
 **Configuration**
 

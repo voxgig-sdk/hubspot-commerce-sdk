@@ -1,0 +1,227 @@
+# Entity: price_books_price_book
+
+main: kit: entity: price_books_price_book: {
+
+  alias: field: {}
+
+  fields: {
+    archived: {
+      h: "Archived"
+      n: "archived"
+      r: false
+      sh: "A boolean indicating whether this price book is archived."
+      t: "`$BOOLEAN`"
+    }
+    archivedAt: {
+      fo: "date-time"
+      h: "Archived At"
+      n: "archivedAt"
+      r: false
+      sh: "The date and time when this price book was archived."
+      t: "`$STRING`"
+    }
+    autoAssignmentEnabled: {
+      h: "Auto Assignment Enabled"
+      n: "autoAssignmentEnabled"
+      r: true
+      sh: "Indicates whether auto-assignment is enabled for the price book."
+      t: "`$BOOLEAN`"
+    }
+    countOfIncludedProducts: {
+      fo: "int32"
+      h: "Count Of Included Products"
+      n: "countOfIncludedProducts"
+      r: true
+      sh: "The number of products included in this price book."
+      t: "`$INTEGER`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: false
+      sh: "The date and time when this price book was created."
+      t: "`$STRING`"
+    }
+    customProperties: {
+      h: "Custom Properties"
+      n: "customProperties"
+      r: true
+      sh: "A map of custom property names to their values for this price book."
+      t: "`$OBJECT`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "A description of the price book."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The unique identifier for this price book."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The name of the price book."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      sh: "The current status of the price book."
+      t: "`$STRING`"
+    }
+    supportedCurrencies: {
+      h: "Supported Currencies"
+      n: "supportedCurrencies"
+      r: true
+      sh: "An array of currency codes that this price book supports."
+      t: "`$ARRAY`"
+    }
+    updatedAt: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updatedAt"
+      r: false
+      sh: "The date and time when this price book was last updated."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "price_books_price_book"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /commerce/price-books/2026-09/price-books/{priceBookId}/activate"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "price_book_id"
+                or: "price_book_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/commerce/price-books/2026-09/price-books/{priceBookId}/activate"
+          q: {
+            exist: [
+              "price_book_id"
+            ]
+          }
+          r: {
+            param: {
+              priceBookId: "price_book_id"
+            }
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              var: "price_book_id"
+            }
+            {
+              lit: "activate"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /commerce/price-books/2026-09/price-books/{priceBookId}/deactivate"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "price_book_id"
+                or: "price_book_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/commerce/price-books/2026-09/price-books/{priceBookId}/deactivate"
+          q: {
+            exist: [
+              "price_book_id"
+            ]
+          }
+          r: {
+            param: {
+              priceBookId: "price_book_id"
+            }
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              var: "price_book_id"
+            }
+            {
+              lit: "deactivate"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.price_book")]
+  ]
+
+}

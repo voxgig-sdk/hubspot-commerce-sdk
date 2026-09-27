@@ -108,7 +108,7 @@ def _payments_action_response_with_single_result_simple_public_object_basic_setu
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["payments_action_response_with_single_result_simple_public_object01", "payments_action_response_with_single_result_simple_public_object02", "payments_action_response_with_single_result_simple_public_object03", "2027_03_beta01", "2027_03_beta02", "2027_03_beta03", "task01", "task02", "task03", "payment_crm_object01"],
+        ["payments_action_response_with_single_result_simple_public_object01", "payments_action_response_with_single_result_simple_public_object02", "payments_action_response_with_single_result_simple_public_object03", "payment_crm_object01", "task01"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

@@ -1,7 +1,7 @@
 // Typed models for the HubspotCommerce SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
@@ -366,10 +366,6 @@ export interface ContractsContractChangeLoadMatch {
   id: string
 }
 
-export interface ContractsContractChangeListMatch {
-  contract_id: string
-}
-
 export interface ContractsContractChangeCreateData {
   contractId: string
   createdAt?: string
@@ -410,6 +406,24 @@ export interface ContractsContractChangePreview {
 export interface ContractsContractChangePreviewCreateData {
   deltaLineItems: any[]
   proposedLineItems: any[]
+}
+
+export interface ContractsContractChangeSummary {
+  contractId: string
+  createdAt?: string
+  effectiveDate?: string
+  id: string
+  lineItemChanges: any[]
+  name?: string
+  prorating: boolean
+  quoteId?: string
+  status: string
+  type: string
+  updatedAt?: string
+}
+
+export interface ContractsContractChangeSummaryListMatch {
+  contract_id: string
 }
 
 export interface ContractsQuote {

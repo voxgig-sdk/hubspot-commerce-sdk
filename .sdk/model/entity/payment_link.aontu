@@ -1,0 +1,757 @@
+# Entity: payment_link
+
+main: kit: entity: payment_link: {
+
+  alias: field: {}
+
+  fields: {
+    acceptedPaymentMethods: {
+      h: "Accepted Payment Methods"
+      n: "acceptedPaymentMethods"
+      op: {
+        update: {
+          req: false
+          type: "`$ARRAY`"
+        }
+      }
+      r: true
+      sh: "An array of accepted payment methods for the payment link."
+      t: "`$ARRAY`"
+    }
+    additionalFormFields: {
+      h: "Additional Form Fields"
+      n: "additionalFormFields"
+      op: {
+        update: {
+          req: false
+          type: "`$ARRAY`"
+        }
+      }
+      r: true
+      sh: "An array of additional form fields included in the payment link."
+      t: "`$ARRAY`"
+    }
+    archived: {
+      h: "Archived"
+      n: "archived"
+      r: true
+      sh: "A boolean indicating whether the payment link is archived."
+      t: "`$BOOLEAN`"
+    }
+    archivedAt: {
+      fo: "date-time"
+      h: "Archived At"
+      n: "archivedAt"
+      r: false
+      sh: "The date and time when the payment link was archived, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    automatedSalesTaxEnabled: {
+      h: "Automated Sales Tax Enabled"
+      n: "automatedSalesTaxEnabled"
+      op: {
+        create: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      sh: "A boolean indicating whether automated sales tax is enabled for the payment link."
+      t: "`$BOOLEAN`"
+    }
+    businessUnitId: {
+      h: "Business Unit Id"
+      n: "businessUnitId"
+      op: {
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      r: false
+      sh: "The business unit ID associated with the payment link, represented as a string."
+      t: "`$STRING`"
+    }
+    checkoutFeeIds: {
+      h: "Checkout Fee Ids"
+      n: "checkoutFeeIds"
+      r: true
+      sh: "An array of checkout fee IDs associated with the payment link."
+      t: "`$ARRAY`"
+    }
+    collectFullBillingAddress: {
+      h: "Collect Full Billing Address"
+      n: "collectFullBillingAddress"
+      op: {
+        create: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      sh: "A boolean indicating whether to collect the full billing address during checkout."
+      t: "`$BOOLEAN`"
+    }
+    collectShippingAddress: {
+      h: "Collect Shipping Address"
+      n: "collectShippingAddress"
+      op: {
+        create: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      sh: "A boolean indicating whether to collect the shipping address during checkout."
+      t: "`$BOOLEAN`"
+    }
+    completedPurchaseCount: {
+      fo: "int32"
+      h: "Completed Purchase Count"
+      n: "completedPurchaseCount"
+      r: true
+      sh: "The number of completed purchases made through this payment link."
+      t: "`$INTEGER`"
+    }
+    createContractOnPurchase: {
+      h: "Create Contract On Purchase"
+      n: "createContractOnPurchase"
+      op: {
+        create: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      sh: "A boolean indicating whether a contract should be created upon purchase."
+      t: "`$BOOLEAN`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: false
+      sh: "The date and time when the payment link was created, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    currencyCode: {
+      h: "Currency Code"
+      n: "currencyCode"
+      op: {
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "The currency code for the payment link, represented as a string."
+      t: "`$STRING`"
+    }
+    dealConfigurations: {
+      h: "Deal Configurations"
+      n: "dealConfigurations"
+      r: true
+      sh: "An object containing deal configuration settings."
+      t: "`$OBJECT`"
+    }
+    descriptionHtml: {
+      h: "Description Html"
+      n: "descriptionHtml"
+      op: {
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      r: false
+      sh: "The HTML description of the payment link, represented as a string."
+      t: "`$STRING`"
+    }
+    discount: {
+      h: "Discount"
+      n: "discount"
+      r: true
+      t: "`$OBJECT`"
+    }
+    discountCodeEnabled: {
+      h: "Discount Code Enabled"
+      n: "discountCodeEnabled"
+      op: {
+        create: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      sh: "A boolean indicating whether discount codes are enabled for the payment link."
+      t: "`$BOOLEAN`"
+    }
+    discountObjectId: {
+      h: "Discount Object Id"
+      n: "discountObjectId"
+      op: {
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      r: false
+      sh: "A string representing the object ID of a discount associated with the payment link."
+      t: "`$STRING`"
+    }
+    discounts: {
+      h: "Discounts"
+      n: "discounts"
+      r: true
+      sh: "An array of discount objects associated with the payment link."
+      t: "`$ARRAY`"
+    }
+    domainId: {
+      h: "Domain Id"
+      n: "domainId"
+      op: {
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      r: false
+      sh: "The domain ID associated with the payment link, represented as a string."
+      t: "`$STRING`"
+    }
+    enableDefaultCheckoutFees: {
+      h: "Enable Default Checkout Fees"
+      n: "enableDefaultCheckoutFees"
+      op: {
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      sh: "A boolean indicating whether default checkout fees are enabled."
+      t: "`$BOOLEAN`"
+    }
+    expirationSettings: {
+      h: "Expiration Settings"
+      n: "expirationSettings"
+      op: {
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      r: false
+      sh: "An object representing the expiration settings for the payment link."
+      t: "`$OBJECT`"
+    }
+    feeObjectIds: {
+      h: "Fee Object Ids"
+      n: "feeObjectIds"
+      op: {
+        update: {
+          req: false
+          type: "`$ARRAY`"
+        }
+      }
+      r: true
+      sh: "An array of strings representing the IDs of fee objects associated with the payment link."
+      t: "`$ARRAY`"
+    }
+    fees: {
+      h: "Fees"
+      n: "fees"
+      op: {
+        update: {
+          req: false
+          type: "`$ARRAY`"
+        }
+      }
+      r: true
+      sh: "An array of fee objects associated with the payment link."
+      t: "`$ARRAY`"
+    }
+    formGuid: {
+      h: "Form Guid"
+      n: "formGuid"
+      r: true
+      sh: "The form GUID associated with the payment link, represented as a string."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The unique identifier for the payment link, represented as a string."
+      t: "`$STRING`"
+    }
+    includeEmailInSuccessRedirect: {
+      h: "Include Email In Success Redirect"
+      n: "includeEmailInSuccessRedirect"
+      op: {
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      sh: "A boolean indicating whether to include the email in the success redirect URL."
+      t: "`$BOOLEAN`"
+    }
+    isOneTimeUseEnabled: {
+      h: "Is One Time Use Enabled"
+      n: "isOneTimeUseEnabled"
+      op: {
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      sh: "A boolean indicating whether the payment link is enabled for one-time use."
+      t: "`$BOOLEAN`"
+    }
+    lineItemObjectIds: {
+      h: "Line Item Object Ids"
+      n: "lineItemObjectIds"
+      op: {
+        update: {
+          req: false
+          type: "`$ARRAY`"
+        }
+      }
+      r: true
+      sh: "An array of line item object IDs associated with the payment link, each represented as a string."
+      t: "`$ARRAY`"
+    }
+    lineItems: {
+      h: "Line Items"
+      n: "lineItems"
+      op: {
+        update: {
+          req: false
+          type: "`$ARRAY`"
+        }
+      }
+      r: true
+      sh: "An array of line items associated with the payment link."
+      t: "`$ARRAY`"
+    }
+    paymentLinkName: {
+      h: "Payment Link Name"
+      n: "paymentLinkName"
+      op: {
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "The name of the payment link, represented as a string."
+      t: "`$STRING`"
+    }
+    paymentLinkUrl: {
+      h: "Payment Link Url"
+      n: "paymentLinkUrl"
+      r: true
+      sh: "The URL of the payment link, represented as a string."
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      op: {
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "The current state of the payment link, represented as a string."
+      t: "`$STRING`"
+    }
+    storePaymentMethodAtCheckout: {
+      h: "Store Payment Method At Checkout"
+      n: "storePaymentMethodAtCheckout"
+      op: {
+        create: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      sh: "A boolean indicating whether to store the payment method at checkout."
+      t: "`$BOOLEAN`"
+    }
+    successUrl: {
+      h: "Success Url"
+      n: "successUrl"
+      op: {
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      r: false
+      sh: "The URL to redirect to upon successful payment, represented as a string."
+      t: "`$STRING`"
+    }
+    taxObjectIds: {
+      h: "Tax Object Ids"
+      n: "taxObjectIds"
+      op: {
+        update: {
+          req: false
+          type: "`$ARRAY`"
+        }
+      }
+      r: true
+      sh: "An array of string IDs representing tax objects associated with the payment link."
+      t: "`$ARRAY`"
+    }
+    taxes: {
+      h: "Taxes"
+      n: "taxes"
+      op: {
+        update: {
+          req: false
+          type: "`$ARRAY`"
+        }
+      }
+      r: true
+      sh: "An array of tax objects associated with the payment link."
+      t: "`$ARRAY`"
+    }
+    updatedAt: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updatedAt"
+      r: false
+      sh: "The date and time when the payment link was last updated, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "payment_link"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /commerce/payment-links/2026-09/payment-links"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/commerce/payment-links/2026-09/payment-links"
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "payment-links"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "payment-links"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /commerce/payment-links/2026-09/payment-links"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: null
+                k: "query"
+                n: "after"
+                or: "after"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "archived"
+                or: "archived"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "created_after"
+                or: "created_after"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "created_at"
+                or: "created_at"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "created_before"
+                or: "created_before"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "sort"
+                or: "sort"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "updated_after"
+                or: "updated_after"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "updated_at"
+                or: "updated_at"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "updated_before"
+                or: "updated_before"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/commerce/payment-links/2026-09/payment-links"
+          q: {
+            exist: [
+              "after"
+              "archived"
+              "created_after"
+              "created_at"
+              "created_before"
+              "limit"
+              "sort"
+              "updated_after"
+              "updated_at"
+              "updated_before"
+            ]
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "payment-links"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "payment-links"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /commerce/payment-links/2026-09/payment-links/{paymentLinkId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "id"
+                or: "payment_link_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: null
+                k: "query"
+                n: "archived"
+                or: "archived"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/commerce/payment-links/2026-09/payment-links/{paymentLinkId}"
+          q: {
+            exist: [
+              "archived"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              paymentLinkId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "payment-links"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "payment-links"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /commerce/payment-links/2026-09/payment-links/{paymentLinkId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "id"
+                or: "payment_link_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/commerce/payment-links/2026-09/payment-links/{paymentLinkId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              paymentLinkId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "payment-links"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "payment-links"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

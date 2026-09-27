@@ -21,47 +21,13 @@ class TestContractsContractChangeEntity:
         ent = testsdk.ContractsContractChange(None)
         assert ent is not None
 
-    def test_should_stream(self):
-        # Feature #4: the entity stream(action, ...) method runs the op
-        # pipeline and yields result items. With the streaming feature active
-        # it yields the feature's incremental output; otherwise it falls back
-        # to the materialised list so stream always yields.
-        seed = {
-            "entity": {
-                "contracts_contract_change": {
-                    "s1": {"id": "s1"},
-                    "s2": {"id": "s2"},
-                    "s3": {"id": "s3"},
-                }
-            }
-        }
-
-        # Fallback: streaming inactive -> yields the materialised list items.
-        base = HubspotCommerceSDK.test(seed, None)
-        seen = list(base.ContractsContractChange(None).stream("list", None, None))
-        assert len(seen) == 3
-
-        # Inbound: streaming active -> yields each item from the feature.
-        from hubspotcommerce_sdk.config import shared_config
-        cfg = shared_config()
-        if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
-            sdk = HubspotCommerceSDK.test(
-                seed, {"feature": {"streaming": {"active": True}}})
-            got = []
-            for item in sdk.ContractsContractChange(None).stream("list", None, None):
-                if isinstance(item, list):
-                    got.extend(item)
-                else:
-                    got.append(item)
-            assert len(got) == 3
-
     def test_should_run_basic_flow(self):
         setup = _contracts_contract_change_basic_setup(None)
         # Per-op sdk-test-control.json skip — basic test exercises a flow with
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list", "update", "load"]:
+        for _op in ["create", "update", "load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "contracts_contract_change." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -77,24 +43,10 @@ class TestContractsContractChangeEntity:
         contracts_contract_change_ref01_ent = client.ContractsContractChange(None)
         contracts_contract_change_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.contracts_contract_change"), "contracts_contract_change_ref01"))
-        contracts_contract_change_ref01_data["contract_id"] = setup["idmap"]["contract01"]
 
         contracts_contract_change_ref01_data = helpers.to_map(runner.entity_data(contracts_contract_change_ref01_ent.create(contracts_contract_change_ref01_data, None)))
         assert contracts_contract_change_ref01_data is not None
         assert contracts_contract_change_ref01_data["id"] is not None
-
-        # LIST
-        contracts_contract_change_ref01_match = {
-            "contract_id": setup["idmap"]["contract01"],
-        }
-
-        contracts_contract_change_ref01_list_result = contracts_contract_change_ref01_ent.list(contracts_contract_change_ref01_match, None)
-        assert isinstance(contracts_contract_change_ref01_list_result, list)
-
-        found_item = vs.select(
-            runner.entity_list_to_data(contracts_contract_change_ref01_list_result),
-            {"id": contracts_contract_change_ref01_data["id"]})
-        assert not vs.isempty(found_item)
 
         # UPDATE
         contracts_contract_change_ref01_data_up0_up = {
@@ -137,7 +89,7 @@ def _contracts_contract_change_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["contracts_contract_change01", "contracts_contract_change02", "contracts_contract_change03", "change01", "change02", "change03", "contract01", "contract02", "contract03"],
+        ["contracts_contract_change01", "contracts_contract_change02", "contracts_contract_change03", "contract01", "contract02", "contract03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

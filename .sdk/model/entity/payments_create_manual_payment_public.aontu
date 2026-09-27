@@ -1,0 +1,108 @@
+# Entity: payments_create_manual_payment_public
+
+main: kit: entity: payments_create_manual_payment_public: {
+
+  alias: field: {}
+
+  fields: {
+    associations: {
+      h: "Associations"
+      n: "associations"
+      r: true
+      sh: "An array of associations related to the payment, where each item is an AssociationPublicRequest object."
+      t: "`$ARRAY`"
+    }
+    billingAddress: {
+      h: "Billing Address"
+      n: "billingAddress"
+      r: false
+      t: "`$OBJECT`"
+    }
+    currencyCode: {
+      h: "Currency Code"
+      n: "currencyCode"
+      r: true
+      sh: "The currency code for the payment, represented as a string."
+      t: "`$STRING`"
+    }
+    customerEmail: {
+      h: "Customer Email"
+      n: "customerEmail"
+      r: false
+      sh: "The email address of the customer making the payment, represented as a string."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The unique identifier for the created manual payment, represented as a string."
+      t: "`$STRING`"
+    }
+    paymentAmount: {
+      h: "Payment Amount"
+      n: "paymentAmount"
+      r: true
+      sh: "The amount of the payment, represented as a number."
+      t: "`$NUMBER`"
+    }
+    paymentDate: {
+      h: "Payment Date"
+      n: "paymentDate"
+      r: true
+      sh: "The date of the payment, represented as a string."
+      t: "`$STRING`"
+    }
+    paymentMethod: {
+      h: "Payment Method"
+      n: "paymentMethod"
+      r: true
+      sh: "The method used for the payment, represented as a string."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "payments_create_manual_payment_public"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /commerce/payments/2027-03-beta/manual-payments"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/commerce/payments/2027-03-beta/manual-payments"
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "payments"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "manual-payments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

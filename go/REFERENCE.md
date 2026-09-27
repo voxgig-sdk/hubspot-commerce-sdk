@@ -76,6 +76,10 @@ Create a new `ContractsContractChange` entity instance. Pass `nil` for no initia
 
 Create a new `ContractsContractChangePreview` entity instance. Pass `nil` for no initial data.
 
+#### `ContractsContractChangeSummary(data map[string]any) HubspotCommerceEntity`
+
+Create a new `ContractsContractChangeSummary` entity instance. Pass `nil` for no initial data.
+
 #### `ContractsQuote(data map[string]any) HubspotCommerceEntity`
 
 Create a new `ContractsQuote` entity instance. Pass `nil` for no initial data.
@@ -681,35 +685,23 @@ fmt.Println(contractsContractChange.GetName()) // "contracts_contract_change"
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update |
-| --- | --- | --- | --- | --- |
-| `contractId` | - | - | - | - |
-| `createdAt` | - | - | - | - |
-| `deltaLineItems` | - | - | - | - |
-| `effectiveDate` | - | - | - | - |
-| `id` | - | - | - | - |
-| `lineItemChanges` | - | - | - | Yes |
-| `name` | - | - | - | Yes |
-| `proposedLineItems` | - | - | - | - |
-| `prorating` | - | - | - | Yes |
-| `quoteId` | - | - | - | - |
-| `status` | - | - | - | - |
-| `type` | - | - | - | - |
-| `updatedAt` | - | - | - | - |
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `contractId` | - | - | - |
+| `createdAt` | - | - | - |
+| `deltaLineItems` | - | - | - |
+| `effectiveDate` | - | - | - |
+| `id` | - | - | - |
+| `lineItemChanges` | - | - | Yes |
+| `name` | - | - | Yes |
+| `proposedLineItems` | - | - | - |
+| `prorating` | - | - | Yes |
+| `quoteId` | - | - | - |
+| `status` | - | - | - |
+| `type` | - | - | - |
+| `updatedAt` | - | - | - |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns an array.
-
-```go
-results, err := client.ContractsContractChange(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(results)
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -829,6 +821,67 @@ Get or set the entity match criteria. Works the same as `Data()`.
 #### `Make() Entity`
 
 Create a new `ContractsContractChangePreviewEntity` instance with the same client and
+options.
+
+#### `GetName() string`
+
+Return the entity name.
+
+
+---
+
+## ContractsContractChangeSummaryEntity
+
+```go
+contractsContractChangeSummary := client.ContractsContractChangeSummary(nil)
+fmt.Println(contractsContractChangeSummary.GetName()) // "contracts_contract_change_summary"
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `contractId` | `string` | Yes | The unique identifier of the contract associated with this change. |
+| `createdAt` | `string` | No | The date and time when this contract change was created, in ISO 8601 format. |
+| `effectiveDate` | `string` | No | The date on which this contract change becomes effective, in the format 'YYYY-MM-DD'. |
+| `id` | `string` | Yes | The unique identifier for this contract change. |
+| `lineItemChanges` | `[]any` | Yes | An array of changes made to line items as part of this contract change. |
+| `name` | `string` | No | The name assigned to this contract change. |
+| `prorating` | `bool` | Yes | A boolean indicating whether the contract change involves prorating. |
+| `quoteId` | `string` | No | The unique identifier of the quote associated with this contract change, if applicable. |
+| `status` | `string` | Yes | The current status of the contract change. |
+| `type` | `string` | Yes | The type of contract change, which can be either 'DIRECT' or 'QUOTE'. |
+| `updatedAt` | `string` | No | The date and time when this contract change was last updated, in ISO 8601 format. |
+
+### Operations
+
+#### `List(reqmatch, ctrl map[string]any) (any, error)`
+
+List entities matching the given criteria. Returns an array.
+
+```go
+results, err := client.ContractsContractChangeSummary(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
+```
+
+### Common Methods
+
+#### `Data(args ...any) any`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `Match(args ...any) any`
+
+Get or set the entity match criteria. Works the same as `Data()`.
+
+#### `Make() Entity`
+
+Create a new `ContractsContractChangeSummaryEntity` instance with the same client and
 options.
 
 #### `GetName() string`
@@ -2229,14 +2282,14 @@ Return the entity name.
 
 | Feature | Version | Description |
 | --- | --- | --- |
-| `debug` | 0.0.1 | Request/response capture ring buffer for debugging |
-| `idempotency` | 0.0.1 | Idempotency keys for safe retries of mutating operations |
-| `metrics` | 0.0.1 | Statistics capture: per-operation counters and latency |
-| `paging` | 0.0.1 | Pagination signals for list operations |
-| `ratelimit` | 0.0.1 | Client-side rate limiting via a token bucket |
-| `retry` | 0.0.1 | Automatic retry of transient failures with exponential backoff |
-| `test` | 0.0.1 | In-memory mock transport for testing without a live server |
-| `timeout` | 0.0.1 | Per-request timeout with transport abort |
+| `debug` | 0.0.1 | Debug capture |
+| `idempotency` | 0.0.1 | Idempotency |
+| `metrics` | 0.0.1 | Metrics |
+| `paging` | 0.0.1 | Paging |
+| `ratelimit` | 0.0.1 | Rate limiting |
+| `retry` | 0.0.1 | Retry |
+| `test` | 0.0.1 | Test transport |
+| `timeout` | 0.0.1 | Timeout |
 
 
 Features are activated via the `feature` option:
@@ -2282,7 +2335,7 @@ rather than the transport, so their order does not affect what they observe.
 
 #### `debug`
 
-Request/response capture ring buffer for debugging.
+Debug capture.
 
 **Configuration**
 
@@ -2313,7 +2366,7 @@ its default unless you name it.
 
 #### `idempotency`
 
-Idempotency keys for safe retries of mutating operations.
+Idempotency.
 
 **Configuration**
 
@@ -2344,7 +2397,7 @@ its default unless you name it.
 
 #### `metrics`
 
-Statistics capture: per-operation counters and latency.
+Metrics.
 
 **Configuration**
 
@@ -2372,7 +2425,7 @@ its default unless you name it.
 
 #### `paging`
 
-Pagination signals for list operations.
+Paging.
 
 **Configuration**
 
@@ -2407,7 +2460,7 @@ its default unless you name it.
 
 #### `ratelimit`
 
-Client-side rate limiting via a token bucket.
+Rate limiting.
 
 **Configuration**
 
@@ -2438,7 +2491,7 @@ its default unless you name it.
 
 #### `retry`
 
-Automatic retry of transient failures with exponential backoff.
+Retry.
 
 **Configuration**
 
@@ -2472,7 +2525,7 @@ its default unless you name it.
 
 #### `test`
 
-In-memory mock transport for testing without a live server.
+Test transport.
 
 **Configuration**
 
@@ -2503,7 +2556,7 @@ its default unless you name it.
 
 #### `timeout`
 
-Per-request timeout with transport abort.
+Timeout.
 
 **Configuration**
 

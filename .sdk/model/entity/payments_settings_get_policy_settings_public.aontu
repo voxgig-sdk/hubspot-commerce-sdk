@@ -1,0 +1,151 @@
+# Entity: payments_settings_get_policy_settings_public
+
+main: kit: entity: payments_settings_get_policy_settings_public: {
+
+  alias: field: {}
+
+  fields: {
+    acknowledgementRequired: {
+      h: "Acknowledgement Required"
+      n: "acknowledgementRequired"
+      op: {
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      sh: "A boolean indicating whether an acknowledgement is required for the policy."
+      t: "`$BOOLEAN`"
+    }
+    cancellationPolicyText: {
+      h: "Cancellation Policy Text"
+      n: "cancellationPolicyText"
+      op: {
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      r: false
+      sh: "A string containing the text of the cancellation policy."
+      t: "`$STRING`"
+    }
+    customPolicyEnabled: {
+      h: "Custom Policy Enabled"
+      n: "customPolicyEnabled"
+      op: {
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      sh: "A boolean indicating whether a custom policy is enabled."
+      t: "`$BOOLEAN`"
+    }
+    refundPolicyText: {
+      h: "Refund Policy Text"
+      n: "refundPolicyText"
+      op: {
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      r: false
+      sh: "A string containing the text of the refund policy."
+      t: "`$STRING`"
+    }
+    termsOfServiceUrl: {
+      h: "Terms Of Service Url"
+      n: "termsOfServiceUrl"
+      op: {
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      r: false
+      sh: "A string representing the URL of the terms of service."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "payments_settings_get_policy_settings_public"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /commerce/payments-settings/2027-03-beta/payments-settings/policy"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/commerce/payments-settings/2027-03-beta/payments-settings/policy"
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "payments-settings"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "payments-settings"
+            }
+            {
+              lit: "policy"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /commerce/payments-settings/2027-03-beta/payments-settings/policy"
+            source: "openapi3"
+            version: 2
+          }
+          m: "PATCH"
+          o: "/commerce/payments-settings/2027-03-beta/payments-settings/policy"
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "payments-settings"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "payments-settings"
+            }
+            {
+              lit: "policy"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

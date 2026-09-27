@@ -19,7 +19,6 @@ import type {
   PaymentsActionResponseWithSingleResultSimplePublicObjectListMatch,
 } from '../HubspotCommerceTypes'
 
-// TODO: needs Entity superclass
 class PaymentsActionResponseWithSingleResultSimplePublicObjectEntity extends HubspotCommerceEntityBase<PaymentsActionResponseWithSingleResultSimplePublicObject> {
 
   constructor(client: HubspotCommerceSDK, entopts: any) {

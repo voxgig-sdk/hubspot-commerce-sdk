@@ -1,0 +1,452 @@
+# Entity: contracts_contract_change
+
+main: kit: entity: contracts_contract_change: {
+
+  alias: field: {}
+
+  fields: {
+    contractId: {
+      h: "Contract Id"
+      n: "contractId"
+      r: true
+      sh: "The unique identifier of the contract associated with this change."
+      t: "`$STRING`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: false
+      sh: "The date and time when the contract change was created, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    deltaLineItems: {
+      h: "Delta Line Items"
+      n: "deltaLineItems"
+      r: true
+      sh: "An array of line items that represent the difference resulting from the contract change."
+      t: "`$ARRAY`"
+    }
+    effectiveDate: {
+      fo: "date"
+      h: "Effective Date"
+      n: "effectiveDate"
+      r: false
+      sh: "The date when the contract change becomes effective, in YYYY-MM-DD format."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The unique identifier for the contract change."
+      t: "`$STRING`"
+    }
+    lineItemChanges: {
+      h: "Line Item Changes"
+      n: "lineItemChanges"
+      op: {
+        update: {
+          req: false
+          type: "`$ARRAY`"
+        }
+      }
+      r: true
+      sh: "An array of changes to line items associated with the contract change."
+      t: "`$ARRAY`"
+      union: {
+        branches: 3
+        count: 1
+        depth: 3
+      }
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      r: false
+      sh: "The name of the contract change."
+      t: "`$STRING`"
+    }
+    proposedLineItems: {
+      h: "Proposed Line Items"
+      n: "proposedLineItems"
+      r: true
+      sh: "An array of line items that are proposed as part of the contract change."
+      t: "`$ARRAY`"
+    }
+    prorating: {
+      h: "Prorating"
+      n: "prorating"
+      op: {
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      sh: "A boolean indicating whether the contract change involves prorating."
+      t: "`$BOOLEAN`"
+    }
+    quoteId: {
+      h: "Quote Id"
+      n: "quoteId"
+      r: false
+      sh: "The unique identifier of the quote associated with this contract change."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      sh: "The current status of the contract change."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      sh: "The type of contract change."
+      t: "`$STRING`"
+    }
+    updatedAt: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updatedAt"
+      r: false
+      sh: "The date and time when the contract change was last updated, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "contracts_contract_change"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /commerce/contracts/2027-03-beta/changes/{changeId}/accept"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "change_id"
+                or: "change_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/commerce/contracts/2027-03-beta/changes/{changeId}/accept"
+          q: {
+            exist: [
+              "change_id"
+            ]
+          }
+          r: {
+            param: {
+              changeId: "change_id"
+            }
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "contracts"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "changes"
+            }
+            {
+              var: "change_id"
+            }
+            {
+              lit: "accept"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /commerce/contracts/2027-03-beta/changes/{changeId}/cancel"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "change_id"
+                or: "change_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/commerce/contracts/2027-03-beta/changes/{changeId}/cancel"
+          q: {
+            exist: [
+              "change_id"
+            ]
+          }
+          r: {
+            param: {
+              changeId: "change_id"
+            }
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "contracts"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "changes"
+            }
+            {
+              var: "change_id"
+            }
+            {
+              lit: "cancel"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /commerce/contracts/2027-03-beta/contracts/{contractId}/changes"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "contract_id"
+                or: "contract_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/commerce/contracts/2027-03-beta/contracts/{contractId}/changes"
+          q: {
+            exist: [
+              "contract_id"
+            ]
+          }
+          r: {
+            param: {
+              contractId: "contract_id"
+            }
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "contracts"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "contracts"
+            }
+            {
+              var: "contract_id"
+            }
+            {
+              lit: "changes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /commerce/contracts/2027-03-beta/changes"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/commerce/contracts/2027-03-beta/changes"
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "contracts"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "changes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /commerce/contracts/2027-03-beta/changes/{changeId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "id"
+                or: "change_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/commerce/contracts/2027-03-beta/changes/{changeId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              changeId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "contracts"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "changes"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /commerce/contracts/2027-03-beta/changes/{changeId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "id"
+                or: "change_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/commerce/contracts/2027-03-beta/changes/{changeId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              changeId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "contracts"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "changes"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.contract")]
+  ]
+
+}

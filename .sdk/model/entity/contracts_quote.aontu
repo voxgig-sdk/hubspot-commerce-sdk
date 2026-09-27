@@ -1,0 +1,114 @@
+# Entity: contracts_quote
+
+main: kit: entity: contracts_quote: {
+
+  alias: field: {}
+
+  fields: {
+    dealId: {
+      h: "Deal Id"
+      n: "dealId"
+      r: false
+      sh: "The unique identifier of the deal associated with the renewal quote."
+      t: "`$STRING`"
+    }
+    dealPipeline: {
+      h: "Deal Pipeline"
+      n: "dealPipeline"
+      r: false
+      sh: "The identifier of the pipeline in which the deal is located."
+      t: "`$STRING`"
+    }
+    dealStage: {
+      h: "Deal Stage"
+      n: "dealStage"
+      r: false
+      sh: "The identifier of the stage within the pipeline that the deal is currently in."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The name of the renewal quote."
+      t: "`$STRING`"
+    }
+    quoteTemplateId: {
+      h: "Quote Template Id"
+      n: "quoteTemplateId"
+      r: true
+      sh: "The unique identifier of the quote template to be used for creating the renewal quote."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "contracts_quote"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /commerce/contracts/2027-03-beta/contracts/{contractId}/renewal-quotes"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "contract_id"
+                or: "contract_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/commerce/contracts/2027-03-beta/contracts/{contractId}/renewal-quotes"
+          q: {
+            exist: [
+              "contract_id"
+            ]
+          }
+          r: {
+            param: {
+              contractId: "contract_id"
+            }
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "contracts"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "contracts"
+            }
+            {
+              var: "contract_id"
+            }
+            {
+              lit: "renewal-quotes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.contract")]
+  ]
+
+}

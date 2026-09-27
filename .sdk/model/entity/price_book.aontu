@@ -1,0 +1,355 @@
+# Entity: price_book
+
+main: kit: entity: price_book: {
+
+  alias: field: {}
+
+  fields: {
+    archived: {
+      h: "Archived"
+      n: "archived"
+      r: false
+      sh: "A boolean indicating whether this price book is archived."
+      t: "`$BOOLEAN`"
+    }
+    archivedAt: {
+      fo: "date-time"
+      h: "Archived At"
+      n: "archivedAt"
+      r: false
+      sh: "The date and time when this price book was archived."
+      t: "`$STRING`"
+    }
+    autoAssignmentEnabled: {
+      h: "Auto Assignment Enabled"
+      n: "autoAssignmentEnabled"
+      r: true
+      sh: "Indicates whether auto-assignment is enabled for the price book."
+      t: "`$BOOLEAN`"
+    }
+    countOfIncludedProducts: {
+      fo: "int32"
+      h: "Count Of Included Products"
+      n: "countOfIncludedProducts"
+      r: true
+      sh: "The number of products included in this price book."
+      t: "`$INTEGER`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: false
+      sh: "The date and time when this price book was created."
+      t: "`$STRING`"
+    }
+    customProperties: {
+      h: "Custom Properties"
+      n: "customProperties"
+      r: true
+      sh: "A map of custom property names to their values for this price book."
+      t: "`$OBJECT`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      op: {
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      r: false
+      sh: "A description of the price book."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The unique identifier for this price book."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      r: false
+      sh: "The name of the price book."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      sh: "The current status of the price book."
+      t: "`$STRING`"
+    }
+    supportedCurrencies: {
+      h: "Supported Currencies"
+      n: "supportedCurrencies"
+      op: {
+        update: {
+          req: false
+          type: "`$ARRAY`"
+        }
+      }
+      r: true
+      sh: "An array of currency codes that this price book supports."
+      t: "`$ARRAY`"
+    }
+    updatedAt: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updatedAt"
+      r: false
+      sh: "The date and time when this price book was last updated."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "price_book"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /commerce/price-books/2026-09/price-books"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/commerce/price-books/2026-09/price-books"
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "price-books"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /commerce/price-books/2026-09/price-books"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: null
+                k: "query"
+                n: "after"
+                or: "after"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "archived"
+                or: "archived"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: null
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/commerce/price-books/2026-09/price-books"
+          q: {
+            exist: [
+              "after"
+              "archived"
+              "limit"
+            ]
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "price-books"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /commerce/price-books/2026-09/price-books/{priceBookId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "id"
+                or: "price_book_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                ex: null
+                k: "query"
+                n: "archived"
+                or: "archived"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/commerce/price-books/2026-09/price-books/{priceBookId}"
+          q: {
+            exist: [
+              "archived"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              priceBookId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /commerce/price-books/2026-09/price-books/{priceBookId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "id"
+                or: "price_book_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/commerce/price-books/2026-09/price-books/{priceBookId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              priceBookId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

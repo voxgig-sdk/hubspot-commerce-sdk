@@ -6,7 +6,7 @@ HubSpot Commerce API, merged from the vendor&#39;s per-API OpenAPI documents.
 
 This guide introduces the API, the client libraries, and the companion tools in this repository. Start with the API capabilities, choose a client for your application, and use the linked reference when you need exact request and response details.
 
-The selected API surface contains 24 entities and 49 HTTP routes. There are 6 SDK targets and 2 companion tools.
+The selected API surface contains 25 entities and 49 HTTP routes. There are 6 SDK targets and 2 companion tools.
 
 An entity groups related API operations. An operation can have several routes with different inputs or authentication requirements. The SDK exposes the entity and its operations using the conventions of the selected language.
 
@@ -62,7 +62,7 @@ Key fields to recognise:
 
 Results: successful operation.
 
-SDK operations: `create`, `list`, `load`, `update`.
+SDK operations: `create`, `load`, `update`.
 
 Key fields to recognise:
 
@@ -82,6 +82,20 @@ Key fields to recognise:
 
 - `deltaLineItems`: An array of LineItem objects representing the changes in line items compared to the current state of the contract.
 - `proposedLineItems`: An array of LineItem objects representing the proposed state of line items after the changes are applied.
+
+### [ContractsContractChangeSummary](docs/api/contracts_contract_change_summary.html)
+
+Results: successful operation.
+
+SDK operations: `list`.
+
+Key fields to recognise:
+
+- `contractId`: The unique identifier of the contract associated with this change.
+- `createdAt`: The date and time when this contract change was created, in ISO 8601 format.
+- `effectiveDate`: The date on which this contract change becomes effective, in the format &#39;YYYY-MM-DD&#39;.
+- `id`: The unique identifier for this contract change.
+- `lineItemChanges`: An array of changes made to line items as part of this contract change.
 
 ### [ContractsQuote](docs/api/contracts_quote.html)
 
@@ -326,10 +340,10 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [ContractsContractChange](docs/api/contracts_contract_change.html) | `create` | `POST /commerce/contracts/2027-03-beta/changes/{changeId}/cancel` | Not required |
 | [ContractsContractChange](docs/api/contracts_contract_change.html) | `create` | `POST /commerce/contracts/2027-03-beta/contracts/{contractId}/changes` | Not required |
 | [ContractsContractChange](docs/api/contracts_contract_change.html) | `create` | `POST /commerce/contracts/2027-03-beta/changes` | Not required |
-| [ContractsContractChange](docs/api/contracts_contract_change.html) | `list` | `GET /commerce/contracts/2027-03-beta/contracts/{contractId}/changes` | Not required |
 | [ContractsContractChange](docs/api/contracts_contract_change.html) | `load` | `GET /commerce/contracts/2027-03-beta/changes/{changeId}` | Not required |
 | [ContractsContractChange](docs/api/contracts_contract_change.html) | `update` | `PATCH /commerce/contracts/2027-03-beta/changes/{changeId}` | Not required |
 | [ContractsContractChangePreview](docs/api/contracts_contract_change_preview.html) | `create` | `POST /commerce/contracts/2027-03-beta/changes/preview` | Not required |
+| [ContractsContractChangeSummary](docs/api/contracts_contract_change_summary.html) | `list` | `GET /commerce/contracts/2027-03-beta/contracts/{contractId}/changes` | Not required |
 | [ContractsQuote](docs/api/contracts_quote.html) | `create` | `POST /commerce/contracts/2027-03-beta/contracts/{contractId}/renewal-quotes` | Not required |
 | [Item](docs/api/item.html) | `remove` | `DELETE /commerce/price-books/2026-09/price-books/{priceBookId}/items/{priceBookItemId}` | Required |
 | [PaymentLink](docs/api/payment_link.html) | `create` | `POST /commerce/payment-links/2026-09/payment-links` | Required |
@@ -411,7 +425,7 @@ Use the MCP server to expose supported API operations to an MCP client.
 
 Repository directory: `go-mcp/`. Not published. Build from the go-mcp directory.
 
-- `hubspot-commerce_list`: List records for an entity. Supported entities: `contracts_contract_change`, `payment_link`, `payment_methods_commerce_payment_method_settings_public`, `payments_action_response_with_single_result_simple_public_object`, `payments_settings_get_checkout_fees_public`, `payments_settings_get_shipping_settings_public`, `paymentsaccounts_payment_account_view`, `price_book`, `price_books_collection_response_price_book_item_response_forward`.
+- `hubspot-commerce_list`: List records for an entity. Supported entities: `contracts_contract_change_summary`, `payment_link`, `payment_methods_commerce_payment_method_settings_public`, `payments_action_response_with_single_result_simple_public_object`, `payments_settings_get_checkout_fees_public`, `payments_settings_get_shipping_settings_public`, `paymentsaccounts_payment_account_view`, `price_book`, `price_books_collection_response_price_book_item_response_forward`.
 - `hubspot-commerce_load`: Load one record for an entity. Supported entities: `contract`, `contracts_contract_change`, `payment_link`, `payments_settings_get_billing_settings_public`, `payments_settings_get_policy_settings_public`, `price_book`, `price_books_price_book_item`.
 
 ## Operational features

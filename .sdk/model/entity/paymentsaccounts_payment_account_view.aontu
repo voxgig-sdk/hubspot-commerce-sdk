@@ -1,0 +1,126 @@
+# Entity: paymentsaccounts_payment_account_view
+
+main: kit: entity: paymentsaccounts_payment_account_view: {
+
+  alias: field: {}
+
+  fields: {
+    canPayout: {
+      h: "Can Payout"
+      n: "canPayout"
+      r: true
+      sh: "A boolean indicating whether the account is capable of making payouts."
+      t: "`$BOOLEAN`"
+    }
+    canTransact: {
+      h: "Can Transact"
+      n: "canTransact"
+      r: true
+      sh: "A boolean indicating whether the account is capable of processing transactions."
+      t: "`$BOOLEAN`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: false
+      sh: "The date and time when the payment account was created, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    eligibleProcessorTypes: {
+      h: "Eligible Processor Types"
+      n: "eligibleProcessorTypes"
+      r: true
+      sh: "An array of processor types that the account is eligible to use."
+      t: "`$ARRAY`"
+    }
+    enrollmentState: {
+      h: "Enrollment State"
+      n: "enrollmentState"
+      r: true
+      sh: "The current enrollment state of the payment account."
+      t: "`$STRING`"
+    }
+    hasTransacted: {
+      h: "Has Transacted"
+      n: "hasTransacted"
+      r: true
+      sh: "A boolean indicating whether the account has ever processed a transaction."
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The portalId for the payment account."
+      t: "`$STRING`"
+    }
+    lastTransactedAt: {
+      fo: "date-time"
+      h: "Last Transacted At"
+      n: "lastTransactedAt"
+      r: false
+      sh: "The date and time of the last transaction made with this account, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    processorType: {
+      h: "Processor Type"
+      n: "processorType"
+      r: true
+      sh: "The type of payment processor associated with the account."
+      t: "`$STRING`"
+    }
+    updatedAt: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updatedAt"
+      r: false
+      sh: "The date and time when the payment account was last updated, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "paymentsaccounts_payment_account_view"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /commerce/payment-accounts/2026-09/status"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/commerce/payment-accounts/2026-09/status"
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "payment-accounts"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "status"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.eligibleProcessorTypes`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,22 @@
+# BasicPriceBooksPriceBookValidateFlow
+
+main: kit: flow: BasicPriceBooksPriceBookValidateFlow:
+{
+  entity: "price_books_price_book_validate",
+  kind: "basic",
+  name: "BasicPriceBooksPriceBookValidateFlow",
+  step: [
+    {
+      i: {
+        ref: "price_books_price_book_validate_ref01"
+      }
+
+      m: {
+        price_book_id: "price_book01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicPriceBooksPriceBookValidateFlow"
+}

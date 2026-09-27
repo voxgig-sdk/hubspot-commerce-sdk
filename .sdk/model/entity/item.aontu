@@ -1,0 +1,103 @@
+# Entity: item
+
+main: kit: entity: item: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "item"
+  op: {
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /commerce/price-books/2026-09/price-books/{priceBookId}/items/{priceBookItemId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "id"
+                or: "price_book_item_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                ex: null
+                k: "param"
+                n: "price_book_id"
+                or: "price_book_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/commerce/price-books/2026-09/price-books/{priceBookId}/items/{priceBookItemId}"
+          q: {
+            exist: [
+              "id"
+              "price_book_id"
+            ]
+          }
+          r: {
+            param: {
+              priceBookId: "price_book_id"
+              priceBookItemId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              var: "price_book_id"
+            }
+            {
+              lit: "items"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.price_book")]
+  ]
+
+}

@@ -349,6 +349,12 @@ class HubspotCommerceSDK:
         return ContractsContractChangePreviewEntity(self, data)
 
 
+    def ContractsContractChangeSummary(self, data=None) -> "ContractsContractChangeSummaryEntity":
+        """Entity factory: client.ContractsContractChangeSummary().list() / client.ContractsContractChangeSummary().load({"id": ...})."""
+        from hubspotcommerce_sdk.entity.contracts_contract_change_summary_entity import ContractsContractChangeSummaryEntity
+        return ContractsContractChangeSummaryEntity(self, data)
+
+
     def ContractsQuote(self, data=None) -> "ContractsQuoteEntity":
         """Entity factory: client.ContractsQuote().list() / client.ContractsQuote().load({"id": ...})."""
         from hubspotcommerce_sdk.entity.contracts_quote_entity import ContractsQuoteEntity
@@ -485,6 +491,7 @@ if TYPE_CHECKING:
     from hubspotcommerce_sdk.entity.contracts_contract_entity import ContractsContractEntity
     from hubspotcommerce_sdk.entity.contracts_contract_change_entity import ContractsContractChangeEntity
     from hubspotcommerce_sdk.entity.contracts_contract_change_preview_entity import ContractsContractChangePreviewEntity
+    from hubspotcommerce_sdk.entity.contracts_contract_change_summary_entity import ContractsContractChangeSummaryEntity
     from hubspotcommerce_sdk.entity.contracts_quote_entity import ContractsQuoteEntity
     from hubspotcommerce_sdk.entity.item_entity import ItemEntity
     from hubspotcommerce_sdk.entity.payment_link_entity import PaymentLinkEntity

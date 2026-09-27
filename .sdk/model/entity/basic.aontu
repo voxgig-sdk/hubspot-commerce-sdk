@@ -1,0 +1,184 @@
+# Entity: basic
+
+main: kit: entity: basic: {
+
+  alias: field: {}
+
+  name: "basic"
+  op: {
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /commerce/payments-settings/2027-03-beta/payments-settings/checkout-fees/{checkoutFeeId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "checkout_fee_id"
+                or: "checkout_fee_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/commerce/payments-settings/2027-03-beta/payments-settings/checkout-fees/{checkoutFeeId}"
+          q: {
+            exist: [
+              "checkout_fee_id"
+            ]
+          }
+          r: {
+            param: {
+              checkoutFeeId: "checkout_fee_id"
+            }
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "payments-settings"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "payments-settings"
+            }
+            {
+              lit: "checkout-fees"
+            }
+            {
+              var: "checkout_fee_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /commerce/payment-links/2026-09/payment-links/{paymentLinkId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "payment_link_id"
+                or: "payment_link_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/commerce/payment-links/2026-09/payment-links/{paymentLinkId}"
+          q: {
+            exist: [
+              "payment_link_id"
+            ]
+          }
+          r: {
+            param: {
+              paymentLinkId: "payment_link_id"
+            }
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "payment-links"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "payment-links"
+            }
+            {
+              var: "payment_link_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /commerce/price-books/2026-09/price-books/{priceBookId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "price_book_id"
+                or: "price_book_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/commerce/price-books/2026-09/price-books/{priceBookId}"
+          q: {
+            exist: [
+              "price_book_id"
+            ]
+          }
+          r: {
+            param: {
+              priceBookId: "price_book_id"
+            }
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              var: "price_book_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.payment_link")]
+    [path("$.main.kit.entity.price_book")]
+  ]
+
+}

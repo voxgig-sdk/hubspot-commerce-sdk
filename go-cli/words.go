@@ -9,18 +9,6 @@ import (
 	sdk "github.com/voxgig-sdk/hubspot-commerce-sdk/go"
 )
 
-// registerSDKWords installs three native boru words bound to the SDK:
-// list / load / update. Each is declared with two overloads matching
-// the signature  [query?:(Node or Scalar) entity:atom]:
-//
-//   [entity:Atom]            — no query (e.g. `list book`)
-//   [query:Any entity:Atom]  — query is any Node or Scalar (e.g.
-//                              `load {id:1} book`, `load 1 book`)
-//
-// The entity slot is /q-quoted so a bareword `book` parses as the
-// Atom "book" rather than dispatching as an undefined word. Both
-// overloads are all-forward (BarrierAllForward), so args are collected
-// from the tokens following the word.
 func registerSDKWords(r *eng.Registry, client *sdk.HubspotCommerceSDK) {
 	for _, op := range []string{"list", "load", "update"} {
 		op := op
@@ -103,6 +91,8 @@ func entityFor(client *sdk.HubspotCommerceSDK, name string) (sdk.HubspotCommerce
 		return client.ContractsContractChange(nil), nil
 	case "contracts_contract_change_preview":
 		return client.ContractsContractChangePreview(nil), nil
+	case "contracts_contract_change_summary":
+		return client.ContractsContractChangeSummary(nil), nil
 	case "contracts_quote":
 		return client.ContractsQuote(nil), nil
 	case "item":

@@ -15,52 +15,11 @@ describe("ContractsContractChangeEntity", function()
     assert.is_not_nil(ent)
   end)
 
-  -- Feature #4: the entity stream(action, ...) method runs the op pipeline and
-  -- returns an iterator over result items. With the streaming feature active it
-  -- yields the feature's incremental output; otherwise it falls back to the
-  -- materialised list so stream always yields.
-  it("should stream", function()
-    local seed = {
-      entity = {
-        ["contracts_contract_change"] = {
-          s1 = { id = "s1" },
-          s2 = { id = "s2" },
-          s3 = { id = "s3" },
-        },
-      },
-    }
-
-    -- Fallback: streaming inactive -> yields the materialised list items.
-    local base = sdk.test(seed, nil)
-    local seen = {}
-    for item in base:ContractsContractChange(nil):stream("list", nil, nil) do
-      table.insert(seen, item)
-    end
-    assert.are.equal(3, #seen)
-
-    -- Inbound: streaming active -> yields each item from the feature.
-    local config = require("config_shared")()
-    if type(config.feature) == "table" and config.feature.streaming ~= nil then
-      local streamsdk = sdk.test(seed, { feature = { streaming = { active = true } } })
-      local got = {}
-      for item in streamsdk:ContractsContractChange(nil):stream("list", nil, nil) do
-        if vs.islist(item) then
-          for _, sub in ipairs(item) do
-            table.insert(got, sub)
-          end
-        else
-          table.insert(got, item)
-        end
-      end
-      assert.are.equal(3, #got)
-    end
-  end)
-
   it("should run basic flow", function()
     local setup = contracts_contract_change_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "update", "load"}) do
+    for _, _op in ipairs({"create", "update", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "contracts_contract_change." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -79,27 +38,12 @@ describe("ContractsContractChangeEntity", function()
     local contracts_contract_change_ref01_ent = client:ContractsContractChange(nil)
     local contracts_contract_change_ref01_data = helpers.to_map(vs.getprop(
       vs.getpath(setup.data, "new.contracts_contract_change"), "contracts_contract_change_ref01"))
-    contracts_contract_change_ref01_data["contract_id"] = setup.idmap["contract01"]
 
     local contracts_contract_change_ref01_data_result, err = contracts_contract_change_ref01_ent:create(contracts_contract_change_ref01_data, nil)
     assert.is_nil(err)
     contracts_contract_change_ref01_data = helpers.to_map(type(contracts_contract_change_ref01_data_result) == 'table' and contracts_contract_change_ref01_data_result.data_get and contracts_contract_change_ref01_data_result:data_get() or contracts_contract_change_ref01_data_result)
     assert.is_not_nil(contracts_contract_change_ref01_data)
     assert.is_not_nil(contracts_contract_change_ref01_data["id"])
-
-    -- LIST
-    local contracts_contract_change_ref01_match = {
-      ["contract_id"] = setup.idmap["contract01"],
-    }
-
-    local contracts_contract_change_ref01_list_result, err = contracts_contract_change_ref01_ent:list(contracts_contract_change_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(contracts_contract_change_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(contracts_contract_change_ref01_list_result),
-      { id = contracts_contract_change_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
 
     -- UPDATE
     local contracts_contract_change_ref01_data_up0_up = {
@@ -150,7 +94,7 @@ function contracts_contract_change_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "contracts_contract_change01", "contracts_contract_change02", "contracts_contract_change03", "change01", "change02", "change03", "contract01", "contract02", "contract03" },
+    { "contracts_contract_change01", "contracts_contract_change02", "contracts_contract_change03", "contract01", "contract02", "contract03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

@@ -13,6 +13,7 @@
 <a href="../api/contracts_contract.html">ContractsContract</a>
 <a href="../api/contracts_contract_change.html">ContractsContractChange</a>
 <a href="../api/contracts_contract_change_preview.html">ContractsContractChangePreview</a>
+<a href="../api/contracts_contract_change_summary.html">ContractsContractChangeSummary</a>
 <a href="../api/contracts_quote.html">ContractsQuote</a>
 <a href="../api/item.html">Item</a>
 <a aria-current="page" href="../api/payment_link.html">PaymentLink</a><div class="nav-sections"><a class="nav-section" href="#post-commercepayment-links2026-09payment-links">POST /commerce/payment-links/2026-09/payment-links</a>
@@ -45,14 +46,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="paymentlink">PaymentLink</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="paymentlink">PaymentLink</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -91,6 +92,66 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">payment_links, err := client.PaymentLink(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(payment_links)
+payment_link, err := client.PaymentLink(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(payment_link)
+created, err := client.PaymentLink(nil).Create(map[string]any{&quot;acceptedPaymentMethods&quot;: []any{}, &quot;additionalFormFields&quot;: []any{}, &quot;archived&quot;: true, &quot;automatedSalesTaxEnabled&quot;: true, &quot;checkoutFeeIds&quot;: []any{}, &quot;collectFullBillingAddress&quot;: true, &quot;collectShippingAddress&quot;: true, &quot;completedPurchaseCount&quot;: 1, &quot;createContractOnPurchase&quot;: true, &quot;currencyCode&quot;: &quot;example&quot;, &quot;dealConfigurations&quot;: map[string]any{}, &quot;discount&quot;: map[string]any{}, &quot;discountCodeEnabled&quot;: true, &quot;discounts&quot;: []any{}, &quot;enableDefaultCheckoutFees&quot;: true, &quot;feeObjectIds&quot;: []any{}, &quot;fees&quot;: []any{}, &quot;formGuid&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example&quot;, &quot;includeEmailInSuccessRedirect&quot;: true, &quot;isOneTimeUseEnabled&quot;: true, &quot;lineItemObjectIds&quot;: []any{}, &quot;lineItems&quot;: []any{}, &quot;paymentLinkName&quot;: &quot;example&quot;, &quot;paymentLinkUrl&quot;: &quot;example&quot;, &quot;state&quot;: &quot;example&quot;, &quot;storePaymentMethodAtCheckout&quot;: true, &quot;taxObjectIds&quot;: []any{}, &quot;taxes&quot;: []any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.PaymentLink(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;acceptedPaymentMethods&quot;: []any{}, &quot;additionalFormFields&quot;: []any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+</code></pre>
+<h3 id="javascript">JavaScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/js.html#set-up-the-client">JavaScript setup</a>, then call the operations:</p>
+<pre><code class="language-js">const payment_links = await client.PaymentLink().list()
+const payment_link = await client.PaymentLink().load({ id: &quot;example_id&quot; })
+const created = await client.PaymentLink().create({ acceptedPaymentMethods: [], additionalFormFields: [], archived: true, automatedSalesTaxEnabled: true, checkoutFeeIds: [], collectFullBillingAddress: true, collectShippingAddress: true, completedPurchaseCount: 1, createContractOnPurchase: true, currencyCode: &quot;example&quot;, dealConfigurations: {}, discount: {}, discountCodeEnabled: true, discounts: [], enableDefaultCheckoutFees: true, feeObjectIds: [], fees: [], formGuid: &quot;example&quot;, id: &quot;example&quot;, includeEmailInSuccessRedirect: true, isOneTimeUseEnabled: true, lineItemObjectIds: [], lineItems: [], paymentLinkName: &quot;example&quot;, paymentLinkUrl: &quot;example&quot;, state: &quot;example&quot;, storePaymentMethodAtCheckout: true, taxObjectIds: [], taxes: [] })
+const updated = await client.PaymentLink().update({ id: &quot;example_id&quot;, acceptedPaymentMethods: [], additionalFormFields: [] })
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local payment_links, err = client:PaymentLink():list()
+local payment_link, err = client:PaymentLink():load({ id = &quot;example_id&quot; })
+local created, err = client:PaymentLink():create({ acceptedPaymentMethods = {}, additionalFormFields = {}, archived = true, automatedSalesTaxEnabled = true, checkoutFeeIds = {}, collectFullBillingAddress = true, collectShippingAddress = true, completedPurchaseCount = 1, createContractOnPurchase = true, currencyCode = &quot;example&quot;, dealConfigurations = {}, discount = {}, discountCodeEnabled = true, discounts = {}, enableDefaultCheckoutFees = true, feeObjectIds = {}, fees = {}, formGuid = &quot;example&quot;, id = &quot;example&quot;, includeEmailInSuccessRedirect = true, isOneTimeUseEnabled = true, lineItemObjectIds = {}, lineItems = {}, paymentLinkName = &quot;example&quot;, paymentLinkUrl = &quot;example&quot;, state = &quot;example&quot;, storePaymentMethodAtCheckout = true, taxObjectIds = {}, taxes = {} })
+local updated, err = client:PaymentLink():update({ id = &quot;example_id&quot;, acceptedPaymentMethods = {}, additionalFormFields = {} })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$payment_links = $client-&gt;PaymentLink()-&gt;list();
+$payment_link = $client-&gt;PaymentLink()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+$created = $client-&gt;PaymentLink()-&gt;create([&quot;acceptedPaymentMethods&quot; =&gt; [], &quot;additionalFormFields&quot; =&gt; [], &quot;archived&quot; =&gt; true, &quot;automatedSalesTaxEnabled&quot; =&gt; true, &quot;checkoutFeeIds&quot; =&gt; [], &quot;collectFullBillingAddress&quot; =&gt; true, &quot;collectShippingAddress&quot; =&gt; true, &quot;completedPurchaseCount&quot; =&gt; 1, &quot;createContractOnPurchase&quot; =&gt; true, &quot;currencyCode&quot; =&gt; &quot;example&quot;, &quot;dealConfigurations&quot; =&gt; [], &quot;discount&quot; =&gt; [], &quot;discountCodeEnabled&quot; =&gt; true, &quot;discounts&quot; =&gt; [], &quot;enableDefaultCheckoutFees&quot; =&gt; true, &quot;feeObjectIds&quot; =&gt; [], &quot;fees&quot; =&gt; [], &quot;formGuid&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example&quot;, &quot;includeEmailInSuccessRedirect&quot; =&gt; true, &quot;isOneTimeUseEnabled&quot; =&gt; true, &quot;lineItemObjectIds&quot; =&gt; [], &quot;lineItems&quot; =&gt; [], &quot;paymentLinkName&quot; =&gt; &quot;example&quot;, &quot;paymentLinkUrl&quot; =&gt; &quot;example&quot;, &quot;state&quot; =&gt; &quot;example&quot;, &quot;storePaymentMethodAtCheckout&quot; =&gt; true, &quot;taxObjectIds&quot; =&gt; [], &quot;taxes&quot; =&gt; []]);
+$updated = $client-&gt;PaymentLink()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;acceptedPaymentMethods&quot; =&gt; [], &quot;additionalFormFields&quot; =&gt; []]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">payment_links = client.PaymentLink().list()
+payment_link = client.PaymentLink().load({&quot;id&quot;: &quot;example_id&quot;})
+created = client.PaymentLink().create({ &quot;acceptedPaymentMethods&quot;: [], &quot;additionalFormFields&quot;: [], &quot;archived&quot;: True, &quot;automatedSalesTaxEnabled&quot;: True, &quot;checkoutFeeIds&quot;: [], &quot;collectFullBillingAddress&quot;: True, &quot;collectShippingAddress&quot;: True, &quot;completedPurchaseCount&quot;: 1, &quot;createContractOnPurchase&quot;: True, &quot;currencyCode&quot;: &quot;example&quot;, &quot;dealConfigurations&quot;: {}, &quot;discount&quot;: {}, &quot;discountCodeEnabled&quot;: True, &quot;discounts&quot;: [], &quot;enableDefaultCheckoutFees&quot;: True, &quot;feeObjectIds&quot;: [], &quot;fees&quot;: [], &quot;formGuid&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example&quot;, &quot;includeEmailInSuccessRedirect&quot;: True, &quot;isOneTimeUseEnabled&quot;: True, &quot;lineItemObjectIds&quot;: [], &quot;lineItems&quot;: [], &quot;paymentLinkName&quot;: &quot;example&quot;, &quot;paymentLinkUrl&quot;: &quot;example&quot;, &quot;state&quot;: &quot;example&quot;, &quot;storePaymentMethodAtCheckout&quot;: True, &quot;taxObjectIds&quot;: [], &quot;taxes&quot;: [] })
+updated = client.PaymentLink().update({&quot;id&quot;: &quot;example_id&quot;, &quot;acceptedPaymentMethods&quot;: [], &quot;additionalFormFields&quot;: []})
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const payment_links = await client.PaymentLink().list()
+const payment_link = await client.PaymentLink().load({ id: &quot;example_id&quot; })
+const created = await client.PaymentLink().create({ acceptedPaymentMethods: [], additionalFormFields: [], archived: true, automatedSalesTaxEnabled: true, checkoutFeeIds: [], collectFullBillingAddress: true, collectShippingAddress: true, completedPurchaseCount: 1, createContractOnPurchase: true, currencyCode: &quot;example&quot;, dealConfigurations: {}, discount: {}, discountCodeEnabled: true, discounts: [], enableDefaultCheckoutFees: true, feeObjectIds: [], fees: [], formGuid: &quot;example&quot;, id: &quot;example&quot;, includeEmailInSuccessRedirect: true, isOneTimeUseEnabled: true, lineItemObjectIds: [], lineItems: [], paymentLinkName: &quot;example&quot;, paymentLinkUrl: &quot;example&quot;, state: &quot;example&quot;, storePaymentMethodAtCheckout: true, taxObjectIds: [], taxes: [] })
+const updated = await client.PaymentLink().update({ id: &quot;example_id&quot;, acceptedPaymentMethods: [], additionalFormFields: [] })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -196,7 +257,7 @@
 <td><code>discount</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
-<td></td>
+<td>Discount</td>
 </tr>
 <tr>
 <td><code>discountCodeEnabled</code></td>
@@ -352,7 +413,7 @@
 <td><code>acceptedPaymentMethods</code></td>
 <td><code>array of enum: CREDIT_OR_DEBIT_CARD, ACH, SEPA, BACS, PADS, AFFIRM, ...</code></td>
 <td>Yes</td>
-<td>An array of accepted payment methods for the payment link. Valid values include 'CREDIT_OR_DEBIT_CARD', 'ACH', 'SEPA', 'BACS', and 'PADS'.</td>
+<td>An array of accepted payment methods for the payment link. Valid values include '<code>CREDIT_OR_DEBIT_CARD</code>', 'ACH', 'SEPA', 'BACS', and 'PADS'.</td>
 </tr>
 <tr>
 <td><code>additionalFormFields</code></td>
@@ -667,7 +728,7 @@
 <td><code>acceptedPaymentMethods</code></td>
 <td><code>array of enum: CREDIT_OR_DEBIT_CARD, ACH, SEPA, BACS, PADS, AFFIRM, ...</code></td>
 <td>Yes</td>
-<td>An array of accepted payment methods for the payment link. Valid values include 'CREDIT_OR_DEBIT_CARD', 'ACH', 'SEPA', 'BACS', and 'PADS'.</td>
+<td>An array of accepted payment methods for the payment link. Valid values include '<code>CREDIT_OR_DEBIT_CARD</code>', 'ACH', 'SEPA', 'BACS', and 'PADS'.</td>
 </tr>
 <tr>
 <td><code>additionalFormFields</code></td>
@@ -1057,7 +1118,7 @@
 <td><code>lineItems[].billingStartDelayType</code></td>
 <td><code>enum: HS_BILLING_START_DELAY_DAYS, HS_BILLING_START_DELAY_MONTHS, HS_RECURRING_BILLING_START_DATE</code></td>
 <td>No</td>
-<td>The type of delay for the start of billing. Valid values include 'HS_BILLING_START_DELAY_DAYS', 'HS_BILLING_START_DELAY_MONTHS', and 'HS_RECURRING_BILLING_START_DATE'.</td>
+<td>The type of delay for the start of billing. Valid values include '<code>HS_BILLING_START_DELAY_DAYS</code>', '<code>HS_BILLING_START_DELAY_MONTHS</code>', and '<code>HS_RECURRING_BILLING_START_DATE</code>'.</td>
 </tr>
 <tr>
 <td><code>lineItems[].buyerSelectedQuantityMax</code></td>
@@ -1273,7 +1334,7 @@
 <td><code>lineItems[].recurringBillingFrequency</code></td>
 <td><code>enum: ANNUALLY, BIWEEKLY, MONTHLY, PER_FIVE_YEARS, PER_FOUR_YEARS, PER_SIX_MONTHS, ...</code></td>
 <td>No</td>
-<td>The frequency of recurring billing for the line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', 'PER_FIVE_YEARS', 'PER_FOUR_YEARS', 'PER_SIX_MONTHS', 'PER_THREE_YEARS', 'PER_TWO_YEARS', 'QUARTERLY', and 'WEEKLY'.</td>
+<td>The frequency of recurring billing for the line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', '<code>PER_FIVE_YEARS</code>', '<code>PER_FOUR_YEARS</code>', '<code>PER_SIX_MONTHS</code>', '<code>PER_THREE_YEARS</code>', '<code>PER_TWO_YEARS</code>', 'QUARTERLY', and 'WEEKLY'.</td>
 </tr>
 <tr>
 <td><code>lineItems[].recurringBillingNumberOfPayments</code></td>
@@ -1297,7 +1358,7 @@
 <td><code>lineItems[].recurringBillingTerms</code></td>
 <td><code>enum: AUTOMATICALLY_RENEW, FIXED</code></td>
 <td>No</td>
-<td>The terms of recurring billing. Valid values include 'AUTOMATICALLY_RENEW' and 'FIXED'.</td>
+<td>The terms of recurring billing. Valid values include '<code>AUTOMATICALLY_RENEW</code>' and 'FIXED'.</td>
 </tr>
 <tr>
 <td><code>lineItems[].richTextDescription</code></td>
@@ -1613,7 +1674,7 @@
 <td><code>results[].acceptedPaymentMethods</code></td>
 <td><code>array of enum: CREDIT_OR_DEBIT_CARD, ACH, SEPA, BACS, PADS, AFFIRM, ...</code></td>
 <td>Yes</td>
-<td>An array of accepted payment methods for the payment link. Valid values include 'CREDIT_OR_DEBIT_CARD', 'ACH', 'SEPA', 'BACS', and 'PADS'.</td>
+<td>An array of accepted payment methods for the payment link. Valid values include '<code>CREDIT_OR_DEBIT_CARD</code>', 'ACH', 'SEPA', 'BACS', and 'PADS'.</td>
 </tr>
 <tr>
 <td><code>results[].additionalFormFields</code></td>
@@ -2003,7 +2064,7 @@
 <td><code>results[].lineItems[].billingStartDelayType</code></td>
 <td><code>enum: HS_BILLING_START_DELAY_DAYS, HS_BILLING_START_DELAY_MONTHS, HS_RECURRING_BILLING_START_DATE</code></td>
 <td>No</td>
-<td>The type of delay for the start of billing. Valid values include 'HS_BILLING_START_DELAY_DAYS', 'HS_BILLING_START_DELAY_MONTHS', and 'HS_RECURRING_BILLING_START_DATE'.</td>
+<td>The type of delay for the start of billing. Valid values include '<code>HS_BILLING_START_DELAY_DAYS</code>', '<code>HS_BILLING_START_DELAY_MONTHS</code>', and '<code>HS_RECURRING_BILLING_START_DATE</code>'.</td>
 </tr>
 <tr>
 <td><code>results[].lineItems[].buyerSelectedQuantityMax</code></td>
@@ -2219,7 +2280,7 @@
 <td><code>results[].lineItems[].recurringBillingFrequency</code></td>
 <td><code>enum: ANNUALLY, BIWEEKLY, MONTHLY, PER_FIVE_YEARS, PER_FOUR_YEARS, PER_SIX_MONTHS, ...</code></td>
 <td>No</td>
-<td>The frequency of recurring billing for the line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', 'PER_FIVE_YEARS', 'PER_FOUR_YEARS', 'PER_SIX_MONTHS', 'PER_THREE_YEARS', 'PER_TWO_YEARS', 'QUARTERLY', and 'WEEKLY'.</td>
+<td>The frequency of recurring billing for the line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', '<code>PER_FIVE_YEARS</code>', '<code>PER_FOUR_YEARS</code>', '<code>PER_SIX_MONTHS</code>', '<code>PER_THREE_YEARS</code>', '<code>PER_TWO_YEARS</code>', 'QUARTERLY', and 'WEEKLY'.</td>
 </tr>
 <tr>
 <td><code>results[].lineItems[].recurringBillingNumberOfPayments</code></td>
@@ -2243,7 +2304,7 @@
 <td><code>results[].lineItems[].recurringBillingTerms</code></td>
 <td><code>enum: AUTOMATICALLY_RENEW, FIXED</code></td>
 <td>No</td>
-<td>The terms of recurring billing. Valid values include 'AUTOMATICALLY_RENEW' and 'FIXED'.</td>
+<td>The terms of recurring billing. Valid values include '<code>AUTOMATICALLY_RENEW</code>' and 'FIXED'.</td>
 </tr>
 <tr>
 <td><code>results[].lineItems[].richTextDescription</code></td>
@@ -2521,7 +2582,7 @@
 <td><code>acceptedPaymentMethods</code></td>
 <td><code>array of enum: CREDIT_OR_DEBIT_CARD, ACH, SEPA, BACS, PADS, AFFIRM, ...</code></td>
 <td>Yes</td>
-<td>An array of accepted payment methods for the payment link. Valid values include 'CREDIT_OR_DEBIT_CARD', 'ACH', 'SEPA', 'BACS', and 'PADS'.</td>
+<td>An array of accepted payment methods for the payment link. Valid values include '<code>CREDIT_OR_DEBIT_CARD</code>', 'ACH', 'SEPA', 'BACS', and 'PADS'.</td>
 </tr>
 <tr>
 <td><code>additionalFormFields</code></td>
@@ -2911,7 +2972,7 @@
 <td><code>lineItems[].billingStartDelayType</code></td>
 <td><code>enum: HS_BILLING_START_DELAY_DAYS, HS_BILLING_START_DELAY_MONTHS, HS_RECURRING_BILLING_START_DATE</code></td>
 <td>No</td>
-<td>The type of delay for the start of billing. Valid values include 'HS_BILLING_START_DELAY_DAYS', 'HS_BILLING_START_DELAY_MONTHS', and 'HS_RECURRING_BILLING_START_DATE'.</td>
+<td>The type of delay for the start of billing. Valid values include '<code>HS_BILLING_START_DELAY_DAYS</code>', '<code>HS_BILLING_START_DELAY_MONTHS</code>', and '<code>HS_RECURRING_BILLING_START_DATE</code>'.</td>
 </tr>
 <tr>
 <td><code>lineItems[].buyerSelectedQuantityMax</code></td>
@@ -3127,7 +3188,7 @@
 <td><code>lineItems[].recurringBillingFrequency</code></td>
 <td><code>enum: ANNUALLY, BIWEEKLY, MONTHLY, PER_FIVE_YEARS, PER_FOUR_YEARS, PER_SIX_MONTHS, ...</code></td>
 <td>No</td>
-<td>The frequency of recurring billing for the line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', 'PER_FIVE_YEARS', 'PER_FOUR_YEARS', 'PER_SIX_MONTHS', 'PER_THREE_YEARS', 'PER_TWO_YEARS', 'QUARTERLY', and 'WEEKLY'.</td>
+<td>The frequency of recurring billing for the line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', '<code>PER_FIVE_YEARS</code>', '<code>PER_FOUR_YEARS</code>', '<code>PER_SIX_MONTHS</code>', '<code>PER_THREE_YEARS</code>', '<code>PER_TWO_YEARS</code>', 'QUARTERLY', and 'WEEKLY'.</td>
 </tr>
 <tr>
 <td><code>lineItems[].recurringBillingNumberOfPayments</code></td>
@@ -3151,7 +3212,7 @@
 <td><code>lineItems[].recurringBillingTerms</code></td>
 <td><code>enum: AUTOMATICALLY_RENEW, FIXED</code></td>
 <td>No</td>
-<td>The terms of recurring billing. Valid values include 'AUTOMATICALLY_RENEW' and 'FIXED'.</td>
+<td>The terms of recurring billing. Valid values include '<code>AUTOMATICALLY_RENEW</code>' and 'FIXED'.</td>
 </tr>
 <tr>
 <td><code>lineItems[].richTextDescription</code></td>
@@ -3427,7 +3488,7 @@
 <td><code>acceptedPaymentMethods</code></td>
 <td><code>array of enum: CREDIT_OR_DEBIT_CARD, ACH, SEPA, BACS, PADS, AFFIRM, ...</code></td>
 <td>No</td>
-<td>An array of strings indicating the accepted payment methods. Valid values include 'CREDIT_OR_DEBIT_CARD', 'ACH', 'SEPA', 'BACS', and 'PADS'.</td>
+<td>An array of strings indicating the accepted payment methods. Valid values include '<code>CREDIT_OR_DEBIT_CARD</code>', 'ACH', 'SEPA', 'BACS', and 'PADS'.</td>
 </tr>
 <tr>
 <td><code>additionalFormFields</code></td>
@@ -3718,7 +3779,7 @@
 <td><code>acceptedPaymentMethods</code></td>
 <td><code>array of enum: CREDIT_OR_DEBIT_CARD, ACH, SEPA, BACS, PADS, AFFIRM, ...</code></td>
 <td>Yes</td>
-<td>An array of accepted payment methods for the payment link. Valid values include 'CREDIT_OR_DEBIT_CARD', 'ACH', 'SEPA', 'BACS', and 'PADS'.</td>
+<td>An array of accepted payment methods for the payment link. Valid values include '<code>CREDIT_OR_DEBIT_CARD</code>', 'ACH', 'SEPA', 'BACS', and 'PADS'.</td>
 </tr>
 <tr>
 <td><code>additionalFormFields</code></td>
@@ -4108,7 +4169,7 @@
 <td><code>lineItems[].billingStartDelayType</code></td>
 <td><code>enum: HS_BILLING_START_DELAY_DAYS, HS_BILLING_START_DELAY_MONTHS, HS_RECURRING_BILLING_START_DATE</code></td>
 <td>No</td>
-<td>The type of delay for the start of billing. Valid values include 'HS_BILLING_START_DELAY_DAYS', 'HS_BILLING_START_DELAY_MONTHS', and 'HS_RECURRING_BILLING_START_DATE'.</td>
+<td>The type of delay for the start of billing. Valid values include '<code>HS_BILLING_START_DELAY_DAYS</code>', '<code>HS_BILLING_START_DELAY_MONTHS</code>', and '<code>HS_RECURRING_BILLING_START_DATE</code>'.</td>
 </tr>
 <tr>
 <td><code>lineItems[].buyerSelectedQuantityMax</code></td>
@@ -4324,7 +4385,7 @@
 <td><code>lineItems[].recurringBillingFrequency</code></td>
 <td><code>enum: ANNUALLY, BIWEEKLY, MONTHLY, PER_FIVE_YEARS, PER_FOUR_YEARS, PER_SIX_MONTHS, ...</code></td>
 <td>No</td>
-<td>The frequency of recurring billing for the line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', 'PER_FIVE_YEARS', 'PER_FOUR_YEARS', 'PER_SIX_MONTHS', 'PER_THREE_YEARS', 'PER_TWO_YEARS', 'QUARTERLY', and 'WEEKLY'.</td>
+<td>The frequency of recurring billing for the line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', '<code>PER_FIVE_YEARS</code>', '<code>PER_FOUR_YEARS</code>', '<code>PER_SIX_MONTHS</code>', '<code>PER_THREE_YEARS</code>', '<code>PER_TWO_YEARS</code>', 'QUARTERLY', and 'WEEKLY'.</td>
 </tr>
 <tr>
 <td><code>lineItems[].recurringBillingNumberOfPayments</code></td>
@@ -4348,7 +4409,7 @@
 <td><code>lineItems[].recurringBillingTerms</code></td>
 <td><code>enum: AUTOMATICALLY_RENEW, FIXED</code></td>
 <td>No</td>
-<td>The terms of recurring billing. Valid values include 'AUTOMATICALLY_RENEW' and 'FIXED'.</td>
+<td>The terms of recurring billing. Valid values include '<code>AUTOMATICALLY_RENEW</code>' and 'FIXED'.</td>
 </tr>
 <tr>
 <td><code>lineItems[].richTextDescription</code></td>

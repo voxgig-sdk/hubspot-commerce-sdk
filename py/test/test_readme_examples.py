@@ -83,6 +83,7 @@ _ENTITIES = {
     "ContractsContract": "contracts_contract",
     "ContractsContractChange": "contracts_contract_change",
     "ContractsContractChangePreview": "contracts_contract_change_preview",
+    "ContractsContractChangeSummary": "contracts_contract_change_summary",
     "ContractsQuote": "contracts_quote",
     "Item": "item",
     "PaymentLink": "payment_link",

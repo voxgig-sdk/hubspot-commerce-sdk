@@ -1,0 +1,47 @@
+# BasicPaymentsSettingsGetPolicySettingsPublicFlow
+
+main: kit: flow: BasicPaymentsSettingsGetPolicySettingsPublicFlow:
+{
+  entity: "payments_settings_get_policy_settings_public",
+  kind: "basic",
+  name: "BasicPaymentsSettingsGetPolicySettingsPublicFlow",
+  step: [
+    {
+      i: {
+        ref: "payments_settings_get_policy_settings_public_ref01",
+        srcdatavar: "payments_settings_get_policy_settings_public_ref01_data",
+        suffix: "_up0",
+        textfield: "cancellationPolicyText"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-payments_settings_get_policy_settings_public_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "payments_settings_get_policy_settings_public_ref01",
+        srcdatavar: "payments_settings_get_policy_settings_public_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-payments_settings_get_policy_settings_public_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaymentsSettingsGetPolicySettingsPublicFlow"
+}

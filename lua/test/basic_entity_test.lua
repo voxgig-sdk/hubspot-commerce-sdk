@@ -65,7 +65,7 @@ function basic_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "basic01", "basic02", "basic03", "payment_link01", "payment_link02", "payment_link03", "checkout_fee01", "checkout_fee02", "checkout_fee03", "price_book01", "price_book02", "price_book03" },
+    { "basic01", "basic02", "basic03", "payment_link01", "payment_link02", "payment_link03", "price_book01", "price_book02", "price_book03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

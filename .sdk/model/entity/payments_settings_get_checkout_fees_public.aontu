@@ -1,0 +1,133 @@
+# Entity: payments_settings_get_checkout_fees_public
+
+main: kit: entity: payments_settings_get_checkout_fees_public: {
+
+  alias: field: {}
+
+  fields: {
+    appliesToPaymentType: {
+      h: "Applies To Payment Type"
+      n: "appliesToPaymentType"
+      r: true
+      sh: "The type of payment to which this fee applies, represented as a string."
+      t: "`$STRING`"
+    }
+    checkoutFees: {
+      h: "Checkout Fees"
+      n: "checkoutFees"
+      r: true
+      sh: "An array of CheckoutFeePublic objects, each representing a specific fee applied during the checkout process."
+      t: "`$ARRAY`"
+    }
+    feeValue: {
+      h: "Fee Value"
+      n: "feeValue"
+      r: true
+      sh: "The numerical value of the fee, indicating the amount to be charged."
+      t: "`$NUMBER`"
+    }
+    feeValueType: {
+      h: "Fee Value Type"
+      n: "feeValueType"
+      r: true
+      sh: "The type of the fee value, represented as a string, which defines how the fee value is interpreted (e.g., as a percentage or a fixed amount)."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The unique identifier for this checkout fee configuration."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The name of the checkout fee, used for identification and display purposes."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "payments_settings_get_checkout_fees_public"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /commerce/payments-settings/2027-03-beta/payments-settings/checkout-fees"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/commerce/payments-settings/2027-03-beta/payments-settings/checkout-fees"
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "payments-settings"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "payments-settings"
+            }
+            {
+              lit: "checkout-fees"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.checkoutFees`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /commerce/payments-settings/2027-03-beta/payments-settings/checkout-fees"
+            source: "openapi3"
+            version: 2
+          }
+          m: "PATCH"
+          o: "/commerce/payments-settings/2027-03-beta/payments-settings/checkout-fees"
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "payments-settings"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "payments-settings"
+            }
+            {
+              lit: "checkout-fees"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

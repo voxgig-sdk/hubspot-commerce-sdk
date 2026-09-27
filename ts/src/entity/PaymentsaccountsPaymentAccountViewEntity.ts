@@ -19,7 +19,6 @@ import type {
   PaymentsaccountsPaymentAccountViewListMatch,
 } from '../HubspotCommerceTypes'
 
-// TODO: needs Entity superclass
 class PaymentsaccountsPaymentAccountViewEntity extends HubspotCommerceEntityBase<PaymentsaccountsPaymentAccountView> {
 
   constructor(client: HubspotCommerceSDK, entopts: any) {

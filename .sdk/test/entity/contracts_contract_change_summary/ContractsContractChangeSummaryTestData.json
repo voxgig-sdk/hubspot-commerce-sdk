@@ -1,0 +1,71 @@
+{
+  "existing": {
+    "contracts_contract_change_summary": {
+      "CONTRACTS_CONTRACT_CHANGE_SUMMARY00": {
+        "contractId": "s6e",
+        "createdAt": "s6f",
+        "effectiveDate": "s70",
+        "id": "CONTRACTS_CONTRACT_CHANGE_SUMMARY00",
+        "lineItemChanges": [],
+        "name": "s73",
+        "prorating": true,
+        "quoteId": "s75",
+        "status": "s76",
+        "type": "s77",
+        "updatedAt": "s78",
+        "contract_id": "CONTRACT01"
+      },
+      "CONTRACTS_CONTRACT_CHANGE_SUMMARY01": {
+        "contractId": "sdc",
+        "createdAt": "sdd",
+        "effectiveDate": "sde",
+        "id": "CONTRACTS_CONTRACT_CHANGE_SUMMARY01",
+        "lineItemChanges": [],
+        "name": "se1",
+        "prorating": true,
+        "quoteId": "se3",
+        "status": "se4",
+        "type": "se5",
+        "updatedAt": "se6",
+        "contract_id": "CONTRACT01"
+      },
+      "CONTRACTS_CONTRACT_CHANGE_SUMMARY02": {
+        "contractId": "s14a",
+        "createdAt": "s14b",
+        "effectiveDate": "s14c",
+        "id": "CONTRACTS_CONTRACT_CHANGE_SUMMARY02",
+        "lineItemChanges": [],
+        "name": "s14f",
+        "prorating": true,
+        "quoteId": "s151",
+        "status": "s152",
+        "type": "s153",
+        "updatedAt": "s154",
+        "contract_id": "CONTRACT01"
+      }
+    }
+  },
+  "new": {
+    "contracts_contract_change_summary": {
+      "contracts_contract_change_summary_ref01": {
+        "contractId": "s1b8",
+        "createdAt": "s1b9",
+        "effectiveDate": "s1ba",
+        "lineItemChanges": [],
+        "name": "s1bd",
+        "prorating": true,
+        "quoteId": "s1bf",
+        "status": "s1c0",
+        "type": "s1c1",
+        "updatedAt": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "GET /commerce/contracts/2027-03-beta/contracts/{contractId}/changes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

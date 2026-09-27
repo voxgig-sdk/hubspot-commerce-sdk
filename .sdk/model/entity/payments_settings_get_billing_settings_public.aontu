@@ -1,0 +1,165 @@
+# Entity: payments_settings_get_billing_settings_public
+
+main: kit: entity: payments_settings_get_billing_settings_public: {
+
+  alias: field: {}
+
+  fields: {
+    accountGoogleAnalyticsEnabled: {
+      h: "Account Google Analytics Enabled"
+      n: "accountGoogleAnalyticsEnabled"
+      r: false
+      sh: "Indicates whether Google Analytics tracking is enabled for the account."
+      t: "`$BOOLEAN`"
+    }
+    checkoutPrefillEnabled: {
+      h: "Checkout Prefill Enabled"
+      n: "checkoutPrefillEnabled"
+      op: {
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      sh: "Indicates whether checkout fields should be prefilled."
+      t: "`$BOOLEAN`"
+    }
+    collectFullBillingAddress: {
+      h: "Collect Full Billing Address"
+      n: "collectFullBillingAddress"
+      op: {
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      sh: "Indicates whether the full billing address should be collected."
+      t: "`$BOOLEAN`"
+    }
+    collectPaymentMethodOnFile: {
+      h: "Collect Payment Method On File"
+      n: "collectPaymentMethodOnFile"
+      op: {
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      sh: "Indicates whether a payment method should be kept on file."
+      t: "`$BOOLEAN`"
+    }
+    defaultFromEmailAddress: {
+      h: "Default From Email Address"
+      n: "defaultFromEmailAddress"
+      r: true
+      sh: "The default email address used for sending communications."
+      t: "`$STRING`"
+    }
+    paymentsGoogleAnalyticsEnabled: {
+      h: "Payments Google Analytics Enabled"
+      n: "paymentsGoogleAnalyticsEnabled"
+      op: {
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      sh: "Indicates whether Google Analytics tracking is enabled for payments."
+      t: "`$BOOLEAN`"
+    }
+    recaptchaEnabled: {
+      h: "Recaptcha Enabled"
+      n: "recaptchaEnabled"
+      op: {
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      sh: "Indicates whether reCAPTCHA is enabled for additional security."
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  name: "payments_settings_get_billing_settings_public"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /commerce/payments-settings/2027-03-beta/payments-settings/billing"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/commerce/payments-settings/2027-03-beta/payments-settings/billing"
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "payments-settings"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "payments-settings"
+            }
+            {
+              lit: "billing"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /commerce/payments-settings/2027-03-beta/payments-settings/billing"
+            source: "openapi3"
+            version: 2
+          }
+          m: "PATCH"
+          o: "/commerce/payments-settings/2027-03-beta/payments-settings/billing"
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "payments-settings"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "payments-settings"
+            }
+            {
+              lit: "billing"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,7 +1,7 @@
 // Typed models for the HubspotCommerce SDK (JSDoc typedefs).
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
 // edit by hand.
@@ -376,11 +376,6 @@
  */
 
 /**
- * @typedef {Object} ContractsContractChangeListMatch
- * @property {string} contract_id
- */
-
-/**
  * @typedef {Object} ContractsContractChangeCreateData
  * @property {string} contractId
  * @property {string} [createdAt]
@@ -424,6 +419,26 @@
  * @typedef {Object} ContractsContractChangePreviewCreateData
  * @property {Array} deltaLineItems
  * @property {Array} proposedLineItems
+ */
+
+/**
+ * @typedef {Object} ContractsContractChangeSummary
+ * @property {string} contractId
+ * @property {string} [createdAt]
+ * @property {string} [effectiveDate]
+ * @property {string} id
+ * @property {Array} lineItemChanges
+ * @property {string} [name]
+ * @property {boolean} prorating
+ * @property {string} [quoteId]
+ * @property {string} status
+ * @property {string} type
+ * @property {string} [updatedAt]
+ */
+
+/**
+ * @typedef {Object} ContractsContractChangeSummaryListMatch
+ * @property {string} contract_id
  */
 
 /**

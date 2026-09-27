@@ -1,0 +1,59 @@
+# BasicContractFlow
+
+main: kit: flow: BasicContractFlow:
+{
+  entity: "contract",
+  kind: "basic",
+  name: "BasicContractFlow",
+  step: [
+    {
+      i: {
+        ref: "contract_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "contract_ref01",
+        srcdatavar: "contract_ref01_data",
+        suffix: "_up0",
+        textfield: "allTransactionsFeeName"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-contract_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "contract_ref01",
+        srcdatavar: "contract_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "contract01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-contract_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicContractFlow"
+}

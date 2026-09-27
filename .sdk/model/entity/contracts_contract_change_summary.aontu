@@ -1,0 +1,169 @@
+# Entity: contracts_contract_change_summary
+
+main: kit: entity: contracts_contract_change_summary: {
+
+  alias: field: {}
+
+  fields: {
+    contractId: {
+      h: "Contract Id"
+      n: "contractId"
+      r: true
+      sh: "The unique identifier of the contract associated with this change."
+      t: "`$STRING`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: false
+      sh: "The date and time when this contract change was created, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    effectiveDate: {
+      fo: "date"
+      h: "Effective Date"
+      n: "effectiveDate"
+      r: false
+      sh: "The date on which this contract change becomes effective, in the format 'YYYY-MM-DD'."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The unique identifier for this contract change."
+      t: "`$STRING`"
+    }
+    lineItemChanges: {
+      h: "Line Item Changes"
+      n: "lineItemChanges"
+      r: true
+      sh: "An array of changes made to line items as part of this contract change."
+      t: "`$ARRAY`"
+      union: {
+        branches: 3
+        count: 1
+        depth: 3
+      }
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The name assigned to this contract change."
+      t: "`$STRING`"
+    }
+    prorating: {
+      h: "Prorating"
+      n: "prorating"
+      r: true
+      sh: "A boolean indicating whether the contract change involves prorating."
+      t: "`$BOOLEAN`"
+    }
+    quoteId: {
+      h: "Quote Id"
+      n: "quoteId"
+      r: false
+      sh: "The unique identifier of the quote associated with this contract change, if applicable."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      sh: "The current status of the contract change."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      sh: "The type of contract change, which can be either 'DIRECT' or 'QUOTE'."
+      t: "`$STRING`"
+    }
+    updatedAt: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updatedAt"
+      r: false
+      sh: "The date and time when this contract change was last updated, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "contracts_contract_change_summary"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /commerce/contracts/2027-03-beta/contracts/{contractId}/changes"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "contract_id"
+                or: "contract_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/commerce/contracts/2027-03-beta/contracts/{contractId}/changes"
+          q: {
+            exist: [
+              "contract_id"
+            ]
+          }
+          r: {
+            param: {
+              contractId: "contract_id"
+            }
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "contracts"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "contracts"
+            }
+            {
+              var: "contract_id"
+            }
+            {
+              lit: "changes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.changes`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.contract")]
+  ]
+
+}

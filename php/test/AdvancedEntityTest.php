@@ -66,7 +66,7 @@ function advanced_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["advanced01", "advanced02", "advanced03", "2027_03_beta01", "2027_03_beta02", "2027_03_beta03", "payment_crm_object01"] as $k) {
+    foreach (["advanced01", "advanced02", "advanced03", "payment_crm_object01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

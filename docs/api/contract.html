@@ -15,6 +15,7 @@
 <a href="../api/contracts_contract.html">ContractsContract</a>
 <a href="../api/contracts_contract_change.html">ContractsContractChange</a>
 <a href="../api/contracts_contract_change_preview.html">ContractsContractChangePreview</a>
+<a href="../api/contracts_contract_change_summary.html">ContractsContractChangeSummary</a>
 <a href="../api/contracts_quote.html">ContractsQuote</a>
 <a href="../api/item.html">Item</a>
 <a href="../api/payment_link.html">PaymentLink</a>
@@ -44,14 +45,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="contract">Contract</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="contract">Contract</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -84,6 +85,56 @@
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">contract, err := client.Contract(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(contract)
+created, err := client.Contract(nil).Create(map[string]any{&quot;addressTypesToCollect&quot;: []any{}, &quot;allowedPaymentMethods&quot;: []any{}, &quot;automatedTaxesEnabled&quot;: true, &quot;customProperties&quot;: map[string]any{}, &quot;hubspotBillingEnabled&quot;: true, &quot;id&quot;: &quot;example&quot;, &quot;lineItems&quot;: []any{}, &quot;ownerId&quot;: map[string]any{}, &quot;paymentEnabled&quot;: true, &quot;sellerCompanyDomain&quot;: map[string]any{}, &quot;sellerPhone&quot;: map[string]any{}, &quot;status&quot;: &quot;example&quot;, &quot;storePaymentMethodAtCheckout&quot;: true}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.Contract(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;addressTypesToCollect&quot;: []any{}, &quot;allTransactionsFeeName&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+</code></pre>
+<h3 id="javascript">JavaScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/js.html#set-up-the-client">JavaScript setup</a>, then call the operations:</p>
+<pre><code class="language-js">const contract = await client.Contract().load({ id: &quot;example_id&quot; })
+const created = await client.Contract().create({ addressTypesToCollect: [], allowedPaymentMethods: [], automatedTaxesEnabled: true, customProperties: {}, hubspotBillingEnabled: true, id: &quot;example&quot;, lineItems: [], ownerId: {}, paymentEnabled: true, sellerCompanyDomain: {}, sellerPhone: {}, status: &quot;example&quot;, storePaymentMethodAtCheckout: true })
+const updated = await client.Contract().update({ id: &quot;example_id&quot;, addressTypesToCollect: [], allTransactionsFeeName: &quot;example&quot; })
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local contract, err = client:Contract():load({ id = &quot;example_id&quot; })
+local created, err = client:Contract():create({ addressTypesToCollect = {}, allowedPaymentMethods = {}, automatedTaxesEnabled = true, customProperties = {}, hubspotBillingEnabled = true, id = &quot;example&quot;, lineItems = {}, ownerId = {}, paymentEnabled = true, sellerCompanyDomain = {}, sellerPhone = {}, status = &quot;example&quot;, storePaymentMethodAtCheckout = true })
+local updated, err = client:Contract():update({ id = &quot;example_id&quot;, addressTypesToCollect = {}, allTransactionsFeeName = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$contract = $client-&gt;Contract()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+$created = $client-&gt;Contract()-&gt;create([&quot;addressTypesToCollect&quot; =&gt; [], &quot;allowedPaymentMethods&quot; =&gt; [], &quot;automatedTaxesEnabled&quot; =&gt; true, &quot;customProperties&quot; =&gt; [], &quot;hubspotBillingEnabled&quot; =&gt; true, &quot;id&quot; =&gt; &quot;example&quot;, &quot;lineItems&quot; =&gt; [], &quot;ownerId&quot; =&gt; [], &quot;paymentEnabled&quot; =&gt; true, &quot;sellerCompanyDomain&quot; =&gt; [], &quot;sellerPhone&quot; =&gt; [], &quot;status&quot; =&gt; &quot;example&quot;, &quot;storePaymentMethodAtCheckout&quot; =&gt; true]);
+$updated = $client-&gt;Contract()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;addressTypesToCollect&quot; =&gt; [], &quot;allTransactionsFeeName&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">contract = client.Contract().load({&quot;id&quot;: &quot;example_id&quot;})
+created = client.Contract().create({ &quot;addressTypesToCollect&quot;: [], &quot;allowedPaymentMethods&quot;: [], &quot;automatedTaxesEnabled&quot;: True, &quot;customProperties&quot;: {}, &quot;hubspotBillingEnabled&quot;: True, &quot;id&quot;: &quot;example&quot;, &quot;lineItems&quot;: [], &quot;ownerId&quot;: {}, &quot;paymentEnabled&quot;: True, &quot;sellerCompanyDomain&quot;: {}, &quot;sellerPhone&quot;: {}, &quot;status&quot;: &quot;example&quot;, &quot;storePaymentMethodAtCheckout&quot;: True })
+updated = client.Contract().update({&quot;id&quot;: &quot;example_id&quot;, &quot;addressTypesToCollect&quot;: [], &quot;allTransactionsFeeName&quot;: &quot;example&quot;})
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const contract = await client.Contract().load({ id: &quot;example_id&quot; })
+const created = await client.Contract().create({ addressTypesToCollect: [], allowedPaymentMethods: [], automatedTaxesEnabled: true, customProperties: {}, hubspotBillingEnabled: true, id: &quot;example&quot;, lineItems: [], ownerId: {}, paymentEnabled: true, sellerCompanyDomain: {}, sellerPhone: {}, status: &quot;example&quot;, storePaymentMethodAtCheckout: true })
+const updated = await client.Contract().update({ id: &quot;example_id&quot;, addressTypesToCollect: [], allTransactionsFeeName: &quot;example&quot; })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -477,13 +528,13 @@
 <td><code>addressTypesToCollect</code></td>
 <td><code>array of enum: BILLING_ADDRESS, SHIPPING_ADDRESS</code></td>
 <td>No</td>
-<td>An array of address types to collect, which can include 'BILLING_ADDRESS' and 'SHIPPING_ADDRESS'.</td>
+<td>An array of address types to collect, which can include '<code>BILLING_ADDRESS</code>' and '<code>SHIPPING_ADDRESS</code>'.</td>
 </tr>
 <tr>
 <td><code>allowedPaymentMethods</code></td>
 <td><code>array of enum: CREDIT_OR_DEBIT_CARD, ACH, SEPA, BACS, PADS, AFFIRM, ...</code></td>
 <td>No</td>
-<td>An array of allowed payment methods for the contract, such as 'CREDIT_OR_DEBIT_CARD', 'ACH', 'SEPA', 'BACS', 'PADS', 'AFFIRM', and 'KLARNA'.</td>
+<td>An array of allowed payment methods for the contract, such as '<code>CREDIT_OR_DEBIT_CARD</code>', 'ACH', 'SEPA', 'BACS', 'PADS', 'AFFIRM', and 'KLARNA'.</td>
 </tr>
 <tr>
 <td><code>automatedTaxesEnabled</code></td>
@@ -525,7 +576,7 @@
 <td><code>collectionProcess</code></td>
 <td><code>enum: AUTOMATIC_PAYMENTS, MANUAL_PAYMENTS</code></td>
 <td>No</td>
-<td>A string indicating the collection process for the contract, which can be 'MANUAL_PAYMENTS' or 'AUTOMATIC_PAYMENTS'.</td>
+<td>A string indicating the collection process for the contract, which can be '<code>MANUAL_PAYMENTS</code>' or '<code>AUTOMATIC_PAYMENTS</code>'.</td>
 </tr>
 <tr>
 <td><code>contractEffectiveDate</code></td>
@@ -666,7 +717,7 @@
 <td><code>addressTypesToCollect</code></td>
 <td><code>array of enum: BILLING_ADDRESS, SHIPPING_ADDRESS</code></td>
 <td>Yes</td>
-<td>An array indicating the types of addresses to collect. Valid values include 'BILLING_ADDRESS' and 'SHIPPING_ADDRESS'.</td>
+<td>An array indicating the types of addresses to collect. Valid values include '<code>BILLING_ADDRESS</code>' and '<code>SHIPPING_ADDRESS</code>'.</td>
 </tr>
 <tr>
 <td><code>allTransactionsFeeName</code></td>
@@ -684,7 +735,7 @@
 <td><code>allowedPaymentMethods</code></td>
 <td><code>array of enum: CREDIT_OR_DEBIT_CARD, ACH, SEPA, BACS, PADS, AFFIRM, ...</code></td>
 <td>Yes</td>
-<td>An array of allowed payment methods. Valid values include 'CREDIT_OR_DEBIT_CARD', 'ACH', 'SEPA', 'BACS', 'PADS', 'AFFIRM', and 'KLARNA'.</td>
+<td>An array of allowed payment methods. Valid values include '<code>CREDIT_OR_DEBIT_CARD</code>', 'ACH', 'SEPA', 'BACS', 'PADS', 'AFFIRM', and 'KLARNA'.</td>
 </tr>
 <tr>
 <td><code>annualContractValue</code></td>
@@ -786,7 +837,7 @@
 <td><code>collectionProcess</code></td>
 <td><code>enum: AUTOMATIC_PAYMENTS, MANUAL_PAYMENTS</code></td>
 <td>No</td>
-<td>The process for collecting payments. Valid values include 'MANUAL_PAYMENTS' and 'AUTOMATIC_PAYMENTS'.</td>
+<td>The process for collecting payments. Valid values include '<code>MANUAL_PAYMENTS</code>' and '<code>AUTOMATIC_PAYMENTS</code>'.</td>
 </tr>
 <tr>
 <td><code>contractEffectiveDate</code></td>
@@ -960,7 +1011,7 @@
 <td><code>lineItems[].billingStartDelayType</code></td>
 <td><code>enum: HS_BILLING_START_DELAY_DAYS, HS_BILLING_START_DELAY_MONTHS, HS_RECURRING_BILLING_START_DATE</code></td>
 <td>No</td>
-<td>The type of delay before billing starts. Valid values include 'HS_BILLING_START_DELAY_DAYS', 'HS_BILLING_START_DELAY_MONTHS', and 'HS_RECURRING_BILLING_START_DATE'.</td>
+<td>The type of delay before billing starts. Valid values include '<code>HS_BILLING_START_DELAY_DAYS</code>', '<code>HS_BILLING_START_DELAY_MONTHS</code>', and '<code>HS_RECURRING_BILLING_START_DATE</code>'.</td>
 </tr>
 <tr>
 <td><code>lineItems[].buyerSelectedQuantityMax</code></td>
@@ -1176,7 +1227,7 @@
 <td><code>lineItems[].recurringBillingFrequency</code></td>
 <td><code>enum: ANNUALLY, BIWEEKLY, MONTHLY, PER_FIVE_YEARS, PER_FOUR_YEARS, PER_SIX_MONTHS, ...</code></td>
 <td>No</td>
-<td>The frequency of recurring billing for this line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', 'PER_FIVE_YEARS', 'PER_FOUR_YEARS', 'PER_SIX_MONTHS', 'PER_THREE_YEARS', 'PER_TWO_YEARS', 'QUARTERLY', and 'WEEKLY'.</td>
+<td>The frequency of recurring billing for this line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', '<code>PER_FIVE_YEARS</code>', '<code>PER_FOUR_YEARS</code>', '<code>PER_SIX_MONTHS</code>', '<code>PER_THREE_YEARS</code>', '<code>PER_TWO_YEARS</code>', 'QUARTERLY', and 'WEEKLY'.</td>
 </tr>
 <tr>
 <td><code>lineItems[].recurringBillingNumberOfPayments</code></td>
@@ -1200,7 +1251,7 @@
 <td><code>lineItems[].recurringBillingTerms</code></td>
 <td><code>enum: AUTOMATICALLY_RENEW, FIXED</code></td>
 <td>No</td>
-<td>The terms for recurring billing. Valid values include 'AUTOMATICALLY_RENEW' and 'FIXED'.</td>
+<td>The terms for recurring billing. Valid values include '<code>AUTOMATICALLY_RENEW</code>' and 'FIXED'.</td>
 </tr>
 <tr>
 <td><code>lineItems[].richTextDescription</code></td>
@@ -1335,10 +1386,46 @@
 <td></td>
 </tr>
 <tr>
-<td><code>sellerCompanyAddress.$ref</code></td>
-<td><code>any</code></td>
+<td><code>sellerCompanyAddress.address</code></td>
+<td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>The primary street address. It is a string representing the main location detail.</td>
+</tr>
+<tr>
+<td><code>sellerCompanyAddress.address2</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An additional street address line. This is a string used for supplementary location details.</td>
+</tr>
+<tr>
+<td><code>sellerCompanyAddress.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The city where the address is located. It is represented as a string.</td>
+</tr>
+<tr>
+<td><code>sellerCompanyAddress.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The country of the address. This is a string indicating the nation associated with the address.</td>
+</tr>
+<tr>
+<td><code>sellerCompanyAddress.countryCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The code representing the country of the address. It is a string, typically following international country code standards.</td>
+</tr>
+<tr>
+<td><code>sellerCompanyAddress.state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The state or region of the address. This is a string that specifies the subdivision within the country.</td>
+</tr>
+<tr>
+<td><code>sellerCompanyAddress.zip</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The postal code for the address. It is a string used for mail delivery purposes.</td>
 </tr>
 <tr>
 <td><code>sellerCompanyName</code></td>
@@ -1549,7 +1636,7 @@
 <td><code>addressTypesToCollect</code></td>
 <td><code>array of enum: BILLING_ADDRESS, SHIPPING_ADDRESS</code></td>
 <td>Yes</td>
-<td>An array indicating the types of addresses to collect. Valid values include 'BILLING_ADDRESS' and 'SHIPPING_ADDRESS'.</td>
+<td>An array indicating the types of addresses to collect. Valid values include '<code>BILLING_ADDRESS</code>' and '<code>SHIPPING_ADDRESS</code>'.</td>
 </tr>
 <tr>
 <td><code>allTransactionsFeeName</code></td>
@@ -1567,7 +1654,7 @@
 <td><code>allowedPaymentMethods</code></td>
 <td><code>array of enum: CREDIT_OR_DEBIT_CARD, ACH, SEPA, BACS, PADS, AFFIRM, ...</code></td>
 <td>Yes</td>
-<td>An array of allowed payment methods. Valid values include 'CREDIT_OR_DEBIT_CARD', 'ACH', 'SEPA', 'BACS', 'PADS', 'AFFIRM', and 'KLARNA'.</td>
+<td>An array of allowed payment methods. Valid values include '<code>CREDIT_OR_DEBIT_CARD</code>', 'ACH', 'SEPA', 'BACS', 'PADS', 'AFFIRM', and 'KLARNA'.</td>
 </tr>
 <tr>
 <td><code>annualContractValue</code></td>
@@ -1669,7 +1756,7 @@
 <td><code>collectionProcess</code></td>
 <td><code>enum: AUTOMATIC_PAYMENTS, MANUAL_PAYMENTS</code></td>
 <td>No</td>
-<td>The process for collecting payments. Valid values include 'MANUAL_PAYMENTS' and 'AUTOMATIC_PAYMENTS'.</td>
+<td>The process for collecting payments. Valid values include '<code>MANUAL_PAYMENTS</code>' and '<code>AUTOMATIC_PAYMENTS</code>'.</td>
 </tr>
 <tr>
 <td><code>contractEffectiveDate</code></td>
@@ -1843,7 +1930,7 @@
 <td><code>lineItems[].billingStartDelayType</code></td>
 <td><code>enum: HS_BILLING_START_DELAY_DAYS, HS_BILLING_START_DELAY_MONTHS, HS_RECURRING_BILLING_START_DATE</code></td>
 <td>No</td>
-<td>The type of delay before billing starts. Valid values include 'HS_BILLING_START_DELAY_DAYS', 'HS_BILLING_START_DELAY_MONTHS', and 'HS_RECURRING_BILLING_START_DATE'.</td>
+<td>The type of delay before billing starts. Valid values include '<code>HS_BILLING_START_DELAY_DAYS</code>', '<code>HS_BILLING_START_DELAY_MONTHS</code>', and '<code>HS_RECURRING_BILLING_START_DATE</code>'.</td>
 </tr>
 <tr>
 <td><code>lineItems[].buyerSelectedQuantityMax</code></td>
@@ -2059,7 +2146,7 @@
 <td><code>lineItems[].recurringBillingFrequency</code></td>
 <td><code>enum: ANNUALLY, BIWEEKLY, MONTHLY, PER_FIVE_YEARS, PER_FOUR_YEARS, PER_SIX_MONTHS, ...</code></td>
 <td>No</td>
-<td>The frequency of recurring billing for this line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', 'PER_FIVE_YEARS', 'PER_FOUR_YEARS', 'PER_SIX_MONTHS', 'PER_THREE_YEARS', 'PER_TWO_YEARS', 'QUARTERLY', and 'WEEKLY'.</td>
+<td>The frequency of recurring billing for this line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', '<code>PER_FIVE_YEARS</code>', '<code>PER_FOUR_YEARS</code>', '<code>PER_SIX_MONTHS</code>', '<code>PER_THREE_YEARS</code>', '<code>PER_TWO_YEARS</code>', 'QUARTERLY', and 'WEEKLY'.</td>
 </tr>
 <tr>
 <td><code>lineItems[].recurringBillingNumberOfPayments</code></td>
@@ -2083,7 +2170,7 @@
 <td><code>lineItems[].recurringBillingTerms</code></td>
 <td><code>enum: AUTOMATICALLY_RENEW, FIXED</code></td>
 <td>No</td>
-<td>The terms for recurring billing. Valid values include 'AUTOMATICALLY_RENEW' and 'FIXED'.</td>
+<td>The terms for recurring billing. Valid values include '<code>AUTOMATICALLY_RENEW</code>' and 'FIXED'.</td>
 </tr>
 <tr>
 <td><code>lineItems[].richTextDescription</code></td>
@@ -2218,10 +2305,46 @@
 <td></td>
 </tr>
 <tr>
-<td><code>sellerCompanyAddress.$ref</code></td>
-<td><code>any</code></td>
+<td><code>sellerCompanyAddress.address</code></td>
+<td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>The primary street address. It is a string representing the main location detail.</td>
+</tr>
+<tr>
+<td><code>sellerCompanyAddress.address2</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An additional street address line. This is a string used for supplementary location details.</td>
+</tr>
+<tr>
+<td><code>sellerCompanyAddress.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The city where the address is located. It is represented as a string.</td>
+</tr>
+<tr>
+<td><code>sellerCompanyAddress.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The country of the address. This is a string indicating the nation associated with the address.</td>
+</tr>
+<tr>
+<td><code>sellerCompanyAddress.countryCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The code representing the country of the address. It is a string, typically following international country code standards.</td>
+</tr>
+<tr>
+<td><code>sellerCompanyAddress.state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The state or region of the address. This is a string that specifies the subdivision within the country.</td>
+</tr>
+<tr>
+<td><code>sellerCompanyAddress.zip</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The postal code for the address. It is a string used for mail delivery purposes.</td>
 </tr>
 <tr>
 <td><code>sellerCompanyName</code></td>
@@ -2431,13 +2554,13 @@
 <td><code>addressTypesToCollect</code></td>
 <td><code>array of enum: BILLING_ADDRESS, SHIPPING_ADDRESS</code></td>
 <td>No</td>
-<td>An array of strings indicating the types of addresses to collect, such as 'BILLING_ADDRESS' or 'SHIPPING_ADDRESS'.</td>
+<td>An array of strings indicating the types of addresses to collect, such as '<code>BILLING_ADDRESS</code>' or '<code>SHIPPING_ADDRESS</code>'.</td>
 </tr>
 <tr>
 <td><code>allowedPaymentMethods</code></td>
 <td><code>array of enum: CREDIT_OR_DEBIT_CARD, ACH, SEPA, BACS, PADS, AFFIRM, ...</code></td>
 <td>No</td>
-<td>An array of strings specifying the allowed payment methods, which can include 'CREDIT_OR_DEBIT_CARD', 'ACH', 'SEPA', 'BACS', 'PADS', 'AFFIRM', and 'KLARNA'.</td>
+<td>An array of strings specifying the allowed payment methods, which can include '<code>CREDIT_OR_DEBIT_CARD</code>', 'ACH', 'SEPA', 'BACS', 'PADS', 'AFFIRM', and 'KLARNA'.</td>
 </tr>
 <tr>
 <td><code>automatedTaxesEnabled</code></td>
@@ -2578,7 +2701,7 @@
 <td><code>addressTypesToCollect</code></td>
 <td><code>array of enum: BILLING_ADDRESS, SHIPPING_ADDRESS</code></td>
 <td>Yes</td>
-<td>An array indicating the types of addresses to collect. Valid values include 'BILLING_ADDRESS' and 'SHIPPING_ADDRESS'.</td>
+<td>An array indicating the types of addresses to collect. Valid values include '<code>BILLING_ADDRESS</code>' and '<code>SHIPPING_ADDRESS</code>'.</td>
 </tr>
 <tr>
 <td><code>allTransactionsFeeName</code></td>
@@ -2596,7 +2719,7 @@
 <td><code>allowedPaymentMethods</code></td>
 <td><code>array of enum: CREDIT_OR_DEBIT_CARD, ACH, SEPA, BACS, PADS, AFFIRM, ...</code></td>
 <td>Yes</td>
-<td>An array of allowed payment methods. Valid values include 'CREDIT_OR_DEBIT_CARD', 'ACH', 'SEPA', 'BACS', 'PADS', 'AFFIRM', and 'KLARNA'.</td>
+<td>An array of allowed payment methods. Valid values include '<code>CREDIT_OR_DEBIT_CARD</code>', 'ACH', 'SEPA', 'BACS', 'PADS', 'AFFIRM', and 'KLARNA'.</td>
 </tr>
 <tr>
 <td><code>annualContractValue</code></td>
@@ -2698,7 +2821,7 @@
 <td><code>collectionProcess</code></td>
 <td><code>enum: AUTOMATIC_PAYMENTS, MANUAL_PAYMENTS</code></td>
 <td>No</td>
-<td>The process for collecting payments. Valid values include 'MANUAL_PAYMENTS' and 'AUTOMATIC_PAYMENTS'.</td>
+<td>The process for collecting payments. Valid values include '<code>MANUAL_PAYMENTS</code>' and '<code>AUTOMATIC_PAYMENTS</code>'.</td>
 </tr>
 <tr>
 <td><code>contractEffectiveDate</code></td>
@@ -2872,7 +2995,7 @@
 <td><code>lineItems[].billingStartDelayType</code></td>
 <td><code>enum: HS_BILLING_START_DELAY_DAYS, HS_BILLING_START_DELAY_MONTHS, HS_RECURRING_BILLING_START_DATE</code></td>
 <td>No</td>
-<td>The type of delay before billing starts. Valid values include 'HS_BILLING_START_DELAY_DAYS', 'HS_BILLING_START_DELAY_MONTHS', and 'HS_RECURRING_BILLING_START_DATE'.</td>
+<td>The type of delay before billing starts. Valid values include '<code>HS_BILLING_START_DELAY_DAYS</code>', '<code>HS_BILLING_START_DELAY_MONTHS</code>', and '<code>HS_RECURRING_BILLING_START_DATE</code>'.</td>
 </tr>
 <tr>
 <td><code>lineItems[].buyerSelectedQuantityMax</code></td>
@@ -3088,7 +3211,7 @@
 <td><code>lineItems[].recurringBillingFrequency</code></td>
 <td><code>enum: ANNUALLY, BIWEEKLY, MONTHLY, PER_FIVE_YEARS, PER_FOUR_YEARS, PER_SIX_MONTHS, ...</code></td>
 <td>No</td>
-<td>The frequency of recurring billing for this line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', 'PER_FIVE_YEARS', 'PER_FOUR_YEARS', 'PER_SIX_MONTHS', 'PER_THREE_YEARS', 'PER_TWO_YEARS', 'QUARTERLY', and 'WEEKLY'.</td>
+<td>The frequency of recurring billing for this line item. Valid values include 'ANNUALLY', 'BIWEEKLY', 'MONTHLY', '<code>PER_FIVE_YEARS</code>', '<code>PER_FOUR_YEARS</code>', '<code>PER_SIX_MONTHS</code>', '<code>PER_THREE_YEARS</code>', '<code>PER_TWO_YEARS</code>', 'QUARTERLY', and 'WEEKLY'.</td>
 </tr>
 <tr>
 <td><code>lineItems[].recurringBillingNumberOfPayments</code></td>
@@ -3112,7 +3235,7 @@
 <td><code>lineItems[].recurringBillingTerms</code></td>
 <td><code>enum: AUTOMATICALLY_RENEW, FIXED</code></td>
 <td>No</td>
-<td>The terms for recurring billing. Valid values include 'AUTOMATICALLY_RENEW' and 'FIXED'.</td>
+<td>The terms for recurring billing. Valid values include '<code>AUTOMATICALLY_RENEW</code>' and 'FIXED'.</td>
 </tr>
 <tr>
 <td><code>lineItems[].richTextDescription</code></td>
@@ -3247,10 +3370,46 @@
 <td></td>
 </tr>
 <tr>
-<td><code>sellerCompanyAddress.$ref</code></td>
-<td><code>any</code></td>
+<td><code>sellerCompanyAddress.address</code></td>
+<td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>The primary street address. It is a string representing the main location detail.</td>
+</tr>
+<tr>
+<td><code>sellerCompanyAddress.address2</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An additional street address line. This is a string used for supplementary location details.</td>
+</tr>
+<tr>
+<td><code>sellerCompanyAddress.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The city where the address is located. It is represented as a string.</td>
+</tr>
+<tr>
+<td><code>sellerCompanyAddress.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The country of the address. This is a string indicating the nation associated with the address.</td>
+</tr>
+<tr>
+<td><code>sellerCompanyAddress.countryCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The code representing the country of the address. It is a string, typically following international country code standards.</td>
+</tr>
+<tr>
+<td><code>sellerCompanyAddress.state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The state or region of the address. This is a string that specifies the subdivision within the country.</td>
+</tr>
+<tr>
+<td><code>sellerCompanyAddress.zip</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The postal code for the address. It is a string used for mail delivery purposes.</td>
 </tr>
 <tr>
 <td><code>sellerCompanyName</code></td>

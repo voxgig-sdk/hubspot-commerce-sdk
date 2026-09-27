@@ -1,0 +1,93 @@
+# Entity: price_books_price_book_validate
+
+main: kit: entity: price_books_price_book_validate: {
+
+  alias: field: {}
+
+  fields: {
+    errors: {
+      h: "Errors"
+      n: "errors"
+      r: true
+      sh: "An array of ErrorDetail objects providing information about any errors encountered during validation."
+      t: "`$ARRAY`"
+    }
+    isValid: {
+      h: "Is Valid"
+      n: "isValid"
+      r: true
+      sh: "A boolean indicating whether the price book is valid."
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  name: "price_books_price_book_validate"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /commerce/price-books/2026-09/price-books/{priceBookId}/validate"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "price_book_id"
+                or: "price_book_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/commerce/price-books/2026-09/price-books/{priceBookId}/validate"
+          q: {
+            exist: [
+              "price_book_id"
+            ]
+          }
+          r: {
+            param: {
+              priceBookId: "price_book_id"
+            }
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              var: "price_book_id"
+            }
+            {
+              lit: "validate"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.price_book")]
+  ]
+
+}

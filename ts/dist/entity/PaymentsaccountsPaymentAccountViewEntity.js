@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PaymentsaccountsPaymentAccountViewEntity = void 0;
 const HubspotCommerceEntityBase_1 = require("../HubspotCommerceEntityBase");
-// TODO: needs Entity superclass
 class PaymentsaccountsPaymentAccountViewEntity extends HubspotCommerceEntityBase_1.HubspotCommerceEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

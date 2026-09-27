@@ -1,0 +1,122 @@
+# Entity: payment_methods_commerce_payment_method_settings_public
+
+main: kit: entity: payment_methods_commerce_payment_method_settings_public: {
+
+  alias: field: {}
+
+  fields: {
+    activeCurrencies: {
+      h: "Active Currencies"
+      n: "activeCurrencies"
+      r: true
+      sh: "A list of currencies that are active on this account and are suitable for the bundled commercePaymentMethod."
+      t: "`$ARRAY`"
+    }
+    commercePaymentMethod: {
+      h: "Commerce Payment Method"
+      n: "commercePaymentMethod"
+      r: true
+      sh: "The type of payment method."
+      t: "`$STRING`"
+    }
+    isDefaultOn: {
+      h: "Is Default On"
+      n: "isDefaultOn"
+      r: true
+      sh: "A boolean indicating whether this payment method is set as the default option."
+      t: "`$BOOLEAN`"
+    }
+    paymentMethodSettings: {
+      h: "Payment Method Settings"
+      n: "paymentMethodSettings"
+      r: true
+      sh: "A list of CommercePaymentMethodSettingPublic corresponding to individual payment methods."
+      t: "`$ARRAY`"
+    }
+    paymentMethodUpdates: {
+      h: "Payment Method Updates"
+      n: "paymentMethodUpdates"
+      r: true
+      sh: "An array of updates to be applied to commerce payment methods."
+      t: "`$ARRAY`"
+    }
+    supportedCurrencies: {
+      h: "Supported Currencies"
+      n: "supportedCurrencies"
+      r: true
+      sh: "A full list of currencies that are supported by the bundled commercePaymentMethod."
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "payment_methods_commerce_payment_method_settings_public"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /commerce/payment-methods/2027-03-beta/settings"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/commerce/payment-methods/2027-03-beta/settings"
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "payment-methods"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "settings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.paymentMethodSettings`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /commerce/payment-methods/2027-03-beta/settings"
+            source: "openapi3"
+            version: 2
+          }
+          m: "PATCH"
+          o: "/commerce/payment-methods/2027-03-beta/settings"
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "payment-methods"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "settings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

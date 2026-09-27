@@ -467,6 +467,24 @@ class HubspotCommerceSDK
     }
 
 
+    private $_contracts_contract_change_summary = null;
+
+    // Canonical facade: $client->ContractsContractChangeSummary()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->contracts_contract_change_summary()
+    // resolves here too.
+    public function ContractsContractChangeSummary($data = null)
+    {
+        require_once __DIR__ . '/entity/contracts_contract_change_summary_entity.php';
+        if ($data === null) {
+            if ($this->_contracts_contract_change_summary === null) {
+                $this->_contracts_contract_change_summary = new ContractsContractChangeSummaryEntity($this, null);
+            }
+            return $this->_contracts_contract_change_summary;
+        }
+        return new ContractsContractChangeSummaryEntity($this, $data);
+    }
+
+
     private $_contracts_quote = null;
 
     // Canonical facade: $client->ContractsQuote()->list() / ->load(["id" => ...]).

@@ -230,6 +230,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `ContractsContract` | `(data map[string]any) HubspotCommerceEntity` | Create a ContractsContract entity instance. |
 | `ContractsContractChange` | `(data map[string]any) HubspotCommerceEntity` | Create a ContractsContractChange entity instance. |
 | `ContractsContractChangePreview` | `(data map[string]any) HubspotCommerceEntity` | Create a ContractsContractChangePreview entity instance. |
+| `ContractsContractChangeSummary` | `(data map[string]any) HubspotCommerceEntity` | Create a ContractsContractChangeSummary entity instance. |
 | `ContractsQuote` | `(data map[string]any) HubspotCommerceEntity` | Create a ContractsQuote entity instance. |
 | `Item` | `(data map[string]any) HubspotCommerceEntity` | Create an Item entity instance. |
 | `PaymentLink` | `(data map[string]any) HubspotCommerceEntity` | Create a PaymentLink entity instance. |
@@ -467,7 +468,7 @@ API path: `/commerce/contracts/2027-03-beta/contracts/{contractId}/terminate`
 | `"type"` | The type of contract change. |
 | `"updatedAt"` | The date and time when the contract change was last updated, in ISO 8601 format. |
 
-Operations: Create, List, Load, Update.
+Operations: Create, Load, Update.
 
 API path: `/commerce/contracts/2027-03-beta/changes/{changeId}/accept`
 
@@ -481,6 +482,26 @@ API path: `/commerce/contracts/2027-03-beta/changes/{changeId}/accept`
 Operations: Create.
 
 API path: `/commerce/contracts/2027-03-beta/changes/preview`
+
+#### ContractsContractChangeSummary
+
+| Field | Description |
+| --- | --- |
+| `"contractId"` | The unique identifier of the contract associated with this change. |
+| `"createdAt"` | The date and time when this contract change was created, in ISO 8601 format. |
+| `"effectiveDate"` | The date on which this contract change becomes effective, in the format 'YYYY-MM-DD'. |
+| `"id"` | The unique identifier for this contract change. |
+| `"lineItemChanges"` | An array of changes made to line items as part of this contract change. |
+| `"name"` | The name assigned to this contract change. |
+| `"prorating"` | A boolean indicating whether the contract change involves prorating. |
+| `"quoteId"` | The unique identifier of the quote associated with this contract change, if applicable. |
+| `"status"` | The current status of the contract change. |
+| `"type"` | The type of contract change, which can be either 'DIRECT' or 'QUOTE'. |
+| `"updatedAt"` | The date and time when this contract change was last updated, in ISO 8601 format. |
+
+Operations: List.
+
+API path: `/commerce/contracts/2027-03-beta/contracts/{contractId}/changes`
 
 #### ContractsQuote
 
@@ -1085,7 +1106,6 @@ Create an instance: `contractsContractChange := client.ContractsContractChange(n
 
 | Method | Description |
 | --- | --- |
-| `List(match, ctrl)` | List entities matching the criteria. |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
 | `Create(data, ctrl)` | Create a new entity with the given data. |
 | `Update(data, ctrl)` | Update an existing entity. |
@@ -1116,16 +1136,6 @@ if err != nil {
     panic(err)
 }
 fmt.Println(contractsContractChange) // the loaded record
-```
-
-#### Example: List
-
-```go
-contractsContractChanges, err := client.ContractsContractChange(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(contractsContractChanges) // the array of records
 ```
 
 #### Example: Create
@@ -1176,6 +1186,43 @@ if err != nil {
     panic(err)
 }
 fmt.Println(result)
+```
+
+
+### ContractsContractChangeSummary
+
+Create an instance: `contractsContractChangeSummary := client.ContractsContractChangeSummary(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `contractId` | `string` | The unique identifier of the contract associated with this change. |
+| `createdAt` | `string` | The date and time when this contract change was created, in ISO 8601 format. |
+| `effectiveDate` | `string` | The date on which this contract change becomes effective, in the format 'YYYY-MM-DD'. |
+| `id` | `string` | The unique identifier for this contract change. |
+| `lineItemChanges` | `[]any` | An array of changes made to line items as part of this contract change. |
+| `name` | `string` | The name assigned to this contract change. |
+| `prorating` | `bool` | A boolean indicating whether the contract change involves prorating. |
+| `quoteId` | `string` | The unique identifier of the quote associated with this contract change, if applicable. |
+| `status` | `string` | The current status of the contract change. |
+| `type` | `string` | The type of contract change, which can be either 'DIRECT' or 'QUOTE'. |
+| `updatedAt` | `string` | The date and time when this contract change was last updated, in ISO 8601 format. |
+
+#### Example: List
+
+```go
+contractsContractChangeSummarys, err := client.ContractsContractChangeSummary(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(contractsContractChangeSummarys) // the array of records
 ```
 
 
@@ -1929,14 +1976,14 @@ above:
 
 | Feature | What it does |
 |---|---|
-| [`debug`](#debug) | Request/response capture ring buffer for debugging |
-| [`idempotency`](#idempotency) | Idempotency keys for safe retries of mutating operations |
-| [`metrics`](#metrics) | Statistics capture: per-operation counters and latency |
-| [`paging`](#paging) | Pagination signals for list operations |
-| [`ratelimit`](#ratelimit) | Client-side rate limiting via a token bucket |
-| [`retry`](#retry) | Automatic retry of transient failures with exponential backoff |
-| [`test`](#test) | In-memory mock transport for testing without a live server |
-| [`timeout`](#timeout) | Per-request timeout with transport abort |
+| [`debug`](#debug) | Debug capture |
+| [`idempotency`](#idempotency) | Idempotency |
+| [`metrics`](#metrics) | Metrics |
+| [`paging`](#paging) | Paging |
+| [`ratelimit`](#ratelimit) | Rate limiting |
+| [`retry`](#retry) | Retry |
+| [`test`](#test) | Test transport |
+| [`timeout`](#timeout) | Timeout |
 
 > **Order matters for `ratelimit`, `retry`, `timeout`.** These wrap the
 > transport, so each one wraps whatever is already installed: the order you
@@ -1945,7 +1992,7 @@ above:
 
 ### debug
 
-Request/response capture ring buffer for debugging.
+Debug capture.
 
 | Option | Default |
 |---|---|
@@ -1957,7 +2004,7 @@ Set `feature.debug.active` to enable it, then override any of the options above.
 
 ### idempotency
 
-Idempotency keys for safe retries of mutating operations.
+Idempotency.
 
 | Option | Default |
 |---|---|
@@ -1970,7 +2017,7 @@ Set `feature.idempotency.active` to enable it, then override any of the options 
 
 ### metrics
 
-Statistics capture: per-operation counters and latency.
+Metrics.
 
 | Option | Default |
 |---|---|
@@ -1980,7 +2027,7 @@ Set `feature.metrics.active` to enable it, then override any of the options abov
 
 ### paging
 
-Pagination signals for list operations.
+Paging.
 
 | Option | Default |
 |---|---|
@@ -1996,7 +2043,7 @@ Set `feature.paging.active` to enable it, then override any of the options above
 
 ### ratelimit
 
-Client-side rate limiting via a token bucket.
+Rate limiting.
 
 | Option | Default |
 |---|---|
@@ -2012,7 +2059,7 @@ activated earlier.
 
 ### retry
 
-Automatic retry of transient failures with exponential backoff.
+Retry.
 
 | Option | Default |
 |---|---|
@@ -2031,7 +2078,7 @@ activated earlier.
 
 ### test
 
-In-memory mock transport for testing without a live server.
+Test transport.
 
 | Option | Default |
 |---|---|
@@ -2041,7 +2088,7 @@ Set `feature.test.active` to enable it, then override any of the options above.
 
 ### timeout
 
-Per-request timeout with transport abort.
+Timeout.
 
 | Option | Default |
 |---|---|
@@ -2057,9 +2104,9 @@ activated earlier.
 
 ## Open types
 
-1 field is carried as open values rather than typed structures.
+2 fields are carried as open values rather than typed structures.
 This follows from the API definition, not from a gap in this SDK: the
-definition describes it with untagged unions —
+definition describes them with untagged unions —
 `oneOf`/`anyOf` branches with no `discriminator` — so it never states which
 variant a given value is. Nothing can select a branch reliably, so the SDK
 passes the value through unchanged rather than assert a shape the API does not
@@ -2068,6 +2115,7 @@ guarantee.
 | Entity | Field | Variants | Nesting |
 | --- | --- | --- | --- |
 | `contracts_contract_change` | `lineItemChanges` | 3 | 3 levels |
+| `contracts_contract_change_summary` | `lineItemChanges` | 3 | 3 levels |
 
 These values round-trip unchanged — read them, modify them, send them back. If
 the API adds a `discriminator` to the definition, regenerating will type them.
@@ -2111,14 +2159,14 @@ stage names.
 
 The SDK ships with built-in features:
 
-- **DebugFeature**: Request/response capture ring buffer for debugging
-- **IdempotencyFeature**: Idempotency keys for safe retries of mutating operations
-- **MetricsFeature**: Statistics capture: per-operation counters and latency
-- **PagingFeature**: Pagination signals for list operations
-- **RatelimitFeature**: Client-side rate limiting via a token bucket
-- **RetryFeature**: Automatic retry of transient failures with exponential backoff
-- **TestFeature**: In-memory mock transport for testing without a live server
-- **TimeoutFeature**: Per-request timeout with transport abort
+- **DebugFeature**: Debug capture
+- **IdempotencyFeature**: Idempotency
+- **MetricsFeature**: Metrics
+- **PagingFeature**: Paging
+- **RatelimitFeature**: Rate limiting
+- **RetryFeature**: Retry
+- **TestFeature**: Test transport
+- **TimeoutFeature**: Timeout
 
 Features are initialized in order. Hooks fire in the order features
 were added, so later features can override earlier ones.

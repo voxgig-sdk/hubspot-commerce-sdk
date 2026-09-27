@@ -1,0 +1,26 @@
+# BasicPriceBooksCollectionResponsePriceBookItemResponseForwardFlow
+
+main: kit: flow: BasicPriceBooksCollectionResponsePriceBookItemResponseForwardFlow:
+{
+  entity: "price_books_collection_response_price_book_item_response_forward",
+  kind: "basic",
+  name: "BasicPriceBooksCollectionResponsePriceBookItemResponseForwardFlow",
+  step: [
+    {
+      m: {
+        price_book_id: "price_book01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "price_books_collection_response_price_book_item_response_forward_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPriceBooksCollectionResponsePriceBookItemResponseForwardFlow"
+}

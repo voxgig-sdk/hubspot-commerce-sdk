@@ -1,7 +1,7 @@
 -- Typed models for the HubspotCommerce SDK (LuaLS annotations).
 --
--- GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
--- params (op.<name>.points[].args.params[]). Field/param types come from the
+-- GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+-- params (op.<name>.points[].g.params[]). Field/param types come from the
 -- canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 -- @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
 -- edit by hand.
@@ -347,9 +347,6 @@
 ---@class ContractsContractChangeLoadMatch
 ---@field id string
 
----@class ContractsContractChangeListMatch
----@field contract_id string
-
 ---@class ContractsContractChangeCreateData
 ---@field contractId string
 ---@field createdAt? string
@@ -387,6 +384,22 @@
 ---@class ContractsContractChangePreviewCreateData
 ---@field deltaLineItems table
 ---@field proposedLineItems table
+
+---@class ContractsContractChangeSummary
+---@field contractId string
+---@field createdAt? string
+---@field effectiveDate? string
+---@field id string
+---@field lineItemChanges table
+---@field name? string
+---@field prorating boolean
+---@field quoteId? string
+---@field status string
+---@field type string
+---@field updatedAt? string
+
+---@class ContractsContractChangeSummaryListMatch
+---@field contract_id string
 
 ---@class ContractsQuote
 ---@field dealId? string

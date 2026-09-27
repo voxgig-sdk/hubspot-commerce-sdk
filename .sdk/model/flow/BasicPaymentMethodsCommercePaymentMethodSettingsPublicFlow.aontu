@@ -1,0 +1,41 @@
+# BasicPaymentMethodsCommercePaymentMethodSettingsPublicFlow
+
+main: kit: flow: BasicPaymentMethodsCommercePaymentMethodSettingsPublicFlow:
+{
+  entity: "payment_methods_commerce_payment_method_settings_public",
+  kind: "basic",
+  name: "BasicPaymentMethodsCommercePaymentMethodSettingsPublicFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "payment_methods_commerce_payment_method_settings_public_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "payment_methods_commerce_payment_method_settings_public_ref01",
+        srcdatavar: "payment_methods_commerce_payment_method_settings_public_ref01_data",
+        suffix: "_up0",
+        textfield: "commercePaymentMethod"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-payment_methods_commerce_payment_method_settings_public_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaymentMethodsCommercePaymentMethodSettingsPublicFlow"
+}

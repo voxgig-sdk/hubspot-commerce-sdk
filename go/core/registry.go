@@ -34,6 +34,8 @@ var NewContractsContractChangeEntityFunc func(client *HubspotCommerceSDK, entopt
 
 var NewContractsContractChangePreviewEntityFunc func(client *HubspotCommerceSDK, entopts map[string]any) HubspotCommerceEntity
 
+var NewContractsContractChangeSummaryEntityFunc func(client *HubspotCommerceSDK, entopts map[string]any) HubspotCommerceEntity
+
 var NewContractsQuoteEntityFunc func(client *HubspotCommerceSDK, entopts map[string]any) HubspotCommerceEntity
 
 var NewItemEntityFunc func(client *HubspotCommerceSDK, entopts map[string]any) HubspotCommerceEntity

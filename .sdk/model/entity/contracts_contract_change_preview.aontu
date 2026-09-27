@@ -1,0 +1,65 @@
+# Entity: contracts_contract_change_preview
+
+main: kit: entity: contracts_contract_change_preview: {
+
+  alias: field: {}
+
+  fields: {
+    deltaLineItems: {
+      h: "Delta Line Items"
+      n: "deltaLineItems"
+      r: true
+      sh: "An array of LineItem objects representing the changes in line items compared to the current state of the contract."
+      t: "`$ARRAY`"
+    }
+    proposedLineItems: {
+      h: "Proposed Line Items"
+      n: "proposedLineItems"
+      r: true
+      sh: "An array of LineItem objects representing the proposed state of line items after the changes are applied."
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "contracts_contract_change_preview"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /commerce/contracts/2027-03-beta/changes/preview"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/commerce/contracts/2027-03-beta/changes/preview"
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "contracts"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "changes"
+            }
+            {
+              lit: "preview"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

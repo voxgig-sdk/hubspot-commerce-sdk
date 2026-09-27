@@ -17,10 +17,6 @@ import {
 } from '../../utility'
 
 
-// AFTER the imports on purpose: TypeScript hoists `import` above any
-// statement in the emitted CommonJS, so a loader placed above them would
-// run only after every imported module had already been evaluated - and
-// anything reading process.env at module scope would miss these values.
 loadEnvLocal(__dirname + '/../../../.env.local')
 
 
@@ -32,9 +28,6 @@ describe('ContractsContractChangeDirect', async () => {
 
   test('direct-exists', async () => {
     const sdk = new HubspotCommerceSDK({
-      // Concrete base: a live construction must satisfy any server
-      // variables a templated base URL declares; overriding base with a
-      // literal (as the direct flow tests do) sidesteps the requirement.
       base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
@@ -47,29 +40,12 @@ describe('ContractsContractChangeDirect', async () => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup({ id: 'direct01' })
     if (maybeSkipControl(t, 'direct', 'direct-load-contracts_contract_change', setup.live)) return
+    if (skipIfMissingIds(t, setup, ["id01"])) return
     const { client, calls } = setup
 
     const params: any = {}
     const query: any = {}
     if (setup.live) {
-      const listResult: any = await client.direct({
-        path: 'commerce/contracts/2027-03-beta/contracts/{contract_id}/changes',
-        method: 'GET',
-        params: {
-        contract_id: setup.idmap['contract01'],
-        },
-      })
-      assert(listResult.ok && listResult.status >= 200 && listResult.status < 300,
-        'Live list discovery failed')
-      const listArr = unwrapListData(listResult.data)
-      if (null == listArr || listArr.length === 0) {
-        throw new Error('Live load blocked: discovery returned no entities')
-      }
-      const candidateId = listArr[0]?.id ?? listArr[0]?.id
-      if (null == candidateId) {
-        throw new Error('Live load blocked: discovery returned no usable identity')
-      }
-      params.id = candidateId
 
     } else {
       params.id = 'direct01'
@@ -100,54 +76,6 @@ describe('ContractsContractChangeDirect', async () => {
       assert(result.status === 200)
       assert(null != result.data)
       assert(result.data.id === 'direct01')
-      assert(calls.length === 1)
-      assert(calls[0].init.method === 'GET')
-      assert(calls[0].url.includes('direct01'))
-    }
-  })
-
-  test('direct-list-contracts_contract_change', async (t: any) => {
-    if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
-    const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }])
-    if (maybeSkipControl(t, 'direct', 'direct-list-contracts_contract_change', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["contract01"])) return
-    const { client, calls } = setup
-
-    const params: any = {}
-    const query: any = {}
-    if (setup.live) {
-      params.contract_id = setup.idmap['contract01']
-    } else {
-      params.contract_id = 'direct01'
-    }
-
-    const result: any = await client.direct({
-      path: 'commerce/contracts/2027-03-beta/contracts/{contract_id}/changes',
-      method: 'GET',
-      params,
-      query,
-    })
-
-    if (setup.live) {
-      // STRICT live mode: a non-2xx is a real failure - this project owns
-      // the server it points at, so there is nothing to be lenient about.
-      //
-      // What is NOT asserted here is the MOCK's own fixtures. `direct01`
-      // is a scripted id and `calls` records the mock transport; neither
-      // exists on a live run, so asserting them made strict mode mean
-      // "compare the live server against the mock's script" - a suite that
-      // could not pass against any real API, including this project's own.
-      assert(result.ok === true,
-        'Live request failed: HTTP ' + result.status)
-      assert(result.status >= 200 && result.status < 300)
-      assert(Array.isArray(unwrapListData(result.data)), 'Expected live list response')
-    } else {
-      assert(result.ok === true)
-      assert(result.status === 200)
-      assert(null != result.data)
-      const listArr = unwrapListData(result.data)
-      assert(Array.isArray(listArr))
-      assert(listArr!.length === 2)
       assert(calls.length === 1)
       assert(calls[0].init.method === 'GET')
       assert(calls[0].url.includes('direct01'))

@@ -1,0 +1,22 @@
+# BasicPaymentsaccountsPaymentAccountViewFlow
+
+main: kit: flow: BasicPaymentsaccountsPaymentAccountViewFlow:
+{
+  entity: "paymentsaccounts_payment_account_view",
+  kind: "basic",
+  name: "BasicPaymentsaccountsPaymentAccountViewFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "paymentsaccounts_payment_account_view_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaymentsaccountsPaymentAccountViewFlow"
+}

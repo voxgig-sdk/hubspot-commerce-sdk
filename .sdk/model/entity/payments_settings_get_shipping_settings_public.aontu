@@ -1,0 +1,106 @@
+# Entity: payments_settings_get_shipping_settings_public
+
+main: kit: entity: payments_settings_get_shipping_settings_public: {
+
+  alias: field: {}
+
+  fields: {
+    collectShippingAddressByDefault: {
+      h: "Collect Shipping Address By Default"
+      n: "collectShippingAddressByDefault"
+      op: {
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      sh: "A boolean indicating whether the shipping address is collected by default."
+      t: "`$BOOLEAN`"
+    }
+    countriesShippedTo: {
+      h: "Countries Shipped To"
+      n: "countriesShippedTo"
+      r: true
+      sh: "An array of strings representing the list of countries to which shipping is available."
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "payments_settings_get_shipping_settings_public"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /commerce/payments-settings/2027-03-beta/payments-settings/shipping"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/commerce/payments-settings/2027-03-beta/payments-settings/shipping"
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "payments-settings"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "payments-settings"
+            }
+            {
+              lit: "shipping"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.countriesShippedTo`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /commerce/payments-settings/2027-03-beta/payments-settings/shipping"
+            source: "openapi3"
+            version: 2
+          }
+          m: "PATCH"
+          o: "/commerce/payments-settings/2027-03-beta/payments-settings/shipping"
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "payments-settings"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "payments-settings"
+            }
+            {
+              lit: "shipping"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

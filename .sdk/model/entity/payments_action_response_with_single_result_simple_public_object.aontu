@@ -1,0 +1,159 @@
+# Entity: payments_action_response_with_single_result_simple_public_object
+
+main: kit: entity: payments_action_response_with_single_result_simple_public_object: {
+
+  alias: field: {}
+
+  fields: {
+    category: {
+      h: "Category"
+      n: "category"
+      r: true
+      sh: "A string indicating the category of the error."
+      t: "`$STRING`"
+    }
+    context: {
+      h: "Context"
+      n: "context"
+      r: true
+      sh: "An object containing additional context about the error condition, where keys are context names and values are arrays of strings."
+      t: "`$OBJECT`"
+    }
+    errors: {
+      h: "Errors"
+      n: "errors"
+      r: true
+      sh: "An array of ErrorDetail objects providing further information about the error."
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "A string that uniquely identifies this specific error instance."
+      t: "`$STRING`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: true
+      sh: "An object mapping link names to associated URIs that contain documentation or recommended remediation steps for the error."
+      t: "`$OBJECT`"
+    }
+    message: {
+      h: "Message"
+      n: "message"
+      r: true
+      sh: "A string containing a human-readable message describing the error."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      sh: "A string representing the status of the error."
+      t: "`$STRING`"
+    }
+    subCategory: {
+      h: "Sub Category"
+      n: "subCategory"
+      r: false
+      sh: "An object providing more specific details about the error category."
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "payments_action_response_with_single_result_simple_public_object"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /commerce/payments/2027-03-beta/{paymentCrmObjectId}/actions/retry/async/tasks/{taskId}/status"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "payment_crm_object_id"
+                or: "payment_crm_object_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: null
+                k: "param"
+                n: "task_id"
+                or: "task_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/commerce/payments/2027-03-beta/{paymentCrmObjectId}/actions/retry/async/tasks/{taskId}/status"
+          q: {
+            exist: [
+              "payment_crm_object_id"
+              "task_id"
+            ]
+          }
+          r: {
+            param: {
+              paymentCrmObjectId: "payment_crm_object_id"
+              taskId: "task_id"
+            }
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "payments"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              var: "payment_crm_object_id"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              lit: "retry"
+            }
+            {
+              lit: "async"
+            }
+            {
+              lit: "tasks"
+            }
+            {
+              var: "task_id"
+            }
+            {
+              lit: "status"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

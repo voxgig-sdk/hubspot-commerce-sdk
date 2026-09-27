@@ -7,6 +7,7 @@ const { ContractEntity } = require('./entity/ContractEntity')
 const { ContractsContractEntity } = require('./entity/ContractsContractEntity')
 const { ContractsContractChangeEntity } = require('./entity/ContractsContractChangeEntity')
 const { ContractsContractChangePreviewEntity } = require('./entity/ContractsContractChangePreviewEntity')
+const { ContractsContractChangeSummaryEntity } = require('./entity/ContractsContractChangeSummaryEntity')
 const { ContractsQuoteEntity } = require('./entity/ContractsQuoteEntity')
 const { ItemEntity } = require('./entity/ItemEntity')
 const { PaymentLinkEntity } = require('./entity/PaymentLinkEntity')
@@ -376,6 +377,15 @@ class HubspotCommerceSDK {
   ContractsContractChangePreview(entopts) {
     const self = this
     return new ContractsContractChangePreviewEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.ContractsContractChangeSummary().list()` / `client.ContractsContractChangeSummary().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ContractsContractChangeSummary(entopts) {
+    const self = this
+    return new ContractsContractChangeSummaryEntity(self, entopts)
   }
 
 

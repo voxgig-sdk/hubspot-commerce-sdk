@@ -25,54 +25,6 @@ func TestContractsContractChangeEntity(t *testing.T) {
 		}
 	})
 
-	// Feature #4: the entity Stream(action, ...) method runs the op pipeline and
-	// returns a channel over result items. With the streaming feature active it
-	// yields the feature's incremental output; otherwise it falls back to the
-	// materialised list so Stream always yields.
-	t.Run("stream", func(t *testing.T) {
-		seed := map[string]any{
-			"entity": map[string]any{
-				"contracts_contract_change": map[string]any{
-					"s1": map[string]any{"id": "s1"},
-					"s2": map[string]any{"id": "s2"},
-					"s3": map[string]any{"id": "s3"},
-				},
-			},
-		}
-
-		// Fallback: streaming inactive -> yields the materialised list items.
-		base := sdk.TestSDK(seed, nil)
-		var seen []any
-		for item := range base.ContractsContractChange(nil).Stream("list", nil, nil) {
-			seen = append(seen, item)
-		}
-		if len(seen) != 3 {
-			t.Fatalf("expected 3 streamed items, got %d", len(seen))
-		}
-
-		// Inbound: streaming active -> yields each item from the feature iterator.
-		hasStreaming := false
-		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
-			_, hasStreaming = fm["streaming"]
-		}
-		if hasStreaming {
-			streamSdk := sdk.TestSDK(seed, map[string]any{
-				"feature": map[string]any{"streaming": map[string]any{"active": true}},
-			})
-			var got []any
-			for item := range streamSdk.ContractsContractChange(nil).Stream("list", nil, nil) {
-				if sub, ok := item.([]any); ok {
-					got = append(got, sub...)
-				} else {
-					got = append(got, item)
-				}
-			}
-			if len(got) != 3 {
-				t.Fatalf("expected 3 items via streaming feature, got %d", len(got))
-			}
-		}
-	})
-
 	t.Run("basic", func(t *testing.T) {
 		setup := contracts_contract_changeBasicSetup(nil)
 		// Per-op sdk-test-control.json skip — basic test exercises a flow
@@ -81,7 +33,7 @@ func TestContractsContractChangeEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update", "load"} {
+		for _, _op := range []string{"create", "update", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "contracts_contract_change." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -102,7 +54,6 @@ func TestContractsContractChangeEntity(t *testing.T) {
 		contractsContractChangeRef01Ent := client.ContractsContractChange(nil)
 		contractsContractChangeRef01Data := core.ToMapAny(vs.GetProp(
 			vs.GetPath(setup.data, []any{"new", "contracts_contract_change"}), "contracts_contract_change_ref01"))
-		contractsContractChangeRef01Data["contract_id"] = setup.idmap["contract01"]
 
 		contractsContractChangeRef01DataResult, err := contractsContractChangeRef01Ent.Create(contractsContractChangeRef01Data, nil)
 		if err != nil {
@@ -114,25 +65,6 @@ func TestContractsContractChangeEntity(t *testing.T) {
 		}
 		if contractsContractChangeRef01Data["id"] == nil {
 			t.Fatal("expected created entity to have an id")
-		}
-
-		// LIST
-		contractsContractChangeRef01Match := map[string]any{
-			"contract_id": setup.idmap["contract01"],
-		}
-
-		contractsContractChangeRef01ListResult, err := contractsContractChangeRef01Ent.List(contractsContractChangeRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		contractsContractChangeRef01List, contractsContractChangeRef01ListOk := contractsContractChangeRef01ListResult.([]any)
-		if !contractsContractChangeRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", contractsContractChangeRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(contractsContractChangeRef01List), map[string]any{"id": contractsContractChangeRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
 		}
 
 		// UPDATE
@@ -203,7 +135,7 @@ func contracts_contract_changeBasicSetup(extra map[string]any) *entityTestSetup 
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"contracts_contract_change01", "contracts_contract_change02", "contracts_contract_change03", "change01", "change02", "change03", "contract01", "contract02", "contract03"},
+		[]any{"contracts_contract_change01", "contracts_contract_change02", "contracts_contract_change03", "contract01", "contract02", "contract03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

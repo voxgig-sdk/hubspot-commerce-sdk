@@ -5,6 +5,7 @@ import { ContractEntity } from './entity/ContractEntity';
 import { ContractsContractEntity } from './entity/ContractsContractEntity';
 import { ContractsContractChangeEntity } from './entity/ContractsContractChangeEntity';
 import { ContractsContractChangePreviewEntity } from './entity/ContractsContractChangePreviewEntity';
+import { ContractsContractChangeSummaryEntity } from './entity/ContractsContractChangeSummaryEntity';
 import { ContractsQuoteEntity } from './entity/ContractsQuoteEntity';
 import { ItemEntity } from './entity/ItemEntity';
 import { PaymentLinkEntity } from './entity/PaymentLinkEntity';
@@ -74,6 +75,7 @@ declare class HubspotCommerceSDK {
     ContractsContract(entopts?: Record<string, any>): ContractsContractEntity;
     ContractsContractChange(entopts?: Record<string, any>): ContractsContractChangeEntity;
     ContractsContractChangePreview(entopts?: Record<string, any>): ContractsContractChangePreviewEntity;
+    ContractsContractChangeSummary(entopts?: Record<string, any>): ContractsContractChangeSummaryEntity;
     ContractsQuote(entopts?: Record<string, any>): ContractsQuoteEntity;
     Item(entopts?: Record<string, any>): ItemEntity;
     PaymentLink(entopts?: Record<string, any>): PaymentLinkEntity;

@@ -1,0 +1,79 @@
+# Entity: advanced
+
+main: kit: entity: advanced: {
+
+  alias: field: {}
+
+  name: "advanced"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /commerce/payments/2027-03-beta/{paymentCrmObjectId}/actions/retry/async"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "payment_crm_object_id"
+                or: "payment_crm_object_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/commerce/payments/2027-03-beta/{paymentCrmObjectId}/actions/retry/async"
+          q: {
+            exist: [
+              "payment_crm_object_id"
+            ]
+          }
+          r: {
+            param: {
+              paymentCrmObjectId: "payment_crm_object_id"
+            }
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "payments"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              var: "payment_crm_object_id"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              lit: "retry"
+            }
+            {
+              lit: "async"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

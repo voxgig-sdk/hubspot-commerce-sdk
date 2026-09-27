@@ -94,7 +94,7 @@ make build-all   # linux/darwin/windows x amd64/arm64, under dist/<os>-<arch>/
 ### Discover the available entities
 
 `/help` in the REPL prints the full entity list, or see [Entities](#entities)
-below — this SDK exposes 24 entities.
+below — this SDK exposes 25 entities.
 
 ## Reference
 
@@ -149,9 +149,9 @@ Meta-commands use the `/` prefix (everything else on a line is evaluated as boru
 
 ### Entities
 
-The 24 entities this SDK exposes (any is valid as `<entity>`):
+The 25 entities this SDK exposes (any is valid as `<entity>`):
 
-advanced basic batch contract contracts_contract contracts_contract_change contracts_contract_change_preview contracts_quote item payment_link payment_methods_commerce_payment_method_settings_public payments_action_response_with_single_result_simple_public_object payments_create_manual_payment_public payments_settings_get_billing_settings_public payments_settings_get_checkout_fees_public payments_settings_get_policy_settings_public payments_settings_get_shipping_settings_public paymentsaccounts_payment_account_view price_book price_books_batch_response_price_book_item price_books_collection_response_price_book_item_response_forward price_books_price_book price_books_price_book_item price_books_price_book_validate
+advanced basic batch contract contracts_contract contracts_contract_change contracts_contract_change_preview contracts_contract_change_summary contracts_quote item payment_link payment_methods_commerce_payment_method_settings_public payments_action_response_with_single_result_simple_public_object payments_create_manual_payment_public payments_settings_get_billing_settings_public payments_settings_get_checkout_fees_public payments_settings_get_policy_settings_public payments_settings_get_shipping_settings_public paymentsaccounts_payment_account_view price_book price_books_batch_response_price_book_item price_books_collection_response_price_book_item_response_forward price_books_price_book price_books_price_book_item price_books_price_book_validate
 
 ## Explanation
 

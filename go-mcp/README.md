@@ -27,8 +27,8 @@ Tool-call arguments (what an agent sends):
 
 ```jsonc
 // hubspot-commerce_list: first page of records
-{ "entity": "contracts_contract_change" }
-{ "entity": "contracts_contract_change", "query": { } }
+{ "entity": "contracts_contract_change_summary" }
+{ "entity": "contracts_contract_change_summary", "query": { } }
 
 // hubspot-commerce_load: one record by id
 { "entity": "contract", "query": { "id": 1 } }
@@ -60,8 +60,8 @@ Tool-call arguments (what an agent sends):
    ```
 
 4. **Restart Claude Code.** The `hubspot-commerce_list` and `hubspot-commerce_load` tools now appear
-   in new sessions. Ask the agent to *"list contracts_contract_change using hubspot-commerce"*
-   and it calls `hubspot-commerce_list` with `{"entity":"contracts_contract_change"}`.
+   in new sessions. Ask the agent to *"list contracts_contract_change_summary using hubspot-commerce"*
+   and it calls `hubspot-commerce_list` with `{"entity":"contracts_contract_change_summary"}`.
 
 ## How-to guides
 
@@ -92,7 +92,7 @@ Args: `entity` (required), `query` (optional filter map). Returns the first
 page of records as JSON:
 
 ```jsonc
-{ "entity": "contracts_contract_change" }
+{ "entity": "contracts_contract_change_summary" }
 ```
 
 ### Call the `hubspot-commerce_load` tool
@@ -129,7 +129,7 @@ Both tools take the same argument object:
 
 | Field | Type | Notes |
 |-------|------|-------|
-| `entity` | string | One of the 24 supported entities (see below). |
+| `entity` | string | One of the 25 supported entities (see below). |
 | `query` | object | Optional match map. `{"id":N}` for load; omit or `{}` for list. |
 
 JSON schemas are emitted by the SDK from the `Args` struct's `json` /
@@ -151,9 +151,9 @@ JSON schemas are emitted by the SDK from the `Args` struct's `json` /
 
 ### Entities
 
-The 24 entities valid as the `entity` argument:
+The 25 entities valid as the `entity` argument:
 
-advanced | basic | batch | contract | contracts_contract | contracts_contract_change | contracts_contract_change_preview | contracts_quote | item | payment_link | payment_methods_commerce_payment_method_settings_public | payments_action_response_with_single_result_simple_public_object | payments_create_manual_payment_public | payments_settings_get_billing_settings_public | payments_settings_get_checkout_fees_public | payments_settings_get_policy_settings_public | payments_settings_get_shipping_settings_public | paymentsaccounts_payment_account_view | price_book | price_books_batch_response_price_book_item | price_books_collection_response_price_book_item_response_forward | price_books_price_book | price_books_price_book_item | price_books_price_book_validate
+advanced | basic | batch | contract | contracts_contract | contracts_contract_change | contracts_contract_change_preview | contracts_contract_change_summary | contracts_quote | item | payment_link | payment_methods_commerce_payment_method_settings_public | payments_action_response_with_single_result_simple_public_object | payments_create_manual_payment_public | payments_settings_get_billing_settings_public | payments_settings_get_checkout_fees_public | payments_settings_get_policy_settings_public | payments_settings_get_shipping_settings_public | paymentsaccounts_payment_account_view | price_book | price_books_batch_response_price_book_item | price_books_collection_response_price_book_item_response_forward | price_books_price_book | price_books_price_book_item | price_books_price_book_validate
 
 ### Smoke test via HTTP (raw JSON-RPC)
 

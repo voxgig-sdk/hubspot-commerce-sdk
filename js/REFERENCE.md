@@ -133,6 +133,18 @@ Create a new `ContractsContractChangePreview` entity instance.
 
 **Returns:** `ContractsContractChangePreviewEntity` instance.
 
+#### `ContractsContractChangeSummary(data?: object)`
+
+Create a new `ContractsContractChangeSummary` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `ContractsContractChangeSummaryEntity` instance.
+
 #### `ContractsQuote(data?: object)`
 
 Create a new `ContractsQuote` entity instance.
@@ -870,21 +882,21 @@ const contracts_contract_change = client.ContractsContractChange()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update |
-| --- | --- | --- | --- | --- |
-| `contractId` | - | - | - | - |
-| `createdAt` | - | - | - | - |
-| `deltaLineItems` | - | - | - | - |
-| `effectiveDate` | - | - | - | - |
-| `id` | - | - | - | - |
-| `lineItemChanges` | - | - | - | Yes |
-| `name` | - | - | - | Yes |
-| `proposedLineItems` | - | - | - | - |
-| `prorating` | - | - | - | Yes |
-| `quoteId` | - | - | - | - |
-| `status` | - | - | - | - |
-| `type` | - | - | - | - |
-| `updatedAt` | - | - | - | - |
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `contractId` | - | - | - |
+| `createdAt` | - | - | - |
+| `deltaLineItems` | - | - | - |
+| `effectiveDate` | - | - | - |
+| `id` | - | - | - |
+| `lineItemChanges` | - | - | Yes |
+| `name` | - | - | Yes |
+| `proposedLineItems` | - | - | - |
+| `prorating` | - | - | Yes |
+| `quoteId` | - | - | - |
+| `status` | - | - | - |
+| `type` | - | - | - |
+| `updatedAt` | - | - | - |
 
 ### Operations
 
@@ -903,14 +915,6 @@ const result = await client.ContractsContractChange().create({
   status: 'example_status',
   type: 'example_type',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Returns an array.
-
-```ts
-const results = await client.ContractsContractChange().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -1001,6 +1005,66 @@ Get or set the entity match criteria. Works the same as `data()`.
 #### `make()`
 
 Create a new `ContractsContractChangePreviewEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `HubspotCommerceSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## ContractsContractChangeSummaryEntity
+
+```ts
+const contracts_contract_change_summary = client.ContractsContractChangeSummary()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `contractId` | `string` | Yes | The unique identifier of the contract associated with this change. |
+| `createdAt` | `string` | No | The date and time when this contract change was created, in ISO 8601 format. |
+| `effectiveDate` | `string` | No | The date on which this contract change becomes effective, in the format 'YYYY-MM-DD'. |
+| `id` | `string` | Yes | The unique identifier for this contract change. |
+| `lineItemChanges` | `Array` | Yes | An array of changes made to line items as part of this contract change. |
+| `name` | `string` | No | The name assigned to this contract change. |
+| `prorating` | `boolean` | Yes | A boolean indicating whether the contract change involves prorating. |
+| `quoteId` | `string` | No | The unique identifier of the quote associated with this contract change, if applicable. |
+| `status` | `string` | Yes | The current status of the contract change. |
+| `type` | `string` | Yes | The type of contract change, which can be either 'DIRECT' or 'QUOTE'. |
+| `updatedAt` | `string` | No | The date and time when this contract change was last updated, in ISO 8601 format. |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.ContractsContractChangeSummary().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `ContractsContractChangeSummaryEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -2336,14 +2400,14 @@ Return a copy of the entity options.
 
 | Feature | Version | Description |
 | --- | --- | --- |
-| `debug` | 0.0.1 | Request/response capture ring buffer for debugging |
-| `idempotency` | 0.0.1 | Idempotency keys for safe retries of mutating operations |
-| `metrics` | 0.0.1 | Statistics capture: per-operation counters and latency |
-| `paging` | 0.0.1 | Pagination signals for list operations |
-| `ratelimit` | 0.0.1 | Client-side rate limiting via a token bucket |
-| `retry` | 0.0.1 | Automatic retry of transient failures with exponential backoff |
-| `test` | 0.0.1 | In-memory mock transport for testing without a live server |
-| `timeout` | 0.0.1 | Per-request timeout with transport abort |
+| `debug` | 0.0.1 | Debug capture |
+| `idempotency` | 0.0.1 | Idempotency |
+| `metrics` | 0.0.1 | Metrics |
+| `paging` | 0.0.1 | Paging |
+| `ratelimit` | 0.0.1 | Rate limiting |
+| `retry` | 0.0.1 | Retry |
+| `test` | 0.0.1 | Test transport |
+| `timeout` | 0.0.1 | Timeout |
 
 
 Features are activated via the `feature` option:
@@ -2389,7 +2453,7 @@ rather than the transport, so their order does not affect what they observe.
 
 #### `debug`
 
-Request/response capture ring buffer for debugging.
+Debug capture.
 
 **Configuration**
 
@@ -2420,7 +2484,7 @@ its default unless you name it.
 
 #### `idempotency`
 
-Idempotency keys for safe retries of mutating operations.
+Idempotency.
 
 **Configuration**
 
@@ -2451,7 +2515,7 @@ its default unless you name it.
 
 #### `metrics`
 
-Statistics capture: per-operation counters and latency.
+Metrics.
 
 **Configuration**
 
@@ -2479,7 +2543,7 @@ its default unless you name it.
 
 #### `paging`
 
-Pagination signals for list operations.
+Paging.
 
 **Configuration**
 
@@ -2514,7 +2578,7 @@ its default unless you name it.
 
 #### `ratelimit`
 
-Client-side rate limiting via a token bucket.
+Rate limiting.
 
 **Configuration**
 
@@ -2545,7 +2609,7 @@ its default unless you name it.
 
 #### `retry`
 
-Automatic retry of transient failures with exponential backoff.
+Retry.
 
 **Configuration**
 
@@ -2579,7 +2643,7 @@ its default unless you name it.
 
 #### `test`
 
-In-memory mock transport for testing without a live server.
+Test transport.
 
 **Configuration**
 
@@ -2610,7 +2674,7 @@ its default unless you name it.
 
 #### `timeout`
 
-Per-request timeout with transport abort.
+Timeout.
 
 **Configuration**
 

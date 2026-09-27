@@ -1,0 +1,86 @@
+# Entity: batch
+
+main: kit: entity: batch: {
+
+  alias: field: {}
+
+  name: "batch"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /commerce/price-books/2026-09/price-books/{priceBookId}/items/batch/archive"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "price_book_id"
+                or: "price_book_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/commerce/price-books/2026-09/price-books/{priceBookId}/items/batch/archive"
+          q: {
+            "$action": "archive"
+            exist: [
+              "price_book_id"
+            ]
+          }
+          r: {
+            param: {
+              priceBookId: "price_book_id"
+            }
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              lit: "2026-09"
+            }
+            {
+              lit: "price-books"
+            }
+            {
+              var: "price_book_id"
+            }
+            {
+              lit: "items"
+            }
+            {
+              lit: "batch"
+            }
+            {
+              lit: "archive"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.price_book")]
+  ]
+
+}

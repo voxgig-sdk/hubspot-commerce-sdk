@@ -1,0 +1,22 @@
+# BasicContractsQuoteFlow
+
+main: kit: flow: BasicContractsQuoteFlow:
+{
+  entity: "contracts_quote",
+  kind: "basic",
+  name: "BasicContractsQuoteFlow",
+  step: [
+    {
+      i: {
+        ref: "contracts_quote_ref01"
+      }
+
+      m: {
+        contract_id: "contract01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicContractsQuoteFlow"
+}

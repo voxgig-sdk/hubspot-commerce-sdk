@@ -451,6 +451,20 @@ function HubspotCommerceSDK:ContractsContractChangePreview(data)
 end
 
 
+-- Idiomatic facade: client:ContractsContractChangeSummary():list() / client:ContractsContractChangeSummary():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function HubspotCommerceSDK:ContractsContractChangeSummary(data)
+  local EntityMod = require("entity.contracts_contract_change_summary_entity")
+  if data == nil then
+    if self._contracts_contract_change_summary == nil then
+      self._contracts_contract_change_summary = EntityMod.new(self, nil)
+    end
+    return self._contracts_contract_change_summary
+  end
+  return EntityMod.new(self, data)
+end
+
+
 -- Idiomatic facade: client:ContractsQuote():list() / client:ContractsQuote():load({ id = ... })
 -- Entity access is capitalised (PascalCase) for parity with the other SDKs.
 function HubspotCommerceSDK:ContractsQuote(data)

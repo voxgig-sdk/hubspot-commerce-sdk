@@ -70,6 +70,10 @@ Create a new `ContractsContractChangeEntity` instance. Pass `None` for no initia
 
 Create a new `ContractsContractChangePreviewEntity` instance. Pass `None` for no initial data.
 
+#### `ContractsContractChangeSummary(data=None)`
+
+Create a new `ContractsContractChangeSummaryEntity` instance. Pass `None` for no initial data.
+
 #### `ContractsQuote(data=None)`
 
 Create a new `ContractsQuoteEntity` instance. Pass `None` for no initial data.
@@ -662,21 +666,21 @@ contracts_contract_change = client.ContractsContractChange()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update |
-| --- | --- | --- | --- | --- |
-| `contractId` | - | - | - | - |
-| `createdAt` | - | - | - | - |
-| `deltaLineItems` | - | - | - | - |
-| `effectiveDate` | - | - | - | - |
-| `id` | - | - | - | - |
-| `lineItemChanges` | - | - | - | Yes |
-| `name` | - | - | - | Yes |
-| `proposedLineItems` | - | - | - | - |
-| `prorating` | - | - | - | Yes |
-| `quoteId` | - | - | - | - |
-| `status` | - | - | - | - |
-| `type` | - | - | - | - |
-| `updatedAt` | - | - | - | - |
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `contractId` | - | - | - |
+| `createdAt` | - | - | - |
+| `deltaLineItems` | - | - | - |
+| `effectiveDate` | - | - | - |
+| `id` | - | - | - |
+| `lineItemChanges` | - | - | Yes |
+| `name` | - | - | Yes |
+| `proposedLineItems` | - | - | - |
+| `prorating` | - | - | Yes |
+| `quoteId` | - | - | - |
+| `status` | - | - | - |
+| `type` | - | - | - |
+| `updatedAt` | - | - | - |
 
 ### Operations
 
@@ -695,16 +699,6 @@ result = client.ContractsContractChange().create({
     "status": "example_status",  # str
     "type": "example_type",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
-
-```python
-results = client.ContractsContractChange().list({"contract_id": "example"})
-for contracts_contract_change in results:
-    print(contracts_contract_change)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -802,6 +796,69 @@ Set the entity match criteria.
 #### `make() -> Entity`
 
 Create a new `ContractsContractChangePreviewEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## ContractsContractChangeSummaryEntity
+
+```python
+contracts_contract_change_summary = client.ContractsContractChangeSummary()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `contractId` | `str` | Yes | The unique identifier of the contract associated with this change. |
+| `createdAt` | `str` | No | The date and time when this contract change was created, in ISO 8601 format. |
+| `effectiveDate` | `str` | No | The date on which this contract change becomes effective, in the format 'YYYY-MM-DD'. |
+| `id` | `str` | Yes | The unique identifier for this contract change. |
+| `lineItemChanges` | `list` | Yes | An array of changes made to line items as part of this contract change. |
+| `name` | `str` | No | The name assigned to this contract change. |
+| `prorating` | `bool` | Yes | A boolean indicating whether the contract change involves prorating. |
+| `quoteId` | `str` | No | The unique identifier of the quote associated with this contract change, if applicable. |
+| `status` | `str` | Yes | The current status of the contract change. |
+| `type` | `str` | Yes | The type of contract change, which can be either 'DIRECT' or 'QUOTE'. |
+| `updatedAt` | `str` | No | The date and time when this contract change was last updated, in ISO 8601 format. |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+
+```python
+results = client.ContractsContractChangeSummary().list({"contract_id": "example"})
+for contracts_contract_change_summary in results:
+    print(contracts_contract_change_summary)
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `ContractsContractChangeSummaryEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -2165,14 +2222,14 @@ Return the entity name.
 
 | Feature | Version | Description |
 | --- | --- | --- |
-| `debug` | 0.0.1 | Request/response capture ring buffer for debugging |
-| `idempotency` | 0.0.1 | Idempotency keys for safe retries of mutating operations |
-| `metrics` | 0.0.1 | Statistics capture: per-operation counters and latency |
-| `paging` | 0.0.1 | Pagination signals for list operations |
-| `ratelimit` | 0.0.1 | Client-side rate limiting via a token bucket |
-| `retry` | 0.0.1 | Automatic retry of transient failures with exponential backoff |
-| `test` | 0.0.1 | In-memory mock transport for testing without a live server |
-| `timeout` | 0.0.1 | Per-request timeout with transport abort |
+| `debug` | 0.0.1 | Debug capture |
+| `idempotency` | 0.0.1 | Idempotency |
+| `metrics` | 0.0.1 | Metrics |
+| `paging` | 0.0.1 | Paging |
+| `ratelimit` | 0.0.1 | Rate limiting |
+| `retry` | 0.0.1 | Retry |
+| `test` | 0.0.1 | Test transport |
+| `timeout` | 0.0.1 | Timeout |
 
 
 Features are activated via the `feature` option:
@@ -2218,7 +2275,7 @@ rather than the transport, so their order does not affect what they observe.
 
 #### `debug`
 
-Request/response capture ring buffer for debugging.
+Debug capture.
 
 **Configuration**
 
@@ -2249,7 +2306,7 @@ its default unless you name it.
 
 #### `idempotency`
 
-Idempotency keys for safe retries of mutating operations.
+Idempotency.
 
 **Configuration**
 
@@ -2280,7 +2337,7 @@ its default unless you name it.
 
 #### `metrics`
 
-Statistics capture: per-operation counters and latency.
+Metrics.
 
 **Configuration**
 
@@ -2308,7 +2365,7 @@ its default unless you name it.
 
 #### `paging`
 
-Pagination signals for list operations.
+Paging.
 
 **Configuration**
 
@@ -2343,7 +2400,7 @@ its default unless you name it.
 
 #### `ratelimit`
 
-Client-side rate limiting via a token bucket.
+Rate limiting.
 
 **Configuration**
 
@@ -2374,7 +2431,7 @@ its default unless you name it.
 
 #### `retry`
 
-Automatic retry of transient failures with exponential backoff.
+Retry.
 
 **Configuration**
 
@@ -2408,7 +2465,7 @@ its default unless you name it.
 
 #### `test`
 
-In-memory mock transport for testing without a live server.
+Test transport.
 
 **Configuration**
 
@@ -2439,7 +2496,7 @@ its default unless you name it.
 
 #### `timeout`
 
-Per-request timeout with transport abort.
+Timeout.
 
 **Configuration**
 

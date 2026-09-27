@@ -74,6 +74,9 @@ func init() {
 	core.NewContractsContractChangePreviewEntityFunc = func(client *core.HubspotCommerceSDK, entopts map[string]any) core.HubspotCommerceEntity {
 		return entity.NewContractsContractChangePreviewEntity(client, entopts)
 	}
+	core.NewContractsContractChangeSummaryEntityFunc = func(client *core.HubspotCommerceSDK, entopts map[string]any) core.HubspotCommerceEntity {
+		return entity.NewContractsContractChangeSummaryEntity(client, entopts)
+	}
 	core.NewContractsQuoteEntityFunc = func(client *core.HubspotCommerceSDK, entopts map[string]any) core.HubspotCommerceEntity {
 		return entity.NewContractsQuoteEntity(client, entopts)
 	}

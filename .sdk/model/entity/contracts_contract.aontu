@@ -1,0 +1,490 @@
+# Entity: contracts_contract
+
+main: kit: entity: contracts_contract: {
+
+  alias: field: {}
+
+  fields: {
+    addressTypesToCollect: {
+      h: "Address Types To Collect"
+      n: "addressTypesToCollect"
+      r: true
+      sh: "An array indicating the types of addresses to collect."
+      t: "`$ARRAY`"
+    }
+    allTransactionsFeeName: {
+      h: "All Transactions Fee Name"
+      n: "allTransactionsFeeName"
+      r: false
+      sh: "The name of the fee applied to all transactions."
+      t: "`$STRING`"
+    }
+    allTransactionsFeePercentage: {
+      h: "All Transactions Fee Percentage"
+      n: "allTransactionsFeePercentage"
+      r: false
+      sh: "The percentage of the fee applied to all transactions."
+      t: "`$NUMBER`"
+    }
+    allowedPaymentMethods: {
+      h: "Allowed Payment Methods"
+      n: "allowedPaymentMethods"
+      r: true
+      sh: "An array of allowed payment methods."
+      t: "`$ARRAY`"
+    }
+    annualContractValue: {
+      h: "Annual Contract Value"
+      n: "annualContractValue"
+      r: false
+      sh: "The annual value of the contract."
+      t: "`$NUMBER`"
+    }
+    automatedTaxesEnabled: {
+      h: "Automated Taxes Enabled"
+      n: "automatedTaxesEnabled"
+      r: true
+      sh: "Indicates whether automated taxes are enabled for the contract."
+      t: "`$BOOLEAN`"
+    }
+    billingAddress: {
+      h: "Billing Address"
+      n: "billingAddress"
+      r: false
+      t: "`$OBJECT`"
+    }
+    billingCompanyId: {
+      h: "Billing Company Id"
+      n: "billingCompanyId"
+      r: false
+      sh: "The unique identifier of the billing company associated with the contract."
+      t: "`$STRING`"
+    }
+    billingContactId: {
+      h: "Billing Contact Id"
+      n: "billingContactId"
+      r: false
+      sh: "The unique identifier of the billing contact associated with the contract."
+      t: "`$STRING`"
+    }
+    billingStartDateOverride: {
+      fo: "date"
+      h: "Billing Start Date Override"
+      n: "billingStartDateOverride"
+      r: false
+      sh: "The date to override the billing start date, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    businessUnitId: {
+      h: "Business Unit Id"
+      n: "businessUnitId"
+      r: false
+      sh: "The unique identifier of the business unit associated with the contract."
+      t: "`$STRING`"
+    }
+    cardFeeName: {
+      h: "Card Fee Name"
+      n: "cardFeeName"
+      r: false
+      sh: "The name of the fee applied to card transactions."
+      t: "`$STRING`"
+    }
+    cardFeePercentage: {
+      h: "Card Fee Percentage"
+      n: "cardFeePercentage"
+      r: false
+      sh: "The percentage of the fee applied to card transactions."
+      t: "`$NUMBER`"
+    }
+    collectionProcess: {
+      h: "Collection Process"
+      n: "collectionProcess"
+      r: false
+      sh: "The process for collecting payments."
+      t: "`$STRING`"
+    }
+    contractEffectiveDate: {
+      fo: "date"
+      h: "Contract Effective Date"
+      n: "contractEffectiveDate"
+      r: false
+      sh: "The date when the contract becomes effective, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    contractSourceId: {
+      h: "Contract Source Id"
+      n: "contractSourceId"
+      r: false
+      sh: "The unique identifier of the source of the contract."
+      t: "`$STRING`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: false
+      sh: "The date and time when the contract was created, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    currencyCode: {
+      h: "Currency Code"
+      n: "currencyCode"
+      r: false
+      sh: "The currency code associated with the contract, represented as a string."
+      t: "`$STRING`"
+    }
+    currentAnnualRecurringRevenue: {
+      h: "Current Annual Recurring Revenue"
+      n: "currentAnnualRecurringRevenue"
+      r: false
+      sh: "The current annual recurring revenue for the contract."
+      t: "`$NUMBER`"
+    }
+    currentMonthlyRecurringRevenue: {
+      h: "Current Monthly Recurring Revenue"
+      n: "currentMonthlyRecurringRevenue"
+      r: false
+      sh: "The current monthly recurring revenue for the contract."
+      t: "`$NUMBER`"
+    }
+    customProperties: {
+      h: "Custom Properties"
+      n: "customProperties"
+      r: true
+      sh: "A map of custom property names to their values."
+      t: "`$OBJECT`"
+    }
+    dealId: {
+      h: "Deal Id"
+      n: "dealId"
+      r: false
+      sh: "The unique identifier of the deal associated with the contract."
+      t: "`$STRING`"
+    }
+    directDebitFeeName: {
+      h: "Direct Debit Fee Name"
+      n: "directDebitFeeName"
+      r: false
+      sh: "The name of the fee applied to direct debit transactions."
+      t: "`$STRING`"
+    }
+    directDebitFeePercentage: {
+      h: "Direct Debit Fee Percentage"
+      n: "directDebitFeePercentage"
+      r: false
+      sh: "The percentage of the fee applied to direct debit transactions."
+      t: "`$NUMBER`"
+    }
+    discountCode: {
+      h: "Discount Code"
+      n: "discountCode"
+      r: false
+      sh: "The discount code applied to the contract."
+      t: "`$STRING`"
+    }
+    endDate: {
+      fo: "date"
+      h: "End Date"
+      n: "endDate"
+      r: false
+      sh: "The end date of the contract, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    externalPaymentMethodReferenceId: {
+      h: "External Payment Method Reference Id"
+      n: "externalPaymentMethodReferenceId"
+      r: false
+      sh: "The external reference ID for the payment method."
+      t: "`$STRING`"
+    }
+    hubspotBillingEnabled: {
+      h: "Hubspot Billing Enabled"
+      n: "hubspotBillingEnabled"
+      r: true
+      sh: "Indicates whether HubSpot billing is enabled for the contract."
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The unique identifier for the contract."
+      t: "`$STRING`"
+    }
+    language: {
+      h: "Language"
+      n: "language"
+      r: false
+      sh: "The language associated with the contract."
+      t: "`$STRING`"
+    }
+    lineItems: {
+      h: "Line Items"
+      n: "lineItems"
+      r: true
+      sh: "An array of line items included in the contract."
+      t: "`$ARRAY`"
+    }
+    locale: {
+      h: "Locale"
+      n: "locale"
+      r: false
+      sh: "The locale associated with the contract."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The name of the contract."
+      t: "`$STRING`"
+    }
+    netPaymentTerms: {
+      fo: "int32"
+      h: "Net Payment Terms"
+      n: "netPaymentTerms"
+      r: false
+      sh: "The net payment terms for the contract, represented as an integer."
+      t: "`$INTEGER`"
+    }
+    paymentEnabled: {
+      h: "Payment Enabled"
+      n: "paymentEnabled"
+      r: true
+      sh: "Indicates whether payment is enabled for the contract."
+      t: "`$BOOLEAN`"
+    }
+    paymentMethod: {
+      h: "Payment Method"
+      n: "paymentMethod"
+      r: false
+      sh: "The payment method used for the contract."
+      t: "`$STRING`"
+    }
+    poNumber: {
+      h: "Po Number"
+      n: "poNumber"
+      r: false
+      sh: "The purchase order number associated with the contract."
+      t: "`$STRING`"
+    }
+    preTerminationContractValue: {
+      h: "Pre Termination Contract Value"
+      n: "preTerminationContractValue"
+      r: false
+      sh: "The value of the contract before termination."
+      t: "`$NUMBER`"
+    }
+    renewalContractId: {
+      h: "Renewal Contract Id"
+      n: "renewalContractId"
+      r: false
+      sh: "The unique identifier of the renewal contract."
+      t: "`$STRING`"
+    }
+    renewalDate: {
+      fo: "date"
+      h: "Renewal Date"
+      n: "renewalDate"
+      r: false
+      sh: "The date when the contract is set to renew, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    sellerCompanyAddress: {
+      h: "Seller Company Address"
+      n: "sellerCompanyAddress"
+      r: false
+      t: "`$OBJECT`"
+    }
+    sellerCompanyName: {
+      h: "Seller Company Name"
+      n: "sellerCompanyName"
+      r: false
+      sh: "The name of the seller's company."
+      t: "`$STRING`"
+    }
+    sellerEmail: {
+      h: "Seller Email"
+      n: "sellerEmail"
+      r: false
+      sh: "The email address of the seller."
+      t: "`$STRING`"
+    }
+    sellerFirstName: {
+      h: "Seller First Name"
+      n: "sellerFirstName"
+      r: false
+      sh: "The first name of the seller."
+      t: "`$STRING`"
+    }
+    sellerLastName: {
+      h: "Seller Last Name"
+      n: "sellerLastName"
+      r: false
+      sh: "The last name of the seller."
+      t: "`$STRING`"
+    }
+    sellerPhoneNumber: {
+      h: "Seller Phone Number"
+      n: "sellerPhoneNumber"
+      r: false
+      sh: "The phone number of the seller."
+      t: "`$STRING`"
+    }
+    startDate: {
+      fo: "date"
+      h: "Start Date"
+      n: "startDate"
+      r: false
+      sh: "The start date of the contract, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      sh: "The current status of the contract."
+      t: "`$STRING`"
+    }
+    storePaymentMethodAtCheckout: {
+      h: "Store Payment Method At Checkout"
+      n: "storePaymentMethodAtCheckout"
+      r: true
+      sh: "Indicates whether the payment method should be stored at checkout."
+      t: "`$BOOLEAN`"
+    }
+    terminationDate: {
+      fo: "date"
+      h: "Termination Date"
+      n: "terminationDate"
+      r: false
+      sh: "The date when the contract is terminated, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    totalBilledAmount: {
+      h: "Total Billed Amount"
+      n: "totalBilledAmount"
+      r: false
+      sh: "The total amount billed under the contract."
+      t: "`$NUMBER`"
+    }
+    totalBilledAmountPreTax: {
+      h: "Total Billed Amount Pre Tax"
+      n: "totalBilledAmountPreTax"
+      r: false
+      sh: "The total amount billed under the contract before tax."
+      t: "`$NUMBER`"
+    }
+    totalCollectedFees: {
+      h: "Total Collected Fees"
+      n: "totalCollectedFees"
+      r: false
+      sh: "The total amount of fees collected under the contract."
+      t: "`$NUMBER`"
+    }
+    totalCollectedTaxes: {
+      h: "Total Collected Taxes"
+      n: "totalCollectedTaxes"
+      r: false
+      sh: "The total amount of taxes collected under the contract."
+      t: "`$NUMBER`"
+    }
+    totalContractValue: {
+      h: "Total Contract Value"
+      n: "totalContractValue"
+      r: false
+      sh: "The total value of the contract."
+      t: "`$NUMBER`"
+    }
+    totalPaidAmount: {
+      h: "Total Paid Amount"
+      n: "totalPaidAmount"
+      r: false
+      sh: "The total amount paid under the contract."
+      t: "`$NUMBER`"
+    }
+    updatedAt: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updatedAt"
+      r: false
+      sh: "The date and time when the contract was last updated, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "contracts_contract"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /commerce/contracts/2027-03-beta/contracts/{contractId}/terminate"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: null
+                k: "param"
+                n: "contract_id"
+                or: "contract_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/commerce/contracts/2027-03-beta/contracts/{contractId}/terminate"
+          q: {
+            exist: [
+              "contract_id"
+            ]
+          }
+          r: {
+            param: {
+              contractId: "contract_id"
+            }
+          }
+          s: [
+            {
+              lit: "commerce"
+            }
+            {
+              lit: "contracts"
+            }
+            {
+              lit: "2027-03-beta"
+            }
+            {
+              lit: "contracts"
+            }
+            {
+              var: "contract_id"
+            }
+            {
+              lit: "terminate"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.contract")]
+  ]
+
+}

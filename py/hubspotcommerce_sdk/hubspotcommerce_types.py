@@ -1,7 +1,7 @@
 # Typed models for the HubspotCommerce SDK.
 #
-# GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-# params (op.<name>.points[].args.params[]). Field/param types come from the
+# GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+# params (op.<name>.points[].g.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
 #
@@ -392,10 +392,6 @@ class ContractsContractChangeLoadMatch(TypedDict):
     id: str
 
 
-class ContractsContractChangeListMatch(TypedDict):
-    contract_id: str
-
-
 class ContractsContractChangeCreateDataRequired(TypedDict):
     contractId: str
     deltaLineItems: list
@@ -442,6 +438,27 @@ class ContractsContractChangePreview(TypedDict):
 class ContractsContractChangePreviewCreateData(TypedDict):
     deltaLineItems: list
     proposedLineItems: list
+
+
+class ContractsContractChangeSummaryRequired(TypedDict):
+    contractId: str
+    id: str
+    lineItemChanges: list
+    prorating: bool
+    status: str
+    type: str
+
+
+class ContractsContractChangeSummary(ContractsContractChangeSummaryRequired, total=False):
+    createdAt: str
+    effectiveDate: str
+    name: str
+    quoteId: str
+    updatedAt: str
+
+
+class ContractsContractChangeSummaryListMatch(TypedDict):
+    contract_id: str
 
 
 class ContractsQuoteRequired(TypedDict):

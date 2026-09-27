@@ -66,7 +66,7 @@ def _advanced_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["advanced01", "advanced02", "advanced03", "2027_03_beta01", "2027_03_beta02", "2027_03_beta03", "payment_crm_object01"],
+        ["advanced01", "advanced02", "advanced03", "payment_crm_object01"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

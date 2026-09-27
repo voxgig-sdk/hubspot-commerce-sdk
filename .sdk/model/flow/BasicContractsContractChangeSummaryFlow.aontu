@@ -1,0 +1,26 @@
+# BasicContractsContractChangeSummaryFlow
+
+main: kit: flow: BasicContractsContractChangeSummaryFlow:
+{
+  entity: "contracts_contract_change_summary",
+  kind: "basic",
+  name: "BasicContractsContractChangeSummaryFlow",
+  step: [
+    {
+      m: {
+        contract_id: "contract01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "contracts_contract_change_summary_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicContractsContractChangeSummaryFlow"
+}

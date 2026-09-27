@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 // Typed models for the HubspotCommerce SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 //
@@ -395,12 +395,6 @@ class ContractsContractChangeLoadMatch
     public string $id;
 }
 
-/** Request payload for ContractsContractChange#list. */
-class ContractsContractChangeListMatch
-{
-    public string $contract_id;
-}
-
 /** Request payload for ContractsContractChange#create. */
 class ContractsContractChangeCreateData
 {
@@ -449,6 +443,28 @@ class ContractsContractChangePreviewCreateData
 {
     public array $deltaLineItems;
     public array $proposedLineItems;
+}
+
+/** ContractsContractChangeSummary entity data model. */
+class ContractsContractChangeSummary
+{
+    public string $contractId;
+    public ?string $createdAt = null;
+    public ?string $effectiveDate = null;
+    public string $id;
+    public array $lineItemChanges;
+    public ?string $name = null;
+    public bool $prorating;
+    public ?string $quoteId = null;
+    public string $status;
+    public string $type;
+    public ?string $updatedAt = null;
+}
+
+/** Request payload for ContractsContractChangeSummary#list. */
+class ContractsContractChangeSummaryListMatch
+{
+    public string $contract_id;
 }
 
 /** ContractsQuote entity data model. */

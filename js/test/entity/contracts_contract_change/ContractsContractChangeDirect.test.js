@@ -40,22 +40,7 @@ describe('ContractsContractChangeDirect', async () => {
     const { client, calls } = setup
 
     const params = {}
-    if (setup.live) {
-      const listResult = await client.direct({
-        path: 'commerce/contracts/2027-03-beta/contracts/{contract_id}/changes',
-        method: 'GET',
-        params: {
-        contract_id: setup.idmap['contract01'],
-        },
-      })
-      assert(listResult.ok === true)
-      const listData = listResult.data
-      if (!Array.isArray(listData) || listData.length === 0) {
-        throw new Error('Live load blocked: discovery returned no usable entities')
-      }
-      params.id = listData[0].id
-
-    } else {
+    if (!setup.live) {
       params.id = 'direct01'
     }
 
@@ -71,36 +56,6 @@ describe('ContractsContractChangeDirect', async () => {
 
     if (!setup.live) {
       assert(result.data.id === 'direct01')
-      assert(calls.length === 1)
-      assert(calls[0].init.method === 'GET')
-      assert(calls[0].url.includes('direct01'))
-    }
-  })
-
-  test('direct-list-contracts_contract_change', async (t) => {
-    if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
-    const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }])
-    const { client, calls } = setup
-
-    const params = {}
-    if (setup.live) {
-      params.contract_id = setup.idmap['contract01']
-    } else {
-      params.contract_id = 'direct01'
-    }
-
-    const result = await client.direct({
-      path: 'commerce/contracts/2027-03-beta/contracts/{contract_id}/changes',
-      method: 'GET',
-      params,
-    })
-
-    assert(result.ok === true)
-    assert(setup.live ? result.status >= 200 && result.status < 300 : result.status === 200)
-    assert(Array.isArray(result.data))
-
-    if (!setup.live) {
-      assert(result.data.length === 2)
       assert(calls.length === 1)
       assert(calls[0].init.method === 'GET')
       assert(calls[0].url.includes('direct01'))
